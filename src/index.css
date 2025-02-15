@@ -1,0 +1,3414 @@
+body {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.TitleMenu {
+  display: flex;
+  align-items: center;
+  gap: 4%;
+  margin-bottom: 10px;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 1px 1px 1px 1px rgb(175, 174, 174);
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.Keranjang {
+  width: 97%;
+  height: 90px;
+  left: 0px;
+  top: 0px;
+  position: fixed;
+  z-index: 1;
+  margin-top: 0;
+  border-radius: 0px;
+  padding-left: 10px;
+  padding-right: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ListPesanan {
+  background-color: rgb(121, 121, 120);
+  display: grid;
+  grid-template-columns: 5% 20% 20% 25% 15% 5%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+  font-size: 12px;
+}
+
+.EditPcs {
+  display: flex;
+  gap: 30px;
+
+}
+
+.EditPcs input {
+  display: flex;
+  justify-content: center;
+  width: 70px
+}
+
+
+.EditPcs span {
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+}
+
+.ListPesanan span:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+
+
+.hapusCart {
+
+  display: flex;
+  width: 100px;
+  height: 35px;
+}
+
+.hapusCart span {
+  background-color: rgb(0, 0, 0);
+  width: 100px;
+  height: 35px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hapusCart span:hover {
+  background-color: rgb(255, 0, 0);
+  color: white;
+}
+
+.NotActive span {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.NotActive input {
+  cursor: default;
+}
+
+.NotActive span:hover {
+  background-color: black;
+  color: white;
+}
+
+
+
+
+.SearchCart {
+  display: flex;
+  align-items: center;
+}
+
+.SearchCart input {
+  width: 850px;
+  height: 30px;
+}
+
+.TitleMenu h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  text-align: center;
+  margin: 0px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 43px;
+}
+
+
+
+.CartPagesLayout {
+  padding: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 1325px;
+  margin-top: 100px;
+  height: 400px;
+  overflow-y: auto;
+
+}
+
+.CartPagesLayout h1 {
+  margin-top: 0px;
+  font-size: 20px;
+}
+
+.HeaderMenu {
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+  padding: 2%;
+  max-width: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+
+
+.HeaderMenu button {
+  height: 40px;
+  width: 87px;
+  background-color: white;
+  border: 0px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 90%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+
+}
+
+.HeaderMenu button:hover {
+  background-color: rgb(90, 90, 90);
+  color: white;
+}
+
+.se button {
+  background-color: rgb(64, 63, 64);
+  color: white;
+  transition: 100ms;
+}
+
+.formLayOut {
+  text-align: left;
+  background-color: rgb(231, 229, 229);
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 0.1px solid rgba(0, 0, 0, 0.336);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.formLayOut form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.formLayOut h1 {
+  font-size: 50px;
+  margin-top: 0px;
+  margin-bottom: 2px;
+  margin-left: 20px;
+  color: blue;
+}
+
+.formLayOut p {
+  margin-left: 22px;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.formLayOut input {
+  height: 30px;
+  width: 250px;
+  border: 0px solid;
+  border-radius: 5px;
+}
+
+.Notification {
+  color: red;
+  font-size: 13px;
+
+}
+
+.formLayOut button {
+  height: 40px;
+  width: 250px;
+  border: 0px solid;
+  border-radius: 5px;
+  background-color: blue;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.Auth {
+  height: 40px;
+  width: 250px;
+  border: 0px solid;
+  border-radius: 5px;
+  background-color: blue;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.Auth:hover {
+  background-color: white;
+  color: black;
+}
+
+.formLayOut button:hover {
+  background-color: rgb(255, 255, 255);
+  transition: 500ms;
+  color: black;
+}
+
+.ProductPages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 1%;
+  overflow: auto;
+  height: 455px;
+  border-radius: 5px;
+  justify-content: center;
+  width: 1325px;
+  transition: 1000ms;
+}
+
+.motion_on {
+  height: 480px;
+  width: 100%;
+  transition: 200ms;
+}
+
+.CardLayout {
+  width: 280px;
+  background-color: rgb(0, 0, 0);
+  padding: 15px;
+  border-radius: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: justify;
+  color: white;
+  height: 425px;
+  box-shadow: 1px 0.1px 1px 1px rgb(51, 51, 51);
+}
+
+.CardImage {
+
+  width: 100%;
+  overflow: auto;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.CardImage img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: 1000ms;
+}
+
+.CardImage img:hover {
+  object-position: 10% 30%;
+  transition: 1000ms;
+  transform: scale(1.1);
+}
+
+
+.HeaderContent {
+  margin-top: 10px;
+  height: 140px;
+
+}
+
+.HeaderContent h2 {
+  font-size: 30px;
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.HeaderContent p {
+  margin: 0px;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.HeaderContent a {
+  text-decoration: none;
+  color: white;
+}
+
+.HeaderContent a:hover {
+  text-decoration: underline;
+}
+
+.BodyCard {
+  font-size: 12px;
+}
+
+.Footer {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+
+}
+
+.Footer .Price {
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.Footer button {
+  background-color: aqua;
+  width: 40%;
+  height: 30px;
+  padding: 2px;
+  border: 0px solid;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.Footer button:hover {
+  background-color: rgb(17, 0, 255);
+  color: white;
+}
+
+.OverallProductsPages {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin: 0px;
+}
+
+.titlePages {
+  margin-top: 4px auto;
+  height: 38px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 40px;
+}
+
+.CartContainer {
+  background-color: rgb(5, 5, 5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0px auto;
+  color: aliceblue;
+  text-align: center;
+  border-radius: 10px;
+  width: 0px;
+  transition: 1000ms;
+}
+
+.motion_Cart {
+  width: 350px;
+  right: 0px;
+  opacity: 1;
+  padding: 10px;
+  transition: 1000ms;
+}
+
+.CartContainer h1 {
+  width: 320px;
+  height: 50px;
+}
+
+
+
+.LayoutListCart {
+  overflow: auto;
+  height: 470px;
+  padding: 0px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.finishLayoutList {
+  height: 276px;
+}
+
+
+
+.ListCart {
+  background-color: white;
+  height: 95px;
+  margin: 10px auto;
+  border-radius: 10px;
+  color: black;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 1px;
+  padding-bottom: 10px;
+  margin-right: 5px;
+}
+
+.finish {
+  height: 70px;
+  background-color: rgb(0, 0, 0);
+  padding: 10px;
+  color: white;
+}
+
+.finish h3 {
+  margin: 0px;
+}
+
+.ListCart h2 {
+  margin: 0px;
+}
+
+.ListCart p,
+h4 {
+  margin: 0;
+}
+
+
+
+.ButtonToSeeCart button {
+  width: 90%;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 0px solid;
+  height: 30px;
+  font-weight: bold;
+}
+
+.ButtonToSeeCart button:hover {
+  background-color: aqua;
+}
+
+.TitlePcs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.TitlePcs h4 {
+  margin-top: 10px;
+  padding-right: 10px;
+}
+
+.TitlePcs button {
+  margin-right: 10px;
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+}
+
+.TitlePcs button img {
+  width: 35px
+}
+
+.TotalPrice {
+  width: 1346px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.199);
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: rgb(0, 0, 0);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+.TotalPriceComponent {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  margin: 1px auto;
+  padding: 2px;
+  color: white;
+}
+
+.TotalPriceComponent p {
+  margin: 0;
+}
+
+.TotalPriceComponent h1 {
+  margin: 0;
+}
+
+.TotalPriceComponent button {
+  border: 0px solid;
+  border-radius: 10px;
+  background-color: aqua;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.TotalPriceComponent button:hover {
+  background-color: rgb(68, 0, 255);
+  color: white;
+}
+
+.SearchProduk {
+  margin: 0px;
+  display: flex;
+  justify-content: left;
+  gap: 10px
+}
+
+.SearchProduk input {
+  height: 30px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid rgba(75, 75, 75, 0.842);
+}
+
+.SearchProduk button {
+  width: 170px;
+  cursor: pointer;
+  border: 0px solid;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 36px;
+  text-align: center;
+}
+
+.SearchProduk button:hover {
+  background-color: aqua;
+  color: black;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.637);
+  height: 100%;
+  width: 100%;
+  margin-left: 0px;
+  left: 0;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.loading {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.637);
+  height: 100%;
+  width: 100%;
+  margin-left: 0px;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s, translate 0.5s;
+}
+
+.loadingOn {
+  visibility: visible;
+}
+
+.OverlayLoading {
+  position: absolute;
+  background-color: white;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.OverlayLoading img {
+  margin-top: 10px;
+  width: 50px
+}
+
+.OverlayLoading button {
+  background-color: black;
+  color: white;
+  width: 200px;
+  height: 40px;
+  margin-top: 100px;
+  border: 0px solid;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.OverlayLoading button:hover {
+  background-color: rgb(172, 168, 168);
+}
+
+.overlay {
+  background-color: rgb(255, 255, 255);
+  width: 70%;
+  position: fixed;
+  left: 15%;
+  top: 2%;
+  border-radius: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  text-align: left;
+  justify-content: center;
+  transform: translateY(-59);
+  opacity: 0;
+  transition: opacity 100ms ease-in, opacity 0.5s;
+  height: 570px;
+}
+
+.change {
+  width: 30%;
+  left: 35%
+}
+
+.action {
+  opacity: 1;
+}
+
+.overlay h1 {
+  margin: 0px;
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+
+.overlayBody {
+  margin-bottom: 20px;
+
+  justify-content: center;
+  gap: 70px;
+}
+
+.Burger {
+  display: none;
+}
+
+.NavCart {
+  display: none;
+}
+
+
+
+.componentOverlay h1 {
+  font-size: 25px;
+}
+
+.componentOverlay {
+  width: 100%;
+  text-align: left;
+  font-size: 20px;
+
+
+}
+
+.componentOverlayForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.componentOverlayForm select {
+  width: 30%;
+  margin-right: 10px;
+  height: 40px;
+}
+
+.componentOverlay input {
+  height: 30px;
+  width: 98.2%;
+  border: 1px solid rgba(0, 0, 0, 0.384);
+}
+
+.componentOverlay label {
+  font-size: 18px;
+}
+
+.Contact {
+  display: flex;
+  gap: 10px
+}
+
+.Contact input {
+  width: 461px
+}
+
+
+
+.Pengiriman {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.Pengiriman select {
+  width: 466px;
+  height: 40px;
+}
+
+.Alamat {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.Alamat select {
+  width: 467px;
+}
+
+.Alamat label {
+  font-size: 12px;
+  margin: 0px;
+}
+
+.Alamat input {
+  width: 460px;
+  margin-right: 10px;
+  height: 35px;
+}
+
+
+.buttonMap {
+  background-color: rgb(0, 0, 0);
+  padding: 3px;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.onProfil {
+  margin-top: 10px;
+  background-color: yellowgreen;
+}
+
+.buttonMap:hover {
+  background-color: rgb(58, 57, 57);
+
+}
+
+
+
+.overlay button {
+  width: 100%;
+
+  background-color: rgb(15, 15, 15);
+  font-size: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+  margin-top: 2%;
+  border-radius: 10px;
+  height: 60px;
+}
+
+.overlay button:hover {
+  background-color: black;
+}
+
+.componentOverlay img {
+  width: 95%;
+  margin-right: 10px;
+}
+
+.ClosePopup button {
+  background-color: white;
+  position: absolute;
+  right: 0px;
+  height: 32px;
+  width: 35px;
+  top: 0px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 0px;
+  border-bottom-left-radius: 10px;
+  color: black;
+  border: 0px solid;
+  margin-top: 0px;
+  visibility: hidden;
+}
+
+.ClosePopup button:hover {
+  background-color: blue;
+  color: white;
+}
+
+.Information button {
+  border-radius: 10px;
+  height: 50px;
+  background-color: rgb(0, 0, 0);
+}
+
+.Information button:hover {
+  background-color: rgb(73, 72, 72);
+
+}
+
+.Information h1 {
+  text-align: center;
+
+}
+
+.optionFinishButton {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+
+.optionFinishButton button {
+  height: 40px;
+  width: 150px;
+  font-size: 15px;
+  border-radius: 10px;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  border: 0px solid;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.199);
+}
+
+.selected button {
+  background-color: rgba(172, 196, 248, 0.911);
+  color: rgb(0, 0, 0);
+  border: 1px solid rgba(194, 192, 192, 0.24);
+  transition: 500ms;
+  font-weight: bold;
+}
+
+.PersonalDetail {
+  height: 380px;
+
+}
+
+
+.ComponentPersonalDetail {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ComponentPersonalDetail h3 {
+  margin-bottom: 1px;
+}
+
+.TotalAmount h1 {
+  font-size: 300%;
+  margin-top: 20px;
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.ProfilPagesLayout {
+  width: 1330px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ProfilPagesLayout h1 {
+  font-size: 43px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.DetailLayoutProfil {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 5%;
+  align-items: center;
+
+}
+
+.BioData {
+  width: 150%;
+  display: block;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.BioData h1 {
+  font-size: 500%;
+  margin-top: 4%;
+  text-align: left;
+}
+
+.BioData p {
+  font-size: 20px;
+}
+
+.BioData button {
+  background-color: black;
+  height: 40px;
+  color: white;
+  border: 0px solid;
+  border-radius: 10px;
+  width: 200px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+
+
+.BioData button:hover {
+  background-color: aqua;
+  color: black;
+}
+
+.gambarProfil {
+  padding-left: 150px;
+  width: 100%;
+  display: flex;
+  overflow-wrap: anywhere;
+
+}
+
+.gambarProfil input {
+  display: none;
+}
+
+.ContainerPictProfile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.images {
+  height: 320px;
+  width: 320px;
+  background-size: cover;
+  padding: -5px;
+}
+
+
+
+
+.LabelOverLay {
+  background-color: rgba(250, 247, 247, 0.938);
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  border-radius: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: white;
+  opacity: 0;
+}
+
+.LabelOverLay label {
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.LabelOverLay img {
+  width: 30%
+}
+
+.ContainerPictProfile:hover .LabelOverLay {
+  opacity: 1;
+}
+
+.ButtonOpenCart {
+  margin: 0px;
+}
+
+.ButtonOpenCart button {
+  height: 60px;
+  width: 80px;
+  position: absolute;
+  right: 40px;
+  top: 25px;
+  border-radius: 10px;
+  border: 0px solid;
+  transition: 1000ms;
+  background-color: transparent;
+
+}
+
+.ButtonOpenCart img {
+  width: 70%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.ButtonOpenCart img:hover {
+  width: 70%;
+  transition: 500ms;
+
+
+}
+
+.OpenMotion button {
+  right: 20.5%;
+  top: 1%;
+  transition: 1000ms;
+  width: 5%;
+}
+
+.titleButtonAddProduct {
+  margin-top: 20px;
+}
+
+.titleButtonAddProduct h1 {
+  text-align: center;
+  font-size: 30px;
+}
+
+
+
+.AddProductButton button {
+  height: 70px;
+  width: 70px;
+  border-radius: 100px;
+  border: 0px solid;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: slategray;
+  margin-top: 5px;
+}
+
+.afterProfil {
+  margin-top: 15px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.centerProfil {
+  display: block;
+  text-align: center;
+}
+
+.centerProfil h1 {
+  text-align: center;
+}
+
+.AddProductButton button:hover {
+  background-color: rgb(53, 51, 51);
+}
+
+.Overlay2 {
+  background-color: rgba(0, 0, 0, 0.178);
+  position: fixed;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  visibility: hidden;
+
+}
+
+
+
+.CloseForm button:hover {
+  background-color: rgb(141, 141, 141);
+}
+
+
+
+.FormProduk {
+  position: absolute;
+  top: 3%;
+  background-color: white;
+  left: 25%;
+  padding: 30px;
+  border-radius: 10px;
+  font-weight: bold;
+  opacity: 0;
+  transition: 100ms;
+  width: 52%;
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.082);
+}
+
+.Formkedua {
+  opacity: 0;
+}
+
+.BuildFormProduk {
+  transition: 500ms;
+  opacity: 1;
+}
+
+.Description textarea {
+  width: 99%;
+
+}
+
+.ProdukImage {
+  height: 260px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.UploadImage {
+  background-image: url("/Images/icons8-upload-100.png");
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.UploadImage img {
+  width: 300px;
+  height: 200px;
+  margin-top: 10px;
+}
+
+.UploadImage img:hover {
+  opacity: 0.1;
+}
+
+.UploadImage {
+  width: 300px;
+  height: 200px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+
+.CategoryAndPriceLayout {
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.CategoryAndPriceLayout .buttonspan {
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+  margin: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  block-size: none;
+
+}
+
+.CategoryAndPriceLayout .buttonspan:hover {
+  background-color: rgb(2, 137, 255);
+  color: black;
+}
+
+::selection {
+  background-color: rgba(0, 255, 255, 0);
+  outline: none;
+}
+
+.CategoryAndPrice {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  margin: 0px;
+  height: 192px;
+  overflow-y: auto;
+
+}
+
+
+
+
+.FormProduk form {
+  width: 100%;
+}
+
+.FormProduk h1 {
+  margin-top: 2px;
+  font-size: 35px;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+.FormProduk input {
+  width: 99%;
+  height: 25px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.FormProduk input[type='file'] {
+  margin-bottom: 20px;
+}
+
+
+.kedua {
+  display: none;
+}
+
+.Description {
+  margin-top: 5px;
+}
+
+.Description input {
+  height: 30px;
+  margin: 0px;
+}
+
+.FormProduk button {
+  width: 100%;
+  height: 40px;
+}
+
+
+.CloseForm button:hover {
+  background-color: rgb(141, 141, 141);
+}
+
+
+.CloseForm button {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 40px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 0px solid;
+  padding: 5px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.InfoProductLayout {
+  background-color: aquamarine;
+}
+
+.InfoProduct {
+  width: 1000px;
+  min-width: 80%;
+  position: absolute;
+  left: 10%;
+  top: 20%;
+  display: flex;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.InfoProduct button {
+  position: absolute;
+  right: 0px;
+  border: 0px solid;
+  padding: 7px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+}
+
+.InfoProduct button:hover {
+  background-color: rgb(54, 55, 55);
+}
+
+.InfoProduct .container {
+  width: 100%;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 45% 55%;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  text-align: left;
+}
+
+.HeaderAndPrice {
+  display: grid;
+  grid-template-columns: 65% 30%;
+}
+
+.CategoryOption {
+  display: flex;
+  gap: 20px;
+}
+
+.ComponentCategoryOption {
+  background-color: rgb(0, 0, 0);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.SumOfPcs {
+  display: flex;
+  gap: 20%;
+  justify-content: center;
+  align-items: center;
+}
+
+.pcs {
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.14);
+}
+
+.disabled {
+  background-color: rgb(117, 117, 117);
+}
+
+.ComponentCategoryOption:hover {
+  background-color: rgb(135, 134, 134);
+}
+
+.ComponentCategoryOption:active {
+  background-color: rgb(210, 210, 210);
+}
+
+.FooterOrderForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-right: 40px;
+}
+
+.FooterOrderForm button {
+  height: 100%;
+  width: 150px;
+  background-color: black;
+  color: white;
+  border: 0px solid;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+}
+
+.FooterOrderForm button:hover {
+  background-color: rgb(59, 57, 57);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.left img {
+  width: 400px;
+  height: 360px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.108);
+  object-fit: cover;
+}
+
+.right {
+  margin-top: 20px;
+  align-items: center;
+}
+
+.ButtonDelete {
+  background-color: rgb(3, 3, 3);
+  margin-bottom: 10px;
+  margin-top: 0px;
+  padding: 4px;
+  height: 12%;
+  width: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  font-size: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ButtonDelete:hover {
+  background-color: rgb(97, 97, 97);
+}
+
+.ButtonDelete span {
+  margin-top: 0px;
+}
+
+.actionButton {
+  display: flex;
+  justify-content: center;
+  gap: 20px
+}
+
+.actionButton button {
+  width: 200px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  border: 0px solid;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+
+.actionButton button:hover {
+  background-color: thistle;
+  color: black;
+}
+
+.actionButton span {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+}
+
+.actionButton span:hover {
+  background-color: thistle;
+  color: black;
+}
+
+.actionButton span:active {
+  background-color: rgb(77, 73, 77);
+}
+
+.ConfirmationDelete {
+  background-color: white;
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  text-align: center;
+  width: 30%;
+  padding: 15px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.5s, translate 0.5s;
+}
+
+.ConfirmationDelete h2 {
+  font-size: 70px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+
+.ConfirmationDelete button {
+  background-color: black;
+  color: white;
+  width: 100px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  border: 0px solid;
+  cursor: pointer;
+  text-align: center;
+}
+
+.Cancel button {
+  background-color: red;
+}
+
+.ConfirmationDelete button:hover {
+  background-color: rgb(78, 78, 78);
+
+}
+
+.Kedua {
+  display: none;
+}
+
+.Menu_Kedua {
+  display: none;
+}
+
+.updateOptions {
+  position: absolute;
+  top: 100px;
+  left: 422px;
+  height: 0px;
+  overflow: auto;
+  width: 180px;
+  background-color: rgba(10, 10, 10, 0.514);
+  transition: 1000ms;
+  overflow-y: hidden;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.151);
+}
+
+.motionOptions {
+  top: 85px;
+  left: 290px;
+}
+
+.BuildUpdateOption {
+  height: 200px;
+}
+
+.updateOptions button {
+  width: 100%;
+  height: 37px;
+  border-radius: 0px;
+  background-color: rgba(253, 253, 253, 0.76);
+  color: rgb(2, 2, 2);
+  border: 1px solid black;
+  z-index: 1;
+  font-size: medium;
+  text-align: left;
+}
+
+.updateButton:hover+.updateOptions {
+  height: 200px;
+  transition: 400ms;
+  overflow-y: hidden;
+}
+
+.updateOptions:hover {
+  height: 200px;
+}
+
+
+.BodyCheckout {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgb(0, 0, 0);
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 65% 35%;
+  justify-content: center;
+  gap: 10px;
+  width: 1320px;
+  color: white;
+  border-radius: 10px;
+}
+
+.ComponentBodyCheckout {
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  color: black;
+}
+
+.ContanerProductList {
+  background-color: rgb(236, 234, 234);
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.InformationCheckout {
+  background-color: rgb(22, 22, 22);
+  height: 480px;
+  padding: 5px;
+  overflow-y: auto;
+  border-radius: 5px;
+}
+
+.productContainer {
+
+  height: 480px;
+  overflow-y: auto;
+  border-radius: 5px;
+}
+
+.FooterOngkos {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productList {
+  background-color: rgb(0, 0, 0);
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+.Order {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productList button {
+  background-color: rgb(255, 255, 255);
+  height: 40px;
+  border: 0px solid;
+  border-radius: 5px;
+  font-weight: bold;
+  width: 150px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.productList button:hover {
+  background-color: rgb(201, 201, 201);
+}
+
+.ShippingOption {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.HeaderShipping h2 {
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+
+.Shipping {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.Shipping h2 {
+  margin-top: 10px;
+}
+
+.ButtonAndTitleCheckout {
+  display: flex;
+  align-items: center;
+  margin-top: 0px;
+  justify-content: center;
+  color: white;
+
+
+}
+
+.ButtonAndTitleCheckout span {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.ButtonAndTitleCheckout h1 {
+  margin-right: 20px;
+}
+
+.ButtonAndTitleCheckout span:hover {
+  background-color: aqua;
+}
+
+.ButtonAndTitleCheckout img {
+  width: 40px;
+
+}
+
+.ComponentPayment {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.EksekusiCheckout {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.EksekusiCheckout button {
+  background-color: rgb(0, 0, 0);
+  width: 500px;
+  height: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  border: 0px solid;
+  cursor: pointer;
+  color: white;
+}
+
+.EksekusiCheckout button:hover {
+  background-color: rgb(61, 61, 61);
+}
+
+.Payment {
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.OverlayMap {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.637);
+  height: 100%;
+  width: 100%;
+  margin-left: 0px;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s, translate 0.5s;
+}
+
+.OverlayMapOn {
+  visibility: visible;
+}
+
+
+.Map {
+  background-color: rgb(255, 255, 255);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 10px;
+
+}
+
+.TitleHeadInformationOrder {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.HeaderProductOrderInformation {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+
+}
+
+.MenuOrderInformation {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+}
+
+.MenuOrderInformation button {
+  height: 40px;
+  width: 190px;
+  border-radius: 5px;
+  border: 0px solid;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.InformationButton button {
+  background-color: rgb(75, 75, 75);
+}
+
+.MenuOrderInformation button:hover {
+  background-color: rgb(75, 75, 75);
+}
+
+.HeaderProductOrderInformation input {
+  height: 30px;
+  width: 500px;
+
+}
+
+.FinishCheckout {
+  padding: 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.SellerAndCancelButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SellerAndCancelButton button {
+  height: 40px;
+  width: 100px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 0px solid;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.SellerAndCancelButton button:hover {
+  background-color: red;
+}
+
+
+.buttonVerify {
+  visibility: hidden;
+  opacity: 1;
+  transition: opacity 0.5s, translate opacity 0.5s;
+}
+
+
+
+.buttonVerify button {
+  border-radius: 5px;
+  height: 30px;
+  border: 0px solid;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.buttonVerify button:hover {
+  background-color: rgb(43, 42, 42);
+}
+
+.overlay3 {
+  background-color: rgba(0, 0, 0, 0.26);
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.Setting {
+  height: 130%;
+}
+
+.SellerNotification {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  opacity: 0;
+  text-align: center;
+}
+
+.SetPass {
+  opacity: 0;
+}
+
+.SetPassOn {
+  opacity: 1;
+}
+
+.ComponentSetPass {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 10px;
+}
+
+.SetPass input {
+  height: 30px;
+  width: 100%
+}
+
+.SetPass button {
+  height: 40px;
+  width: 100%;
+  border: 0px solid;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.SetPass button:hover {
+  background-color: rgb(41, 41, 41);
+}
+
+.Account {
+  opacity: 0
+}
+
+.AccountOn {
+  opacity: 1
+}
+
+.SellerNotificationOn {
+  opacity: 1;
+  transition: 1000ms
+}
+
+.SellerNotification img {
+
+  background-color: yellow;
+}
+
+.notificationUserLogin {
+  background-color: white;
+  padding: 10px;
+
+  flex-wrap: wrap;
+  text-align: center;
+  color: black;
+  width: 600px;
+  border-radius: 10px;
+  font-size: 10px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.notificationUserLoginOn {
+  opacity: 1;
+  transition: 1000ms
+}
+
+.notificationUserLogin h1 {
+  font-size: 40px;
+  color: black;
+}
+
+.actionUserLogin {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actionUserLogin button {
+  background-color: black;
+}
+
+.actionUserLogin button:hover {
+  background-color: rgb(203, 203, 203);
+}
+
+
+.VerificationConfirm button {
+  background-color: black;
+  color: white;
+  border: 0px solid;
+  border-radius: 10px;
+  height: 50px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 20px;
+  cursor: pointer
+}
+
+.VerificationConfirm button:hover {
+  background-color: rgb(99, 97, 97);
+}
+
+.FormVerify {
+  background-color: white;
+  width: 1000px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.FormVerify h1 {
+  padding: 5px;
+  margin: 0px;
+}
+
+
+.FormVerify input {
+  width: 99%;
+  height: 30px;
+  border-radius: 5px;
+  background-color: rgb(240, 240, 240);
+  border: 1px solid rgba(0, 0, 0, 0.295);
+}
+
+.headerVerifyTitleandButton {
+  display: flex;
+  justify-content: space-between;
+}
+
+.FormVerify span {
+  margin-top: 10px;
+  width: 100%;
+  height: 30px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border: 0px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+
+
+
+.headerVerifyTitleandButton span {
+  background-color: rgba(255, 255, 0, 0);
+  height: 30px;
+  cursor: pointer;
+  border: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  width: 30px
+}
+
+.headerVerifyTitleandButton span:hover {
+  background-color: rgb(158, 157, 157);
+  border-bottom-left-radius: 5px;
+}
+
+.processVerify span {
+  background-color: rgb(0, 0, 0);
+  height: 40px;
+  color: rgb(255, 255, 255);
+  width: 100%
+}
+
+.processVerify span:hover {
+  background-color: rgb(66, 66, 66);
+}
+
+.InsertPass {
+  background-color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 15px;
+  border-radius: 5px;
+  height: auto;
+  width: 700px
+}
+
+.InsertPass h1 {
+  font-size: 50px;
+}
+
+.InsertPass input {
+  width: 98%;
+  height: 30px;
+}
+
+.InsertPass button {
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: 0px solid;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+ 
+}
+
+.InsertPass button:hover {
+  background-color: rgb(151, 151, 151);
+}
+
+
+.OverChange {
+  background-color: rgba(0, 0, 0, 0.178);
+  position: fixed;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.FormChangeProfile {
+  background-color: rgb(255, 255, 255);
+  width: 35%;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 2
+}
+
+.FormChangeProfile span {
+  position: absolute;
+  left: 66%;
+}
+
+.FormChangeProfile img {
+  width: 50%;
+  height: 230px;
+  border-radius: 150px;
+  object-fit: cover;
+}
+
+.FormChangeProfile button {
+  width: 300px;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.ConfirmBackToCart {
+  transition: 1000ms;
+  background-color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 10px;
+  width: 690px;
+  opacity: 0;
+  color: white;
+
+}
+
+.ConfirmBackToCartOn {
+  transition: 1000ms;
+  opacity: 1;
+
+  color: black;
+  padding: 10px;
+
+}
+
+.ConfirmBackToCart h2 {
+  text-align: center;
+
+
+}
+
+
+.ConfirmBackToCart p {
+  text-align: center;
+  font-weight: bold;
+
+
+}
+
+.ConfirmBackToCartAction {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ConfirmBackToCartAction button {
+  height: 40px;
+  width: 150px;
+  border-radius: 10px;
+  border: 0px solid;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+
+.ConfirmBackToCartAction button:hover {
+  background-color: rgb(75, 74, 74);
+  box-shadow: 1px 1px 1px 1px rgb(185, 185, 185);
+}
+
+.MessageContainer {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: grid;
+  grid-template-columns: 35% 64%;
+  gap: 10px;
+  width: 1330px;
+}
+
+.ListChat {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.RoomChat {
+  padding: 5px;
+
+}
+
+.ListContactChatContainer {
+  background-color: rgb(212, 212, 212);
+  border-radius: 5px;
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden  ;
+
+}
+
+.ListContactChat {
+  background-color: rgb(190, 190, 187);
+  padding: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  cursor: pointer
+}
+
+.ListContactChat:hover {
+  background-color: rgb(175, 175, 175);
+}
+
+.ListContactChat img {
+  border-radius: 300px;
+  object-fit: cover;
+}
+
+.chatRoomList {
+  background-color: rgba(136, 136, 136, 0.623);
+  height: auto;
+  font-size: 10px;
+  color: rgb(0, 0, 0);
+  width: 47%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+.optionsChat {
+  opacity: 0;
+}
+
+.chatRoomList:hover .optionsChat {
+  opacity: 1;
+  cursor: pointer;
+}
+
+
+
+.optionChatAction {
+  visibility: hidden;
+}
+
+.optionsChat span {
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  gap: 20px
+}
+
+.optionsChat span img {
+  width: 20px;
+
+}
+
+.optionChatAction img {
+  width: 20px
+}
+
+.optionChatAction button {
+  width: 40px;
+  background-color: transparent;
+  border: 0px solid;
+  cursor: pointer;
+}
+
+.optionsChat:hover+.optionChatAction {
+  visibility: visible;
+}
+
+.optionChatAction:hover {
+  visibility: visible;
+}
+
+.chatRoomList option {
+  color: black
+}
+
+.chattingList {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  height: 85%;
+  opacity: 0;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.ListContact {
+  display: flex;
+  justify-content: space-between;
+  width: 330px;
+  align-items: center;
+}
+
+.ActionToSend {
+
+  margin-top: 10px;
+  display: flex;
+  height: 50px;
+  padding: 5px;
+  gap: 5px;
+
+}
+
+.ActionToSend textarea {
+  width: 680px;
+  height: 40px;
+
+}
+
+.ActionToSend button {
+  width: 140px;
+  height: 45px;
+  border-radius: 10px;
+  border: 0px solid;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+}
+
+.ProfileInfoChat {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.ProfileChatInfo {
+  text-align: center;
+  height: 180px;
+}
+
+.ProfileInfoChat img {
+  width: 200px;
+  border-radius: 350px;
+  height: 200px;
+}
+
+.PrevImageMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+}
+
+.PrevImageMessage img {
+  width: 500px;
+}
+
+.SettingContainer {
+  display: flex;
+  width: 1335px;
+  gap: 10px
+}
+
+.headSetting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.SettingMenu {
+  width: 250px;
+  justify-content: start;
+  padding: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 510px;
+  border-radius: 5px;
+
+}
+
+.HeaderSetting {
+  display: block;
+  justify-content: center;
+  padding: 0px;
+  height: 10%;
+
+}
+
+.HeaderSetting h2 {
+  margin: 2px;
+}
+
+.SettingMenu button {
+  width: 250px;
+  height: 50px;
+  border-radius: 5px;
+  border: 0px solid;
+  background-color: rgb(0, 0, 0);
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.SettingMenu button:hover {
+  background-color: rgb(61, 61, 61);
+  cursor: pointer;
+}
+
+.PrevieSetting {
+  width: 100%;
+  justify-content: start;
+  flex-wrap: wrap;
+  background-color: black;
+  padding: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 5px;
+}
+
+.PrevieSetting h1 {
+  color: white;
+}
+
+.PrevieSetting button {
+  width: 100%;
+  height: 55px;
+  border-radius: 5px;
+  border: 0px solid;
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.ContentButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.FormSetting {
+  background-color: rgb(7, 7, 7);
+  width: 98%;
+  margin-bottom: 10px;
+  padding: 0px;
+  color: white;
+  font-size: 20px;
+  overflow: auto;
+  overflow: hidden;
+  transition: 1000ms;
+  height: 0px;
+}
+
+
+.OnFormSetting {
+  padding: 10px;
+  height: 320px;
+  transition: 1000ms;
+}
+
+.FormSetting h1 {
+  font-size: 25px;
+}
+
+.FormSetting button {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgb(187, 186, 186);
+}
+
+.FormSetting button:hover {
+  background-color: slategray;
+}
+
+.FormSetting input {
+  width: 99.2%;
+  height: 30px;
+  margin-bottom: 10px;
+
+}
+
+.FormSetting textarea {
+  width: 99%;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 1300px) {
+  .HeaderMenu {
+    display: none;
+  }
+
+  .CartLayout {
+    background-color: yellowgreen;
+  }
+
+  .nav {
+    height: 280px;
+  }
+
+
+
+  .TitleMenu {
+    position: fixed;
+    width: 96%;
+    z-index: 1;
+  }
+
+  .ProfilPagesLayout .TitleMenu h1 {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 32px;
+  }
+
+  .SearchProduk {
+    margin-top: 100px;
+    position: fixed;
+    width: 96%;
+
+  }
+
+  .SearchProduk input {
+    width: 100%;
+  }
+
+  .CardLayout {
+    width: 250px;
+
+    height: 450px;
+  }
+
+
+
+  .CardLayout .Footer {
+    margin-top: 20px;
+  }
+
+  .ButtonOpenCart button {
+    display: none;
+  }
+
+
+  .Kedua {
+    display: block;
+
+  }
+
+  .Kedua {
+    background-color: transparent;
+    border: 0px solid;
+    position: fixed;
+    right: 30px;
+    top: 15px;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+
+
+  .ProductPages {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 150px;
+  }
+
+  .NavCart {
+    display: block;
+    background-color: rgb(0, 0, 0);
+    padding: 0px;
+    position: fixed;
+    top: 100px;
+    right: 18px;
+    height: 0px;
+    border: 0px;
+    color: white;
+    width: 300px;
+    opacity: 0;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: none;
+    overflow: auto;
+    overflow-y: hidden;
+    transition: 1000ms;
+  }
+
+  .Kedua:hover+.NavCart {
+    opacity: 1;
+    height: 500px;
+    transition: 1000ms;
+    padding: 10px;
+  }
+
+  .NavCart:hover {
+    opacity: 1;
+    height: 500px;
+    padding: 10px;
+  }
+
+
+
+
+
+
+  .CartContainer {
+    display: none
+  }
+
+
+  .Overlay2 {
+    position: fixed;
+  }
+
+
+
+  .FormProduk img {
+    height: 0px;
+  }
+
+  .FormProduk form input {
+    height: 40px;
+  }
+
+  .CloseForm button {
+    right: 0%;
+
+  }
+
+  .ProdukImage {
+    display: block;
+    height: auto;
+
+  }
+
+  .CategoryAndPrice {
+    height: 100%;
+
+  }
+
+
+
+  .left {
+    display: flex;
+    align-items: center;
+
+  }
+
+  .left img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .popup {
+    position: absolute;
+    height: 100%;
+  }
+
+  .InfoProduct {
+    left: 0px;
+    position: absolute;
+    height: 150%;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 3;
+
+  }
+
+  .InfoProduct .container {
+    display: block;
+    height: 200%;
+    width: 100%;
+  }
+
+
+
+  .InfoProduct button {
+    background-color: rgb(255, 255, 255);
+    z-index: 1;
+    height: 50px;
+    width: 50px
+  }
+
+  .right {
+    justify-content: center;
+  }
+
+  .right p {
+    font-size: 20px;
+  }
+
+  .HeaderAndPrice {
+    grid-template-columns: 50% 50%;
+  }
+
+  .HeaderAndPrice h1 {
+    font-size: 160%;
+    text-align: left;
+  }
+
+  .FooterOrderForm {
+    padding: 0px;
+    display: block;
+  }
+
+  .FooterOrderForm button {
+    background: black;
+    border: 0px solid;
+    box-shadow: none;
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10%;
+
+  }
+
+  .CategoryOption {
+    width: 100%;
+    justify-content: center;
+
+  }
+
+  .ButtonDelete {
+    background-color: rgb(7, 7, 7);
+    height: 23px;
+    margin-bottom: 25px;
+    margin-top: 5px;
+    margin-left: 10px;
+  }
+
+  .actionButton span {
+    width: 100%;
+    background-color: rgb(239, 4, 4);
+  }
+
+  .ConfirmationDelete {
+    width: 72%;
+    left: 10%
+  }
+
+  .InfoProduct {
+    position: fixed;
+    top: 0%
+  }
+
+  .DetailLayoutProfil {
+    display: block;
+  }
+
+  .gambarProfil {
+    display: flex;
+    padding: 0px;
+    justify-content: center;
+    margin-top: 100px;
+  }
+
+  .BioData {
+    display: block;
+    width: 100%;
+    text-align: center;
+
+  }
+
+  .BioData h1 {
+    font-size: 45px;
+    text-align: center;
+  }
+
+  .ProfilPagesLayout {
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .TitleMenu {
+    z-index: 0;
+    display: block;
+    position: fixed;
+    top: 5px;
+    left: 12px;
+    box-shadow: 1px 1px 1px 1px black;
+    transition: back 0.5, background-color;
+  }
+
+  .FormProduk {
+    left: 0px;
+    width: 92%;
+    top: 0px;
+    height: 100%;
+    box-shadow: none;
+    border-radius: 0px;
+
+  }
+
+
+
+  .SearchProduk input {
+    margin-left: 10px;
+  }
+
+  .motion_right {
+    transition: 500ms;
+    left: 62%;
+    margin-top: -3px;
+  }
+
+
+  .Menu_Kedua img {
+    width: 50px;
+  }
+
+  .Menu_Kedua {
+    position: fixed;
+    z-index: 2;
+    top: 25px;
+    left: 25px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+  }
+
+
+  /* Elemen yang tersembunyi */
+  .Right {
+    position: fixed;
+    left: 12px;
+    top: 100px;
+    opacity: 0;
+    background-color: rgb(0, 0, 0);
+    padding: 0px;
+    border-radius: 0px;
+    color: white;
+    box-shadow: none;
+    width: 250px;
+    z-index: 0;
+    display: block;
+    transition: 1000ms;
+    height: 0px;
+    overflow: auto;
+    overflow-y: hidden;
+  }
+
+
+
+
+
+  /* Hover pada .Menu_Kedua akan memengaruhi .Right */
+
+  .Menu_Kedua:hover {
+    background-color: rgb(0, 174, 255);
+  }
+
+  .Menu_Kedua:hover+.Right {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+    top: 80px;
+    height: 286px;
+  }
+
+  .displayOn_Left {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+    top: 80px;
+    height: 286px;
+  }
+
+  .Right:hover {
+    visibility: visible;
+    display: block;
+    height: 286px;
+    top: 80px;
+  }
+
+  .RightMenu button {
+    background-color: black;
+    height: 50px;
+    width: 250px;
+    border: 0px solid black;
+
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .RightMenu button:hover {
+    background-color: aqua;
+    color: black;
+  }
+
+  .TotalPriceComponent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+  }
+
+  .TotalPriceComponent button {
+    background-color: whitesmoke;
+    height: 50px;
+    width: 100px
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+  .TitleMenu {
+    z-index: 0;
+    display: block;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 0px;
+    width: 95%;
+    padding-top: 8px;
+    box-shadow: 1px 1px 1px 1px black;
+    height: 50px;
+    transition: back 0.5, background-color;
+    width: 97.4%;
+  }
+
+
+  .TotalPrice {
+    display: flex;
+  }
+
+  .Kedua {
+    display: none;
+  }
+
+  .Menu_Kedua {
+    display: none;
+  }
+
+  .TitleMenu h1 {
+    margin-top: 3px;
+    margin-bottom: 0px;
+    font-size: 25px;
+  }
+
+  .HeaderMenu {
+    display: none;
+  }
+
+
+  .Header {
+    background-color: rgb(255, 255, 255);
+    height: 60px;
+    position: fixed;
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .Header h1 {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 15px;
+    padding-right: 10px;
+
+  }
+
+  .Burger {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    top: 10px;
+    left: 2px;
+    height: 40px;
+    width: 50px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px solid;
+    border-radius: 10px;
+    transition: 500;
+    cursor: pointer;
+  }
+
+  .Burger button {
+    border-radius: 10px;
+  }
+
+  .MenuBurger {
+    display: block;
+    position: fixed;
+    top: 10px;
+    left: 86%;
+    height: 40px;
+    width: 50px;
+  }
+
+  .motion_right {
+    transition: 500ms;
+    left: 62%;
+    margin-top: -3px;
+  }
+
+  .Right {
+    display: none;
+  }
+
+  .NavCart {
+    display: block;
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    position: fixed;
+    top: 0px;
+    left: -500px;
+    height: 150%;
+    color: white;
+    transform: translateX(-1000);
+    width: 70%;
+    opacity: 0;
+    transition: left 0.5s ease-in, transform left 0.5s;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .nav {
+    height: 40%;
+  }
+
+  .NavCart:hover {
+    display: block;
+    height: 150%;
+  }
+
+  .TotalPrice {
+
+    width: 100%;
+
+  }
+
+  .TotalPriceComponent {
+
+    grid-template-columns: 30% 70%;
+    justify-content: space-between;
+    height: 100px;
+
+  }
+
+  .TotalPriceComponent button {
+    height: 100%;
+    width: 100%;
+    padding-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid white;
+  }
+
+  .TotalPriceComponent h1 {
+    font-size: 30px;
+  }
+
+
+
+  .NavCart h1 {
+    margin-top: 0px;
+    text-align: left;
+  }
+
+  .Right {
+    background-color: rgb(0, 0, 0);
+    opacity: 0;
+    left: 600px;
+    top: 0px;
+    display: block;
+    padding: 0px;
+
+  }
+
+  .displayOn_Left {
+    opacity: 1;
+    left: 40%;
+    transition: 500ms;
+    height: 100%;
+  }
+
+  .Right:hover {
+    top: 0%;
+    padding: 0px;
+
+  }
+
+  .Right h1 {
+    text-align: right;
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
+
+  .RightMenu button {
+    width: 100%;
+    text-align: left;
+    height: 80px;
+    border: 0.1px solid black;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+  }
+
+  .RightMenu button:hover {
+    background-color: aliceblue;
+    color: black;
+  }
+
+
+  .motion_left {
+    transition: 500ms;
+    left: 40%;
+    margin-top: -3px;
+  }
+
+  .finish {
+    height: 100px;
+  }
+
+  .ListCart {
+    height: 100px;
+  }
+
+  .ListCart h2 {
+    font-size: 20px;
+    margin-top: 3%;
+  }
+
+
+  .displayOn {
+    display: block;
+    opacity: 1;
+    left: 0px;
+    transition: 500ms;
+    transform: translateX(0);
+  }
+
+  .OverallProductsPages {
+    display: block;
+    margin-top: 80px;
+  }
+
+
+  .ProductPages {
+    justify-content: center;
+
+    width: 100%;
+    margin-top: 10px;
+
+  }
+
+  .CartContainer {
+    display: none;
+  }
+
+  .CardLayout {
+    width: 40%;
+    padding: 10px;
+    height: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .CardLayout img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .HeaderContent {
+    margin-top: 1px;
+  }
+
+  .HeaderContent p {
+    font-size: 9px;
+  }
+
+  .HeaderContent h2 {
+    font-size: 130%;
+  }
+
+  .Footer {
+    gap: 2px;
+    padding: 0px;
+    margin-top: 0px;
+  }
+
+  .Footer span {
+    font-size: 70%;
+  }
+
+  .Footer button {
+    margin-left: 1px;
+    width: 50%;
+    font-size: 10px;
+  }
+
+  .LayoutListCart {
+    overflow: auto;
+    padding: 0px;
+    border-radius: 5px;
+  }
+
+
+
+
+
+  .SearchProduk {
+    margin: 0px;
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: right;
+    position: static
+  }
+
+  .SearchProduk input {
+    height: 30px;
+    width: 97%;
+  }
+
+  .SearchProduk button {
+    display: none;
+  }
+
+
+  .overlay {
+    position: absolute;
+    height: 130%;
+    width: 90%;
+    left: 0px;
+    top: 0px;
+  }
+
+  .FormProduk {
+    left: 0px;
+    width: 86%;
+  }
+
+
+
+  .overlayBody {
+    display: block;
+  }
+
+  .componentOverlayForm {
+    display: block;
+    width: 100%;
+  }
+
+
+  .componentOverlayForm input {
+    width: 97%;
+
+  }
+
+  .Description textarea {
+    width: 98%;
+  }
+
+  .componentOverlayForm label {
+    font-size: 15px;
+  }
+
+  .componentOverlay img {
+    width: 100%;
+    margin-bottom: 0px;
+  }
+
+  .overlay form button {
+    margin-top: -10px;
+    border-radius: 5px;
+    font-size: 25px;
+    box-shadow: 1px 1px 1px 1px rgba(29, 29, 29, 0.466);
+  }
+
+  .ButtonOpenCart {
+    display: none;
+  }
+
+  .InfoProduct {
+    overflow-y: hidden;
+  }
+
+  .TotalPrice {
+    display: block;
+  }
+
+  .TitleMenu {
+    display: flex;
+    justify-content: center;
+    width: 95%;
+
+  }
+
+
+  .ProfilPagesLayout .TitleMenu h1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 25px;
+    margin-left: 0px;
+
+
+  }
+
+}
+
+@media only screen and (max-width: 410px) {
+
+
+  .CardLayout img {
+    height: 100px;
+    width: 350px
+  }
+
+  .CardLayout {
+    width: 40%;
+    padding: 10px;
+    height: 100%;
+  }
+
+  .CardLayout p {
+    margin-bottom: 0px;
+  }
+
+  .HeaderContent {
+    height: 100px
+  }
+
+  .FormProduk {
+    left: 0%;
+  }
+
+  .TitleMenu h1 {
+    margin-top: 10px;
+
+  }
+}
