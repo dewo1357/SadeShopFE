@@ -68,10 +68,6 @@ const router = createBrowserRouter([
     element: <ProductPages />
   },
   {
-    path: "/profil",
-    element: <ProfilPages />
-  },
-  {
     path: "/profil/:idUser",
     element: <ProfilPages visit={true} />
   },

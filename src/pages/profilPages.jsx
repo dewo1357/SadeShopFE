@@ -300,8 +300,7 @@ const ProfilPages = (props) => {
                 },
                 body: files,
             })
-            location.href = "/profil"
-
+            location.href = `/profil/${getMyAccount.username}`
             if (!response) {
                 throw new Error(response.messages)
             }
@@ -601,29 +600,3 @@ const ProfilPages = (props) => {
 
 export default ProfilPages;
 
-/*
-
-<CallPopupOrderAndPayment
-                    GrabProduk={GrabProduk}
-                    popup2={popup2}
-                    renderCart={renderCart}
-                    popup={popup}
-                    isVisible={isVisible}
-                    process={process}
-                    ClosePopup={ClosePopup}
-                    FinishAndClosePoopup={FinishAndClosePoopup}
-                    VisibleForm={VisibleForm}
-                    setVisible={setVisible}
-                    SetVisibleForm={SetVisibleForm}
-                    FinsihPay={FinsihPay}
-                    SetFinishPay={SetFinishPay}
-                    listCart={listCart}
-                    SetListCart={SetListCart}
-                    account={account}
-                    totalPrice={totalPrice}
-                    setTotal={setTotal}
-                    totalItem={totalItem}
-                    setTotalItem={setTotalItem}
-                />
-
-*/

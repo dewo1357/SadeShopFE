@@ -73,8 +73,8 @@ const Mesage = (props) => {
                 if (socket) {
                     console.log(account)
                     socket.emit("RegistRoomChat", {
-                        'username' : account.username,
-                        'id' : account.id
+                        'username': account.username,
+                        'id': account.id
                     });
                     const data = { ...account, isRegist: false }
                     localStorage.setItem('account', JSON.stringify(data))
@@ -103,14 +103,14 @@ const Mesage = (props) => {
                             if (item.usernameSend.username === GetAccount.account.username || item.userReceive.username === GetAccount.account.username) {
                                 setIndex(item.idCategory)
                                 setContactName(item.usernameSend.username === account.username ? item.userReceive.username : item.usernameSend)
-                               
+
                                 checkChatBasedOnIndex(item.idCategory,
-                                        item.userReceive.username === account.username ?
+                                    item.userReceive.username === account.username ?
                                         item.SenderAccountID : item.ReceiveAccountID,
 
-                                        item.usernameSend.username === account.username ?
+                                    item.usernameSend.username === account.username ?
                                         item.userReceive.username : item.usernameSend.username,
-                                        true)
+                                    true)
                                 setProcessChat(false)
                                 return
                             } else {
@@ -195,7 +195,7 @@ const Mesage = (props) => {
 
 
 
-    const checkChatBasedOnIndex = async (index, To,ContactName,fromProses = false) => {
+    const checkChatBasedOnIndex = async (index, To, ContactName, fromProses = false) => {
         setTimeout(() => {
             Room.current.scrollTop = Room.current.scrollHeight;
             Room.current.style.opacity = 1;
@@ -220,7 +220,7 @@ const Mesage = (props) => {
         await checkToRead(index)
         const Message = {
             Text: e.target.textContent.value,
-            to:  messageTo,
+            to: messageTo,
             idCategoryRoomChat: StartChat ? false : index
         }
         e.target.textContent.value = ""
@@ -285,6 +285,7 @@ const Mesage = (props) => {
 
 
     return (
+        MyListChat ? 
         <>
             <div className="MessageContainer">
 
@@ -351,7 +352,7 @@ const Mesage = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <div ref={Room} className="chattingList " hidden={getMyAccount && !index ?  true : !index ? true: false} >
+                        <div ref={Room} className="chattingList " hidden={getMyAccount && !index ? true : !index ? true : false} >
                             {index !== null ? MyListChat[index].data.map((item) => (
                                 <div key={item.idChat} style={{ display: "flex", justifyContent: item.Sender.username === account.username ? "end" : "left" }}>
                                     {item.Sender.username === account.username ?
@@ -434,7 +435,13 @@ const Mesage = (props) => {
                 popupConfirm2={popupConfirm2}
                 setMessage={setMessage}
             />
-        </>
+        </> :
+            <center>
+                <div>
+                    <h1 style={{ fontFamily: "monospace" }}>Memproses..</h1>
+                    <img src="/Images/Loading.gif" width="100" alt="" />
+                </div>
+            </center>
     )
 }
 

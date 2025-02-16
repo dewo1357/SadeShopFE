@@ -9,7 +9,7 @@ const InformationOrder = () => {
     const [indexButton, setIndex] = useState(0);
     const [Loading, setLoading] = useState(false);
     const [data, setData] = useState([])
-    const [pictBuild,setPictBuild] = useState(false)
+    const [pictBuild, setPictBuild] = useState(false)
     const account = JSON.parse(localStorage.getItem("account"))
 
     const getData = async () => {
@@ -24,11 +24,11 @@ const InformationOrder = () => {
                 throw new Error("Failed")
             }
             const result = await response.json();
-            if(result.statusCode===401){
+            if (result.statusCode === 401) {
                 return Refresh_Token(socket)
-            }else{
-                setData(result.status!=="Failed" ? result.data : [])
-                result.status==="Failed" ? setPictBuild(true) : setPictBuild(false)
+            } else {
+                setData(result.status !== "Failed" ? result.data : [])
+                result.status === "Failed" ? setPictBuild(true) : setPictBuild(false)
                 setLoading(true)
             }
 
@@ -44,12 +44,26 @@ const InformationOrder = () => {
         setIndex(index)
         setLoading(false)
     }
-
-    
+    const ActToCancel = async(idTranscation) => {
+        try {
+            const response = await fetch("http://localhost:5000/CancelCheckout/" + idTranscation, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${account.acces_token}`
+                }
+            })
+            if(!response){
+                throw new Error("Failed To Cancel")
+            }
+            location.href="/InformationOrder"
+        }catch(err){
+            console.log(err.message)
+        }
+    }
 
     useEffect(() => {
         if (!Loading) {
-          
+
             getData();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -67,15 +81,15 @@ const InformationOrder = () => {
                     <div className="MenuOrderInformation">
                         <Button styling={indexButton == 0 ? "InformationButton" : ""} action={() => { CheckCategory("Process", 0) }} ContentButton="Pesanan Customer"></Button>
                         <Button styling={indexButton == 1 ? "InformationButton" : ""} action={() => { CheckCategory("Send", 1) }} ContentButton="Sedang Dikemas"></Button>
-                        <Button styling={indexButton == 2 ? "InformationButton" : ""} action={()=>{ CheckCategory("Finish", 2) }} ContentButton="Sedang Dikirim"></Button>
-                        <Button styling={indexButton == 3 ? "InformationButton" : ""} action={()=>{ CheckCategory("Cancel", 3) }} ContentButton="Cancel"></Button>
+                        <Button styling={indexButton == 2 ? "InformationButton" : ""} action={() => { CheckCategory("Finish", 2) }} ContentButton="Sedang Dikirim"></Button>
+                        <Button styling={indexButton == 3 ? "InformationButton" : ""} action={() => { CheckCategory("Cancel", 3) }} ContentButton="Cancel"></Button>
                     </div>
                     <div>
                         <Input placeholder="Search"></Input>
                     </div>
                 </div>
-                <div style={{display:"flex",justifyContent:"center"}} hidden={pictBuild?false:true}>
-                    <img src="/Images/search.png" alt="" width="400px" hidden={pictBuild?false:true} />
+                <div style={{ display: "flex", justifyContent: "center" }} hidden={pictBuild ? false : true}>
+                    <img src="/Images/search.png" alt="" width="400px" hidden={pictBuild ? false : true} />
                 </div>
                 <div className="ContentProductOrderInformation">
                     {Loading ?
@@ -83,7 +97,7 @@ const InformationOrder = () => {
                             <div key={item.transaction_id} className="ContanerProductList" >
                                 <div className="SellerAndCancelButton">
                                     <h3>{item.Seller}</h3>
-                                    <button hidden={item.products[0].Status!=="Process"?true:false}>Cancel</button>
+                                    <button onClick={() => ActToCancel(item.transaction_id)} hidden={item.products[0].Status !== "Process" ? true : false}>Cancel</button>
                                 </div>
                                 {item.products.map((items) => (
                                     <div key={items.id} className="productList Order">
