@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from "react";
 
+
 const MyComponent = (props) => {
   const { setProcessMap, seAddress, setLoadingMap } = props
   const mapRef = useRef(null); // Simpan referensi ke peta

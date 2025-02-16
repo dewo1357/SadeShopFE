@@ -23,8 +23,13 @@ import './index.css';
 
 const router = createBrowserRouter([
   {
-    path: "*",
-    element: <Eror />
+    path: "/",
+    element: <FormLayout title="Login" Content="Enter Username & Kata Sandi" Children={<FormLogin />} type="login"></FormLayout>,
+  },
+  {
+    path: "/register",
+    element: <FormLayout title="Register"
+      Content="Isi Form Yang Tersedia" Children={<FormRegister />} type="register"></FormLayout>,
   },
   {
     path: "/verify/:token",
@@ -71,16 +76,11 @@ const router = createBrowserRouter([
     element: <ProfilPages visit={true} />
   },
   {
-    path: "/",
-    element: <FormLayout title="Login" Content="Enter Username & Kata Sandi" Children={<FormLogin />} type="login"></FormLayout>,
+    path: "*", // Wildcard di akhir
+    element: <Eror />
   },
-  {
-    path: "/register",
-    element: <FormLayout title="Register"
-      Content="Isi Form Yang Tersedia" Children={<FormRegister />} type="register"></FormLayout>,
-  },
-
 ]);
+
 
 createRoot(document.getElementById('root')).render(
   <SocketProvider>

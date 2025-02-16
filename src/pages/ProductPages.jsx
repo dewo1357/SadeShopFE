@@ -20,7 +20,7 @@ const ProductPages = () => {
         listCart, SetListCart,
         totalPrice, setTotal, RightOn,
         GrabProduk, SetGrabProduk } = Statesss();
-    const [GenreData, setGenre] = useState(null)
+    const [GenreData, setGenre] = useState([])
     const [Loading2, SetLoading2] = useState(true)
 
     //visibleForm FormPayment
