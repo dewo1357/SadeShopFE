@@ -7,6 +7,7 @@ import CallPopupOrderAndPayment from "../Component/CallPopupOrderAndPayment";
 import MyComponent from "./MyComponent";
 import { active, DeleteCart, ClosePopup, FinishAndClosePoopup, process, Refresh_Token, ActionToDeleteCheckoutCart } from "./manage";
 import { useSocket } from "../SocketProvider";
+import { API_URL } from "../../config";
 
 
 const CartPages = () => {
@@ -42,7 +43,7 @@ const CartPages = () => {
     const [transaction_id_array, setArrayTransaction] = useState([])
     const oke = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/GetCartBasedOnSeller`, {
+            const response = await fetch(API_URL+`GetCartBasedOnSeller`, {
                 method: 'GET',
                 headers: { 'Authorization': `Bearer ${account.acces_token}` }
             });
@@ -85,7 +86,7 @@ const CartPages = () => {
                 idProduct: id,
                 value: target,
             }
-            const response = await fetch(`http://localhost:5000/EditPcsCart`, {
+            const response = await fetch(API_URL+`EditPcsCart`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`,
@@ -151,7 +152,7 @@ const CartPages = () => {
         const payload_data = { idCart, e }
         const Check = ArrayCheck.slice();
         try {
-            const response = await fetch("http://localhost:5000/AddToPayCart", {
+            const response = await fetch(API_URL+"AddToPayCart", {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`

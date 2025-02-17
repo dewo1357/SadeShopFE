@@ -6,6 +6,7 @@ import Statesss from "./States";
 import { Refresh_Token, ActionToDeleteCheckoutCart } from "./manage"
 import { useRef } from "react";
 import { useSocket } from "../SocketProvider";
+import { API_URL } from "../../config";
 
 
 const CheckOut = () => {
@@ -33,7 +34,7 @@ const CheckOut = () => {
 
     const GetCheckOutData = async () => {
         try {
-            const response = await fetch("http://localhost:5000/GetCheckOutData", {
+            const response = await fetch(API_URL+"GetCheckOutData", {
                 method: "GET",
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`
@@ -68,7 +69,7 @@ const CheckOut = () => {
 
     const EditPilihanPengiriman = async (transaction_id, value) => {
         try {
-            const response = await fetch("http://localhost:5000/ShippingSetter", {
+            const response = await fetch(API_URL+"ShippingSetter", {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -105,7 +106,7 @@ const CheckOut = () => {
     const ProcessOrder = async () => {
         SetProcessLoading(true)
         try {
-            const response = await fetch("http://localhost:5000/FinishCheckout", {
+            const response = await fetch(API_URL+"FinishCheckout", {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`

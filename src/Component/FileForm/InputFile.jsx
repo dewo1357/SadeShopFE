@@ -8,6 +8,7 @@ import Label from "../Element/Label/Label";
 import Button from "../Element/Button/Button";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { API_URL } from "../../../config";
 
 
 const InputFile = (props) => {
@@ -74,7 +75,7 @@ const InputFile = (props) => {
     const PostDataProduk = async (data) => {
 
         try {
-            const response = await fetch("http://localhost:5000/AddProduct", {
+            const response = await fetch(API_URL+"AddProduct", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -97,7 +98,7 @@ const InputFile = (props) => {
         const files = new FormData()
         files.append('files', file);
         try {
-            const response = await fetch("http://localhost:5000/UploadImage", {
+            const response = await fetch(API_URL+"UploadImage", {
                 method: "POST",
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`,
@@ -140,7 +141,7 @@ const InputFile = (props) => {
 
     const EditProduk = async (idProduk, data) => {
         try {
-            const endpoint = `http://localhost:5000/EditProduct/${idProduk}`
+            const endpoint = API_URL+`EditProduct/${idProduk}`
             const response = await fetch(endpoint, {
                 method: 'PUT',
                 headers: {
@@ -190,7 +191,7 @@ const InputFile = (props) => {
     const ActionToDeleteProduct = (id) => {
         const Deleteproduct = async () => {
             try {
-                const endpoint = `http://localhost:5000/DELETEProduct/${id}`
+                const endpoint = API_URL+`DELETEProduct/${id}`
                 const response = await fetch(endpoint, {
                     method: 'DELETE',
                     headers: {

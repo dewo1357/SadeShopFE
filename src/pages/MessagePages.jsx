@@ -8,6 +8,7 @@ import { checkId, Refresh_Token } from "./manage";
 import { useRef } from "react";
 import { useSocket } from "../SocketProvider";
 import PopupNotification from "../Component/popup/PopupNotifCation";
+import { API_URL } from "../../config";
 
 
 const Mesage = (props) => {
@@ -29,7 +30,7 @@ const Mesage = (props) => {
 
 
     const GetMyRoomChat = async () => {
-        const response = await fetch("http://localhost:5000/GetRoomChat", {
+        const response = await fetch(API_URL+"GetRoomChat", {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${account.acces_token}`,
@@ -157,7 +158,7 @@ const Mesage = (props) => {
         setIsDelete(false)
         setisLoading(true)
         try {
-            const response = await fetch(`http://localhost:5000/DeleteChat/${idChat}`, {
+            const response = await fetch(API_URL+`DeleteChat/${idChat}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`,
@@ -179,7 +180,7 @@ const Mesage = (props) => {
 
 
     const checkToRead = async (index) => {
-        const response = await fetch("http://localhost:5000/CheckToRead/" + index, {
+        const response = await fetch(API_URL+"CheckToRead/" + index, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${account.acces_token}`,
@@ -225,7 +226,7 @@ const Mesage = (props) => {
         }
         e.target.textContent.value = ""
         try {
-            const response = await fetch("http://localhost:5000/Chatting", {
+            const response = await fetch(API_URL+"Chatting", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

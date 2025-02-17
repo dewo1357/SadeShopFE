@@ -3,6 +3,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { ActionToDeleteCheckoutCart } from "../../pages/manage";
+import { API_URL } from "../../../config";
 
 const PopupNotification = (props) => {
     const { socket, popupConfirm, popupConfirm2, setMessage, setpopupconfirm
@@ -102,7 +103,7 @@ const PopupNotification = (props) => {
         setLoading(true)
         notifMessage("Mohon Tunggu..")
         try {
-            const response = await fetch("http://localhost:5000/ChangePassForNewUser", {
+            const response = await fetch(API_URL+"ChangePassForNewUser", {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`,

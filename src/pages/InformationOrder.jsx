@@ -4,6 +4,7 @@ import Input from "../Component/Element/Input/Input"
 import { useState } from "react"
 import { Refresh_Token } from "./manage";
 import { useSocket } from "../SocketProvider";
+import { API_URL } from "../../config";
 const InformationOrder = () => {
     const socket = useSocket()
     const [indexButton, setIndex] = useState(0);
@@ -14,7 +15,7 @@ const InformationOrder = () => {
 
     const getData = async () => {
         try {
-            const response = await fetch("http://localhost:5000/GetProcessOrder/" + category, {
+            const response = await fetch(API_URL+"GetProcessOrder/" + category, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`
@@ -51,7 +52,7 @@ const InformationOrder = () => {
         SetprocessLoading(true)
         SetProcessCancel(true)
         try {
-            const response = await fetch("http://localhost:5000/CancelCheckout/" + idTranscation, {
+            const response = await fetch(API_URL+"CancelCheckout/" + idTranscation, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`

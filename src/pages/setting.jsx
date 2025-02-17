@@ -3,6 +3,7 @@ import Button from "../Component/Element/Button/Button"
 import Input from "../Component/Element/Input/Input"
 import { useSocket } from "../SocketProvider"
 import { Refresh_Token } from "./manage"
+import { API_URL } from "../../config"
 
 const SettingPages = () => {
     const socket = useSocket();
@@ -63,7 +64,7 @@ const SettingPages = () => {
             endpoint = "ChangePass"
         }
         try {
-            const response = await fetch(`http://localhost:5000/${endpoint}`, {
+            const response = await fetch(API_URL+`${endpoint}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -91,7 +92,7 @@ const SettingPages = () => {
         setLoading(true)
         const pass = event.target.pass.value
         try {
-            const response = await fetch(`http://localhost:5000/CheckPass`, {
+            const response = await fetch(API_URL+`CheckPass`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

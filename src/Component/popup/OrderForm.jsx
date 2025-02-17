@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Button from "../Element/Button/Button";
+import { API_URL } from "../../../config";
 const OrderForm = (props) => {
     const { product, active, totalPrice, setTotal, item, setTotalItem,
          SetLoading2, popup2, setMotionLeft, MotionMenuCart } = props;
@@ -25,7 +26,7 @@ const OrderForm = (props) => {
             SellerID: product.SellerID,
         }
         try {
-            const response = await fetch("http://localhost:5000/addToCart", {
+            const response = await fetch(API_URL+"addToCart", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

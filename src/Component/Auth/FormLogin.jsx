@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
 import { useSocket } from '../../SocketProvider';
+import { API_URL } from '../../../config';
 
 
 
@@ -13,6 +14,7 @@ const FormLogin = () => {
     const socket = useSocket();
     const navigate = useNavigate();
     const param = new URLSearchParams(window.location.search)
+    console.log(API_URL)
     useEffect(()=>{
         if(param.get('acces_token')){
             const DataAccount = {
@@ -68,7 +70,7 @@ const FormLogin = () => {
     const [getUsername, setUsername] = useState(null)
     const validate_account = async (account) => {
         try {
-            const response = await fetch("http://localhost:5000/GetDataAccount", {
+            const response = await fetch(API_URL+"GetDataAccount", {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(account)
@@ -134,7 +136,7 @@ const FormLogin = () => {
                     </div>
                     <Button ContentButton="Login"></Button>
                     <div className="Auth">
-                        <span onClick={() => {location.href="http://localhost:5000/AuthenticationGoogle"}}>Login Gmail</span>
+                        <span onClick={() => {location.href=API_URL+"AuthenticationGoogle"}}>Login Gmail</span>
                     </div>
                 </form>
 

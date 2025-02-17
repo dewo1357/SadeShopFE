@@ -4,6 +4,7 @@ import Input from "../Component/Element/Input/Input"
 import { Refresh_Token } from "./manage";
 import { useState } from "react"
 import { useSocket } from "../SocketProvider";
+import { API_URL } from "../../config";
 const InformationOrder = () => {
     const socket = useSocket();
     const [indexButton, setIndex] = useState(0);
@@ -15,7 +16,7 @@ const InformationOrder = () => {
     const getData = async () => {
         
         try {
-            const response = await fetch("http://localhost:5000/YourProductOrder/" + category, {
+            const response = await fetch(API_URL+"YourProductOrder/" + category, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`

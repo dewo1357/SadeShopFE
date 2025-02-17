@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-
+import { API_URL } from "../../config";
 
 
 const process = async (e, SetLoading2, SetProcessLoading) => {
@@ -26,7 +26,7 @@ const process = async (e, SetLoading2, SetProcessLoading) => {
     };
 
     try {
-        const response = await fetch("http://localhost:5000/CheckOut", {
+        const response = await fetch(API_URL+"CheckOut", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ const DeleteCart = async (x, setTotal, setTotalItem, totalPrice, totalItem, SetL
     const account = JSON.parse(localStorage.getItem('account'))
     console.log(account.acces_token)
     try {
-        const endpoint = `http://localhost:5000/hapusKeranjang/${x}`
+        const endpoint = API_URL+`hapusKeranjang/${x}`
         const response = await fetch(endpoint, {
             method: 'DELETE',
             headers: {
@@ -196,7 +196,7 @@ const Refresh_Token = async (socket) => {
   
     let account = JSON.parse(localStorage.getItem('account'))
     try {
-        const response = await fetch('http://localhost:5000/Get_Acces', {
+        const response = await fetch(API_URL+'Get_Acces', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -232,7 +232,7 @@ const Refresh_Token = async (socket) => {
 
 const GetData = async (username,socket) => {
     try {
-        const response = await fetch('http://localhost:5000/MasterData', {
+        const response = await fetch(API_URL+'MasterData', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${username}`
@@ -261,7 +261,7 @@ const GetData = async (username,socket) => {
 
 const GetdataProdukUser = async (username) => {
     try {
-        const endpoint = `http://localhost:5000/GetProductSeller`;
+        const endpoint = API_URL+`GetProductSeller`;
         const response = await fetch(endpoint, {
             headers: {
                 'Authorization': `Bearer ${username}`
@@ -284,7 +284,7 @@ const GetdataProdukUser = async (username) => {
 
 const EditProduk = async (data, idProduk) => {
     try {
-        const endpoint = `http://localhost:5000/EditProduct/${idProduk}`
+        const endpoint = API_URL+`EditProduct/${idProduk}`
         const response = await fetch(endpoint, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -301,7 +301,7 @@ const EditProduk = async (data, idProduk) => {
 const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage, username) => {
     console.log(username.acces_token)
     try {
-        const endpoint = `http://localhost:5000/GetCart`
+        const endpoint = API_URL+`GetCart`
         const response = await fetch(endpoint, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${username.acces_token}` }
@@ -326,7 +326,7 @@ const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage, username) =
 const ActionToDeleteCheckoutCart = async (from = "cart") => {
     const account = JSON.parse(localStorage.getItem("account"))
     try {
-        const response = await fetch("http://localhost:5000/ActionToDeleteCheckout", {
+        const response = await fetch(API_URL+"ActionToDeleteCheckout", {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${account.acces_token}`
@@ -354,7 +354,7 @@ const checkId = async (username) => {
     console.log(username)
     const account = JSON.parse(localStorage.getItem('account'))
     try {
-        const endpoint = `http://localhost:5000/GetDataAccountByUsername/${username}`
+        const endpoint = API_URL+`GetDataAccountByUsername/${username}`
         const response = await fetch(endpoint, {
             method: 'GET',
             headers: {

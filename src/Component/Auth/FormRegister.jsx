@@ -3,6 +3,7 @@ import Input from '../Element/Input/Input';
 import Label from '../Element/Label/Label';
 import Button from '../Element/Button/Button';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../../config';
 
 
 
@@ -36,7 +37,7 @@ const FormRegister = () => {
         }
         const AddAccount = async () => {
             try {
-                const response = await fetch("http://localhost:5000/AddAccount", {
+                const response = await fetch(API_URL+"AddAccount", {
                     method: "POST",
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(account)

@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Button from "./Element/Button/Button"
 import { Refresh_Token } from "../pages/manage";
+import { API_URL } from "../../config";
 
 
 const HeaderMenu = (props) => {
@@ -28,7 +29,7 @@ const HeaderMenu = (props) => {
     const IsVerified = async () => {
         const account = JSON.parse(localStorage.getItem("account"))
         try {
-            const response = await fetch("http://localhost:5000/CheckAccount", {
+            const response = await fetch(API_URL+"CheckAccount", {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`

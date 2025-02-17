@@ -13,6 +13,7 @@ import { useSocket } from "../SocketProvider";
 import PopupNotification from "../Component/popup/PopupNotifCation"
 import { Close, Refresh_Token, GetdataProdukUser, checkId } from "./manage";
 import Statesss from "./States"
+import { API_URL } from "../../config"
 
 const ProfilPages = (props) => {
     const { visit, gambar } = props;
@@ -80,7 +81,7 @@ const ProfilPages = (props) => {
     const [notifMessage, setNotifMessage] = useState(false)
     const IsVerified = async () => {
         try {
-            const response = await fetch("http://localhost:5000/CheckAccount", {
+            const response = await fetch(API_URL+"CheckAccount", {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`
@@ -251,7 +252,7 @@ const ProfilPages = (props) => {
             pass: e.target.pass.value
         })
         try {
-            const response = await fetch("http://localhost:5000/VerifyAccount", {
+            const response = await fetch(API_URL+"VerifyAccount", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -295,7 +296,7 @@ const ProfilPages = (props) => {
         const files = new FormData()
         files.append('files', file);
         try {
-            const response = await fetch("http://localhost:5000/ChangeImageProfile", {
+            const response = await fetch(API_URL+"ChangeImageProfile", {
                 method: "POST",
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`,
@@ -489,7 +490,7 @@ const ProfilPages = (props) => {
             </div>
 
             <div className={`afterProfil ${!isAccess ? "centerProfil" : ""}`} hidden={!isAccess || !verified ? true : false}>
-                <h1 style={{ marginTop: "50px" }} hidden={!isAccess || !verified ? !isAccess ? false : true : false}>PRODUCTS</h1>
+                <h1 style={{ marginTop: "50px" }} >PRODUCTS</h1>
                 <div className="AddProductButton" hidden={!isAccess || !verified ? true : false} >
                     <button onClick={TurnOnForm}  >➕</button>
                 </div>
