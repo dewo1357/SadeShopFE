@@ -44,7 +44,12 @@ const InformationOrder = () => {
         setIndex(index)
         setLoading(false)
     }
-    const ActToCancel = async(idTranscation) => {
+
+    const [processLoading,SetprocessLoading] = useState(false)
+    const [ProcessCancel, SetProcessCancel] = useState(false)
+    const ActToCancel = async (idTranscation) => {
+        SetprocessLoading(true)
+        SetProcessCancel(true)
         try {
             const response = await fetch("http://localhost:5000/CancelCheckout/" + idTranscation, {
                 method: 'DELETE',
@@ -52,11 +57,11 @@ const InformationOrder = () => {
                     'Authorization': `Bearer ${account.acces_token}`
                 }
             })
-            if(!response){
+            if (!response) {
                 throw new Error("Failed To Cancel")
             }
-            location.href="/InformationOrder"
-        }catch(err){
+            location.href = "/InformationOrder"
+        } catch (err) {
             console.log(err.message)
         }
     }
@@ -131,7 +136,12 @@ const InformationOrder = () => {
                             <img src="/Images/Loading.gif" width="90px"></img>
                         </div>}
                 </div>
-
+                <div className={`loading ${processLoading ? "loadingOn" : ""}`}>
+                    <div className="OverlayLoading" hidden={ProcessCancel ? false : true}>
+                        <h2>Mohon Ditunggu<br></br> Permintaan Kamu Sedang Di Proses</h2>
+                        <img src="/Images/Loading.gif" alt="" />
+                    </div>
+                </div>
             </div>
         </>
     )

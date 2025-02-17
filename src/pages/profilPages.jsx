@@ -286,9 +286,11 @@ const ProfilPages = (props) => {
         setFinnalMessage(false)
     }
 
+    const [ProcessChangeProfile,SetProcessChangeProfile] = useState(false)
     const UploadImageToAPI = async (e, file) => {
         setPesan("Foto Kamu Sedang Di Proses")
         SetProcessLoading(true)
+        SetProcessChangeProfile(true)
         e.preventDefault();
         const files = new FormData()
         files.append('files', file);
@@ -475,7 +477,7 @@ const ProfilPages = (props) => {
                     </div>
                 </form>
                 <div className={`loading ${processLoading ? "loadingOn" : ""}`}>
-                    <div className="OverlayLoading" hidden={FinnalMessage ? false : true}>
+                    <div className="OverlayLoading" hidden={ProcessChangeProfile ? false : true}>
                         {FinnalMessage ? <h2>{FinnalMessage}</h2> : <h2>Mohon Ditunggu<br></br> {Pesan}</h2>}
                         {!FinnalMessage ? <img src="/Images/Loading.gif" alt="" /> : <button onClick={FinallyDialog} >Oke</button>}
                     </div>
