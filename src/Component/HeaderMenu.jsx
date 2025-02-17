@@ -29,7 +29,7 @@ const HeaderMenu = (props) => {
     const IsVerified = async () => {
         const account = JSON.parse(localStorage.getItem("account"))
         try {
-            const response = await fetch(API_URL+"CheckAccount", {
+            const response = await fetch(API_URL + "CheckAccount", {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`
@@ -63,7 +63,7 @@ const HeaderMenu = (props) => {
             socket.emit('Reset', username)
             localStorage.removeItem('account');
             location.href = "/"
-        },1000)
+        }, 1000)
     }
 
     const CancelToLogout = () => {
@@ -115,15 +115,17 @@ const HeaderMenu = (props) => {
                 <div className={(selected === 3) ? "se" : ""}>
                     <Button action={() => { route(3, (To3) ? To3 : "") }} ContentButton="Setting">   </Button>
                 </div>
-
-                <div className={(selected === 4) ? "se" : ""}>
-                    <Button action={() => { route(4, (To4) ? To4 : "") }} ContentButton="Logout">   </Button>
+                <div style={{display:"flex",justifyContent:motionLeft?"space-around":"center",gap:motionLeft?"50px":"190px"}} hidden={motionLeft?false:true}>
+                    <div className={(selected === 4) ? "se" : ""}>
+                        <Button action={() => { route(4, (To4) ? To4 : "") }} ContentButton="Logout">   </Button>
+                    </div>
+                    <div className={`ButtonOpenCart ${motionLeft ? "OpenMotion" : ""}`}>
+                        <button hidden={(selected === 1 ? true : false)} onClick={() => { MotionMenuCart(motionLeft, setMotionLeft) }}> <img src={"./Images/icons8-cart-64.png"} alt="" /> </button>
+                    </div>
                 </div>
             </div>
 
-            <div className={`ButtonOpenCart ${motionLeft ? "OpenMotion" : ""}`}>
-                <button hidden={(selected === 1 ? true : false)} onClick={() => { MotionMenuCart(motionLeft, setMotionLeft) }}> <img src={motionLeft ? "./Images/icons8-cancel-64.png" : "./Images/icons8-cart-64.png"} alt="" /> </button>
-            </div>
+
             <div onClick={HandleToClose} id="PopupToLogout" className={`loading ${ProcessToLogout ? "loadingOn" : ""}`}>
                 <div className={`ConfirmBackToCart Logout ${ProcessToLogout ? "ConfirmBackToCartOn" : ""}`} hidden={ProcessToLogout ? false : true}>
                     <p>

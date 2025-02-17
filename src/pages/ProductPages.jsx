@@ -50,7 +50,7 @@ const ProductPages = () => {
             SetLoading(false)
             return setGenre(JSON.parse(Session_DataProduk))
         }
-        const data = await GetData(account.acces_token,socket);
+        const data = await GetData(account.acces_token, socket);
         if (data) {
             console.log("data diambil dari API")
             setGenre(data);
@@ -70,8 +70,8 @@ const ProductPages = () => {
         if (!account.isRegist) {
             if (socket) {
                 socket.emit("Register", {
-                    username : account.username,
-                    id : account.id
+                    username: account.username,
+                    id: account.id
                 })
                 const data = { ...account, isRegist: true }
                 localStorage.setItem('account', JSON.stringify(data))
@@ -91,7 +91,7 @@ const ProductPages = () => {
         location.href = "/";
     } else {
         return (
-            GenreData!==null || listCart!==null ? <>
+            GenreData !== null || listCart !== null ? <>
                 <div className="OverallProductsPages">
                     <PopupNotification
                         socket={socket}
@@ -148,7 +148,24 @@ const ProductPages = () => {
                         </div>
                     </div>
                     <div className={`CartContainer ${motionLeft ? "motion_Cart" : ""}`}>
-                        <h1 hidden={motionLeft ? false : true}>CART</h1>
+                        <div hidden={motionLeft ? false : true}
+                            style={{
+                                display: "flex", marginTop: "0",
+                                alignItems: "center", justifyContent: "space-around"
+                            }}>
+                            <h1 style={{
+                                textAlign: "left", marginLeft: "1",transition:"1000ms",
+                                width: motionLeft?"280px":"0px", margin: "5px"
+                            }} hidden={motionLeft ? false : true}>CART</h1>
+                            <button hidden={motionLeft ? false : true}
+                                style={{
+                                    height: "40px", backgroundColor: "transparent",
+                                    display: motionLeft ? "flex" : "none", justifyContent: "center", border: "0px"
+                                }}
+                                onClick={() => { MotionMenuCart(motionLeft, setMotionLeft) }}>
+                                <img hidden={motionLeft ? false : true} src="/Images/icons8-cancel-64.png" width="40"></img>
+                            </button>
+                        </div>
                         <div className="LayoutListCart" hidden={motionLeft ? false : true}>
                             {listCart.map((items, index) => (
                                 <ListCart key={`${items.idCart}${index}`} brand={items.title} pcs={items.pcs}
@@ -183,12 +200,12 @@ const ProductPages = () => {
                     </OrderForm>
                 </div>
 
-            </> : <div> 
+            </> : <div>
                 <h1>Memproses</h1>
                 <img src="Images/Loading.gif" alt="" width="100" />
-                </div>
-                
-                    )
+            </div>
+
+        )
     }
 }
 

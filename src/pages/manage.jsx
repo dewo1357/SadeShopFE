@@ -110,8 +110,8 @@ const FinishAndClosePoopup = async (popup, listCart, setVisible, SetVisibleForm,
 }
 
 const MotionMenuCart = (motionLeft, setMotionLeft) => {
-    motionLeft ? setMotionLeft(false)
-        : setMotionLeft(true)
+    setMotionLeft(motionLeft ?false:true)
+       
 }
 
 const DeleteCart = async (x, setTotal, setTotalItem, totalPrice, totalItem, SetLoading2) => {
@@ -147,19 +147,13 @@ const SearchCard = (event, GenreData, setGenre) => {
 
     data.map((item) => {
         if (item.title.includes(x) || item.title.toUpperCase === x.toUpperCase()) {
-            const value = {
-                title: item.title,
-                images: item.images,
-                content: item.content,
-                price: item.price
-            }
-            listdataSearch.push(value)
+            listdataSearch.push(item)
         }
     })
 
     console.log(x)
     if (x === '') {
-        setGenre(JSON.parse(localStorage.getItem('KumpulanProduk')))
+        setGenre(JSON.parse(sessionStorage.getItem('ProductMaster')))
     } else {
         if (listdataSearch.length !== 0) {
             return setGenre(listdataSearch)
