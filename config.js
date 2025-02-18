@@ -7,5 +7,5 @@ const config = {
     }
 }
 
-const mode = 'production'
+const mode = import.meta.env.MODE || "development"
 export const API_URL = config[mode].API_URL;
