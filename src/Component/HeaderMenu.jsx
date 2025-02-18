@@ -42,7 +42,7 @@ const HeaderMenu = (props) => {
             if (result.statusCode === 401) {
                 await Refresh_Token("YourProductOrder")
             }
-            console.log(result)
+
             if (!result.verified) {
                 ConfirmBack.current.style.visibility = "visible"
                 setpopupconfirm2(true)
@@ -95,36 +95,33 @@ const HeaderMenu = (props) => {
     return (
         <>
             <div className="HeaderMenu">
-                <div className={`updateButton ${(selected === -1) ? "se" : ""}`} >
-                    <Button action={() => { setBuildUpdate(BuildUpdate ? false : true) }} ContentButton={nMessage || notifMessage ? `Update 🔴` : `Update`}></Button>
+                <div className={`updateButton ${(selected === -1) ? "selectedMenu" : ""}`} >
+                    <Button styling="btn" action={() => { setBuildUpdate(BuildUpdate ? false : true) }} ContentButton={nMessage || notifMessage ? `Update 🔴` : `Update`}></Button>
                 </div>
                 <div className={`updateOptions ${BuildUpdate ? "BuildUpdateOption" : ""} ${motionLeft ? "motionOptions" : ""}`}>
-                    <Button ContentButton={`Order Process`} action={() => { location.href = "/InformationOrder" }}></Button>
-                    <Button ContentButton={`Product Order (${SumProcess ? SumProcess : JSON.parse(sessionStorage.getItem('SumProcess'))})`} action={toPageProductOrder}></Button>
-                    <Button ContentButton={nMessage || notifMessage ? `Messages 🔴` : `Messages`} action={toMessage}></Button>
+                    <Button styling="btn" ContentButton={`Order Process`} action={() => { location.href = "/InformationOrder" }}></Button>
+                    <Button styling="btn" ContentButton={`Product Order (${SumProcess ? SumProcess : JSON.parse(sessionStorage.getItem('SumProcess'))})`} action={toPageProductOrder}></Button>
+                    <Button styling="btn" ContentButton={nMessage || notifMessage ? `Messages 🔴` : `Messages`} action={toMessage}></Button>
                 </div>
-                <div className={(selected === 0) ? "se" : ""} >
-                    <Button action={() => { route(0, (To1) ? To1 : "") }} ContentButton="Shop"></Button>
+                <div className={(selected === 0) ? "selectedMenu" : ""} >
+                    <Button styling="btn" action={() => { route(0, (To1) ? To1 : "") }} ContentButton="Shop"></Button>
                 </div>
-                <div className={(selected === 1) ? "se" : ""}>
-                    <Button action={() => { route(1, (To2) ? To2 : "") }} ContentButton="Profile"></Button>
+                <div className={(selected === 1) ? "selectedMenu" : ""}>
+                    <Button styling="btn" action={() => { route(1, (To2) ? To2 : "") }} ContentButton="Profile"></Button>
                 </div>
-                <div className={(selected === 2) ? "se" : ""}>
-                    <Button action={() => { route(2, (To3) ? To3 : "") }} ContentButton="About"></Button>
+                <div className={(selected === 2) ? "selectedMenu" : ""}>
+                    <Button styling="btn" action={() => { route(2, (To3) ? To3 : "") }} ContentButton="About"></Button>
                 </div>
-                <div className={(selected === 3) ? "se" : ""}>
-                    <Button action={() => { route(3, (To3) ? To3 : "") }} ContentButton="Setting">   </Button>
+                <div className={(selected === 3) ? "selectedMenu" : ""}>
+                    <Button styling="btn" action={() => { route(3, (To3) ? To3 : "") }} ContentButton="Setting">   </Button>
                 </div>
-                <div style={{display:"flex",justifyContent:motionLeft?"space-around":"center",gap:motionLeft?"50px":"190px"}} hidden={motionLeft?false:true}>
-                    <div className={(selected === 4) ? "se" : ""}>
-                        <Button action={() => { route(4, (To4) ? To4 : "") }} ContentButton="Logout">   </Button>
-                    </div>
-                    <div className={`ButtonOpenCart ${motionLeft ? "OpenMotion" : ""}`}>
-                        <button hidden={(selected === 1 ? true : false)} onClick={() => { MotionMenuCart(motionLeft, setMotionLeft) }}> <img src={"./Images/icons8-cart-64.png"} alt="" /> </button>
-                    </div>
+                <div className={(selected === 4) ? "selectedMenu" : ""}>
+                    <Button styling="btn" action={() => { route(4, (To4) ? To4 : "") }} ContentButton="Logout">   </Button>
+                </div>
+                <div className={`ButtonOpenCart ${motionLeft ? "OpenMotion" : ""}`}>
+                    <button hidden={(selected === 1 ? true : false)} onClick={() => { MotionMenuCart(motionLeft, setMotionLeft) }}> <img src={"./Images/icons8-cart-64.png"} alt="" /> </button>
                 </div>
             </div>
-
 
             <div onClick={HandleToClose} id="PopupToLogout" className={`loading ${ProcessToLogout ? "loadingOn" : ""}`}>
                 <div className={`ConfirmBackToCart Logout ${ProcessToLogout ? "ConfirmBackToCartOn" : ""}`} hidden={ProcessToLogout ? false : true}>

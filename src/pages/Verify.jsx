@@ -52,6 +52,8 @@ const Verify = () => {
             }
         }
         
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [finish, hasilAkhir])
 
     return (

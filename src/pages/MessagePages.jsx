@@ -30,7 +30,7 @@ const Mesage = (props) => {
 
 
     const GetMyRoomChat = async () => {
-        const response = await fetch(API_URL+"GetRoomChat", {
+        const response = await fetch(API_URL + "GetRoomChat", {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${account.acces_token}`,
@@ -158,7 +158,7 @@ const Mesage = (props) => {
         setIsDelete(false)
         setisLoading(true)
         try {
-            const response = await fetch(API_URL+`DeleteChat/${idChat}`, {
+            const response = await fetch(API_URL + `DeleteChat/${idChat}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`,
@@ -180,7 +180,7 @@ const Mesage = (props) => {
 
 
     const checkToRead = async (index) => {
-        const response = await fetch(API_URL+"CheckToRead/" + index, {
+        const response = await fetch(API_URL + "CheckToRead/" + index, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${account.acces_token}`,
@@ -226,7 +226,7 @@ const Mesage = (props) => {
         }
         e.target.textContent.value = ""
         try {
-            const response = await fetch(API_URL+"Chatting", {
+            const response = await fetch(API_URL + "Chatting", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -286,10 +286,8 @@ const Mesage = (props) => {
 
 
     return (
-        MyListChat ? 
-        <>
+        MyListChat ?
             <div className="MessageContainer">
-
                 <div>
                     <div className="ListChat">
                         <a style={{ textDecoration: "none", color: "black" }} href="/products"><h1>Back</h1></a>
@@ -323,8 +321,8 @@ const Mesage = (props) => {
                         ))}
                     </div>
                 </div>
-                <div>
-                    <div className="RoomChat">
+                <div className="RoomChat" >
+                    <div>
                         {ContactName ?
                             <a style={{ textDecoration: "none", color: "black" }} href={`/profil/${ContactName}`}>
                                 <h1 style={{ textAlign: "right" }} > {index != null ? ContactName : "Chat Room"}</h1>
@@ -428,15 +426,13 @@ const Mesage = (props) => {
 
 
                 </div>
-
-            </div>
-            <PopupNotification
-                socket={socket}
-                popupConfirm={popupConfirm}
-                popupConfirm2={popupConfirm2}
-                setMessage={setMessage}
-            />
-        </> :
+                <PopupNotification
+                    socket={socket}
+                    popupConfirm={popupConfirm}
+                    popupConfirm2={popupConfirm2}
+                    setMessage={setMessage}
+                />
+            </div> :
             <center>
                 <div>
                     <h1 style={{ fontFamily: "monospace" }}>Memproses..</h1>

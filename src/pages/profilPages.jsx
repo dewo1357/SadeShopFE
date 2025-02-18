@@ -389,7 +389,7 @@ const ProfilPages = (props) => {
                         </div>
                     </div>
                 </div>
-                <div onClick={handleBackground} ref={FormChangeProfile} id="OverChange" className="OverChange">
+                <div onClick={handleBackground} ref={FormChangeProfile} id="OverChange" className="overlay3">
                     <div className="FormChangeProfile">
                         <h2 style={{ margin: "0px", marginBottom: "20px", textAlign: "center" }}>Change Profile Picture</h2>
                         <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
@@ -427,7 +427,7 @@ const ProfilPages = (props) => {
             </div>
 
             <div ref={popupVerify} className="overlay3">
-                <div className={`OverlayMap ${ProcessMap ? "OverlayMapOn" : ""}`}>
+                <div className={`OverlayMap ${ProcessMap ? "OverlayMapOn" : ""}`} hidden>
                     <div className="Map">
                         <MyComponent instalUlang={null} setProcessMap={setProcessMap} seAddress={seAddress} setLoadingMap={setLoadingMap} />
                     </div>
@@ -540,7 +540,7 @@ const ProfilPages = (props) => {
                 </div>
             </div>
 
-            <div ref={Build} className="Overlay2" >
+            <div ref={Build} className="overlay3" >
                 <div hidden={TurnAdd ? false : true} className={`FormProduk ${turnOnAddProduct ? "BuildFormProduk" : ""}`}>
                     <h1>Add Product</h1>
                     <InputFile

@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 
-
+import Button from "../Element/Button/Button";
 
 const CardProduct = (props) => {
     const { children } = props;
-    
+
     return (
         <>
-            <div  className="CardLayout">
+            <div className="CardLayout">
                 {children}
             </div>
         </>
@@ -30,7 +30,7 @@ const HeaderContent = (props) => {
     return (
         <div className="HeaderContent">
             <h2>{title}</h2>
-            <p>⏺ <a href={`/profil/${dataProduct.Account.username?dataProduct.Account.username:""}`}>{seller}</a></p>
+            <p>⏺ <a href={`/profil/${dataProduct.Account.username ? dataProduct.Account.username : ""}`}>{seller}</a></p>
             <div className="BodyCard">
                 {children}
             </div>
@@ -43,7 +43,7 @@ const Footer = (props) => {
     return (
         <div className="Footer">
             <span className="Price">Rp {price}</span>
-            <button type="submit" onClick={action}><b>{Content}</b></button>
+            <Button styling="btn FooterButton" action={action} ContentButton={Content}></Button>
         </div>
     )
 }

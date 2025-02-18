@@ -8,6 +8,7 @@ import MyComponent from "./MyComponent";
 import { active, DeleteCart, ClosePopup, FinishAndClosePoopup, process, Refresh_Token, ActionToDeleteCheckoutCart } from "./manage";
 import { useSocket } from "../SocketProvider";
 import { API_URL } from "../../config";
+import Button from "../Component/Element/Button/Button";
 
 
 const CartPages = () => {
@@ -43,7 +44,7 @@ const CartPages = () => {
     const [transaction_id_array, setArrayTransaction] = useState([])
     const oke = async () => {
         try {
-            const response = await fetch(API_URL+`GetCartBasedOnSeller`, {
+            const response = await fetch(API_URL + `GetCartBasedOnSeller`, {
                 method: 'GET',
                 headers: { 'Authorization': `Bearer ${account.acces_token}` }
             });
@@ -86,7 +87,7 @@ const CartPages = () => {
                 idProduct: id,
                 value: target,
             }
-            const response = await fetch(API_URL+`EditPcsCart`, {
+            const response = await fetch(API_URL + `EditPcsCart`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`,
@@ -152,7 +153,7 @@ const CartPages = () => {
         const payload_data = { idCart, e }
         const Check = ArrayCheck.slice();
         try {
-            const response = await fetch(API_URL+"AddToPayCart", {
+            const response = await fetch(API_URL + "AddToPayCart", {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`
@@ -202,11 +203,11 @@ const CartPages = () => {
         location.href = "/checkout"
     }
 
-    const [popupConfirm,setpopupconfirm] = useState(false)
+    const [popupConfirm, setpopupconfirm] = useState(false)
     useEffect(() => {
         if (JSON.parse(localStorage.getItem('CheckoutData'))) {
             ConfirmBack.current.style.visibility = "visible"
-            setTimeout(()=>{
+            setTimeout(() => {
                 setpopupconfirm(true)
             })
         }
@@ -226,18 +227,13 @@ const CartPages = () => {
 
     return (
         <>
-            <div className="OverallProductsPages">
-                <div>
-                    <div className="TitleMenu Keranjang">
-                        <h1 style={{ cursor: "pointer" }}
-                            onClick={() => close()}>SadeShop.com</h1>
+            <div className="TitleMenu Keranjang">
+                <h1 style={{ cursor: "pointer" }}
+                    onClick={() => close()}>SadeShop.com</h1>
 
-                        <h1>
-                            Cart
-                        </h1>
-                    </div>
-                </div>
-
+                <h1>
+                    Cart
+                </h1>
             </div>
             <div className="CartPagesLayout">
                 <form action="">
@@ -281,14 +277,14 @@ const CartPages = () => {
                 </form>
             </div>
             <div className="TotalPrice" >
-                <p >Pcs :<b>{totalItem}</b></p>
-                <div className="TotalPriceComponent" >
-                    <div >
+                <div className="InfoPrice">
+                    <p >Pcs :<b>{totalItem}</b></p>
+                    <div>
                         <p>Total</p>
                         <h1>Rp {Intl.NumberFormat('id-ID').format(totalPrice)}</h1>
                     </div>
-                    <button className="buttonPay" onClick={(ArrayCheck.includes(true) || transaction_id_array.length != 0) ? () => active(false, ListCart.length, popup, setVisible, popup) : () => { }} >Checkout</button>
                 </div>
+                <Button styling="btn" action={(ArrayCheck.includes(true) || transaction_id_array.length != 0) ? () => active(false, ListCart.length, popup, setVisible, popup) : () => { }} ContentButton="Checkout" ></Button>
             </div>
             <div className="popup">
                 <h1>oke</h1>
@@ -333,7 +329,7 @@ const CartPages = () => {
                 </div>
             </div>
             <div ref={ConfirmBack} className="overlay3">
-                <div className={`ConfirmBackToCart ${popupConfirm?"ConfirmBackToCartOn":""}`}>
+                <div className={`ConfirmBackToCart ${popupConfirm ? "ConfirmBackToCartOn" : ""}`}>
                     <h2 style={{ color: "red" }} >PERINGATAN</h2>
                     <h2>
                         Terdapat Process Checkout
@@ -342,7 +338,7 @@ const CartPages = () => {
                         Apakah Anda Ingin Melanjutkan Process Checkout?. <br /> Jika Tidak, Maka Data Checkout Sebelumnya Akan Dihapus Secara Permanen.
                     </p>
                     <div className="ConfirmBackToCartAction">
-                        <button style={{ backgroundColor: "red" }} onClick={()=>{ActionToDeleteCheckoutCart()}}>Hapus</button>
+                        <button style={{ backgroundColor: "red" }} onClick={() => { ActionToDeleteCheckoutCart() }}>Hapus</button>
                         <button onClick={ActionToChekout}>Lanjutkan Process</button>
                     </div>
                 </div>

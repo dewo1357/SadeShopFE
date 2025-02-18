@@ -117,21 +117,12 @@ const ProductPages = () => {
                                 RightOn={RightOn}
                                 SumProcess={SumProcess}
                                 notifMessage={notifMessage}
-
                             >
                             </HeaderMenu>
 
                         </div>
                         <Search type="text" placeholder="Search Produk" action={(e) => SearchCard(e, GenreData, setGenre)} />
-
-                        <SmartPhoneCartAndMenu listCart={listCart} index={0} DeleteCart={DeleteCart}
-                            totalItem={totalItem} totalPrice={totalPrice}
-                            active={() => { active(false, ListCart.length) }}
-
-                            To2="profile" To4="/"
-                        />
-
-                        <div className={` ${motionLeft ? "ProductPages motion_on" : "ProductPages"}`}>
+                        <div hidden={motionLeft ? false : true} className={` ${motionLeft ? "ProductPages motion_on" : "ProductPages"}`}>
                             {!Loading ? GenreData.map((item) => (
                                 <CardProduct key={item.id} >
                                     <CardProduct.images source={"https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/gambarProducts/" + item.URLimages} />
@@ -162,7 +153,7 @@ const ProductPages = () => {
                                     height: "40px", backgroundColor: "transparent",
                                     display: motionLeft ? "flex" : "none", justifyContent: "center", border: "0px"
                                 }}
-                                onClick={() => { MotionMenuCart(motionLeft, setMotionLeft) }}>
+                                onClick={() => {MotionMenuCart(motionLeft, setMotionLeft)}}>
                                 <img hidden={motionLeft ? false : true} src="/Images/icons8-cancel-64.png" width="40"></img>
                             </button>
                         </div>
@@ -178,7 +169,7 @@ const ProductPages = () => {
                             ))}
                         </div>
                         <div className="ButtonToSeeCart" hidden={motionLeft ? false : true}>
-                            <Button ContentButton="Check Your Cart" action={() => { location.href = "/cart" }}></Button>
+                            <Button styling="btn" ContentButton="Check Your Cart" action={() => { location.href = "/cart" }}></Button>
                         </div>
                     </div>
                 </div>
@@ -208,9 +199,4 @@ const ProductPages = () => {
         )
     }
 }
-
-/*
- 
-*/
-
 export default ProductPages;

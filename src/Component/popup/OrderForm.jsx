@@ -98,7 +98,7 @@ const OrderForm = (props) => {
                                     </span>))
                                     : null}
                             </div>
-                            <Button ContentButton="Add To Cart" action={AddToCart} disabled={product?product.stok[Index] <=0?true:false:""} ></Button>
+                            <Button styling="btn" ContentButton="Add To Cart" action={AddToCart} disabled={product?product.stok[Index] <=0?true:false:""} ></Button>
                         </div>
                     </div>
                 </div>

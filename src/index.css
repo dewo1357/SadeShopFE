@@ -1,22 +1,195 @@
 body {
   background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
+/*====================================
+
+/*ProdukPages & CartPages*/
 .TitleMenu {
   display: flex;
   align-items: center;
-  gap: 4%;
+  gap: 1%;
   margin-bottom: 10px;
   background-color: rgb(0, 0, 0);
   box-shadow: 1px 1px 1px 1px rgb(175, 174, 174);
   border-radius: 10px;
   z-index: -1;
-  width: auto;
+  width: 100%;  
 }
 
+/*CartPages*/
+.TitleMenu h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  text-align: center;
+  margin: 0px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 43px;
+}
+
+
+/*Button ELEMENT*/
+.btn button {
+  height: 40px;
+  width: 90px;
+  background-color: white;
+  border: 0px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 90%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+}
+
+/*Button CartOn HeaderMenu*/
+.ButtonOpenCart {
+  margin: 0px;
+}
+
+/*Button CartOn HeaderMenu*/
+.ButtonOpenCart button {
+  height: 40px;
+  width: 80px;
+  right: 40px;
+  top: 25px;
+  border-radius: 10px;
+  border: 0px solid;
+  transition: 1000ms;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*Button CartOn HeaderMenu*/
+.ButtonOpenCart button:hover {
+  background-color: transparent;
+}
+
+/*Button CartOn HeaderMenu*/
+.ButtonOpenCart img {
+  width: 60%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+/*Button CartOn HeaderMenu*/
+.ButtonOpenCart img:hover {
+  width: 65%;
+  transition: 500ms;
+}
+
+/*Action To See Cart On Detskop*/
+.OpenMotion button {
+  display: none;
+}
+
+.titleButtonAddProduct {
+  margin-top: 20px;
+}
+
+.titleButtonAddProduct h1 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.AddProductButton button {
+  height: 70px;
+  width: 70px;
+  border-radius: 100px;
+  border: 0px solid;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: slategray;
+  margin-top: 5px;
+}
+
+
+/*Header Menu|||||||||||||||||||||*/
+.HeaderMenu {
+  display: flex;
+  justify-content: space-between;
+  gap: 2%;
+  padding: 2%;
+  max-width: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+/*Header Menu*/
+.HeaderMenu button:hover {
+  background-color: rgb(90, 90, 90);
+  color: white;
+}
+
+/*Header Menu*/
+.selectedMenu button {
+  background-color: rgb(64, 63, 64);
+  color: white;
+  transition: 100ms;
+}
+
+/*Header Menu - TitleMenu - Button Open Cart - UpdateButton*/
+@media only screen and (max-width: 1000px) {
+  .HeaderMenu  {
+    display: none
+  }
+
+  .ButtonOpenCart {
+    display: none
+  }
+
+  .TitleMenu {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 0px;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  .TitleMenu h1 {
+    color: black;
+    text-align: center;
+  }
+
+  .updateOptions {
+    display: none;
+  }
+}
+
+/*Header Menu===================================*/
+
+/*ProdukPages*/
+.SearchProduk input {
+  height: 30px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid rgba(75, 75, 75, 0.842);
+}
+
+/*ProdukPages*/
+.SearchProduk button {
+  width: 170px;
+  background-color: rgb(5, 5, 5);
+  color: white;
+  font-size: 20px;
+  height: 36px;
+}
+
+/*ProdukPages*/
+.SearchProduk button:hover {
+  background-color: aqua;
+  color: black;
+}
+
+
+/* CartPages |||||||||||||||||||||*
+
+/*CartPages HEADER*/
 .Keranjang {
   width: 97%;
   height: 90px;
@@ -32,29 +205,33 @@ body {
   justify-content: space-between;
 }
 
+/*CartPages*/
 .ListPesanan {
   background-color: rgb(121, 121, 120);
   display: grid;
   grid-template-columns: 5% 20% 20% 25% 15% 5%;
+  width: 100%;
   align-items: center;
   justify-content: center;
   margin-bottom: 2px;
   font-size: 12px;
 }
 
+/*CartPages*/
 .EditPcs {
   display: flex;
   gap: 30px;
 
 }
 
+/*CartPages*/
 .EditPcs input {
   display: flex;
   justify-content: center;
   width: 70px
 }
 
-
+/*CartPages*/
 .EditPcs span {
   background-color: rgb(0, 0, 0);
   display: flex;
@@ -67,20 +244,21 @@ body {
   color: white;
 }
 
+/*CartPages*/
 .ListPesanan span:hover {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
 }
 
 
-
+/*CartPages*/
 .hapusCart {
-
   display: flex;
   width: 100px;
   height: 35px;
 }
 
+/*CartPages*/
 .hapusCart span {
   background-color: rgb(0, 0, 0);
   width: 100px;
@@ -94,100 +272,157 @@ body {
   justify-content: center;
 }
 
+/*CartPages*/
 .hapusCart span:hover {
   background-color: rgb(255, 0, 0);
   color: white;
 }
 
+/*CartPages*/
 .NotActive span {
   opacity: 0.5;
   cursor: default;
 }
 
+/*CartPages*/
 .NotActive input {
   cursor: default;
 }
 
+/*CartPages*/
 .NotActive span:hover {
   background-color: black;
   color: white;
 }
 
-
-
-
-.SearchCart {
-  display: flex;
-  align-items: center;
-}
-
-.SearchCart input {
-  width: 850px;
-  height: 30px;
-}
-
-.TitleMenu h1 {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white;
-  text-align: center;
-  margin: 0px;
-  margin-left: 10px;
-  margin-bottom: 10px;
-  font-size: 43px;
-}
-
-
-
+/*CartPages*/
 .CartPagesLayout {
   padding: 5px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  width: 1325px;
+  width: 97%;
   margin-top: 100px;
   height: 400px;
   overflow-y: auto;
-
 }
 
+/*CartPages*/
 .CartPagesLayout h1 {
   margin-top: 0px;
   font-size: 20px;
 }
 
-.HeaderMenu {
+/*CartPages*/
+.TotalPrice {
+  width: 99%;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.199);
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  color: white;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: rgb(0, 0, 0);
+  padding-left: 10px;
+  padding-right: 10px;
   display: flex;
-  justify-content: center;
-  gap: 3%;
-  padding: 2%;
-  max-width: 100%;
-  width: 100%;
-  border-radius: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
 }
 
-
-
-.HeaderMenu button {
-  height: 40px;
-  width: 90px;
-  background-color: white;
-  border: 0px solid rgb(255, 255, 255);
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 90%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  cursor: pointer;
-
+/*CartPages*/
+.InfoPrice {
+  display: flex;
+  flex-wrap: wrap;
+  width: 5%;
+  gap: 15px;
 }
 
-.HeaderMenu button:hover {
-  background-color: rgb(90, 90, 90);
+/*CartPages*/
+.TotalPrice p {
+  margin: 0;
+}
+
+/*CartPages*/
+.TotalPrice h1 {
+  margin: 0;
+}
+
+/*CartPages*/
+.TotalPrice button {
+  height: 70px;
+  width: 200px;
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+/*CartPages*/
+.hidden {
+  visibility: hidden;
+}
+
+/*CartPages*/
+.TotalPrice button:hover {
+  background-color: rgb(68, 0, 255);
   color: white;
 }
 
-.se button {
-  background-color: rgb(64, 63, 64);
-  color: white;
-  transition: 100ms;
+/*CartPages*/
+.SearchProduk {
+  margin: 0px;
+  display: flex;
+  justify-content: left;
+  gap: 10px
 }
+
+/*CartPages Responsive*/
+@media only screen and (max-width: 900px) {
+  .CartPagesLayout {
+    overflow-x: hidden;
+  }
+
+  .ListPesanan {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 2px;
+    padding-right: 20px;
+    height: 70px;
+    width: 100%;
+  }
+
+  .JudulCart {
+    width: 50%;
+  }
+
+  .hapusCart {
+    margin-right: 5px;
+  }
+
+  .EditPcs input {
+    width: 50px;
+  }
+
+  .HargaCart {
+    display: none
+  }
+
+  .Keranjang {
+    width: 94%;
+    font-size: 10px;
+  }
+
+  .Keranjang h1 {
+    font-size: 30px;
+  }
+
+  .InfoPrice {
+    width: 100px;
+  }
+
+}
+
+/* CartPages================================*/
 
 .formLayOut {
   text-align: left;
@@ -230,7 +465,6 @@ body {
 .Notification {
   color: red;
   font-size: 13px;
-
 }
 
 .formLayOut button {
@@ -270,27 +504,41 @@ body {
   color: black;
 }
 
+
+
+/*PRODUK PAGES||||||||||||||||||||||||||||*/
+.OverallProductsPages {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0px;
+}
+
+/*PRODUK PAGES*/
 .ProductPages {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 1%;
   overflow: auto;
-  height: 455px;
+  height: 100%;
   border-radius: 5px;
   justify-content: center;
-  width: 1325px;
+  width: 100%;
   transition: 1000ms;
 }
 
+/*PRODUK PAGES*/
 .motion_on {
   height: 480px;
   width: 100%;
   transition: 200ms;
 }
 
+/*Card Product|||||||||||||||||||||||*/
 .CardLayout {
-  width: 280px;
+  width: 275px;
   background-color: rgb(0, 0, 0);
   padding: 15px;
   border-radius: 10px;
@@ -303,14 +551,15 @@ body {
   box-shadow: 1px 0.1px 1px 1px rgb(51, 51, 51);
 }
 
+/*Card Product*/
 .CardImage {
-
   width: 100%;
   overflow: auto;
   overflow-y: hidden;
   overflow-x: hidden;
 }
 
+/*Card Product*/
 .CardImage img {
   width: 100%;
   height: 200px;
@@ -318,82 +567,121 @@ body {
   transition: 1000ms;
 }
 
+/*Card Product*/
 .CardImage img:hover {
   object-position: 10% 30%;
   transition: 1000ms;
   transform: scale(1.1);
 }
 
-
+/*Card Product*/
 .HeaderContent {
   margin-top: 10px;
   height: 140px;
-
 }
 
+/*Card Product*/
 .HeaderContent h2 {
   font-size: 30px;
   margin: 0px;
   margin-bottom: 5px;
 }
 
+/*Card Product*/
 .HeaderContent p {
   margin: 0px;
   color: white;
   margin-bottom: 5px;
 }
 
+/*Card Product*/
 .HeaderContent a {
   text-decoration: none;
   color: white;
 }
 
+/*Card Product*/
 .HeaderContent a:hover {
   text-decoration: underline;
 }
 
+/*Card Product*/
 .BodyCard {
   font-size: 12px;
 }
 
+/*Card Product*/
 .Footer {
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 
 }
 
+/*Card Product*/
 .Footer .Price {
   font-weight: bold;
-  margin-top: 15px;
 }
 
-.Footer button {
+/*Card Product*/
+.FooterButton button {
   background-color: aqua;
-  width: 40%;
-  height: 30px;
-  padding: 2px;
-  border: 0px solid;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
+  width: 100px;
 }
 
+/*Card Product*/
 .Footer button:hover {
   background-color: rgb(17, 0, 255);
   color: white;
 }
 
-.OverallProductsPages {
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
+/*Card Product RESPONSIVE*/
+@media only screen and (max-width: 900px) {
+  .CardLayout {
+    width: 155px;
+    height: 300px;
+  }
 
-  margin: 0px;
+  .CardImage img {
+    width: 100%;
+    height: 140px;
+  }
+
+  .HeaderContent {
+    margin-top: 0px;
+    height: 50px;
+  }
+  
+  .HeaderContent h2 {
+    font-size: 20px;
+  }
+
+  .HeaderContent p {
+    font-size: 10px;
+  }
+
+  .BodyCard{
+    height: 30px;
+    overflow-y: auto;
+    overflow-y: hidden;
+  }
+
+  .Footer {
+    padding: 2px;
+    align-items: center;
+  }
+  
+  .FooterButton button {  
+    width: 60px;
+    height: 30px;
+    font-size: 10px;
+  }
 }
+
+/*Card Product======================================*/
 
 .titlePages {
   margin-top: 4px auto;
@@ -426,8 +714,6 @@ body {
   height: 50px;
 }
 
-
-
 .LayoutListCart {
   overflow: auto;
   height: 470px;
@@ -439,8 +725,6 @@ body {
 .finishLayoutList {
   height: 276px;
 }
-
-
 
 .ListCart {
   background-color: white;
@@ -475,15 +759,9 @@ h4 {
   margin: 0;
 }
 
-
-
 .ButtonToSeeCart button {
   width: 90%;
-  cursor: pointer;
-  border-radius: 5px;
-  border: 0px solid;
   height: 30px;
-  font-weight: bold;
 }
 
 .ButtonToSeeCart button:hover {
@@ -509,87 +787,6 @@ h4 {
 
 .TitlePcs button img {
   width: 35px
-}
-
-.TotalPrice {
-  width: 1346px;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.199);
-  position: fixed;
-  left: 0px;
-  bottom: 0px;
-  color: white;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color: rgb(0, 0, 0);
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-}
-
-.TotalPriceComponent {
-  display: grid;
-  grid-template-columns: 80% 20%;
-  margin: 1px auto;
-  padding: 2px;
-  color: white;
-}
-
-.TotalPriceComponent p {
-  margin: 0;
-}
-
-.TotalPriceComponent h1 {
-  margin: 0;
-}
-
-.TotalPriceComponent button {
-  border: 0px solid;
-  border-radius: 10px;
-  background-color: aqua;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 30px;
-}
-
-.hidden {
-  visibility: hidden;
-}
-
-.TotalPriceComponent button:hover {
-  background-color: rgb(68, 0, 255);
-  color: white;
-}
-
-.SearchProduk {
-  margin: 0px;
-  display: flex;
-  justify-content: left;
-  gap: 10px
-}
-
-.SearchProduk input {
-  height: 30px;
-  width: 100%;
-  border-radius: 5px;
-  border: 1px solid rgba(75, 75, 75, 0.842);
-}
-
-.SearchProduk button {
-  width: 170px;
-  cursor: pointer;
-  border: 0px solid;
-  background-color: black;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  height: 36px;
-  text-align: center;
-}
-
-.SearchProduk button:hover {
-  background-color: aqua;
-  color: black;
 }
 
 .popup {
@@ -807,7 +1004,6 @@ h4 {
 
 .overlay button {
   width: 100%;
-
   background-color: rgb(15, 15, 15);
   font-size: 30px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -916,7 +1112,7 @@ h4 {
 }
 
 .ProfilPagesLayout {
-  width: 1330px;
+  width: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -937,7 +1133,7 @@ h4 {
 }
 
 .BioData {
-  width: 150%;
+  width: 100%;
   display: block;
   flex-wrap: wrap;
   align-items: center;
@@ -966,19 +1162,16 @@ h4 {
 
 }
 
-
-
 .BioData button:hover {
   background-color: aqua;
   color: black;
 }
 
 .gambarProfil {
-  padding-left: 150px;
+  justify-content: center;
   width: 100%;
   display: flex;
   overflow-wrap: anywhere;
-
 }
 
 .gambarProfil input {
@@ -999,8 +1192,27 @@ h4 {
   padding: -5px;
 }
 
+@media only screen and (max-width: 900px) {
+  .DetailLayoutProfil{
+    display: block;
+  }
 
+  .BioData{
+    text-align: center;
+  }
+  
+  .BioData h1 {
+    font-size: 300%;
+    text-align: center;
+  }
 
+  .images {
+    height: 320px;
+    width: 320px;
+    background-size: cover;
+    padding: -5px;
+  }
+}
 
 .LabelOverLay {
   background-color: rgba(250, 247, 247, 0.938);
@@ -1030,68 +1242,6 @@ h4 {
   opacity: 1;
 }
 
-.ButtonOpenCart {
-  margin: 0px;
-}
-
-.ButtonOpenCart button {
-  height: 40px;
-  width: 80px;
-  right: 40px;
-  top: 25px;
-  border-radius: 10px;
-  border: 0px solid;
-  transition: 1000ms;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.ButtonOpenCart button:hover{
-  background-color: transparent;
-}
-
-.ButtonOpenCart img {
-  width: 60%;
-  padding: 5px;
-  cursor: pointer;
-}
-
-.ButtonOpenCart img:hover {
-  width: 65%;
-  transition: 500ms;
-}
-
-.OpenMotion button {
-  display: none;
-}
-
-.titleButtonAddProduct {
-  margin-top: 20px;
-}
-
-.titleButtonAddProduct h1 {
-  text-align: center;
-  font-size: 30px;
-}
-
-
-
-.AddProductButton button {
-  height: 70px;
-  width: 70px;
-  border-radius: 100px;
-  border: 0px solid;
-  font-size: 30px;
-  cursor: pointer;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: slategray;
-  margin-top: 5px;
-}
 
 .afterProfil {
   margin-top: 15px;
@@ -1398,10 +1548,6 @@ h4 {
   width: 150px;
   background-color: black;
   color: white;
-  border: 0px solid;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
   position: relative;
 }
 
@@ -1893,7 +2039,7 @@ h4 {
 
 .overlay3 {
   background-color: rgba(0, 0, 0, 0.26);
-  position: absolute;
+  position: fixed;
   top: 0px;
   height: 100%;
   width: 100%;
@@ -2124,7 +2270,7 @@ h4 {
   background-color: black;
   color: white;
   font-weight: bold;
- 
+
 }
 
 .InsertPass button:hover {
@@ -2132,18 +2278,7 @@ h4 {
 }
 
 
-.OverChange {
-  background-color: rgba(0, 0, 0, 0.178);
-  position: fixed;
-  top: 0px;
-  height: 100%;
-  width: 100%;
-  left: 0px;
-  visibility: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .FormChangeProfile {
   background-color: rgb(255, 255, 255);
@@ -2182,14 +2317,13 @@ h4 {
 
 }
 
-.Logout{
+.Logout {
   width: 400px;
 }
 
 .ConfirmBackToCartOn {
   transition: 1000ms;
   opacity: 1;
-
   color: black;
   padding: 10px;
 
@@ -2232,11 +2366,12 @@ h4 {
 }
 
 .MessageContainer {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: grid;
-  grid-template-columns: 35% 64%;
-  gap: 10px;
-  width: 1330px;
 }
 
 .ListChat {
@@ -2247,15 +2382,15 @@ h4 {
 
 .RoomChat {
   padding: 5px;
-
+  width: 100%
 }
 
 .ListContactChatContainer {
-  background-color: rgb(212, 212, 212);
   border-radius: 5px;
   height: 500px;
+  width: 100%;
   overflow-y: auto;
-  overflow-x: hidden  ;
+  overflow-x: hidden;
 
 }
 
@@ -2546,874 +2681,4 @@ h4 {
   width: 99%;
   height: 50px;
   margin-bottom: 10px;
-}
-
-
-
-
-
-
-
-@media only screen and (max-width: 1300px) {
-  .HeaderMenu {
-    display: none;
-  }
-
-  .CartLayout {
-    background-color: yellowgreen;
-  }
-
-  .nav {
-    height: 280px;
-  }
-
-
-
-  .TitleMenu {
-    position: fixed;
-    width: 96%;
-    z-index: 1;
-  }
-
-  .ProfilPagesLayout .TitleMenu h1 {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 32px;
-  }
-
-  .SearchProduk {
-    margin-top: 100px;
-    position: fixed;
-    width: 96%;
-
-  }
-
-  .SearchProduk input {
-    width: 100%;
-  }
-
-  .CardLayout {
-    width: 250px;
-
-    height: 450px;
-  }
-
-
-
-  .CardLayout .Footer {
-    margin-top: 20px;
-  }
-
-  .ButtonOpenCart button {
-    display: none;
-  }
-
-
-  .Kedua {
-    display: block;
-
-  }
-
-  .Kedua {
-    background-color: transparent;
-    border: 0px solid;
-    position: fixed;
-    right: 30px;
-    top: 15px;
-    z-index: 2;
-    cursor: pointer;
-  }
-
-
-
-  .ProductPages {
-    height: 100%;
-    overflow: hidden;
-    width: 100%;
-    margin-top: 150px;
-  }
-
-  .NavCart {
-    display: block;
-    background-color: rgb(0, 0, 0);
-    padding: 0px;
-    position: fixed;
-    top: 100px;
-    right: 18px;
-    height: 0px;
-    border: 0px;
-    color: white;
-    width: 300px;
-    opacity: 0;
-
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: none;
-    overflow: auto;
-    overflow-y: hidden;
-    transition: 1000ms;
-  }
-
-  .Kedua:hover+.NavCart {
-    opacity: 1;
-    height: 500px;
-    transition: 1000ms;
-    padding: 10px;
-  }
-
-  .NavCart:hover {
-    opacity: 1;
-    height: 500px;
-    padding: 10px;
-  }
-
-
-
-
-
-
-  .CartContainer {
-    display: none
-  }
-
-
-  .Overlay2 {
-    position: fixed;
-  }
-
-
-
-  .FormProduk img {
-    height: 0px;
-  }
-
-  .FormProduk form input {
-    height: 40px;
-  }
-
-  .CloseForm button {
-    right: 0%;
-
-  }
-
-  .ProdukImage {
-    display: block;
-    height: auto;
-
-  }
-
-  .CategoryAndPrice {
-    height: 100%;
-
-  }
-
-
-
-  .left {
-    display: flex;
-    align-items: center;
-
-  }
-
-  .left img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-  }
-
-  .popup {
-    position: absolute;
-    height: 100%;
-  }
-
-  .InfoProduct {
-    left: 0px;
-    position: absolute;
-    height: 150%;
-    overflow-y: auto;
-    width: 100%;
-    z-index: 3;
-
-  }
-
-  .InfoProduct .container {
-    display: block;
-    height: 200%;
-    width: 100%;
-  }
-
-
-
-  .InfoProduct button {
-    background-color: rgb(255, 255, 255);
-    z-index: 1;
-    height: 50px;
-    width: 50px
-  }
-
-  .right {
-    justify-content: center;
-  }
-
-  .right p {
-    font-size: 20px;
-  }
-
-  .HeaderAndPrice {
-    grid-template-columns: 50% 50%;
-  }
-
-  .HeaderAndPrice h1 {
-    font-size: 160%;
-    text-align: left;
-  }
-
-  .FooterOrderForm {
-    padding: 0px;
-    display: block;
-  }
-
-  .FooterOrderForm button {
-    background: black;
-    border: 0px solid;
-    box-shadow: none;
-    height: 50px;
-    width: 100%;
-    border-radius: 10px;
-    margin-top: 10%;
-
-  }
-
-  .CategoryOption {
-    width: 100%;
-    justify-content: center;
-
-  }
-
-  .ButtonDelete {
-    background-color: rgb(7, 7, 7);
-    height: 23px;
-    margin-bottom: 25px;
-    margin-top: 5px;
-    margin-left: 10px;
-  }
-
-  .actionButton span {
-    width: 100%;
-    background-color: rgb(239, 4, 4);
-  }
-
-  .ConfirmationDelete {
-    width: 72%;
-    left: 10%
-  }
-
-  .InfoProduct {
-    position: fixed;
-    top: 0%
-  }
-
-  .DetailLayoutProfil {
-    display: block;
-  }
-
-  .gambarProfil {
-    display: flex;
-    padding: 0px;
-    justify-content: center;
-    margin-top: 100px;
-  }
-
-  .BioData {
-    display: block;
-    width: 100%;
-    text-align: center;
-
-  }
-
-  .BioData h1 {
-    font-size: 45px;
-    text-align: center;
-  }
-
-  .ProfilPagesLayout {
-    width: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-
-  .TitleMenu {
-    z-index: 0;
-    display: block;
-    position: fixed;
-    top: 5px;
-    left: 12px;
-    box-shadow: 1px 1px 1px 1px black;
-    transition: back 0.5, background-color;
-  }
-
-  .FormProduk {
-    left: 0px;
-    width: 92%;
-    top: 0px;
-    height: 100%;
-    box-shadow: none;
-    border-radius: 0px;
-
-  }
-
-
-
-  .SearchProduk input {
-    margin-left: 10px;
-  }
-
-  .motion_right {
-    transition: 500ms;
-    left: 62%;
-    margin-top: -3px;
-  }
-
-
-  .Menu_Kedua img {
-    width: 50px;
-  }
-
-  .Menu_Kedua {
-    position: fixed;
-    z-index: 2;
-    top: 25px;
-    left: 25px;
-    height: 50px;
-    width: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    cursor: pointer;
-    background-color: rgb(255, 255, 255);
-  }
-
-
-  /* Elemen yang tersembunyi */
-  .Right {
-    position: fixed;
-    left: 12px;
-    top: 100px;
-    opacity: 0;
-    background-color: rgb(0, 0, 0);
-    padding: 0px;
-    border-radius: 0px;
-    color: white;
-    box-shadow: none;
-    width: 250px;
-    z-index: 0;
-    display: block;
-    transition: 1000ms;
-    height: 0px;
-    overflow: auto;
-    overflow-y: hidden;
-  }
-
-
-
-
-
-  /* Hover pada .Menu_Kedua akan memengaruhi .Right */
-
-  .Menu_Kedua:hover {
-    background-color: rgb(0, 174, 255);
-  }
-
-  .Menu_Kedua:hover+.Right {
-    opacity: 1;
-    display: block;
-    visibility: visible;
-    top: 80px;
-    height: 286px;
-  }
-
-  .displayOn_Left {
-    opacity: 1;
-    display: block;
-    visibility: visible;
-    top: 80px;
-    height: 286px;
-  }
-
-  .Right:hover {
-    visibility: visible;
-    display: block;
-    height: 286px;
-    top: 80px;
-  }
-
-  .RightMenu button {
-    background-color: black;
-    height: 50px;
-    width: 250px;
-    border: 0px solid black;
-
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 20px;
-    cursor: pointer;
-  }
-
-  .RightMenu button:hover {
-    background-color: aqua;
-    color: black;
-  }
-
-  .TotalPriceComponent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100px;
-  }
-
-  .TotalPriceComponent button {
-    background-color: whitesmoke;
-    height: 50px;
-    width: 100px
-  }
-
-}
-
-@media only screen and (max-width: 600px) {
-
-  .TitleMenu {
-    z-index: 0;
-    display: block;
-    padding: 10px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-radius: 0px;
-    width: 95%;
-    padding-top: 8px;
-    box-shadow: 1px 1px 1px 1px black;
-    height: 50px;
-    transition: back 0.5, background-color;
-    width: 97.4%;
-  }
-
-
-  .TotalPrice {
-    display: flex;
-  }
-
-  .Kedua {
-    display: none;
-  }
-
-  .Menu_Kedua {
-    display: none;
-  }
-
-  .TitleMenu h1 {
-    margin-top: 3px;
-    margin-bottom: 0px;
-    font-size: 25px;
-  }
-
-  .HeaderMenu {
-    display: none;
-  }
-
-
-  .Header {
-    background-color: rgb(255, 255, 255);
-    height: 60px;
-    position: fixed;
-    display: flex;
-    justify-content: right;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-
-  .Header h1 {
-    font-size: 30px;
-    font-weight: bold;
-    text-align: right;
-    margin-top: 15px;
-    padding-right: 10px;
-
-  }
-
-  .Burger {
-    display: block;
-    position: fixed;
-    z-index: 1;
-    top: 10px;
-    left: 2px;
-    height: 40px;
-    width: 50px;
-    background-color: rgba(0, 0, 0, 0);
-    border: 0px solid;
-    border-radius: 10px;
-    transition: 500;
-    cursor: pointer;
-  }
-
-  .Burger button {
-    border-radius: 10px;
-  }
-
-  .MenuBurger {
-    display: block;
-    position: fixed;
-    top: 10px;
-    left: 86%;
-    height: 40px;
-    width: 50px;
-  }
-
-  .motion_right {
-    transition: 500ms;
-    left: 62%;
-    margin-top: -3px;
-  }
-
-  .Right {
-    display: none;
-  }
-
-  .NavCart {
-    display: block;
-    background-color: rgb(0, 0, 0);
-    padding: 10px;
-    position: fixed;
-    top: 0px;
-    left: -500px;
-    height: 150%;
-    color: white;
-    transform: translateX(-1000);
-    width: 70%;
-    opacity: 0;
-    transition: left 0.5s ease-in, transform left 0.5s;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-
-  .nav {
-    height: 40%;
-  }
-
-  .NavCart:hover {
-    display: block;
-    height: 150%;
-  }
-
-  .TotalPrice {
-
-    width: 100%;
-
-  }
-
-  .TotalPriceComponent {
-
-    grid-template-columns: 30% 70%;
-    justify-content: space-between;
-    height: 100px;
-
-  }
-
-  .TotalPriceComponent button {
-    height: 100%;
-    width: 100%;
-    padding-left: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 10px solid white;
-  }
-
-  .TotalPriceComponent h1 {
-    font-size: 30px;
-  }
-
-
-
-  .NavCart h1 {
-    margin-top: 0px;
-    text-align: left;
-  }
-
-  .Right {
-    background-color: rgb(0, 0, 0);
-    opacity: 0;
-    left: 600px;
-    top: 0px;
-    display: block;
-    padding: 0px;
-
-  }
-
-  .displayOn_Left {
-    opacity: 1;
-    left: 40%;
-    transition: 500ms;
-    height: 100%;
-  }
-
-  .Right:hover {
-    top: 0%;
-    padding: 0px;
-
-  }
-
-  .Right h1 {
-    text-align: right;
-    margin-right: 50px;
-    margin-top: 10px;
-    margin-bottom: 25px;
-  }
-
-  .RightMenu button {
-    width: 100%;
-    text-align: left;
-    height: 80px;
-    border: 0.1px solid black;
-    font-size: 20px;
-    background-color: black;
-    color: white;
-    cursor: pointer;
-  }
-
-  .RightMenu button:hover {
-    background-color: aliceblue;
-    color: black;
-  }
-
-
-  .motion_left {
-    transition: 500ms;
-    left: 40%;
-    margin-top: -3px;
-  }
-
-  .finish {
-    height: 100px;
-  }
-
-  .ListCart {
-    height: 100px;
-  }
-
-  .ListCart h2 {
-    font-size: 20px;
-    margin-top: 3%;
-  }
-
-
-  .displayOn {
-    display: block;
-    opacity: 1;
-    left: 0px;
-    transition: 500ms;
-    transform: translateX(0);
-  }
-
-  .OverallProductsPages {
-    display: block;
-    margin-top: 80px;
-  }
-
-
-  .ProductPages {
-    justify-content: center;
-
-    width: 100%;
-    margin-top: 10px;
-
-  }
-
-  .CartContainer {
-    display: none;
-  }
-
-  .CardLayout {
-    width: 40%;
-    padding: 10px;
-    height: 100%;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-
-  .CardLayout img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-  }
-
-  .HeaderContent {
-    margin-top: 1px;
-  }
-
-  .HeaderContent p {
-    font-size: 9px;
-  }
-
-  .HeaderContent h2 {
-    font-size: 130%;
-  }
-
-  .Footer {
-    gap: 2px;
-    padding: 0px;
-    margin-top: 0px;
-  }
-
-  .Footer span {
-    font-size: 70%;
-  }
-
-  .Footer button {
-    margin-left: 1px;
-    width: 50%;
-    font-size: 10px;
-  }
-
-  .LayoutListCart {
-    overflow: auto;
-    padding: 0px;
-    border-radius: 5px;
-  }
-
-
-
-
-
-  .SearchProduk {
-    margin: 0px;
-    display: flex;
-    margin-bottom: 30px;
-    justify-content: right;
-    position: static
-  }
-
-  .SearchProduk input {
-    height: 30px;
-    width: 97%;
-  }
-
-  .SearchProduk button {
-    display: none;
-  }
-
-
-  .overlay {
-    position: absolute;
-    height: 130%;
-    width: 90%;
-    left: 0px;
-    top: 0px;
-  }
-
-  .FormProduk {
-    left: 0px;
-    width: 86%;
-  }
-
-
-
-  .overlayBody {
-    display: block;
-  }
-
-  .componentOverlayForm {
-    display: block;
-    width: 100%;
-  }
-
-
-  .componentOverlayForm input {
-    width: 97%;
-
-  }
-
-  .Description textarea {
-    width: 98%;
-  }
-
-  .componentOverlayForm label {
-    font-size: 15px;
-  }
-
-  .componentOverlay img {
-    width: 100%;
-    margin-bottom: 0px;
-  }
-
-  .overlay form button {
-    margin-top: -10px;
-    border-radius: 5px;
-    font-size: 25px;
-    box-shadow: 1px 1px 1px 1px rgba(29, 29, 29, 0.466);
-  }
-
-  .ButtonOpenCart {
-    display: none;
-  }
-
-  .InfoProduct {
-    overflow-y: hidden;
-  }
-
-  .TotalPrice {
-    display: block;
-  }
-
-  .TitleMenu {
-    display: flex;
-    justify-content: center;
-    width: 95%;
-
-  }
-
-
-  .ProfilPagesLayout .TitleMenu h1 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    font-size: 25px;
-    margin-left: 0px;
-
-
-  }
-
-}
-
-@media only screen and (max-width: 410px) {
-
-
-  .CardLayout img {
-    height: 100px;
-    width: 350px
-  }
-
-  .CardLayout {
-    width: 40%;
-    padding: 10px;
-    height: 100%;
-  }
-
-  .CardLayout p {
-    margin-bottom: 0px;
-  }
-
-  .HeaderContent {
-    height: 100px
-  }
-
-  .FormProduk {
-    left: 0%;
-  }
-
-  .TitleMenu h1 {
-    margin-top: 10px;
-
-  }
 }
