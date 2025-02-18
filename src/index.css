@@ -654,9 +654,9 @@ body {
   }  
 
   .CardLayout {
-    width: 130px;
-    height: 250px;
-    
+    width: 140px;
+    height: 230px;
+    padding: 10px;
   }
 
   .CardImage img {
