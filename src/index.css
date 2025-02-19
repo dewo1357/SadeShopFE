@@ -1369,8 +1369,8 @@ h4 {
   }
 
   .FormChangeProfile img {
-    width: 70%;
-    height: 220px;
+    width: 240px;
+    height: 240px;
     border-radius: 150px;
     object-fit: cover;
   }
