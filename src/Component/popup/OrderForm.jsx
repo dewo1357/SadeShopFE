@@ -5,7 +5,7 @@ import Button from "../Element/Button/Button";
 import { API_URL } from "../../../config";
 const OrderForm = (props) => {
     const { product, active, totalPrice, setTotal, item, setTotalItem,
-         SetLoading2, popup2, setMotionLeft, MotionMenuCart } = props;
+        SetLoading2, popup2, setMotionLeft, MotionMenuCart } = props;
     const [Pcs, SetPcs] = useState(1);
     const [Index, SetIndex] = useState(0);
     const account = JSON.parse(localStorage.getItem('account'))
@@ -26,11 +26,11 @@ const OrderForm = (props) => {
             SellerID: product.SellerID,
         }
         try {
-            const response = await fetch(API_URL+"addToCart", {
+            const response = await fetch(API_URL + "addToCart", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization':  `Bearer ${account.acces_token}`,
+                    'Authorization': `Bearer ${account.acces_token}`,
                 },
                 body: JSON.stringify(data_baru)
             })
@@ -45,8 +45,8 @@ const OrderForm = (props) => {
             setTotalItem(item + Pcs)
             setTotal(totalPrice + product.price * Pcs);
             active(false);
-            
-            
+
+
         } catch (err) {
             console.log(err.message)
         }
@@ -67,7 +67,7 @@ const OrderForm = (props) => {
                 <Button ContentButton="✖" action={close}></Button>
                 <div className="container">
                     <div className="left">
-                        <img src={product ? "https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/gambarProducts/"+product.URLimages : null} alt="" />
+                        <img src={product ? "https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/gambarProducts/" + product.URLimages : null} alt="" />
                     </div>
                     <div className="right">
                         <div className="HeaderAndPrice">
@@ -87,7 +87,9 @@ const OrderForm = (props) => {
                                 </div>
                             </div>
                         </div>
-                        <p>{product ? product.content : null}</p>
+                        <div className="ContentProductForm">
+                            <p>{product ? product.content : null}</p>
+                        </div>
                         <div className="FooterOrderForm">
                             <div className="CategoryOption" >
                                 {product ? product.kind.map((item, index) => (
@@ -98,7 +100,7 @@ const OrderForm = (props) => {
                                     </span>))
                                     : null}
                             </div>
-                            <Button styling="btn" ContentButton="Add To Cart" action={AddToCart} disabled={product?product.stok[Index] <=0?true:false:""} ></Button>
+                            <Button styling="btn" ContentButton="Add To Cart" action={AddToCart} disabled={product ? product.stok[Index] <= 0 ? true : false : ""} ></Button>
                         </div>
                     </div>
                 </div>

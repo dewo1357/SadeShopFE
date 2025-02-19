@@ -1,13 +1,12 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
+
 import MyComponent from "./MyComponent"
 import HeaderMenu from "../Component/HeaderMenu"
-import InputFile from "../Component/FileForm/InputFile"
+
 import Label from "../Component/Element/Label/Label"
 import OrderForm from "../Component/popup/OrderForm"
 import { useState, useRef, useEffect } from "react"
 import CardProduct from "../Component/Card_Cart/CardLProduct"
-import SmartPhoneCartAndMenu from "../Component/SmartPhoneCartAndMenu/SmartPhoneCartAndMenu"
 import { useParams } from "react-router-dom"
 import { useSocket } from "../SocketProvider";
 import PopupNotification from "../Component/popup/PopupNotifCation"
@@ -15,9 +14,9 @@ import { Close, Refresh_Token, GetdataProdukUser, checkId } from "./manage";
 import Statesss from "./States"
 import { API_URL } from "../../config"
 
-const ProfilPages = (props) => {
-    const { visit, gambar } = props;
-    const { turnOnAddProduct, SetTurnOn,
+const ProfilPages = () => {
+ 
+    const { turnOnAddProduct,
         turnOnAddProduct2, SetTurnOn2,
         totalItem, setTotalItem,
         GrabProduk, SetGrabProduk,
@@ -81,7 +80,7 @@ const ProfilPages = (props) => {
     const [notifMessage, setNotifMessage] = useState(false)
     const IsVerified = async () => {
         try {
-            const response = await fetch(API_URL+"CheckAccount", {
+            const response = await fetch(API_URL + "CheckAccount", {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`
@@ -113,7 +112,6 @@ const ProfilPages = (props) => {
     const [addData, setAddData] = useState(true)
     const [isAccess, setAccess] = useState(false)
     useEffect(() => {
-
         try {
             setTimeout(async () => {
                 const get_Account = await checkId(idUser)
@@ -170,54 +168,44 @@ const ProfilPages = (props) => {
 
     const Build = useRef();
     const TurnOnForm = () => {
-        Build.current.style.visibility = !turnOnAddProduct ? 'visible' : 'hidden';
-        setTurnAdd(TurnAdd ? false : true)
-        setTimeout(() => {
-            SetTurnOn(turnOnAddProduct ? false : true)
-        }, 100)
-        location.href = "#"
+        /*
+        if (window.innerWidth > 768) {
+            Build.current.style.visibility = !turnOnAddProduct ? 'visible' : 'hidden';
+            setTurnAdd(TurnAdd ? false : true)
+            setTimeout(() => {
+                SetTurnOn(turnOnAddProduct ? false : true)
+            }, 100)
+            location.href = "#"
+        } else {
+            
+        }
+        */
+        location.href = `/SetProduct/?AddData=${true}`
+
     }
 
-    const Build2 = useRef();
-    const [title, setTitle] = useState('')
-    const ChangeTitle = (e) => {
-        setTitle(e.target.value)
-    }
+  
 
-    const [description, SetDescription] = useState('')
-    const ChangeDescription = (e) => {
-        SetDescription(e.target.value)
-    }
+  
 
-    const [bobot, Setbobot] = useState('')
-    const Changebobot = (e) => {
-        SetDescription(e.target.value)
-    }
 
-    const [id, setId] = useState('');
-    const [images, setImages] = useState(null);
-
-    const [price, SetPrice] = useState('')
-    const [Kindata, SetKind] = useState('')
-    const [stok, setStok] = useState('')
     const [turnEdit, setTurnEdit] = useState(false)
     const [TurnAdd, setTurnAdd] = useState(false)
     const TurnOnFormEdit = (id, Title, Kind, Prices, Stok_brg, script, gambar, bobot) => {
-        if (!turnOnAddProduct) {
-            setId(id)
-            SetPrice(Prices)
-            SetKind(Kind)
-            setStok(Stok_brg);
-            setTitle(Title)
-            SetDescription(script)
-            Setbobot(bobot)
-            setImages(gambar)
+        const ProductToEdit = {
+            id: id,
+            Name: Title,
+            Price: Prices,
+            Kind: Kind,
+            Stok: Stok_brg,
+            Content: script,
+            image: gambar,
+            bobot: bobot
         }
-        setTurnEdit(true)
-        Build.current.style.visibility = !turnOnAddProduct2 ? 'visible' : 'hidden';
-        setTimeout(() => {
-            SetTurnOn2(turnOnAddProduct2 ? false : true)
-        }, 100)
+        sessionStorage.setItem('ProductEdit', JSON.stringify(ProductToEdit))
+        location.href = "/SetProduct"
+
+
     }
     const CloseFormEdit = () => {
         console.log(turnOnAddProduct2)
@@ -252,7 +240,7 @@ const ProfilPages = (props) => {
             pass: e.target.pass.value
         })
         try {
-            const response = await fetch(API_URL+"VerifyAccount", {
+            const response = await fetch(API_URL + "VerifyAccount", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -287,7 +275,7 @@ const ProfilPages = (props) => {
         setFinnalMessage(false)
     }
 
-    const [ProcessChangeProfile,SetProcessChangeProfile] = useState(false)
+    const [ProcessChangeProfile, SetProcessChangeProfile] = useState(false)
     const UploadImageToAPI = async (e, file) => {
         setPesan("Foto Kamu Sedang Di Proses")
         SetProcessLoading(true)
@@ -296,7 +284,7 @@ const ProfilPages = (props) => {
         const files = new FormData()
         files.append('files', file);
         try {
-            const response = await fetch(API_URL+"ChangeImageProfile", {
+            const response = await fetch(API_URL + "ChangeImageProfile", {
                 method: "POST",
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`,
@@ -375,9 +363,7 @@ const ProfilPages = (props) => {
                     isAccess={isAccess}
                 >
                 </HeaderMenu>
-                <SmartPhoneCartAndMenu display={'none'} listCart={[]} index={0} DeleteCart={null}
-                    totalItem={null} totalPrice={null} active={null} selected={1}
-                    To1="/products" To2="/profil" To4="/" visit={isAccess ? false : true} gambar={gambar} />
+              
             </div>
             <div className="DetailLayoutProfil">
                 <div className="gambarProfil">
@@ -490,7 +476,7 @@ const ProfilPages = (props) => {
             </div>
 
             <div className={`afterProfil ${!isAccess ? "centerProfil" : ""}`} hidden={!isAccess || !verified ? true : false}>
-                <h1 style={{ marginTop: "50px" }} >PRODUCTS</h1>
+                <h1>PRODUCTS</h1>
                 <div className="AddProductButton" hidden={!isAccess || !verified ? true : false} >
                     <button onClick={TurnOnForm}  >➕</button>
                 </div>
@@ -540,51 +526,17 @@ const ProfilPages = (props) => {
                 </div>
             </div>
 
+
+
+
             <div ref={Build} className="overlay3" >
                 <div hidden={TurnAdd ? false : true} className={`FormProduk ${turnOnAddProduct ? "BuildFormProduk" : ""}`}>
                     <h1>Add Product</h1>
-                    <InputFile
-                        action={TurnOnForm}
-                        ContentButton="Add Product"
-                        addProduct={true}
-                        setAddData={setAddData}
-                        account={account}
-                        setPrice={SetPrice}
-                        setKind={SetKind}
-                        setStok={setStok}
-                        Filess={images}
-                        action_to_close={CloseFormEdit}
-                        setFinnalMessage2={setFinnalMessage2}
-                        SetProcessLoading={SetProcessLoading}
 
-                    />
                     <div className="CloseForm" ><button onClick={TurnOnForm}>✖</button></div>
                 </div>
                 <div hidden={turnEdit ? false : true} className={`FormProduk Formkedua ${turnOnAddProduct2 ? "BuildFormProduk    " : ""}`} >
                     <h1>Edit Product</h1>
-                    <InputFile
-                        idProduk={id}
-                        Title={title}
-                        Price={price}
-                        Stok={stok}
-                        Kind={Kindata}
-                        Description={description}
-                        setPrice={SetPrice}
-                        setKind={SetKind}
-                        setStok={setStok}
-                        changeTitle={ChangeTitle}
-                        changeDescription={ChangeDescription}
-                        Filess={images}
-                        ContentButton="Edit Product"
-                        addProduct={false}
-                        action_to_close={CloseFormEdit}
-                        setAddData={setAddData}
-                        account={account}
-                        bobot={bobot}
-                        Changebobot={Changebobot}
-                        setFinnalMessage2={setFinnalMessage2}
-                        SetProcessLoading={SetProcessLoading}
-                    />
                     <div className="CloseForm" >
                         <button onClick={CloseFormEdit}>✖</button>
                     </div>

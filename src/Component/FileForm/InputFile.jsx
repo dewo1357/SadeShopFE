@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
@@ -9,6 +9,7 @@ import Button from "../Element/Button/Button";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { API_URL } from "../../../config";
+import { UploadImageToAPI, PostDataProduk, EditMyProduk } from "../../pages/manage";
 
 
 const InputFile = (props) => {
@@ -36,12 +37,11 @@ const InputFile = (props) => {
     const [TempKindArray, SetKindArray] = useState(Kind)
     const [tempArray, setTempArray] = useState(Price)
     const [StokArray, setStokArray] = useState(Stok)
-
+    
 
 
 
     useEffect(() => {
-
         setTempArray(Price ? Price : [])
         SetKindArray(Kind ? Kind : [])
         setStokArray(Stok ? Stok : [])
@@ -55,8 +55,8 @@ const InputFile = (props) => {
     }, [Price], [Kind], [Stok])
 
 
-    useEffect(()=>{
-        
+    useEffect(() => {
+
     })
 
 
@@ -72,51 +72,7 @@ const InputFile = (props) => {
     //Add Image & Add Produk=====================================================================
     const [files, SetFile] = useState(null)
 
-    const PostDataProduk = async (data) => {
 
-        try {
-            const response = await fetch(API_URL+"AddProduct", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    'Authorization': `Bearer ${account.acces_token}`
-                },
-                body: JSON.stringify(data)
-            })
-
-
-            if (!response) {
-                throw new Error(response.messages)
-            }
-        } catch (error) {
-            throw new Error(error.messages)
-        }
-
-    }
-
-    const UploadImageToAPI = async (file) => {
-        const files = new FormData()
-        files.append('files', file);
-        try {
-            const response = await fetch(API_URL+"UploadImage", {
-                method: "POST",
-                headers: {
-                    'Authorization': `Bearer ${account.acces_token}`,
-                },
-                body: files,
-            })
-
-
-            if (!response) {
-                throw new Error(response.messages)
-            }
-            SetProcessLoading(false)
-
-        } catch (error) {
-            throw new Error(error.messages)
-        }
-
-    }
     const AddImage = async (e) => {
         e.preventDefault()
         SetProcessLoading(true)
@@ -132,6 +88,7 @@ const InputFile = (props) => {
             weight: e.target.Weight.value
         }
         await PostDataProduk(data);
+        SetProcessLoading(false)
         await UploadImageToAPI(files);
         setAddData(false)
         Reset(e)
@@ -139,26 +96,7 @@ const InputFile = (props) => {
 
     //Edit Produk=====================================================================
 
-    const EditProduk = async (idProduk, data) => {
-        try {
-            const endpoint = API_URL+`EditProduct/${idProduk}`
-            const response = await fetch(endpoint, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${account.acces_token}`
-                },
-                body: JSON.stringify(data),
-            })
-            if (!response) {
-                throw new Error("Gagal Mengedit Data")
-            }
-            setFinnalMessage2(false)
-        } catch (error) {
-            return
-        }
 
-    }
     const ChangeProduk = async (e) => {
         e.preventDefault();
         SetProcessLoading(true)
@@ -173,7 +111,7 @@ const InputFile = (props) => {
             weight: e.target.Weight.value
         }
 
-        await EditProduk(e.target.id.value, data);
+        await EditMyProduk(e.target.id.value, data, setFinnalMessage2);
         setAddData(false);
         if (imageFile) {
             await UploadImageToAPI(files)
@@ -182,7 +120,7 @@ const InputFile = (props) => {
         SetProcessLoading(false);
     }
 
-    const Reset = (e) => {
+    const Reset = () => {
         setImg(null);
         SetImageFile(null);
         action_to_close();
@@ -191,7 +129,7 @@ const InputFile = (props) => {
     const ActionToDeleteProduct = (id) => {
         const Deleteproduct = async () => {
             try {
-                const endpoint = API_URL+`DELETEProduct/${id}`
+                const endpoint = API_URL + `DELETEProduct/${id}`
                 const response = await fetch(endpoint, {
                     method: 'DELETE',
                     headers: {
@@ -204,7 +142,7 @@ const InputFile = (props) => {
                 console.log(response)
 
             } catch (err) {
-                return
+                console.log(err.message)
             }
         }
         Deleteproduct();
@@ -299,18 +237,7 @@ const InputFile = (props) => {
 
     return (
         <div>
-            <div ref={Build} style={{ zIndex: '1' }} className="Overlay2">
-                <div ref={Build2} style={{ zIndex: '1' }} className="ConfirmationDelete">
-                    <h1>Apakah Anda Yakin?</h1>
-                    <h2>⚠</h2>
-                    <div style={{ display: 'flex', justifyContent: "space-around", marginTop: "12%" }}>
-                        <div className="Cancel">
-                            <Button ContentButton="Batal" action={PopupDeleteProduk} ></Button>
-                        </div>
-                        <Button ContentButton="Yakin" action={() => { ActionToDeleteProduct(idProduk) }} ></Button>
-                    </div>
-                </div>
-            </div>
+
             <form action="" onSubmit={addProduct ? AddImage : ChangeProduk}>
                 <Label Content="Nama " />
                 <Input type="text" value={addProduct ? v4().toString() : idProduk} name="id" isHidden={true} ></Input>
@@ -322,10 +249,10 @@ const InputFile = (props) => {
                             <div hidden={Errorimg ? false : true} style={{ color: 'red', marginBottom: "0px" }}>
                                 <p style={{ fontSize: "10px", marginBottom: "0px" }}> {Errormessages ? "Ukuran Photo Terlalu Besar❗" : "Tipe Dokumen Tidak Sesuai❗"} </p>
                             </div>
-                            <label className="UploadImage" htmlFor={addProduct?"image":"EditFile"}>
-                                <img style={{ objectFit: "cover" }} src={addProduct?img:img?img:"https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/gambarProducts/" + Filess} width={"100px"}></img>
+                            <label className="UploadImage" htmlFor={addProduct ? "image" : "EditFile"}>
+                                <img style={{ objectFit: "cover" }} src={addProduct ? img : img ? img : "https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/gambarProducts/" + Filess} width={"100px"}></img>
                             </label>
-                            <input type="file" onChange={HandleInput}  id={addProduct?"image":"EditFile"} hidden/>
+                            <input type="file" onChange={HandleInput} id={addProduct ? "image" : "EditFile"} hidden />
                         </div>
                     </div>
                     <div className="CategoryAndPriceLayout">
@@ -335,7 +262,7 @@ const InputFile = (props) => {
                                 {ListCategory.map((item, index) => (
                                     <div key={index}>
                                         <Input type="text" placeholder="Category" max={15} value={addProduct ? null : TempKindArray[index]} name={item}
-                                            onChange={!addProduct ? (e) => Changevalue(index, e.target.value, Kind, setKind, SetKindArray) : (e) => { }}     ></Input>
+                                            onChange={!addProduct ? (e) => Changevalue(index, e.target.value, Kind, setKind, SetKindArray) : () => { }}     ></Input>
                                     </div>
                                 ))}
                             </div>
@@ -344,7 +271,7 @@ const InputFile = (props) => {
                                 {PriceList.map((items, index) => (
                                     <div key={index}>
                                         <Input type="number" placeholder="Price" value={addProduct === false ? tempArray[index] : null} name={items}
-                                            onChange={!addProduct ? (e) => Changevalue(index, e.target.value, Price, setPrice, setTempArray) : (e) => { }}></Input>
+                                            onChange={!addProduct ? (e) => Changevalue(index, e.target.value, Price, setPrice, setTempArray) : () => { }}></Input>
                                     </div>
                                 ))}
                             </div>
@@ -353,7 +280,7 @@ const InputFile = (props) => {
                                 {StokList.map((items, index) => (
                                     <div key={index}>
                                         <Input type="number" placeholder="Stok" value={addProduct === false ? StokArray[index] : null} name={items}
-                                            onChange={!addProduct ? (e) => Changevalue(index, e.target.value, Stok, setStok, setStokArray) : (e) => { }}></Input>
+                                            onChange={!addProduct ? (e) => Changevalue(index, e.target.value, Stok, setStok, setStokArray) : () => { }}></Input>
                                     </div>
                                 ))}
                             </div>
@@ -380,7 +307,20 @@ const InputFile = (props) => {
                     <Button ContentButton={ContentButton}></Button>
                 </div>
             </form>
+            <div ref={Build} style={{ zIndex: '1' }} className="popup">
+                <div ref={Build2} style={{ zIndex: '1' }} className="ConfirmationDelete">
+                    <h1>Apakah Anda Yakin?</h1>
+                    <h2>⚠</h2>
+                    <div style={{ display: 'flex', justifyContent:"space-between", marginTop: "12%" }}>
+                        <div className="Cancel">
+                            <Button styling="btn" ContentButton="Batal" action={PopupDeleteProduk} ></Button>
+                        </div>
+                        <Button styling="btn" ContentButton="Yakin" action={() => { ActionToDeleteProduct(idProduk) }} ></Button>
+                    </div>
+                </div>
+            </div>
         </div>
+
 
     )
 }

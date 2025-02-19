@@ -11,6 +11,7 @@ import Verify from './pages/Verify.jsx';
 import YourProduct from './pages/YourProduct.jsx';
 import MessagePages from './pages/MessagePages.jsx';
 import SettingPages from './pages/setting.jsx';
+import ActionProduct from './pages/AddAndSettingProduct.jsx';
 import { SocketProvider } from './SocketProvider.jsx';
 
 // eslint-disable-next-line no-unused-vars
@@ -18,6 +19,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import './index.css';
+
 
 
 
@@ -66,6 +68,10 @@ const router = createBrowserRouter([
   {
     path: "/products",
     element: <ProductPages />
+  },
+  {
+    path: "/SetProduct",
+    element: <ActionProduct/>
   },
   {
     path: "/profil/:idUser",

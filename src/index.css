@@ -14,7 +14,7 @@ body {
   box-shadow: 1px 1px 1px 1px rgb(175, 174, 174);
   border-radius: 10px;
   z-index: -1;
-  width: 100%;  
+  width: 100%;
 }
 
 /*CartPages*/
@@ -94,20 +94,7 @@ body {
   font-size: 30px;
 }
 
-.AddProductButton button {
-  height: 70px;
-  width: 70px;
-  border-radius: 100px;
-  border: 0px solid;
-  font-size: 30px;
-  cursor: pointer;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: slategray;
-  margin-top: 5px;
-}
+
 
 
 /*Header Menu|||||||||||||||||||||*/
@@ -134,9 +121,11 @@ body {
   transition: 100ms;
 }
 
+
+
 /*Header Menu - TitleMenu - Button Open Cart - UpdateButton*/
 @media only screen and (max-width: 1000px) {
-  .HeaderMenu  {
+  .HeaderMenu {
     display: none
   }
 
@@ -582,7 +571,7 @@ body {
 
 /*Card Product*/
 .HeaderContent h2 {
-  font-size: 30px;
+  font-size: 25px;
   margin: 0px;
   margin-bottom: 5px;
 }
@@ -608,6 +597,10 @@ body {
 /*Card Product*/
 .BodyCard {
   font-size: 12px;
+  width: 99%;
+  height: 50%;
+  overflow-wrap: anywhere;
+  overflow-y: hidden;
 }
 
 /*Card Product*/
@@ -618,7 +611,6 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-
 }
 
 /*Card Product*/
@@ -640,18 +632,18 @@ body {
 
 /*Product Pages, Card Product RESPONSIVE*/
 @media only screen and (max-width: 900px) {
-  
-  body{
+
+  body {
     margin: 0px;
   }
 
-  .SearchProduk button{
+  .SearchProduk button {
     display: none;
   }
-  
-  .ProductPages{
-    margin-top:10px;
-  }  
+
+  .ProductPages {
+    margin-top: 10px;
+  }
 
   .CardLayout {
     width: 140px;
@@ -662,20 +654,20 @@ body {
   .CardImage img {
     width: 100%;
     height: 100px;
-    
+
   }
 
   .HeaderContent {
     margin-top: 0px;
     height: 50px;
   }
-  
+
   .HeaderContent h2 {
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .HeaderContent p {
-    font-size: 10px;
+    font-size: 8px;
   }
 
   .Footer .Price {
@@ -683,7 +675,7 @@ body {
     font-size: 14px;
   }
 
-  .BodyCard{
+  .BodyCard {
     height: 30px;
     overflow-y: auto;
     overflow-y: hidden;
@@ -693,8 +685,8 @@ body {
     padding: 2px;
     align-items: center;
   }
-  
-  .FooterButton button {  
+
+  .FooterButton button {
     width: 100%;
     height: 30px;
     font-size: 10px;
@@ -819,6 +811,9 @@ h4 {
   left: 0;
   visibility: hidden;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .loading {
@@ -1111,9 +1106,7 @@ h4 {
 
 .PersonalDetail {
   height: 380px;
-
 }
-
 
 .ComponentPersonalDetail {
   display: flex;
@@ -1131,11 +1124,13 @@ h4 {
   margin-bottom: 20px;
 }
 
+/*Profil Pages*/
 .ProfilPagesLayout {
   width: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/*Profil Pages*/
 .ProfilPagesLayout h1 {
   font-size: 43px;
   margin-top: 10px;
@@ -1143,6 +1138,7 @@ h4 {
   text-align: left;
 }
 
+/*Profil Pages*/
 .DetailLayoutProfil {
   display: flex;
   justify-content: space-between;
@@ -1152,6 +1148,7 @@ h4 {
 
 }
 
+/*Profil Pages*/
 .BioData {
   width: 100%;
   display: block;
@@ -1159,16 +1156,19 @@ h4 {
   align-items: center;
 }
 
+/*Profil Pages*/
 .BioData h1 {
   font-size: 500%;
   margin-top: 4%;
   text-align: left;
 }
 
+/*Profil Pages*/
 .BioData p {
   font-size: 20px;
 }
 
+/*Profil Pages*/
 .BioData button {
   background-color: black;
   height: 40px;
@@ -1182,11 +1182,13 @@ h4 {
 
 }
 
+/*Profil Pages*/
 .BioData button:hover {
   background-color: aqua;
   color: black;
 }
 
+/*Profil Pages*/
 .gambarProfil {
   justify-content: center;
   width: 100%;
@@ -1194,10 +1196,12 @@ h4 {
   overflow-wrap: anywhere;
 }
 
+/*Profil Pages*/
 .gambarProfil input {
   display: none;
 }
 
+/*Profil Pages*/
 .ContainerPictProfile {
   display: flex;
   justify-content: center;
@@ -1205,6 +1209,7 @@ h4 {
 
 }
 
+/*Profil Pages*/
 .images {
   height: 320px;
   width: 320px;
@@ -1212,28 +1217,7 @@ h4 {
   padding: -5px;
 }
 
-@media only screen and (max-width: 900px) {
-  .DetailLayoutProfil{
-    display: block;
-  }
-
-  .BioData{
-    text-align: center;
-  }
-  
-  .BioData h1 {
-    font-size: 300%;
-    text-align: center;
-  }
-
-  .images {
-    height: 320px;
-    width: 320px;
-    background-size: cover;
-    padding: -5px;
-  }
-}
-
+/*Profil Pages*/
 .LabelOverLay {
   background-color: rgba(250, 247, 247, 0.938);
   height: 100%;
@@ -1248,53 +1232,217 @@ h4 {
   opacity: 0;
 }
 
+/*Profil Pages*/
 .LabelOverLay label {
   font-size: 20px;
   cursor: pointer;
   color: white;
 }
 
+/*Profil Pages*/
 .LabelOverLay img {
   width: 30%
 }
 
+/*Profil Pages*/
 .ContainerPictProfile:hover .LabelOverLay {
   opacity: 1;
 }
 
-
+/*Profil Pages*/
 .afterProfil {
   margin-top: 15px;
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
 }
 
+/*Profil Pages*/
+.afterProfil h1 {
+  margin: 0px;
+}
+
+/*Profil Pages*/
 .centerProfil {
   display: block;
   text-align: center;
 }
 
+/*Profil Pages*/
 .centerProfil h1 {
   text-align: center;
 }
 
+/*Profil Pages*/
+.AddProductButton button {
+  height: 70px;
+  width: 70px;
+  border-radius: 100px;
+  border: 0px solid;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: slategray;
+  margin-top: 5px;
+}
+
+/*Profil Pages*/
 .AddProductButton button:hover {
   background-color: rgb(53, 51, 51);
 }
 
-.Overlay2 {
-  background-color: rgba(0, 0, 0, 0.178);
-  position: fixed;
-  top: 0px;
-  height: 100%;
-  width: 100%;
-  left: 0px;
-  visibility: hidden;
+/*Profil Pages*/
+.FormChangeProfile {
+  background-color: rgb(255, 255, 255);
+  width: 450px;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 2
+}
+
+/*Profil Pages*/
+.FormChangeProfile span {
+  position: absolute;
+  left: 66%;
+}
+
+/*Profil Pages*/
+.FormChangeProfile img {
+  width: 50%;
+  height: 230px;
+  border-radius: 150px;
+  object-fit: cover;
+}
+
+/*Profil Pages*/
+.FormChangeProfile button {
+  width: 300px;
+  height: 30px;
+  margin-top: 10px;
+}
+
+
+
+/*Profil Pages*/
+@media only screen and (max-width: 900px) {
+  .DetailLayoutProfil {
+    display: block;
+  }
+
+  .BioData {
+    text-align: center;
+  }
+
+  .BioData h1 {
+    font-size: 200%;
+    text-align: center;
+  }
+
+  .images {
+    height: 250px;
+    width: 250px;
+  }
+
+  .afterProfil h1 {
+    font-size: 25px;
+  }
+
+  .AddProductButton button {
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+  }
+
+
 
 }
 
+/*Profil Pages*/
+@media only screen and (max-width: 600px) {
+  .FormChangeProfile {
+    width: 90%;
+  }
+
+  .FormChangeProfile img {
+    width: 70%;
+    height: 75%;
+    border-radius: 150px;
+    object-fit: cover;
+  }
+}
+
+
+.HeaderAddProductForSmartphone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.HeaderAddProductForSmartphone button {
+  background-color: rgb(2, 2, 2);
+  color: white;
+}
+
+.FormAddProdukSmartPhone {
+  padding: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.FormAddProdukSmartPhone input {
+  height: 40px;
+  width: 100%;
+  background-color: rgb(207, 207, 207);
+  border: 0px solid;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  padding: 2px;
+}
+
+.Description textarea {
+  width: 99%;
+
+}
+
+.Description input {
+  height: 40px;
+}
+
+.v2 span {
+  font-weight: bold;
+}
+
+.v2 input {
+  margin-top: 10px;
+  height: 30px;
+}
+
+.FormAddProdukSmartPhone label {
+  font-weight: bold;
+}
+
+
+.FormAddProdukSmartPhone textarea {
+  height: 100px;
+  width: 100%;
+  background-color: rgb(207, 207, 207);
+  border: 0px solid;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.FormAddProdukSmartPhone button {
+  background-color: rgb(95, 95, 95);
+  width: 100%;
+  color: white;
+}
 
 
 .CloseForm button:hover {
@@ -1302,22 +1450,24 @@ h4 {
 }
 
 
-
 .FormProduk {
   position: absolute;
   top: 3%;
   background-color: white;
-  left: 25%;
+  left: 10%;
   padding: 30px;
   border-radius: 10px;
   font-weight: bold;
   opacity: 0;
   transition: 100ms;
-  width: 52%;
+  width: 80%;
   color: rgb(0, 0, 0);
   font-size: 15px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.082);
 }
+
+
+
 
 .Formkedua {
   opacity: 0;
@@ -1328,15 +1478,37 @@ h4 {
   opacity: 1;
 }
 
-.Description textarea {
-  width: 99%;
 
-}
 
 .ProdukImage {
-  height: 260px;
   display: grid;
   grid-template-columns: 50% 50%;
+ 
+}
+
+
+.UploadImage img {
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+
+  margin-bottom: 20px;
+}
+
+.UploadImage img:hover {
+  opacity: 0.1;
+}
+
+.UploadImage {
+  width: 90%;
+  height: 370px;
+  padding-top: 10px ;
+  padding-right: 10px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  
+  cursor: pointer;
 }
 
 .UploadImage {
@@ -1346,32 +1518,18 @@ h4 {
   background-position: center;
 }
 
-.UploadImage img {
-  width: 300px;
-  height: 200px;
-  margin-top: 10px;
-}
-
-.UploadImage img:hover {
-  opacity: 0.1;
-}
-
-.UploadImage {
-  width: 300px;
-  height: 200px;
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-
 
 .CategoryAndPriceLayout {
   justify-content: center;
   margin-bottom: 10px;
 }
+
+.CategoryAndPriceLayout input{
+  width: 99%;
+}
+
+
+
 
 .CategoryAndPriceLayout .buttonspan {
   text-align: center;
@@ -1380,35 +1538,17 @@ h4 {
   padding: 5px;
   display: flex;
   justify-content: center;
+  align-items: center;
   border-radius: 10px;
   color: white;
   cursor: pointer;
   block-size: none;
-
+  font-weight: bold;
 }
 
-.CategoryAndPriceLayout .buttonspan:hover {
-  background-color: rgb(2, 137, 255);
-  color: black;
+.buttonspan {
+  height: 30px;
 }
-
-::selection {
-  background-color: rgba(0, 255, 255, 0);
-  outline: none;
-}
-
-.CategoryAndPrice {
-  display: flex;
-  gap: 10px;
-  padding: 10px;
-  margin: 0px;
-  height: 192px;
-  overflow-y: auto;
-
-}
-
-
-
 
 .FormProduk form {
   width: 100%;
@@ -1426,7 +1566,39 @@ h4 {
   height: 25px;
   margin-top: 0px;
   margin-bottom: 10px;
+
 }
+
+
+
+.CategoryAndPriceLayout .buttonspan:hover {
+  background-color: rgb(2, 137, 255);
+  color: black;
+}
+
+::selection {
+  background-color: rgba(0, 255, 255, 0);
+  outline: none;
+}
+
+.CategoryAndPrice {
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+  margin: 0px;
+  height: 192px;
+  overflow-y: auto;
+}
+
+
+
+
+
+
+.CategoryAndPrice input {
+  width: 90%;
+}
+
 
 .FormProduk input[type='file'] {
   margin-bottom: 20px;
@@ -1451,6 +1623,46 @@ h4 {
   height: 40px;
 }
 
+/*ConfirmDelete Popups*/
+.ConfirmationDelete {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  top: 30%;
+  left: 35%;
+  text-align: center;
+  width: 30%;
+  padding: 15px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.5s, translate 0.5s;
+}
+
+/*ConfirmDelete Popups*/
+.ConfirmationDelete h2 {
+  font-size: 70px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+
+/*ConfirmDelete Popups*/
+.ConfirmationDelete button {
+  background-color: black;
+  color: white;
+  width: 200px
+}
+
+/*ConfirmDelete Popups*/
+.Cancel button {
+  background-color: red;
+  width: 200px
+}
+
+/*ConfirmDelete Popups*/
+.ConfirmationDelete button:hover {
+  background-color: rgb(78, 78, 78);
+}
+
+
 
 .CloseForm button:hover {
   background-color: rgb(141, 141, 141);
@@ -1469,6 +1681,42 @@ h4 {
   background-color: transparent;
   cursor: pointer;
 }
+
+
+
+@media only screen and (max-width: 900px) {
+  .ProdukImage {
+    display: block;
+    height: auto;
+  }
+
+  .CategoryAndPrice input {
+    width: 95%;
+  }
+
+  .Description textarea {
+    width: 99%;
+
+  }
+
+  .ConfirmationDelete {
+    width: 50%
+  }
+
+  /*ConfirmDelete Popups*/
+  .ConfirmationDelete button {
+    background-color: black;
+    color: white;
+    width: 100px
+  }
+
+  /*ConfirmDelete Popups*/
+  .Cancel button {
+    background-color: red;
+    width: 100px
+  }
+}
+
 
 .InfoProductLayout {
   background-color: aquamarine;
@@ -1556,6 +1804,11 @@ h4 {
   background-color: rgb(210, 210, 210);
 }
 
+.ContentProductForm {
+  overflow-wrap: anywhere;
+  margin-right: 10px;
+}
+
 .FooterOrderForm {
   display: flex;
   flex-wrap: wrap;
@@ -1595,8 +1848,9 @@ h4 {
 
 .ButtonDelete {
   background-color: rgb(3, 3, 3);
-  margin-bottom: 10px;
-  margin-top: 0px;
+  margin-bottom: 18px;
+  margin-left: 10px;
+  margin-top: 10px;
   padding: 4px;
   height: 12%;
   width: 23px;
@@ -1664,45 +1918,6 @@ h4 {
   background-color: rgb(77, 73, 77);
 }
 
-.ConfirmationDelete {
-  background-color: white;
-  position: absolute;
-  top: 30%;
-  left: 35%;
-  text-align: center;
-  width: 30%;
-  padding: 15px;
-  border-radius: 20px;
-  opacity: 0;
-  transition: opacity 0.5s, translate 0.5s;
-}
-
-.ConfirmationDelete h2 {
-  font-size: 70px;
-  margin-bottom: 0px;
-  margin-top: 10px;
-}
-
-.ConfirmationDelete button {
-  background-color: black;
-  color: white;
-  width: 100px;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 15px;
-  border: 0px solid;
-  cursor: pointer;
-  text-align: center;
-}
-
-.Cancel button {
-  background-color: red;
-}
-
-.ConfirmationDelete button:hover {
-  background-color: rgb(78, 78, 78);
-
-}
 
 .Kedua {
   display: none;
@@ -2300,31 +2515,6 @@ h4 {
 
 
 
-.FormChangeProfile {
-  background-color: rgb(255, 255, 255);
-  width: 35%;
-  padding: 10px;
-  border-radius: 10px;
-  z-index: 2
-}
-
-.FormChangeProfile span {
-  position: absolute;
-  left: 66%;
-}
-
-.FormChangeProfile img {
-  width: 50%;
-  height: 230px;
-  border-radius: 150px;
-  object-fit: cover;
-}
-
-.FormChangeProfile button {
-  width: 300px;
-  height: 30px;
-  margin-top: 10px;
-}
 
 .ConfirmBackToCart {
   transition: 1000ms;

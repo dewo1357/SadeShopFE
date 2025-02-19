@@ -1,6 +1,77 @@
 /* eslint-disable react-refresh/only-export-components */
 import { API_URL } from "../../config";
 
+const PostDataProduk = async (data) => {
+    const account = JSON.parse(localStorage.getItem('account'))
+    try {
+        const response = await fetch(API_URL+"AddProduct", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${account.acces_token}`
+            },
+            body: JSON.stringify(data)
+        })
+
+
+        if (!response) {
+            throw new Error(response.messages)
+        }
+    } catch (error) {
+        throw new Error(error.messages)
+    }
+
+}
+
+const UploadImageToAPI = async (file) => {
+    const account = JSON.parse(localStorage.getItem('account'))
+    const files = new FormData()
+    files.append('files', file);
+    try {
+        const response = await fetch(API_URL+"UploadImage", {
+            method: "POST",
+            headers: {
+                'Authorization': `Bearer ${account.acces_token}`,
+            },
+            body: files,
+        })
+
+
+        if (!response) {
+            throw new Error(response.messages)
+        }
+        
+
+    } catch (error) {
+        throw new Error(error.messages)
+    }
+
+}
+
+const EditMyProduk = async (idProduk, data,setFinnalMessage2=false) => {
+    const account = JSON.parse(localStorage.getItem('account'))
+    try {
+        const endpoint = API_URL+`EditProduct/${idProduk}`
+        const response = await fetch(endpoint, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${account.acces_token}`
+            },
+            body: JSON.stringify(data),
+        })
+        if (!response) {
+            throw new Error("Gagal Mengedit Data")
+        }
+        if(setFinnalMessage2){
+            setFinnalMessage2(false)
+        }
+    } catch (error) {
+        console.log(error.message)
+    }
+
+}
+
 
 const process = async (e, SetLoading2, SetProcessLoading) => {
     SetProcessLoading(true)
@@ -276,21 +347,7 @@ const GetdataProdukUser = async (username) => {
 
 }
 
-const EditProduk = async (data, idProduk) => {
-    try {
-        const endpoint = API_URL+`EditProduct/${idProduk}`
-        const response = await fetch(endpoint, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-        })
-        if (!response) {
-            throw new Error("Gagal Mengedit Data")
-        }
-    } catch (error) {
-        console.log(error.messages)
-    }
-}
+
 
 const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage, username) => {
     console.log(username.acces_token)
@@ -375,6 +432,7 @@ const checkId = async (username) => {
 export {
     active, MotionMenuCart, DeleteCart, SearchCard, Close,
     ClosePopup, FinishAndClosePoopup, process,
-    RightOn, Active_Nav, GetData, GetdataProdukUser, EditProduk,
-    Get_Cart, Refresh_Token, ActionToDeleteCheckoutCart, checkId
+    RightOn, Active_Nav, GetData, GetdataProdukUser,
+    Get_Cart, Refresh_Token, ActionToDeleteCheckoutCart, 
+    checkId,PostDataProduk,UploadImageToAPI,EditMyProduk
 }
