@@ -31,6 +31,7 @@ const FormLogin = () => {
             setNotification(true)
             setUsername(param.get('username'))
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     useEffect(() => {

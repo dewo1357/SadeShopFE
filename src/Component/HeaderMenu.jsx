@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import Button from "./Element/Button/Button"
-import { Refresh_Token } from "../pages/manage";
+import { getAcc, Refresh_Token } from "../pages/manage";
 import { API_URL } from "../../config";
 
 
@@ -27,7 +27,7 @@ const HeaderMenu = (props) => {
     }, [socket])
 
     const IsVerified = async () => {
-        const account = JSON.parse(localStorage.getItem("account"))
+        const account = getAcc()
         try {
             const response = await fetch(API_URL + "CheckAccount", {
                 method: 'GET',
@@ -58,7 +58,7 @@ const HeaderMenu = (props) => {
 
     const SureForLogout = async () => {
         setTimeout(() => {
-            const account = JSON.parse(localStorage.getItem('account'))
+            const account = getAcc()
             let username = account.username
             socket.emit('Reset', username)
             localStorage.removeItem('account');

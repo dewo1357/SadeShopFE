@@ -2,13 +2,13 @@ import { useState, useRef } from "react"
 import Button from "../Component/Element/Button/Button"
 import Input from "../Component/Element/Input/Input"
 import { useSocket } from "../SocketProvider"
-import { Refresh_Token } from "./manage"
+import { Refresh_Token,getAcc } from "./manage"
 import { API_URL } from "../../config"
 
 const SettingPages = () => {
     const socket = useSocket();
 
-    const account = JSON.parse(localStorage.getItem('account'))
+    const account = useState(getAcc())
     const [active, setActive] = useState(Array(4).fill(false))
     const [checkIndex, setCheckIndex] = useState(null)
     const Confirm = useRef();

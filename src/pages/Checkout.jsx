@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 
 import { useEffect } from "react";
 import { useState } from "react";
 import Label from "../Component/Element/Label/Label";
 import Statesss from "./States";
-import { Refresh_Token, ActionToDeleteCheckoutCart } from "./manage"
+import { Refresh_Token, ActionToDeleteCheckoutCart, getAcc } from "./manage"
 import { useRef } from "react";
 import { useSocket } from "../SocketProvider";
 import { API_URL } from "../../config";
@@ -11,7 +12,7 @@ import { API_URL } from "../../config";
 
 const CheckOut = () => {
     const [CartCheckout, SetCartCheckout] = useState([])
-    const account = JSON.parse(localStorage.getItem('account'))
+    const [account,SetAccount] = useState(getAcc())
     const [loading, SetLoading] = useState(true);
     const [SubtotalProductPrice, SetSubTotalProdukPrice] = useState(0)
     const [subTotalCost, setSubTotalCost] = useState(0)

@@ -10,7 +10,7 @@ import CardProduct from "../Component/Card_Cart/CardLProduct"
 import { useParams } from "react-router-dom"
 import { useSocket } from "../SocketProvider";
 import PopupNotification from "../Component/popup/PopupNotifCation"
-import { Close, Refresh_Token, GetdataProdukUser, checkId } from "./manage";
+import { Close, Refresh_Token, GetdataProdukUser, checkId,getAcc } from "./manage";
 import Statesss from "./States"
 import { API_URL } from "../../config"
 
@@ -32,7 +32,7 @@ const ProfilPages = () => {
     const [GenreData, SetGenreData] = useState([])
     const [ProcessMap, setProcessMap] = useState(false);
     const [LoadingMap, setLoadingMap] = useState(false)
-    const account = JSON.parse(localStorage.getItem('account'))
+    const [account,setAccount] = useState(getAcc())
 
 
     const [dataAddress, setDataAaddress] = useState({

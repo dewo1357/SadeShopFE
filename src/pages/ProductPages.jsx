@@ -7,7 +7,7 @@ import Search from "../Component/Search";
 import SmartPhoneCartAndMenu from "../Component/SmartPhoneCartAndMenu/SmartPhoneCartAndMenu";
 import HeaderMenu from "../Component/HeaderMenu";
 import OrderForm from "../Component/popup/OrderForm";
-import { active, MotionMenuCart, DeleteCart, Close, SearchCard, GetData, Get_Cart } from "./manage";
+import { active, MotionMenuCart, DeleteCart, Close, SearchCard, GetData, Get_Cart,getAcc } from "./manage";
 import Statesss from "./States";
 import Button from "../Component/Element/Button/Button";
 import { useSocket } from "../SocketProvider";
@@ -30,7 +30,8 @@ const ProductPages = () => {
     //popups
     const popup2 = useRef(null)
 
-    const account = JSON.parse(localStorage.getItem('account'))
+    
+    let [account,setAccount] = useState(false)
     const Session_DataProduk = sessionStorage.getItem('ProductMaster');
 
     const [popupConfirm, setpopupconfirm] = useState(false)
@@ -67,7 +68,8 @@ const ProductPages = () => {
     const [notifMessage, setNotifMessage] = useState(false)
     const ConfirmBack = useRef();
     useEffect(() => {
-        if (!account.isRegist) {
+        setAccount(getAcc())
+        if (account && !account.isRegist) {
             if (socket) {
                 socket.emit("Register", {
                     username: account.username,
@@ -81,7 +83,7 @@ const ProductPages = () => {
         if (Loading2) {
             console.log("menjalankan")
             Get_data();
-            Get_Cart(SetListCart, setSumProcess, setNotifMessage, account);
+            Get_Cart(SetListCart, setSumProcess, setNotifMessage);
             SetLoading2(false)
         }
     }, [Loading2, socket]);

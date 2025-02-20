@@ -2,9 +2,9 @@
 import { API_URL } from "../../config";
 
 const PostDataProduk = async (data) => {
-    const account = JSON.parse(localStorage.getItem('account'))
-    try {
-        const response = await fetch(API_URL+"AddProduct", {
+    try{
+    const account = getAcc()
+        const response = await fetch(API_URL + "AddProduct", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -24,11 +24,11 @@ const PostDataProduk = async (data) => {
 }
 
 const UploadImageToAPI = async (file) => {
-    const account = JSON.parse(localStorage.getItem('account'))
+    const account = getAcc()
     const files = new FormData()
     files.append('files', file);
     try {
-        const response = await fetch(API_URL+"UploadImage", {
+        const response = await fetch(API_URL + "UploadImage", {
             method: "POST",
             headers: {
                 'Authorization': `Bearer ${account.acces_token}`,
@@ -40,7 +40,7 @@ const UploadImageToAPI = async (file) => {
         if (!response) {
             throw new Error(response.messages)
         }
-        
+
 
     } catch (error) {
         throw new Error(error.messages)
@@ -48,10 +48,10 @@ const UploadImageToAPI = async (file) => {
 
 }
 
-const EditMyProduk = async (idProduk, data,setFinnalMessage2=false) => {
-    const account = JSON.parse(localStorage.getItem('account'))
+const EditMyProduk = async (idProduk, data, setFinnalMessage2 = false) => {
+    const account = getAcc()
     try {
-        const endpoint = API_URL+`EditProduct/${idProduk}`
+        const endpoint = API_URL + `EditProduct/${idProduk}`
         const response = await fetch(endpoint, {
             method: 'PUT',
             headers: {
@@ -63,7 +63,7 @@ const EditMyProduk = async (idProduk, data,setFinnalMessage2=false) => {
         if (!response) {
             throw new Error("Gagal Mengedit Data")
         }
-        if(setFinnalMessage2){
+        if (setFinnalMessage2) {
             setFinnalMessage2(false)
         }
     } catch (error) {
@@ -75,7 +75,7 @@ const EditMyProduk = async (idProduk, data,setFinnalMessage2=false) => {
 
 const process = async (e, SetLoading2, SetProcessLoading) => {
     SetProcessLoading(true)
-    const account = JSON.parse(localStorage.getItem("account"))
+    const account = getAcc()
     e.preventDefault();
     const nama = e.target.nama.value;
     const courier = e.target.courier.value;
@@ -97,7 +97,7 @@ const process = async (e, SetLoading2, SetProcessLoading) => {
     };
 
     try {
-        const response = await fetch(API_URL+"CheckOut", {
+        const response = await fetch(API_URL + "CheckOut", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -181,15 +181,15 @@ const FinishAndClosePoopup = async (popup, listCart, setVisible, SetVisibleForm,
 }
 
 const MotionMenuCart = (motionLeft, setMotionLeft) => {
-    setMotionLeft(motionLeft ?false:true)
-       
+    setMotionLeft(motionLeft ? false : true)
+
 }
 
 const DeleteCart = async (x, setTotal, setTotalItem, totalPrice, totalItem, SetLoading2) => {
-    const account = JSON.parse(localStorage.getItem('account'))
+    const account = getAcc()
     console.log(account.acces_token)
     try {
-        const endpoint = API_URL+`hapusKeranjang/${x}`
+        const endpoint = API_URL + `hapusKeranjang/${x}`
         const response = await fetch(endpoint, {
             method: 'DELETE',
             headers: {
@@ -258,11 +258,20 @@ const Active_Nav = (IsOn, setNav) => {
 
 
 const Refresh_Token = async (socket) => {
-  
-    let account = JSON.parse(localStorage.getItem('account'))
-    socket.emit('Reset',account.username)
+
+    let account = () => {
+        try {
+            const acc = getAcc()
+            return acc
+        } catch (err) {
+            localStorage.removeItem('account')
+            location.href = "/"
+            console.log(err.message)
+        }
+    }
+    socket.emit('Reset', account.username)
     try {
-        const response = await fetch(API_URL+'Get_Acces', {
+        const response = await fetch(API_URL + 'Get_Acces', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -276,6 +285,8 @@ const Refresh_Token = async (socket) => {
         }
         const result = await response.json()
         if (response.status === 404) {
+            localStorage.removeItem('account')
+            location.href = "/"
             return 404
         }
         console.log(result)
@@ -283,7 +294,7 @@ const Refresh_Token = async (socket) => {
         const username = result.username
         account = { ...account, username, acces_token }
         localStorage.setItem('account', JSON.stringify(account))
-        socket.emit('Regist',account.username)
+        socket.emit('Regist', account.username)
 
         //reset Chace
         sessionStorage.removeItem('ProductMaster')
@@ -292,9 +303,9 @@ const Refresh_Token = async (socket) => {
     }
 }
 
-const GetData = async (username,socket) => {
+const GetData = async (username, socket) => {
     try {
-        const response = await fetch(API_URL+'MasterData', {
+        const response = await fetch(API_URL + 'MasterData', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${username}`
@@ -323,7 +334,7 @@ const GetData = async (username,socket) => {
 
 const GetdataProdukUser = async (username) => {
     try {
-        const endpoint = API_URL+`GetProductSeller`;
+        const endpoint = API_URL + `GetProductSeller`;
         const response = await fetch(endpoint, {
             headers: {
                 'Authorization': `Bearer ${username}`
@@ -346,17 +357,18 @@ const GetdataProdukUser = async (username) => {
 
 
 
-const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage, username) => {
-    console.log(username.acces_token)
+const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage) => {
+    const account = getAcc();
     try {
-        const endpoint = API_URL+`GetCart`
+        const endpoint = API_URL + `GetCart`
         const response = await fetch(endpoint, {
             method: 'GET',
-            headers: { 'Authorization': `Bearer ${username.acces_token}` }
+            headers: { 'Authorization': `Bearer ${account.acces_token}` }
         });
         if (!response) {
             throw new Error("GAGAL MENDAPATKAN CART")
         }
+       
         let result = await response.json()
         if (result.data) {
             console.log(result)
@@ -368,13 +380,14 @@ const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage, username) =
 
     } catch (err) {
         console.log(err.message)
+        location.href = "/"
     }
 }
 
 const ActionToDeleteCheckoutCart = async (from = "cart") => {
-    const account = JSON.parse(localStorage.getItem("account"))
+    const account = getAcc()
     try {
-        const response = await fetch(API_URL+"ActionToDeleteCheckout", {
+        const response = await fetch(API_URL + "ActionToDeleteCheckout", {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${account.acces_token}`
@@ -398,11 +411,22 @@ const ActionToDeleteCheckoutCart = async (from = "cart") => {
     }
 }
 
-const checkId = async (username,socket) => {
-    console.log(username)
-    const account = JSON.parse(localStorage.getItem('account'))
+const getAcc = () => {
     try {
-        const endpoint = API_URL+`GetDataAccountByUsername/${username}`
+        const acc = JSON.parse(localStorage.getItem('account'))
+        return acc
+    } catch (err) {
+        localStorage.removeItem('account')
+        console.log(err.message)
+        location.href = "/"
+    }
+}
+
+const checkId = async (username, socket) => {
+    console.log(socket)
+    const account = getAcc()
+    try {
+        const endpoint = API_URL + `GetDataAccountByUsername/${username}`
         const response = await fetch(endpoint, {
             method: 'GET',
             headers: {
@@ -430,6 +454,6 @@ export {
     active, MotionMenuCart, DeleteCart, SearchCard, Close,
     ClosePopup, FinishAndClosePoopup, process,
     RightOn, Active_Nav, GetData, GetdataProdukUser,
-    Get_Cart, Refresh_Token, ActionToDeleteCheckoutCart, 
-    checkId,PostDataProduk,UploadImageToAPI,EditMyProduk
+    Get_Cart, Refresh_Token, ActionToDeleteCheckoutCart,
+    checkId, PostDataProduk, UploadImageToAPI, EditMyProduk, getAcc
 }

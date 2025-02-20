@@ -1,15 +1,16 @@
+/* eslint-disable no-unused-vars */
 import Button from "../Component/Element/Button/Button"
 import Label from "../Component/Element/Label/Label"
 import Input from "../Component/Element/Input/Input"
 import { useParams } from "react-router-dom"
 import { useState, useEffect, useRef } from "react"
 import { v4 } from "uuid"
-import { UploadImageToAPI, PostDataProduk, EditMyProduk } from "./manage"
+import { UploadImageToAPI, PostDataProduk, EditMyProduk, getAcc } from "./manage"
 import { API_URL } from "../../config"
 
 const AddDataProductForSmartPhone = () => {
     const addProduct = useParams();
-    const account = JSON.parse(localStorage.getItem('account'))
+    const [account,setAccount] = useState(getAcc())
     const [ListCategory, SetListCategory] = useState(['Category']);
     const [PriceList, SetPriceList] = useState(['Price']);
     const [StokList, SetStokList] = useState(['Stok']);

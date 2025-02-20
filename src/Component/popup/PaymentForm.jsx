@@ -5,13 +5,13 @@ import { useEffect } from 'react';
 import Input from '../Element/Input/Input';
 import Label from '../Element/Label/Label';
 import { useState } from 'react';
+import { getAcc } from '../../pages/manage';
 
 
 const FormPayment = (props) => {
     const { setProcessMap, address, seAddress, LoadingMap, setLoadingMap } = props
-    const account = JSON.parse(localStorage.getItem('account'))
+    const [account,setAccount] = useState(getAcc())
     const [province, set_province] = useState([]);
-
 
     
     const [update, setUpdate] = useState(false)

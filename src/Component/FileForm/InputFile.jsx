@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
@@ -9,7 +10,7 @@ import Button from "../Element/Button/Button";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { API_URL } from "../../../config";
-import { UploadImageToAPI, PostDataProduk, EditMyProduk } from "../../pages/manage";
+import { UploadImageToAPI, PostDataProduk, EditMyProduk, getAcc } from "../../pages/manage";
 
 
 const InputFile = (props) => {
@@ -23,7 +24,7 @@ const InputFile = (props) => {
     const [Errormessages, SetErrorMessages] = useState(false);
 
 
-    const account = JSON.parse(localStorage.getItem('account'));
+    const [account,SetAccount] = useState(getAcc())
 
 
     const [ListCategory, SetListCategory] = useState(['Price']);

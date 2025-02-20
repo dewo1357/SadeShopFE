@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 import { useEffect } from "react";
 import Button from "../Component/Element/Button/Button"
 import Input from "../Component/Element/Input/Input"
-import { Refresh_Token } from "./manage";
+import { getAcc, Refresh_Token } from "./manage";
 import { useState } from "react"
 import { useSocket } from "../SocketProvider";
 import { API_URL } from "../../config";
@@ -10,7 +11,7 @@ const InformationOrder = () => {
     const [indexButton, setIndex] = useState(0);
     const [Loading, setLoading] = useState(false);
     const [data, setData] = useState([])
-    const account = JSON.parse(localStorage.getItem("account"))
+    const [account,setAccount] = useState(getAcc())
 
     const [pictBuild,setPictBuild] = useState(false)
     const getData = async () => {

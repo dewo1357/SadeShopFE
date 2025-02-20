@@ -8,7 +8,16 @@ const OrderForm = (props) => {
         SetLoading2, popup2, setMotionLeft, MotionMenuCart } = props;
     const [Pcs, SetPcs] = useState(1);
     const [Index, SetIndex] = useState(0);
-    const account = JSON.parse(localStorage.getItem('account'))
+    const account = () => {
+        try {
+            const acc = JSON.parse(localStorage.getItem('account'))
+            return acc
+        } catch (err) {
+            localStorage.removeItem('account')
+            location.href="/";
+            console.log(err.message)
+        }
+    }
 
     const close = () => {
         console.log()

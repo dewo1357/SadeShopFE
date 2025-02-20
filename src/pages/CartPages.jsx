@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 import { useEffect, useRef } from "react";
 import ListCart from "../Component/Card_Cart/ListCart";
@@ -5,7 +6,7 @@ import { useState } from "react";
 import Statesss from "./States";
 import CallPopupOrderAndPayment from "../Component/CallPopupOrderAndPayment";
 import MyComponent from "./MyComponent";
-import { active, DeleteCart, ClosePopup, FinishAndClosePoopup, process, Refresh_Token, ActionToDeleteCheckoutCart } from "./manage";
+import { active, DeleteCart, ClosePopup, FinishAndClosePoopup, process, Refresh_Token, ActionToDeleteCheckoutCart, getAcc } from "./manage";
 import { useSocket } from "../SocketProvider";
 import { API_URL } from "../../config";
 import Button from "../Component/Element/Button/Button";
@@ -25,8 +26,7 @@ const CartPages = () => {
 
 
     const [dataCart, setDataCart] = useState([]);
-    const account = JSON.parse(localStorage.getItem('account'));
-    console.log(account.username)
+    const [account,setAccount] = useState(getAcc())
     const [ArrayCheck, setArrayCheck] = useState([]);
     const [ProcessMap, setProcessMap] = useState(false);
     const [Loading2, SetLoading2] = useState(true)

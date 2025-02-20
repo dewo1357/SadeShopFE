@@ -4,7 +4,7 @@
 import { useEffect } from "react";
 import { useState } from "react"
 import { useParams } from "react-router-dom"
-import { checkId, Refresh_Token } from "./manage";
+import { checkId, Refresh_Token,getAcc } from "./manage";
 import { useRef } from "react";
 import { useSocket } from "../SocketProvider";
 import PopupNotification from "../Component/popup/PopupNotifCation";
@@ -17,7 +17,7 @@ const Mesage = (props) => {
     const { username } = useParams();
     const [getMyAccount, setMyAccount] = useState(false);
     const [MyRoomChat, SetMyRoomChat] = useState([]);
-    const account = JSON.parse(localStorage.getItem('account'));
+    const [account,setAccount] = useState(getAcc())
     const [MyListChat, setMyListChat] = useState(false);
     const [process, setProcess] = useState(true)
     const [index, setIndex] = useState(null)
@@ -94,7 +94,7 @@ const Mesage = (props) => {
         if (StartChat && processChat) {
             setTimeout(async () => {
                 if (StartChat) {
-                    const GetAccount = await checkId(username);
+                    const GetAccount = await checkId();
                     if (GetAccount) {
                         setMyAccount(GetAccount.account);
                     }
@@ -254,7 +254,7 @@ const Mesage = (props) => {
 
     const sendInformationAccount = () => {
         socket.emit('Send', {
-            data: JSON.parse(localStorage.getItem('account')),
+            data: getAcc()
         })
         setnotificationSeller(false)
         ConfirmBack.current.style.visibility = 'hidden'

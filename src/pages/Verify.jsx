@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { API_URL } from "../../config";
+import { getAcc } from "./manage";
 
 const Verify = () => {
     const { token } = useParams();
@@ -12,7 +13,7 @@ const Verify = () => {
 
     const checkedToken = async () => {
         try {
-            const account = JSON.parse(localStorage.getItem('account'))
+            const account = getAcc()
             const response = await fetch(API_URL+"CheckedToken", {
                 method: 'POST',
                 headers: { "Content-Type": 'application/json' ,

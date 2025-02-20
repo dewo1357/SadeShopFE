@@ -1,15 +1,16 @@
+/* eslint-disable no-unused-vars */
 
 /* eslint-disable react/prop-types */
 
 import { useState, useEffect, useRef } from "react";
-import { ActionToDeleteCheckoutCart } from "../../pages/manage";
+import { ActionToDeleteCheckoutCart,getAcc } from "../../pages/manage";
 import Button from "../Element/Button/Button";
 import { API_URL } from "../../../config";
 
 const PopupNotification = (props) => {
     const { socket, popupConfirm, popupConfirm2, setMessage, setpopupconfirm
     } = props
-    const account = JSON.parse(localStorage.getItem('account'))
+    
     const ConfirmBack = useRef();
 
     const [Acces, setAcces] = useState(false)
@@ -17,7 +18,7 @@ const PopupNotification = (props) => {
 
     const sendInformationAccount = () => {
         socket.emit('Send', {
-            data: JSON.parse(localStorage.getItem('account')),
+            data:getAcc(),
         })
         setnotificationSeller(false)
         ConfirmBack.current.style.visibility = 'hidden'
@@ -29,12 +30,13 @@ const PopupNotification = (props) => {
     const [Loading, setLoading] = useState(false)
     const [Notif, notifMessage] = useState(null)
     const [finish, SetFinish] = useState(false)
+    const [account,setAccount] = useState(getAcc())
     useEffect(() => {
-        const account = JSON.parse(localStorage.getItem('account'))
         if (account.new_user == true) {
             ConfirmBack.current.style.visibility = "visible";
             setPassOn(true)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [PassOn])
 
     useEffect(() => {
@@ -46,7 +48,6 @@ const PopupNotification = (props) => {
         }
 
         if (socket) {
-            // eslint-disable-next-line no-unused-vars
             socket.on("AskAcces", (message) => {
                 setAcces(true)
                 if (ConfirmBack.current) {
@@ -60,7 +61,6 @@ const PopupNotification = (props) => {
 
 
             socket.on('Notification', (Message) => {
-
                 setMessage(Message)
                 setnotificationSeller(true)
                 console.log("masuk")
@@ -203,7 +203,7 @@ const PopupNotification = (props) => {
                         Apakah Anda Ingin Melanjutkan Proses Checkout?. <br /> Jika Tidak, Maka Data Checkout Sebelumnya Akan Dihapus Secara Permanen.
                     </p>
                     <div className="ConfirmBackToCartAction">
-                        <Button styling="btn Cancel" action={() => { ActionToDeleteCheckoutCart("products") }} ContentButton={"Delete"}></Button> 
+                        <Button styling="btn Cancel" action={() => { ActionToDeleteCheckoutCart("products") }} ContentButton={"Delete"}></Button>
                         <Button styling="btn" action={ActionToChekout} ContentButton={"Lanjutkan Process"}></Button>
                     </div>
                 </div>
