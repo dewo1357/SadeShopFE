@@ -96,7 +96,7 @@ const InformationOrder = () => {
                     </div>
                 </div>
                 <div style={{ display: "flex", justifyContent: "center" }} hidden={pictBuild ? false : true}>
-                    <img src="/Images/search.png" alt="" width="400px" hidden={pictBuild ? false : true} />
+                <img src="/Images/search.png" alt="" width={innerWidth < 900 ? "300px" : "400px"} hidden={pictBuild?false:true} />
                 </div>
                 <div className="ContentProductOrderInformation">
                     {Loading ?

@@ -98,17 +98,19 @@ const HeaderMenu = (props) => {
                 <div id="ProfileHead">
                     <h1>SadeShop.com</h1>
                     <div>
-                        <div  className={`updateButton SmartPhoneMenu ${(selected === -1) ? "selectedMenu" : ""}`} >
+                        <div className={`updateButton SmartPhoneMenu ${(selected === -1) ? "selectedMenu" : ""}`} >
+                            <Button styling="btn" ContentButton={nMessage || notifMessage ? <img src="/Images/chat-bubble.png" width="25"></img> : <img src="/Images/chat-bubble.png" width="25"></img>} action={toMessage}></Button>
                             <Button styling="btn" action={() => { setBuildUpdate(BuildUpdate ? false : true) }}
                                 ContentButton={nMessage || notifMessage ? <img src="/Images/bell.png" width="25"></img> : <img src="/Images/bell.png" width="25"></img>}>
                             </Button>
                         </div>
                         <div style={{
-                            height:BuildUpdate?"150px":"0px",
-                            opacity : BuildUpdate?"1":"0"}} className={`updateOptions updateOptionsSmartPhone ${BuildUpdate ? "BuildUpdateOption" : ""}`}>
+                            height: BuildUpdate ? "150px" : "0px",
+                            opacity: BuildUpdate ? "1" : "0"
+                        }} className={`updateOptions updateOptionsSmartPhone ${BuildUpdate ? "BuildUpdateOption" : ""}`}>
                             <Button styling="btn" ContentButton={`Order Process`} action={() => { location.href = "/InformationOrder" }}></Button>
                             <Button styling="btn" ContentButton={`Product Order (${SumProcess ? SumProcess : JSON.parse(sessionStorage.getItem('SumProcess'))})`} action={toPageProductOrder}></Button>
-                            <Button styling="btn" ContentButton={nMessage || notifMessage ? `Messages 🔴` : `Messages`} action={toMessage}></Button>
+
                         </div>
                     </div>
                 </div>
@@ -156,7 +158,7 @@ const HeaderMenu = (props) => {
                     <div className={(selected === 4) ? "selectedMenu" : ""}>
                         <Button styling="btn" action={() => { route(4, (To4) ? To4 : "") }} ContentButton="Logout">   </Button>
                     </div>
-                   
+
 
                 </div>
             </div>

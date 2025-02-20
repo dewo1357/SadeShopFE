@@ -2,13 +2,13 @@ import { useState, useRef } from "react"
 import Button from "../Component/Element/Button/Button"
 import Input from "../Component/Element/Input/Input"
 import { useSocket } from "../SocketProvider"
-import { Refresh_Token,getAcc } from "./manage"
+import { Refresh_Token, getAcc } from "./manage"
 import { API_URL } from "../../config"
 
 const SettingPages = () => {
     const socket = useSocket();
 
-    const account = useState(getAcc())
+    const [account,setAccount] = useState(getAcc())
     const [active, setActive] = useState(Array(4).fill(false))
     const [checkIndex, setCheckIndex] = useState(null)
     const Confirm = useRef();
@@ -29,7 +29,7 @@ const SettingPages = () => {
     const [isFinish, seFinish] = useState(false)
 
     //Message
-    const [Message,setMessage] = useState(null)
+    const [Message, setMessage] = useState(null)
 
 
     const ShowUpForm = (indexActive = 'menu') => {
@@ -49,7 +49,7 @@ const SettingPages = () => {
         }
     }
 
-    const StartToSetting = async (TokenSetting=false,ValuePasss=false) => {
+    const StartToSetting = async (TokenSetting = false, ValuePasss = false) => {
         console.log(category)
         let endpoint = null
         //Kondisi ini adalah nama url endpoint yang diberikan ketika sudah dijalankan
@@ -60,11 +60,11 @@ const SettingPages = () => {
         } else if (category === "AddBio") {
             endpoint = "AddBio"
         }
-         else {
+        else {
             endpoint = "ChangePass"
         }
         try {
-            const response = await fetch(API_URL+`${endpoint}`, {
+            const response = await fetch(API_URL + `${endpoint}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ const SettingPages = () => {
                 throw new Error("Failed To Change Name")
             }
             const result = await response.json();
-            if(result.acces_token){
+            if (result.acces_token) {
                 socket.emit('Reset', account.username)
             }
             setMessage(result.Message)
@@ -88,11 +88,13 @@ const SettingPages = () => {
     }
 
     const CheckPass = async (event) => {
+        console.log(account)
+        console.log(account.username)
         event.preventDefault();
         setLoading(true)
         const pass = event.target.pass.value
         try {
-            const response = await fetch(API_URL+`CheckPass`, {
+            const response = await fetch(API_URL + `CheckPass`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -108,7 +110,7 @@ const SettingPages = () => {
             if (result.PassCorrect) {
                 //Jika Pass Benar maka setting user akan di proses.
                 StartToSetting(result.TokenSetting);
-            }else{
+            } else {
                 setMessage(result.Message)
                 seFinish(true)
             }
@@ -128,7 +130,7 @@ const SettingPages = () => {
     const StartToChangePass = async (event) => {
         event.preventDefault();
         setLoading(true)
-        await StartToSetting(false,{
+        await StartToSetting(false, {
             oldPassword: event.target.oldPassword.value,
             newPassword: event.target.newPassword.value,
             newPassword2: event.target.newPassword.value
@@ -150,34 +152,25 @@ const SettingPages = () => {
         Confirm.current.style.visibility = "visible"
     }
 
-    const Reset = async ()=>{
+    const Reset = async () => {
         await Refresh_Token(socket);
         SetCategory(null)
         setValue(null)
         setLoading(false)
         seFinish(false)
-        Confirm.current.style.visibility='hidden'
-        location.href="SettingPages"
-        
+        Confirm.current.style.visibility = 'hidden'
+        location.href = "SettingPages"
+
     }
 
 
     return (
-        <div>
-            <div className="headSetting">
-                <a href="/products"><h1>Back</h1></a>
-                <h1>SadeShop.com</h1>
-            </div>
+        <>   
+        <div className="headSetting">
+            <a href="/products"><h1>Back</h1></a>
+            <h1>SadeShop.com</h1>
+        </div >
             <div className="SettingContainer">
-                <div>
-                    <div className="SettingMenu" >
-                        <div className="SettingMenu HeaderSetting">
-                            <h2>Menu Setting</h2>
-                        </div>
-                        <Button action={() => ShowUpForm('SecurityAccount')} ContentButton="Security Account"></Button>
-                        <Button ContentButton="Location Account"></Button>
-                    </div>
-                </div>
                 <div className="PrevieSetting">
                     <h1>
                         Profile Setting
@@ -271,15 +264,14 @@ const SettingPages = () => {
                         </div> :
                         <div>
                             <h2>{isFinish ? `${Message}` : "Kata Sandi Anda Salah"}</h2>
-                            <img  src="/Images/Smilee.png" alt="" width="200" />
+                            <img src="/Images/Smilee.png" alt="" width="200" />
                             <Button action={Reset} ContentButton="Oke"></Button>
                         </div>
                     }
 
                 </div>
             </div>
-
-        </div >
+        </ >
     )
 }
 

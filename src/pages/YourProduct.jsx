@@ -117,7 +117,7 @@ const InformationOrder = () => {
                 </div>
                 
                 <div style={{display:"flex",justifyContent:"center"}} hidden={pictBuild?false:true}>
-                    <img src="/Images/search.png" alt="" width="400px" hidden={pictBuild?false:true} />
+                    <img src="/Images/search.png" alt="" width={innerWidth < 900 ? "300px" : "400px"} hidden={pictBuild?false:true} />
                 </div>
                 <div className="ContentProductOrderInformation" hidden={data.length===0?true:false} >
                     {Loading ?
@@ -125,7 +125,7 @@ const InformationOrder = () => {
                             <div key={index} className="ContanerProductList" >
                                 <div className="SellerAndCancelButton">
                                     <h3>{item.Customer}</h3>
-                                    <h3>
+                                    <h3 style={{textAlign:"right"}}>
                                         {item.province}, {item.city} {item.road} {item.postalCode} | {item.transaction_id}
                                     </h3>
                                 </div>
