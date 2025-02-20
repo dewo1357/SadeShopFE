@@ -10,7 +10,7 @@ import CardProduct from "../Component/Card_Cart/CardLProduct"
 import { useParams } from "react-router-dom"
 import { useSocket } from "../SocketProvider";
 import PopupNotification from "../Component/popup/PopupNotifCation"
-import { Close, Refresh_Token, GetdataProdukUser, checkId,getAcc } from "./manage";
+import { Close, Refresh_Token, GetdataProdukUser, checkId, getAcc } from "./manage";
 import Statesss from "./States"
 import { API_URL } from "../../config"
 
@@ -32,7 +32,7 @@ const ProfilPages = () => {
     const [GenreData, SetGenreData] = useState([])
     const [ProcessMap, setProcessMap] = useState(false);
     const [LoadingMap, setLoadingMap] = useState(false)
-    const [account,setAccount] = useState(getAcc())
+    const [account, setAccount] = useState(getAcc())
 
 
     const [dataAddress, setDataAaddress] = useState({
@@ -114,7 +114,7 @@ const ProfilPages = () => {
     useEffect(() => {
         try {
             setTimeout(async () => {
-                const get_Account = await checkId(idUser,socket)
+                const get_Account = await checkId(idUser, socket)
                 console.log("masuk akun")
                 setMyAccount(get_Account.account)
                 SetGenreData(get_Account.product);
@@ -123,6 +123,8 @@ const ProfilPages = () => {
                         IsVerified();
                         setAccess(true);
                     }
+                } else {
+                    location.href = "/products"
                 }
             }, 1000)
 
@@ -346,27 +348,29 @@ const ProfilPages = () => {
                 popupConfirm2={popupConfirm2}
                 setMessage={setMessage}
             />
-            <div className="TitleMenu">
-                <h1>SadeShop.com</h1>
-                <HeaderMenu
-                    selected={isAccess ? 1 : ""}
-                    To2={`/profil/${account.username}`}
-                    To1="/products" To4="/" To3="/SettingPages"
-                    SumProcess={SumProcess}
-                    notifMessage={notifMessage}
-                    socket={socket}
-                    isAccess={isAccess}
-                >
-                </HeaderMenu>
 
-            </div>
+
+            <HeaderMenu
+                selected={isAccess ? 1 : ""}
+                To2={`/profil/${account.username}`}
+                To1="/products"
+                To4="/"
+                To3="/SettingPages"
+                To5="/cart"
+                SumProcess={SumProcess}
+                notifMessage={notifMessage}
+                socket={socket}
+                isAccess={isAccess}
+            >
+            </HeaderMenu>
+
             <div className="DetailLayoutProfil">
                 <div className="gambarProfil">
                     <div className="ContainerPictProfile images" style={{
-                            backgroundImage: `url(https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${getMyAccount ? getMyAccount.image : ""})`,
-                            backgroundPosition  : "center",
-                            borderRadius : "360px"
-                        }}>
+                        backgroundImage: `url(https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${getMyAccount ? getMyAccount.image : ""})`,
+                        backgroundPosition: "center",
+                        borderRadius: "360px"
+                    }}>
                         <div className={!isAccess ? "" : "LabelOverLay"} >
                             <div>
                                 <label onClick={() => { FormChangeProfile.current.style.visibility = "visible" }}><img src="/Images/settings-svgrepo-com.svg" alt="" hidden={!isAccess ? true : false} /></label>

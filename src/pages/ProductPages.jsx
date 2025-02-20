@@ -45,11 +45,11 @@ const ProductPages = () => {
         SetGrabProduk(data);
     }
     const Get_data = async () => {
-        if(Session_DataProduk!==null && Array.isArray(JSON.parse(Session_DataProduk))){
+        if (Session_DataProduk !== null && Array.isArray(JSON.parse(Session_DataProduk))) {
             setGenre(JSON.parse(Session_DataProduk))
             SetLoading(false)
             console.log(JSON.parse(Session_DataProduk))
-        }else{
+        } else {
             const data = await GetData(account.acces_token);
             if (data) {
                 console.log("data diambil dari API")
@@ -80,7 +80,7 @@ const ProductPages = () => {
         if (Loading2 && socket) {
             console.log("menjalankan")
             Get_data();
-            Get_Cart(SetListCart, setSumProcess, setNotifMessage,socket);
+            Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket);
             SetLoading2(false)
         }
     }, [Loading2, socket]);
@@ -100,26 +100,23 @@ const ProductPages = () => {
                         setMessage={setMessage}
                     />
                     <div>
-                        <div className="TitleMenu">
-                            <h1>SadeShop.com</h1>
-                            <HeaderMenu
-                                socket={socket}
-                                selected={0}
-                                To2={`/profil/${account.username}`}
-                                To4="/"
-                                To3="/SettingPages"
-                                motionLeft={motionLeft}
-                                MotionMenuCart={MotionMenuCart}
-                                setMotionLeft={setMotionLeft}
-                                ConfirmBack={ConfirmBack}
-                                setpopupconfirm2={setpopupconfirm2}
-                                RightOn={RightOn}
-                                SumProcess={SumProcess}
-                                notifMessage={notifMessage}
-                            >
-                            </HeaderMenu>
-
-                        </div>
+                        <HeaderMenu
+                            socket={socket}
+                            selected={0}
+                            To2={`/profil/${account.username}`}
+                            To4="/"
+                            To3="/SettingPages"
+                            To5="/cart"
+                            motionLeft={motionLeft}
+                            MotionMenuCart={MotionMenuCart}
+                            setMotionLeft={setMotionLeft}
+                            ConfirmBack={ConfirmBack}
+                            setpopupconfirm2={setpopupconfirm2}
+                            RightOn={RightOn}
+                            SumProcess={SumProcess}
+                            notifMessage={notifMessage}
+                        >
+                        </HeaderMenu>
                         <Search type="text" placeholder="Search Produk" action={(e) => SearchCard(e, GenreData, setGenre)} />
                         <div hidden={motionLeft ? false : true} className={` ${motionLeft ? "ProductPages motion_on" : "ProductPages"}`}>
                             {!Loading ? GenreData.map((item) => (

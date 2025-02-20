@@ -6,7 +6,7 @@ import { API_URL } from "../../config";
 
 
 const HeaderMenu = (props) => {
-    const { selected, To1, To2, To3, To4, motionLeft, MotionMenuCart,
+    const { selected, To1, To2, To3, To4, To5, motionLeft, MotionMenuCart,
         setMotionLeft, ConfirmBack, setpopupconfirm2, SumProcess, socket, notifMessage } = props;
     const [BuildUpdate, setBuildUpdate] = useState(false);
 
@@ -94,35 +94,72 @@ const HeaderMenu = (props) => {
 
     return (
         <>
-            <div className="HeaderMenu">
-                <div className={`updateButton ${(selected === -1) ? "selectedMenu" : ""}`} >
-                    <Button styling="btn" action={() => { setBuildUpdate(BuildUpdate ? false : true) }} ContentButton={nMessage || notifMessage ? `Update 🔴` : `Update`}></Button>
+            <div className="TitleMenu">
+                <div id="ProfileHead">
+                    <h1>SadeShop.com</h1>
+                    <div>
+                        <div  className={`updateButton SmartPhoneMenu ${(selected === -1) ? "selectedMenu" : ""}`} >
+                            <Button styling="btn" action={() => { setBuildUpdate(BuildUpdate ? false : true) }}
+                                ContentButton={nMessage || notifMessage ? <img src="/Images/bell.png" width="25"></img> : <img src="/Images/bell.png" width="25"></img>}>
+                            </Button>
+                        </div>
+                        <div style={{
+                            height:BuildUpdate?"150px":"0px",
+                            opacity : BuildUpdate?"1":"0"}} className={`updateOptions updateOptionsSmartPhone ${BuildUpdate ? "BuildUpdateOption" : ""}`}>
+                            <Button styling="btn" ContentButton={`Order Process`} action={() => { location.href = "/InformationOrder" }}></Button>
+                            <Button styling="btn" ContentButton={`Product Order (${SumProcess ? SumProcess : JSON.parse(sessionStorage.getItem('SumProcess'))})`} action={toPageProductOrder}></Button>
+                            <Button styling="btn" ContentButton={nMessage || notifMessage ? `Messages 🔴` : `Messages`} action={toMessage}></Button>
+                        </div>
+                    </div>
                 </div>
-                <div className={`updateOptions ${BuildUpdate ? "BuildUpdateOption" : ""} ${motionLeft ? "motionOptions" : ""}`}>
-                    <Button styling="btn" ContentButton={`Order Process`} action={() => { location.href = "/InformationOrder" }}></Button>
-                    <Button styling="btn" ContentButton={`Product Order (${SumProcess ? SumProcess : JSON.parse(sessionStorage.getItem('SumProcess'))})`} action={toPageProductOrder}></Button>
-                    <Button styling="btn" ContentButton={nMessage || notifMessage ? `Messages 🔴` : `Messages`} action={toMessage}></Button>
+                <div className="HeaderMenu">
+                    <div className={`updateButton ${(selected === -1) ? "selectedMenu" : ""}`} >
+                        <Button styling="btn" action={() => { setBuildUpdate(BuildUpdate ? false : true) }} ContentButton={nMessage || notifMessage ? `Update 🔴` : `Update`}></Button>
+                    </div>
+                    <div className={`updateOptions ${BuildUpdate ? "BuildUpdateOption" : ""} ${motionLeft ? "motionOptions" : ""}`}>
+                        <Button styling="btn" ContentButton={`Order Process`} action={() => { location.href = "/InformationOrder" }}></Button>
+                        <Button styling="btn" ContentButton={`Product Order (${SumProcess ? SumProcess : JSON.parse(sessionStorage.getItem('SumProcess'))})`} action={toPageProductOrder}></Button>
+                        <Button styling="btn" ContentButton={nMessage || notifMessage ? `Messages 🔴` : `Messages`} action={toMessage}></Button>
+                    </div>
+                    <div className={(selected === 0) ? "selectedMenu" : ""} >
+                        <Button styling="btn" action={() => { route(0, (To1) ? To1 : "") }} ContentButton="Shop"></Button>
+                    </div>
+                    <div className={(selected === 1) ? "selectedMenu" : ""}>
+                        <Button styling="btn" action={() => { route(1, (To2) ? To2 : "") }} ContentButton="Profile"></Button>
+                    </div>
+                    <div className={(selected === 2) ? "selectedMenu" : ""}>
+                        <Button styling="btn" action={() => { route(2, (To3) ? To3 : "") }} ContentButton="About"></Button>
+                    </div>
+                    <div className={(selected === 3) ? "selectedMenu" : ""}>
+                        <Button styling="btn" action={() => { route(3, (To3) ? To3 : "") }} ContentButton="Setting">   </Button>
+                    </div>
+                    <div className={(selected === 4) ? "selectedMenu" : ""}>
+                        <Button styling="btn" action={() => { route(4, (To4) ? To4 : "") }} ContentButton="Logout">   </Button>
+                    </div>
+                    <div className={`ButtonOpenCart ${motionLeft ? "OpenMotion" : ""}`}>
+                        <button hidden={(selected === 1 ? true : false)} onClick={() => { MotionMenuCart(motionLeft, setMotionLeft) }}> <img src={"./Images/icons8-cart-64.png"} alt="" /> </button>
+                    </div>
                 </div>
-                <div className={(selected === 0) ? "selectedMenu" : ""} >
-                    <Button styling="btn" action={() => { route(0, (To1) ? To1 : "") }} ContentButton="Shop"></Button>
-                </div>
-                <div className={(selected === 1) ? "selectedMenu" : ""}>
-                    <Button styling="btn" action={() => { route(1, (To2) ? To2 : "") }} ContentButton="Profile"></Button>
-                </div>
-                <div className={(selected === 2) ? "selectedMenu" : ""}>
-                    <Button styling="btn" action={() => { route(2, (To3) ? To3 : "") }} ContentButton="About"></Button>
-                </div>
-                <div className={(selected === 3) ? "selectedMenu" : ""}>
-                    <Button styling="btn" action={() => { route(3, (To3) ? To3 : "") }} ContentButton="Setting">   </Button>
-                </div>
-                <div className={(selected === 4) ? "selectedMenu" : ""}>
-                    <Button styling="btn" action={() => { route(4, (To4) ? To4 : "") }} ContentButton="Logout">   </Button>
-                </div>
-                <div className={`ButtonOpenCart ${motionLeft ? "OpenMotion" : ""}`}>
-                    <button hidden={(selected === 1 ? true : false)} onClick={() => { MotionMenuCart(motionLeft, setMotionLeft) }}> <img src={"./Images/icons8-cart-64.png"} alt="" /> </button>
+                <div className="SmartPhoneMenu">
+                    <div className={(selected === 0) ? "selectedMenu" : ""} >
+                        <Button styling="btn" action={() => { route(0, (To1) ? To1 : "") }} ContentButton="Shop"></Button>
+                    </div>
+                    <div className={(selected === 1) ? "selectedMenu" : ""}>
+                        <Button styling="btn" action={() => { route(1, (To2) ? To2 : "") }} ContentButton="Profile"></Button>
+                    </div>
+                    <div className={(selected === 2) ? "selectedMenu" : ""}>
+                        <Button styling="btn" action={() => { route(5, (To5) ? To5 : "") }} ContentButton="Cart"></Button>
+                    </div>
+                    <div className={(selected === 3) ? "selectedMenu" : ""}>
+                        <Button styling="btn" action={() => { route(3, (To3) ? To3 : "") }} ContentButton="Setting">   </Button>
+                    </div>
+                    <div className={(selected === 4) ? "selectedMenu" : ""}>
+                        <Button styling="btn" action={() => { route(4, (To4) ? To4 : "") }} ContentButton="Logout">   </Button>
+                    </div>
+                   
+
                 </div>
             </div>
-
             <div onClick={HandleToClose} id="PopupToLogout" className={`loading ${ProcessToLogout ? "loadingOn" : ""}`}>
                 <div className={`ConfirmBackToCart Logout ${ProcessToLogout ? "ConfirmBackToCartOn" : ""}`} hidden={ProcessToLogout ? false : true}>
                     <p>

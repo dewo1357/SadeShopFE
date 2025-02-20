@@ -42,6 +42,95 @@ body {
   cursor: pointer;
 }
 
+
+
+
+/*Header Menu|||||||||||||||||||||*/
+.HeaderMenu {
+  display: flex;
+  justify-content: space-between;
+  gap: 2%;
+  padding: 2%;
+  max-width: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.SmartPhoneMenu{
+  display: none;
+}
+
+
+/*Header Menu*/
+.HeaderMenu button:hover {
+  background-color: rgb(90, 90, 90);
+  color: white;
+}
+
+/*Header Menu*/
+.selectedMenu button {
+  background-color: rgb(64, 63, 64);
+  color: white;
+  transition: 100ms;
+}
+
+
+.Kedua {
+  display: none;
+}
+
+.Menu_Kedua {
+  display: none;
+}
+
+.updateOptions {
+  position: absolute;
+  top: 80px;
+  left: 320px;
+  height: 0px;
+  overflow: auto;
+  width: 180px;
+  background-color: rgba(2, 2, 2, 0.514);
+  transition: 1000ms;
+  overflow-y: hidden;
+  z-index: 1;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.151);
+}
+
+.updateOptionsSmartPhone {
+  display: none;
+}
+
+.motionOptions {
+  top: 85px;
+  left: 290px;
+}
+
+
+
+.updateOptions button {
+  width: 100%;
+  height: 37px;
+  border-radius: 0px;
+  background-color: rgba(253, 253, 253, 0.76);
+  color: rgb(2, 2, 2);
+  border: 1px solid black;
+  z-index: 1;
+  font-size: medium;
+  text-align: left;
+}
+
+.updateButton:hover+.updateOptions {
+  height: 200px;
+  transition: 400ms;
+  overflow-y: hidden;
+}
+
+.updateOptions:hover {
+  height: 200px;
+}
+
+
 /*Button CartOn HeaderMenu*/
 .ButtonOpenCart {
   margin: 0px;
@@ -95,43 +184,16 @@ body {
 }
 
 
-
-
-/*Header Menu|||||||||||||||||||||*/
-.HeaderMenu {
-  display: flex;
-  justify-content: space-between;
-  gap: 2%;
-  padding: 2%;
-  max-width: 100%;
-  width: 100%;
-  border-radius: 10px;
-}
-
-/*Header Menu*/
-.HeaderMenu button:hover {
-  background-color: rgb(90, 90, 90);
-  color: white;
-}
-
-/*Header Menu*/
-.selectedMenu button {
-  background-color: rgb(64, 63, 64);
-  color: white;
-  transition: 100ms;
-}
-
-
-
 /*Header Menu - TitleMenu - Button Open Cart - UpdateButton*/
 @media only screen and (max-width: 1000px) {
+  
   .HeaderMenu {
     display: none
   }
 
-  .ButtonOpenCart {
-    display: none
-  }
+  
+
+  
 
   .TitleMenu {
     background-color: rgb(255, 255, 255);
@@ -145,9 +207,68 @@ body {
     text-align: center;
   }
 
-  .updateOptions {
+  
+
+  .SmartPhoneMenu{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .SmartPhoneMenu button{
+    width: 75px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #ProfileHead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 5px;
+  }
+
+  #ProfileHead h1{
+    font-size: 30px;
+    text-align: left;
+    margin: 0px;
+    
+  }
+
+  .CartContainer{
     display: none;
   }
+
+  .updateOptionsSmartPhone{
+    display: block;
+  }
+
+  .updateOptions {
+    left: 64%;
+    top: 60px;
+    width: 35%;
+    height: 0px;
+    
+  }
+  
+  
+  
+
+  .updateOptions button{
+    width: 100%;
+    height : 40px;
+    display: flex;
+    align-items: center;
+    font-size:12px
+  }
+
+ 
+ 
+  
 }
 
 /*Header Menu===================================*/
@@ -636,6 +757,10 @@ body {
 
   body {
     margin: 0px;
+  }
+
+  .OverallProductsPages{
+    gap: 5px;
   }
 
   .SearchProduk button {
@@ -1921,57 +2046,7 @@ h4 {
 }
 
 
-.Kedua {
-  display: none;
-}
 
-.Menu_Kedua {
-  display: none;
-}
-
-.updateOptions {
-  position: absolute;
-  top: 100px;
-  left: 422px;
-  height: 0px;
-  overflow: auto;
-  width: 180px;
-  background-color: rgba(10, 10, 10, 0.514);
-  transition: 1000ms;
-  overflow-y: hidden;
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.151);
-}
-
-.motionOptions {
-  top: 85px;
-  left: 290px;
-}
-
-.BuildUpdateOption {
-  height: 200px;
-}
-
-.updateOptions button {
-  width: 100%;
-  height: 37px;
-  border-radius: 0px;
-  background-color: rgba(253, 253, 253, 0.76);
-  color: rgb(2, 2, 2);
-  border: 1px solid black;
-  z-index: 1;
-  font-size: medium;
-  text-align: left;
-}
-
-.updateButton:hover+.updateOptions {
-  height: 200px;
-  transition: 400ms;
-  overflow-y: hidden;
-}
-
-.updateOptions:hover {
-  height: 200px;
-}
 
 
 .BodyCheckout {
@@ -2924,3 +2999,5 @@ h4 {
   background-color: red;
   
 }
+
+
