@@ -398,7 +398,7 @@ const ActionToDeleteCheckoutCart = async (from = "cart") => {
     }
 }
 
-const checkId = async (username) => {
+const checkId = async (username,socket) => {
     console.log(username)
     const account = JSON.parse(localStorage.getItem('account'))
     try {
@@ -414,7 +414,7 @@ const checkId = async (username) => {
         }
         const result = await response.json();
         if (result.statusCode === 401) {
-            await Refresh_Token()
+            await Refresh_Token(socket)
             location.href = "/products"
         }
 

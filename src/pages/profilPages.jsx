@@ -114,7 +114,7 @@ const ProfilPages = () => {
     useEffect(() => {
         try {
             setTimeout(async () => {
-                const get_Account = await checkId(idUser)
+                const get_Account = await checkId(idUser,socket)
                 console.log("masuk akun")
                 setMyAccount(get_Account.account)
                 SetGenreData(get_Account.product);
