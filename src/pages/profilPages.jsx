@@ -15,7 +15,7 @@ import Statesss from "./States"
 import { API_URL } from "../../config"
 
 const ProfilPages = () => {
- 
+
     const { turnOnAddProduct,
         turnOnAddProduct2, SetTurnOn2,
         totalItem, setTotalItem,
@@ -156,11 +156,6 @@ const ProfilPages = () => {
         setDelay(false)
     }, 100);
 
-    const imagestyle = {
-        backgroundImage: `url(https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${getMyAccount ? getMyAccount.image : ""})`,
-        borderRadius: "200px"
-    }
-
     const ActionGrabProduk = (data) => {
         Close(true, popup2)
         SetGrabProduk(data);
@@ -184,9 +179,9 @@ const ProfilPages = () => {
 
     }
 
-  
 
-  
+
+
 
 
     const [turnEdit, setTurnEdit] = useState(false)
@@ -363,12 +358,16 @@ const ProfilPages = () => {
                     isAccess={isAccess}
                 >
                 </HeaderMenu>
-              
+
             </div>
             <div className="DetailLayoutProfil">
                 <div className="gambarProfil">
-                    <div className="ContainerPictProfile images" style={imagestyle}>
-                        <div className={!isAccess ? "" : "LabelOverLay"}>
+                    <div className="ContainerPictProfile images" style={{
+                            backgroundImage: `url(https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${getMyAccount ? getMyAccount.image : ""})`,
+                            backgroundPosition  : "center",
+                            borderRadius : "360px"
+                        }}>
+                        <div className={!isAccess ? "" : "LabelOverLay"} >
                             <div>
                                 <label onClick={() => { FormChangeProfile.current.style.visibility = "visible" }}><img src="/Images/settings-svgrepo-com.svg" alt="" hidden={!isAccess ? true : false} /></label>
                             </div>

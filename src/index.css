@@ -421,6 +421,7 @@ body {
   border-radius: 10px;
   border: 0.1px solid rgba(0, 0, 0, 0.336);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 5% auto
 }
 
 .formLayOut form {
@@ -1483,7 +1484,7 @@ h4 {
 .ProdukImage {
   display: grid;
   grid-template-columns: 50% 50%;
- 
+
 }
 
 
@@ -1502,12 +1503,12 @@ h4 {
 .UploadImage {
   width: 90%;
   height: 370px;
-  padding-top: 10px ;
+  padding-top: 10px;
   padding-right: 10px;
   display: flex;
   justify-content: left;
   align-items: center;
-  
+
   cursor: pointer;
 }
 
@@ -1524,7 +1525,7 @@ h4 {
   margin-bottom: 10px;
 }
 
-.CategoryAndPriceLayout input{
+.CategoryAndPriceLayout input {
   width: 99%;
 }
 
@@ -1651,11 +1652,7 @@ h4 {
   width: 200px
 }
 
-/*ConfirmDelete Popups*/
-.Cancel button {
-  background-color: red;
-  width: 200px
-}
+
 
 /*ConfirmDelete Popups*/
 .ConfirmationDelete button:hover {
@@ -2359,11 +2356,10 @@ h4 {
 .notificationUserLogin {
   background-color: white;
   padding: 10px;
-
   flex-wrap: wrap;
   text-align: center;
   color: black;
-  width: 600px;
+  width: 40%;
   border-radius: 10px;
   font-size: 10px;
   z-index: 2;
@@ -2376,9 +2372,11 @@ h4 {
 }
 
 .notificationUserLogin h1 {
-  font-size: 40px;
+  font-size: 200%;
   color: black;
 }
+
+
 
 .actionUserLogin {
   display: flex;
@@ -2393,6 +2391,59 @@ h4 {
   background-color: rgb(203, 203, 203);
 }
 
+.ConfirmBackToCartAction {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ConfirmBackToCartAction button {
+  height: 40px;
+  width: 150px;
+  background-color: black;
+  color: white;
+}
+
+.ConfirmBackToCartAction button:hover {
+  background-color: rgb(75, 74, 74);
+  box-shadow: 1px 1px 1px 1px rgb(185, 185, 185);
+}
+
+.ConfirmBackToCart {
+  transition: 1000ms;
+  background-color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 10px;
+  width: 690px;
+  opacity: 0;
+  color: white;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .notificationUserLogin {
+    width: 87%;
+
+  }
+
+  .actionUserLogin button {
+    width: 40%;
+  }
+
+  .SellerNotification {
+    width: 80%;
+  }
+
+  .ConfirmBackToCart {
+    width: 80%;
+    
+  }
+
+  .ConfirmBackToCartAction button {
+    height: 30px;
+    width: 130px;
+    font-size: 10px;
+  }
+}
 
 .VerificationConfirm button {
   background-color: black;
@@ -2521,16 +2572,7 @@ h4 {
 
 
 
-.ConfirmBackToCart {
-  transition: 1000ms;
-  background-color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border-radius: 10px;
-  width: 690px;
-  opacity: 0;
-  color: white;
 
-}
 
 .Logout {
   width: 400px;
@@ -2558,27 +2600,6 @@ h4 {
 
 }
 
-.ConfirmBackToCartAction {
-  display: flex;
-  justify-content: space-between;
-}
-
-.ConfirmBackToCartAction button {
-  height: 40px;
-  width: 150px;
-  border-radius: 10px;
-  border: 0px solid;
-  background-color: black;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  text-align: center;
-}
-
-.ConfirmBackToCartAction button:hover {
-  background-color: rgb(75, 74, 74);
-  box-shadow: 1px 1px 1px 1px rgb(185, 185, 185);
-}
 
 .MessageContainer {
   display: flex;
@@ -2896,4 +2917,10 @@ h4 {
   width: 99%;
   height: 50px;
   margin-bottom: 10px;
+}
+
+/*ConfirmDelete Popups*/
+.Cancel button {
+  background-color: red;
+  
 }

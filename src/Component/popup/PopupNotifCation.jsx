@@ -3,6 +3,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { ActionToDeleteCheckoutCart } from "../../pages/manage";
+import Button from "../Element/Button/Button";
 import { API_URL } from "../../../config";
 
 const PopupNotification = (props) => {
@@ -30,7 +31,7 @@ const PopupNotification = (props) => {
     const [finish, SetFinish] = useState(false)
     useEffect(() => {
         const account = JSON.parse(localStorage.getItem('account'))
-        if (account.new_user==true) {
+        if (account.new_user == true) {
             ConfirmBack.current.style.visibility = "visible";
             setPassOn(true)
         }
@@ -103,7 +104,7 @@ const PopupNotification = (props) => {
         setLoading(true)
         notifMessage("Mohon Tunggu..")
         try {
-            const response = await fetch(API_URL+"ChangePassForNewUser", {
+            const response = await fetch(API_URL + "ChangePassForNewUser", {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`,
@@ -154,7 +155,7 @@ const PopupNotification = (props) => {
                                 <input name="Pass2" type="password" placeholder="Enter Confirm Password" />
                             </div>
                             <div className="ComponentSetPass">
-                                <button >Simpan</button>
+                                <Button ContentButton="Simpan"></Button>
                             </div>
                         </div>
                     </form>
@@ -166,7 +167,7 @@ const PopupNotification = (props) => {
                             {
                                 !finish ?
                                     <img src="/Images/Loading.gif" alt="" />
-                                    : <button onClick={Close}>Oke</button>
+                                    : <Button styling="btn" action={Close} ContentButton={"Oke"}></Button>
                             }
                         </div>
                     </div>
@@ -177,8 +178,10 @@ const PopupNotification = (props) => {
                     <h3>Apakah Itu Kamu?</h3>
 
                     <div className="ConfirmBackToCartAction">
-                        <button onClick={close} >Tolak</button>
-                        <button onClick={sendInformationAccount}>Iya, Itu Adalah Saya</button>
+
+                        <Button styling="btn" action={close} ContentButton={"Tolak"}></Button>
+                        <Button styling="btn" action={sendInformationAccount} ContentButton={"Iya, Itu Adalah Saya"}></Button>
+
                     </div>
                 </div>
                 <div className={`SellerNotification ${notificationSeller ? "SellerNotificationOn" : ""}`} hidden={notificationSeller ? false : true}>
@@ -187,8 +190,8 @@ const PopupNotification = (props) => {
                     <h3>Pergi menuju keranjang pesanan untuk melanjutkan pesanan Customer</h3>
 
                     <div className="ConfirmBackToCartAction">
-                        <button onClick={Abaikan} >Abaikan</button>
-                        <button onClick={() => { location.href = "/YourProductOrder" }}>Telusuri</button>
+                        <Button styling="btn" action={Abaikan} ContentButton={"Abaikan"}></Button>
+                        <Button styling="btn" action={() => { location.href = "/YourProductOrder" }} ContentButton={"Telusuri"}></Button>
                     </div>
                 </div>
                 <div className={`ConfirmBackToCart ${popupConfirm ? "ConfirmBackToCartOn" : ""}`} hidden={popupConfirm ? false : true}>
@@ -200,8 +203,8 @@ const PopupNotification = (props) => {
                         Apakah Anda Ingin Melanjutkan Proses Checkout?. <br /> Jika Tidak, Maka Data Checkout Sebelumnya Akan Dihapus Secara Permanen.
                     </p>
                     <div className="ConfirmBackToCartAction">
-                        <button style={{ backgroundColor: "red" }} onClick={() => { ActionToDeleteCheckoutCart("products") }}>Delete</button>
-                        <button onClick={ActionToChekout}>Lanjutkan Process</button>
+                        <Button styling="btn Cancel" action={() => { ActionToDeleteCheckoutCart("products") }} ContentButton={"Delete"}></Button> 
+                        <Button styling="btn" action={ActionToChekout} ContentButton={"Lanjutkan Process"}></Button>
                     </div>
                 </div>
                 <div className={`ConfirmBackToCart ${popupConfirm2 ? "ConfirmBackToCartOn" : ""}`} hidden={popupConfirm2 ? false : true}>
@@ -210,7 +213,7 @@ const PopupNotification = (props) => {
                         Apakah Anda Ingin Melanjutkan Proses Verifikasi?. <br /> Jika Iya, Maka Telusuri Halaman Profile. Tepat Diatas Teks Nama Profile Anda. <br /> Terima Kasih.
                     </p>
                     <div className="VerificationConfirm">
-                        <button onClick={() => { ConfirmBack.current.style.visibility = "hidden"; }}>Oke</button>
+                        <Button styling="btn" action={() => { ConfirmBack.current.style.visibility = "hidden"; }} ContentButton={"Oke"}></Button>
                     </div>
                 </div>
             </div>
