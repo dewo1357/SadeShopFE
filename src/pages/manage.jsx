@@ -260,6 +260,7 @@ const Active_Nav = (IsOn, setNav) => {
 const Refresh_Token = async (socket) => {
   
     let account = JSON.parse(localStorage.getItem('account'))
+    socket.emit('Reset',account.username)
     try {
         const response = await fetch(API_URL+'Get_Acces', {
             method: 'POST',
@@ -282,13 +283,9 @@ const Refresh_Token = async (socket) => {
         const username = result.username
         account = { ...account, username, acces_token }
         localStorage.setItem('account', JSON.stringify(account))
-        socket.emit('Reset',account.username)
         socket.emit('Regist',account.username)
 
         //reset Chace
-        sessionStorage.removeItem('DataAccount')
-        sessionStorage.removeItem('ProductUser')
-        sessionStorage.removeItem('access')
         sessionStorage.removeItem('ProductMaster')
     } catch (err) {
         console.log(err.message)
