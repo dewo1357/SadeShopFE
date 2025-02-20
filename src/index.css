@@ -3079,11 +3079,13 @@ h4 {
   width: 99.2%;
   height: 30px;
   margin-bottom: 10px;
+  background-color: white;
 
 }
 
 /*Setting Pages*/
 .FormSetting textarea {
+  background-color: white;
   width: 99.5%;
   height: 50px;
   margin-bottom: 10px;
