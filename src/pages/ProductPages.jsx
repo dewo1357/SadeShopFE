@@ -4,10 +4,9 @@ import CardProduct from "../Component/Card_Cart/CardLProduct";
 import { useState, useEffect, useRef } from "react";
 import ListCart from "../Component/Card_Cart/ListCart";
 import Search from "../Component/Search";
-import SmartPhoneCartAndMenu from "../Component/SmartPhoneCartAndMenu/SmartPhoneCartAndMenu";
 import HeaderMenu from "../Component/HeaderMenu";
 import OrderForm from "../Component/popup/OrderForm";
-import { active, MotionMenuCart, DeleteCart, Close, SearchCard, GetData, Get_Cart,getAcc } from "./manage";
+import { MotionMenuCart, DeleteCart, Close, SearchCard, GetData, Get_Cart, getAcc } from "./manage";
 import Statesss from "./States";
 import Button from "../Component/Element/Button/Button";
 import { useSocket } from "../SocketProvider";
@@ -30,8 +29,8 @@ const ProductPages = () => {
     //popups
     const popup2 = useRef(null)
 
-    
-    let [account,setAccount] = useState(false)
+
+    let [account, setAccount] = useState(false)
     const Session_DataProduk = sessionStorage.getItem('ProductMaster');
 
     const [popupConfirm, setpopupconfirm] = useState(false)
@@ -46,21 +45,20 @@ const ProductPages = () => {
         SetGrabProduk(data);
     }
     const Get_data = async () => {
-        if (Session_DataProduk !== null) {
-            console.log("data diambil dari session");
+        if(Session_DataProduk!==null && Array.isArray(JSON.parse(Session_DataProduk))){
+            setGenre(JSON.parse(Session_DataProduk))
             SetLoading(false)
-            return setGenre(JSON.parse(Session_DataProduk))
+            console.log(JSON.parse(Session_DataProduk))
+        }else{
+            const data = await GetData(account.acces_token);
+            if (data) {
+                console.log("data diambil dari API")
+                setGenre(data);
+                SetLoading(false)
+                sessionStorage.setItem('ProductMaster', JSON.stringify(data))
+                sessionStorage.removeItem('CartUser')
+            }
         }
-        const data = await GetData(account.acces_token, socket);
-        if (data) {
-            console.log("data diambil dari API")
-            setGenre(data);
-            SetLoading(false)
-            sessionStorage.setItem('ProductMaster', JSON.stringify(data))
-            sessionStorage.removeItem('CartUser')
-        }
-
-
     }
 
 
@@ -79,11 +77,10 @@ const ProductPages = () => {
                 localStorage.setItem('account', JSON.stringify(data))
             }
         }
-
-        if (Loading2) {
+        if (Loading2 && socket) {
             console.log("menjalankan")
             Get_data();
-            Get_Cart(SetListCart, setSumProcess, setNotifMessage);
+            Get_Cart(SetListCart, setSumProcess, setNotifMessage,socket);
             SetLoading2(false)
         }
     }, [Loading2, socket]);
@@ -147,15 +144,15 @@ const ProductPages = () => {
                                 alignItems: "center", justifyContent: "space-around"
                             }}>
                             <h1 style={{
-                                textAlign: "left", marginLeft: "1",transition:"1000ms",
-                                width: motionLeft?"280px":"0px", margin: "5px"
+                                textAlign: "left", marginLeft: "1", transition: "1000ms",
+                                width: motionLeft ? "280px" : "0px", margin: "5px"
                             }} hidden={motionLeft ? false : true}>CART</h1>
                             <button hidden={motionLeft ? false : true}
                                 style={{
                                     height: "40px", backgroundColor: "transparent",
                                     display: motionLeft ? "flex" : "none", justifyContent: "center", border: "0px"
                                 }}
-                                onClick={() => {MotionMenuCart(motionLeft, setMotionLeft)}}>
+                                onClick={() => { MotionMenuCart(motionLeft, setMotionLeft) }}>
                                 <img hidden={motionLeft ? false : true} src="/Images/icons8-cancel-64.png" width="40"></img>
                             </button>
                         </div>

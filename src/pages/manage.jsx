@@ -257,19 +257,8 @@ const Active_Nav = (IsOn, setNav) => {
 }
 
 
-const Refresh_Token = async (socket) => {
-
-    let account = () => {
-        try {
-            const acc = getAcc()
-            return acc
-        } catch (err) {
-            localStorage.removeItem('account')
-            location.href = "/"
-            console.log(err.message)
-        }
-    }
-    socket.emit('Reset', account.username)
+const Refresh_Token = async (socket=false) => {
+    let account = getAcc()
     try {
         const response = await fetch(API_URL + 'Get_Acces', {
             method: 'POST',
@@ -289,13 +278,18 @@ const Refresh_Token = async (socket) => {
             location.href = "/"
             return 404
         }
+        console.log(socket)
+        if(socket!==false){
+            socket.on('Reset',account.username)
+            socket.on('Register',account.username)
+            console.log("server diperbarui")
+        }
         console.log(result)
         const acces_token = result.acces_token
         const username = result.username
         account = { ...account, username, acces_token }
         localStorage.setItem('account', JSON.stringify(account))
-        socket.emit('Regist', account.username)
-
+      
         //reset Chace
         sessionStorage.removeItem('ProductMaster')
     } catch (err) {
@@ -303,12 +297,13 @@ const Refresh_Token = async (socket) => {
     }
 }
 
-const GetData = async (username, socket) => {
+const GetData = async () => {
+    const account = getAcc()
     try {
         const response = await fetch(API_URL + 'MasterData', {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${username}`
+                'Authorization': `Bearer ${account.acces_token}`
             }
         });
         if (!response) {
@@ -316,7 +311,7 @@ const GetData = async (username, socket) => {
         }
         const data = await response.json();
         if (data.statusCode === 401) {
-            const get_acces = await Refresh_Token(socket);
+            const get_acces = await Refresh_Token();
             if (get_acces == 404) {
                 localStorage.removeItem('account')
                 return location.href = "/"
@@ -357,7 +352,7 @@ const GetdataProdukUser = async (username) => {
 
 
 
-const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage) => {
+const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage,socket) => {
     const account = getAcc();
     try {
         const endpoint = API_URL + `GetCart`
@@ -376,6 +371,8 @@ const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage) => {
             setSumProcess(result.SumProcessProduct)
             setNotifMessage(result.notifMessage)
             sessionStorage.setItem('SumProcess', JSON.stringify(result.SumProcessProduct))
+        }else{
+            await Refresh_Token(socket)
         }
 
     } catch (err) {
