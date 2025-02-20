@@ -3,14 +3,14 @@
 /* eslint-disable react/prop-types */
 
 import { useState, useEffect, useRef } from "react";
-import { ActionToDeleteCheckoutCart,getAcc } from "../../pages/manage";
+import { ActionToDeleteCheckoutCart, getAcc } from "../../pages/manage";
 import Button from "../Element/Button/Button";
 import { API_URL } from "../../../config";
 
 const PopupNotification = (props) => {
     const { socket, popupConfirm, popupConfirm2, setMessage, setpopupconfirm
     } = props
-    
+
     const ConfirmBack = useRef();
 
     const [Acces, setAcces] = useState(false)
@@ -18,7 +18,7 @@ const PopupNotification = (props) => {
 
     const sendInformationAccount = () => {
         socket.emit('Send', {
-            data:getAcc(),
+            data: getAcc(),
         })
         setnotificationSeller(false)
         ConfirmBack.current.style.visibility = 'hidden'
@@ -30,11 +30,18 @@ const PopupNotification = (props) => {
     const [Loading, setLoading] = useState(false)
     const [Notif, notifMessage] = useState(null)
     const [finish, SetFinish] = useState(false)
-    const [account,setAccount] = useState(getAcc())
+    const [account, setAccount] = useState(getAcc())
     useEffect(() => {
-        if (account.new_user == true) {
-            ConfirmBack.current.style.visibility = "visible";
-            setPassOn(true)
+        try {
+            if (account.new_user===true) {
+                ConfirmBack.current.style.visibility = "visible";
+                setPassOn(true)
+            }
+        }catch(err){
+            if(account=='undefined'){
+                location.href = "/"
+            }
+            
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [PassOn])
