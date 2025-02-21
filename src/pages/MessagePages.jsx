@@ -94,11 +94,17 @@ const Mesage = (props) => {
 
     useEffect(() => {
         if (StartChat && processChat) {
+            
             setTimeout(async () => {
                 if (StartChat) {
+                    if (innerWidth < 900) {
+                        RoomChat.current.style.visibility = "visible"
+                        ListContact.current.style.display = "none"
+                    }
                     const GetAccount = await checkId(username, socket);
                     if (GetAccount) {
                         setMyAccount(GetAccount.account);
+                        setMessageTo(GetAccount.account.id)
                     }
                     if (MyRoomChat.length !== 0) {
                         MyRoomChat.map((item) => {
@@ -301,7 +307,7 @@ const Mesage = (props) => {
     return (
         MyListChat ?
             <div className="MessageContainer">
-                <div ref={ListContact} >
+                <div className="CategoryChatRoom" ref={ListContact}  >
                     <div className="ListChat">
                         <a style={{ textDecoration: "none", color: "black" }} href="/products"><h1>Back</h1></a>
                         <h1>List Chat</h1>
