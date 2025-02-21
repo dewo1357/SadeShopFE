@@ -102,8 +102,7 @@ const Mesage = (props) => {
 
 
     useEffect(() => {
-        if (StartChat && processChat) {
-
+        if (StartChat && processChat && socket) {
             setTimeout(async () => {
                 if (StartChat) {
                     if (innerWidth < 900) {
@@ -145,7 +144,7 @@ const Mesage = (props) => {
     }, [MyRoomChat])
 
     useEffect(() => {
-        if (process) {
+        if (process && socket) {
             if (JSON.parse(localStorage.getItem('CheckoutData'))) {
                 ConfirmBack.current.style.visibility = "visible";
                 setTimeout(() => {
@@ -155,7 +154,7 @@ const Mesage = (props) => {
             GetMyRoomChat(socket);
             setProcess(false)
         }
-    }, [process])
+    }, [process,socket])
 
     const [isDelete, setIsDelete] = useState(false)
     const [idChat, setidChat] = useState(false)
@@ -189,7 +188,7 @@ const Mesage = (props) => {
         } catch (err) {
             console.log(err.message)
         }
-        await GetMyRoomChat();
+        await GetMyRoomChat(socket);
         setIsDelete(false)
         ConfirmBack.current.style.visibility = "hidden"
         setisLoading(false)
@@ -231,7 +230,7 @@ const Mesage = (props) => {
         localStorage.setItem('idCategory', JSON.stringify(index))
         if (fromProses) {
             setTimeout(() => {
-                GetMyRoomChat()
+                GetMyRoomChat(socket)
             }, 100);
         }
     }
@@ -261,7 +260,7 @@ const Mesage = (props) => {
 
 
             }
-            await GetMyRoomChat();
+            await GetMyRoomChat(socket);
 
 
         } catch (err) {
