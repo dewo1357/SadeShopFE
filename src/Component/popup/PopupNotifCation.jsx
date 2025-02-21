@@ -38,7 +38,7 @@ const PopupNotification = (props) => {
                 setPassOn(true)
             }
         }catch(err){
-            if(account=='undefined'){
+            if(account==='undefined'){
                 location.href = "/"
             }
             

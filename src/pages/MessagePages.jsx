@@ -65,15 +65,22 @@ const Mesage = (props) => {
                 }
                 GetMyRoomChat()
             })
-            if (account.isRegist) {
-                if (socket) {
-                    console.log(account)
-                    socket.emit("RegistRoomChat", {
-                        'username': account.username,
-                        'id': account.id
-                    });
-                    const data = { ...account, isRegist: false }
-                    localStorage.setItem('account', JSON.stringify(data))
+
+            try {
+                if (account.isRegist) {
+                    if (socket) {
+                        console.log(account)
+                        socket.emit("RegistRoomChat", {
+                            'username': account.username,
+                            'id': account.id
+                        });
+                        const data = { ...account, isRegist: false }
+                        localStorage.setItem('account', JSON.stringify(data))
+                    }
+                }
+            } catch (err) {
+                if (account === 'undefined') {
+                    location.href = "/"
                 }
             }
 
