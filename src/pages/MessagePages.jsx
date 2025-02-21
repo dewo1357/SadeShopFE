@@ -4,12 +4,12 @@
 import { useEffect } from "react";
 import { useState } from "react"
 import { useParams } from "react-router-dom"
-import { checkId, Refresh_Token,getAcc } from "./manage";
+import { checkId, Refresh_Token, getAcc } from "./manage";
 import { useRef } from "react";
 import { useSocket } from "../SocketProvider";
 import PopupNotification from "../Component/popup/PopupNotifCation";
 import { API_URL } from "../../config";
-
+import Button from "../Component/Element/Button/Button";
 
 const Mesage = (props) => {
     const { StartChat } = props;
@@ -17,7 +17,7 @@ const Mesage = (props) => {
     const { username } = useParams();
     const [getMyAccount, setMyAccount] = useState(false);
     const [MyRoomChat, SetMyRoomChat] = useState([]);
-    const [account,setAccount] = useState(getAcc())
+    const [account, setAccount] = useState(getAcc())
     const [MyListChat, setMyListChat] = useState(false);
     const [process, setProcess] = useState(true)
     const [index, setIndex] = useState(null)
@@ -51,11 +51,6 @@ const Mesage = (props) => {
         }, 100)
     }
     const Room = useRef();
-
-
-
-
-
 
     useEffect(() => {
         if (socket) {
@@ -194,9 +189,11 @@ const Mesage = (props) => {
         setProcess(false)
     }
 
-
-
+    const RoomChat = useRef();
+    const ListContact = useRef();
     const checkChatBasedOnIndex = async (index, To, ContactName, fromProses = false) => {
+        RoomChat.current.style.visibility = "visible"
+        ListContact.current.style.display = "none"
         setTimeout(() => {
             Room.current.scrollTop = Room.current.scrollHeight;
             Room.current.style.opacity = 1;
@@ -280,15 +277,22 @@ const Mesage = (props) => {
         }
     }
 
+
     const [popupConfirm, setpopupconfirm] = useState(false)
     const [popupConfirm2, setpopupconfirm2] = useState(false)
     const [message, setMessage] = useState(null)
+
+    const backToListContact = ()=>{
+        RoomChat.current.style.visibility = "hidden"
+        ListContact.current.style.display = "block"
+    }
+
 
 
     return (
         MyListChat ?
             <div className="MessageContainer">
-                <div>
+                <div ref={ListContact} >
                     <div className="ListChat">
                         <a style={{ textDecoration: "none", color: "black" }} href="/products"><h1>Back</h1></a>
                         <h1>List Chat</h1>
@@ -321,13 +325,18 @@ const Mesage = (props) => {
                         ))}
                     </div>
                 </div>
-                <div className="RoomChat" >
-                    <div>
-                        {ContactName ?
-                            <a style={{ textDecoration: "none", color: "black" }} href={`/profil/${ContactName}`}>
-                                <h1 style={{ textAlign: "right" }} > {index != null ? ContactName : "Chat Room"}</h1>
-                            </a> :
-                            <h1 style={{ textAlign: "right" }} > {index != null ? ContactName : "Chat Room"}</h1>}
+                <div ref={RoomChat} className="RoomChat">
+                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",height:"100%"}}>
+                        <div className="backButtonRoomChat">
+                            <Button styling="btn" action={backToListContact} ContentButton={<img src="/Images/arrow-left_10023749.png" width="30px"></img>}></Button>
+                        </div>
+                        <div>
+                            {ContactName ?
+                                <a style={{ textDecoration: "none", color: "black",fontSize:innerWidth < 700 ? "10px" : "20px" }} href={`/profil/${ContactName}`}>
+                                    <h1 style={{ textAlign: "right" }} > {index != null ? ContactName : "Chat Room"}</h1>
+                                </a> :
+                                <h1 style={{ textAlign: "right" }} > {index != null ? ContactName : "Chat Room"}</h1>}
+                        </div>
                     </div>
                     <div className="PrevImageMessage" hidden={index || StartChat ? true : false}>
                         <img src="/Images/5664349.jpg" alt="" hidden={index || StartChat ? true : false} />
