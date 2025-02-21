@@ -96,7 +96,7 @@ const Mesage = (props) => {
         if (StartChat && processChat) {
             setTimeout(async () => {
                 if (StartChat) {
-                    const GetAccount = await checkId(StartChat, socket);
+                    const GetAccount = await checkId(username, socket);
                     if (GetAccount) {
                         setMyAccount(GetAccount.account);
                     }
@@ -199,8 +199,10 @@ const Mesage = (props) => {
     const RoomChat = useRef();
     const ListContact = useRef();
     const checkChatBasedOnIndex = async (index, To, ContactName, fromProses = false) => {
-        RoomChat.current.style.visibility = "visible"
-        ListContact.current.style.display = "none"
+        if (innerWidth < 900) {
+            RoomChat.current.style.visibility = "visible"
+            ListContact.current.style.display = "none"
+        }
         setTimeout(() => {
             Room.current.scrollTop = Room.current.scrollHeight;
             Room.current.style.opacity = 1;
@@ -319,7 +321,7 @@ const Mesage = (props) => {
                                     backgroundColor: item.userReceive.username === account.username && item.isAllRead == 'false' ? "grey" : false,
 
                                 }}>
-                                <img src={`https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${item.userReceive.username !== account.username ? item.PictReceive.image : item.PictSend.image}`} alt="" width="100" />
+                                <img src={`https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${item.userReceive.username !== account.username ? item.PictReceive.image : item.PictSend.image}`} alt="" width="100" height="100" />
                                 <div >
                                     <div className="ListContact">
                                         <h2>{item.userReceive.username === account.username ? item.usernameSend.username : item.userReceive.username}</h2>
@@ -335,7 +337,7 @@ const Mesage = (props) => {
                     </div>
                 </div>
                 <div ref={RoomChat} className="RoomChat">
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100%" }}>
+                    <div style={innerWidth < 700 ? { display: "flex", justifyContent: "space-between", alignItems: "center", height: "100%" } : {}}>
                         <div className="backButtonRoomChat">
                             <Button styling="btn" action={backToListContact} ContentButton={<img src="/Images/arrow-left_10023749.png" width="30px"></img>}></Button>
                         </div>

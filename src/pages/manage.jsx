@@ -420,7 +420,6 @@ const getAcc = () => {
 }
 
 const checkId = async (username, socket) => {
-    console.log(socket)
     const account = getAcc()
     try {
         const endpoint = API_URL + `GetDataAccountByUsername/${username}`

@@ -2753,7 +2753,7 @@ h4 {
 /*Chat Pages*/
 .MessageContainer {
   display: flex;
-  flex-wrap: wrap;
+  
   justify-content: space-between;
   width: 100%;
   margin: 0px;
@@ -2778,9 +2778,6 @@ h4 {
   border-radius: 5px;
   height: 500px;
   width: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-
 }
 
 /*Chat Pages*/
@@ -2897,26 +2894,25 @@ h4 {
 }
 
 /*Chat Pages*/
-.ActionToSend form {
+.ActionToSend  {
   margin-top: 10px;
   display: flex;
   flex-wrap: nowrap;
-  justify-content:space-around;
+  justify-content: space-between;
   height: 50px;
   padding: 5px;
   gap: 5px;
-
 }
 
 /*Chat Pages*/
 .ActionToSend textarea {
-  width: 100%;
+  width: 750px;
   height: 40px;
 }
 
 /*Chat Pages*/
 .ActionToSend button {
-  width: 100%;
+  width: 100px;
   height: 45px;
   border-radius: 10px;
   border: 0px solid;
