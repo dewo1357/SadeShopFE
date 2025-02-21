@@ -42,6 +42,7 @@ const Mesage = (props) => {
             const result = await response.json();
             if (result.statusCode === 401) {
                 await Refresh_Token(socket);
+                location.href = "/message"
 
             }
             SetMyRoomChat(result.data)
@@ -259,6 +260,7 @@ const Mesage = (props) => {
             const result = await response.json();
             if (result.statusCode === 401) {
                 await Refresh_Token(socket);
+                location.href = "/message"
 
 
             }
