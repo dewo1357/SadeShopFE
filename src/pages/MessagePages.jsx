@@ -27,7 +27,7 @@ const Mesage = (props) => {
 
     const socket = useSocket();
 
-    const GetMyRoomChat = async () => {
+    const GetMyRoomChat = async (socket) => {
         try {
             const response = await fetch(API_URL + "GetRoomChat", {
                 method: 'GET',
@@ -70,9 +70,9 @@ const Mesage = (props) => {
                 console.log(index)
                 if (index === idCategory) {
                     await checkToRead(idCategory)
-                    GetMyRoomChat()
+                    GetMyRoomChat(socket)
                 }
-                GetMyRoomChat()
+                GetMyRoomChat(socket)
             })
 
             try {
@@ -152,7 +152,7 @@ const Mesage = (props) => {
                     setpopupconfirm(true)
                 })
             }
-            GetMyRoomChat();
+            GetMyRoomChat(socket);
             setProcess(false)
         }
     }, [process])
