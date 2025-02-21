@@ -2962,7 +2962,7 @@ h4 {
   display : none
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .MessageContainer {
     display: contents;
     gap: 0px;
@@ -3021,7 +3021,7 @@ h4 {
   .ListContact{
     width: 110%;
     font-size: 10px ;
-    padding: 5px;
+    padding: 0px;
   }
 
   .backButtonRoomChat{

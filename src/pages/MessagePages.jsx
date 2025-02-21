@@ -282,7 +282,7 @@ const Mesage = (props) => {
     const [popupConfirm2, setpopupconfirm2] = useState(false)
     const [message, setMessage] = useState(null)
 
-    const backToListContact = ()=>{
+    const backToListContact = () => {
         RoomChat.current.style.visibility = "hidden"
         ListContact.current.style.display = "block"
     }
@@ -313,12 +313,14 @@ const Mesage = (props) => {
 
                                 }}>
                                 <img src={`https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${item.userReceive.username !== account.username ? item.PictReceive.image : item.PictSend.image}`} alt="" width="100" />
-                                <div>
+                                <div >
                                     <div className="ListContact">
                                         <h2>{item.userReceive.username === account.username ? item.usernameSend.username : item.userReceive.username}</h2>
                                         <h3>{item.nUnRead !== 0 ? item.nUnRead : ""}</h3>
                                     </div>
-                                    <p>{item.LastContent}</p>
+                                    <div>
+                                        <p>{item.LastContent}</p>
+                                    </div>
                                 </div>
 
                             </div>
@@ -326,13 +328,13 @@ const Mesage = (props) => {
                     </div>
                 </div>
                 <div ref={RoomChat} className="RoomChat">
-                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",height:"100%"}}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "100%" }}>
                         <div className="backButtonRoomChat">
                             <Button styling="btn" action={backToListContact} ContentButton={<img src="/Images/arrow-left_10023749.png" width="30px"></img>}></Button>
                         </div>
                         <div>
                             {ContactName ?
-                                <a style={{ textDecoration: "none", color: "black",fontSize:innerWidth < 700 ? "10px" : "20px" }} href={`/profil/${ContactName}`}>
+                                <a style={{ textDecoration: "none", color: "black", fontSize: innerWidth < 700 ? "10px" : "20px" }} href={`/profil/${ContactName}`}>
                                     <h1 style={{ textAlign: "right" }} > {index != null ? ContactName : "Chat Room"}</h1>
                                 </a> :
                                 <h1 style={{ textAlign: "right" }} > {index != null ? ContactName : "Chat Room"}</h1>}
