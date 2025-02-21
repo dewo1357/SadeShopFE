@@ -30,7 +30,7 @@ const ProductPages = () => {
     const popup2 = useRef(null)
 
 
-    let [account, setAccount] = useState(false)
+    let [account, setAccount] = useState(getAcc())
     const Session_DataProduk = sessionStorage.getItem('ProductMaster');
 
     const [popupConfirm, setpopupconfirm] = useState(false)
@@ -66,29 +66,28 @@ const ProductPages = () => {
     const [notifMessage, setNotifMessage] = useState(false)
     const ConfirmBack = useRef();
     useEffect(() => {
-        setAccount(getAcc())
-        try {
-            if (account.isRegist!==true) {
-                if (socket) {
-                    socket.emit("Register", {
-                        username: account.username,
-                        id: account.id
-                    })
-                    const data = { ...account, isRegist: true }
-                    localStorage.setItem('account', JSON.stringify(data))
+        if (account && Loading2 && socket) {
+            try {
+                if (account.isRegist !== true) {
+                    if (socket) {
+                        socket.emit("Register", {
+                            username: account.username,
+                            id: account.id
+                        })
+                        const data = { ...account, isRegist: true }
+                        localStorage.setItem('account', JSON.stringify(data))
+                    }
                 }
+            } catch (err) {
+                sessionStorage.removeItem('account')
+                location.href = "/"
             }
-        }catch(err){
-            sessionStorage.removeItem('account')
-            location.href="/"
-        }
-        if (Loading2 && socket) {
             console.log("menjalankan")
             Get_data();
             Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket);
             SetLoading2(false)
         }
-    }, [Loading2, socket]);
+    }, [Loading2,account]);
     console.log(listCart)
 
     if (account == null) {
