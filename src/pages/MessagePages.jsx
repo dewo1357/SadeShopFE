@@ -96,7 +96,7 @@ const Mesage = (props) => {
         if (StartChat && processChat) {
             setTimeout(async () => {
                 if (StartChat) {
-                    const GetAccount = await checkId();
+                    const GetAccount = await checkId(StartChat, socket);
                     if (GetAccount) {
                         setMyAccount(GetAccount.account);
                     }
