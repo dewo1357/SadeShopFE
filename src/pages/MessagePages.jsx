@@ -49,11 +49,9 @@ const Mesage = (props) => {
             setMyListChat(result.ListChat)
             console.log(result.data)
             console.log(result.ListChat)
-            if (index) {
-                setTimeout(() => {
-                    Room.current.scrollTop = Room.current.scrollHeight;
-                }, 100)
-            }
+            setTimeout(() => {
+                Room.current.scrollTop = Room.current.scrollHeight;
+            }, 100)
         } catch (err) {
             if (account === null) {
                 location.href = "/"
