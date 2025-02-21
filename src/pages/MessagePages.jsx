@@ -27,28 +27,37 @@ const Mesage = (props) => {
 
     const socket = useSocket();
 
-
-
     const GetMyRoomChat = async () => {
-        const response = await fetch(API_URL + "GetRoomChat", {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${account.acces_token}`,
-            },
-        })
-        const result = await response.json();
-        if (result.statusCode === 401) {
-            await Refresh_Token(socket);
-            location.href = "/message"
+        try {
+            const response = await fetch(API_URL + "GetRoomChat", {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${account.acces_token}`,
+                },
+            })
+            if (!response) {
+                throw new Error("FAILED TO GET CHAT");
+
+            }
+            const result = await response.json();
+            if (result.statusCode === 401) {
+                await Refresh_Token(socket);
+                
+            }
+            SetMyRoomChat(result.data)
+            setMyListChat(result.ListChat)
+            console.log(result.data)
+            console.log(result.ListChat)
+            setTimeout(() => {
+                Room.current.scrollTop = Room.current.scrollHeight;
+            }, 100)
+        } catch (err) {
+            if(account===null){
+                location.href="/"
+            }
+            console.log(err)
         }
 
-        SetMyRoomChat(result.data)
-        setMyListChat(result.ListChat)
-        console.log(result.data)
-        console.log(result.ListChat)
-        setTimeout(() => {
-            Room.current.scrollTop = Room.current.scrollHeight;
-        }, 100)
     }
     const Room = useRef();
 
@@ -94,7 +103,7 @@ const Mesage = (props) => {
 
     useEffect(() => {
         if (StartChat && processChat) {
-            
+
             setTimeout(async () => {
                 if (StartChat) {
                     if (innerWidth < 900) {
@@ -249,7 +258,8 @@ const Mesage = (props) => {
             const result = await response.json();
             if (result.statusCode === 401) {
                 await Refresh_Token(socket);
-                location.href = "/message"
+
+
             }
             await GetMyRoomChat();
 
