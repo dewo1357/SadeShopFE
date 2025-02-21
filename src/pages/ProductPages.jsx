@@ -66,7 +66,7 @@ const ProductPages = () => {
     const [notifMessage, setNotifMessage] = useState(false)
     const ConfirmBack = useRef();
     useEffect(() => {
-        if (account && Loading2 && socket) {
+        if (Loading2 && socket) {
             try {
                 if (account.isRegist !== true) {
                     if (socket) {
@@ -87,7 +87,7 @@ const ProductPages = () => {
             Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket);
             SetLoading2(false)
         }
-    }, [Loading2,account]);
+    }, [Loading2,socket]);
     console.log(listCart)
 
     if (account == null) {
