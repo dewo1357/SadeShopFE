@@ -67,15 +67,20 @@ const ProductPages = () => {
     const ConfirmBack = useRef();
     useEffect(() => {
         setAccount(getAcc())
-        if (account && !account.isRegist) {
-            if (socket) {
-                socket.emit("Register", {
-                    username: account.username,
-                    id: account.id
-                })
-                const data = { ...account, isRegist: true }
-                localStorage.setItem('account', JSON.stringify(data))
+        try {
+            if (account.isRegist!==true) {
+                if (socket) {
+                    socket.emit("Register", {
+                        username: account.username,
+                        id: account.id
+                    })
+                    const data = { ...account, isRegist: true }
+                    localStorage.setItem('account', JSON.stringify(data))
+                }
             }
+        }catch(err){
+            sessionStorage.removeItem('account')
+            location.href="/"
         }
         if (Loading2 && socket) {
             console.log("menjalankan")
