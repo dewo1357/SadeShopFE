@@ -42,18 +42,20 @@ const Mesage = (props) => {
             const result = await response.json();
             if (result.statusCode === 401) {
                 await Refresh_Token(socket);
-                
+
             }
             SetMyRoomChat(result.data)
             setMyListChat(result.ListChat)
             console.log(result.data)
             console.log(result.ListChat)
-            setTimeout(() => {
-                Room.current.scrollTop = Room.current.scrollHeight;
-            }, 100)
+            if (index) {
+                setTimeout(() => {
+                    Room.current.scrollTop = Room.current.scrollHeight;
+                }, 100)
+            }
         } catch (err) {
-            if(account===null){
-                location.href="/"
+            if (account === null) {
+                location.href = "/"
             }
             console.log(err)
         }
@@ -154,7 +156,7 @@ const Mesage = (props) => {
             GetMyRoomChat(socket);
             setProcess(false)
         }
-    }, [process,socket])
+    }, [process, socket])
 
     const [isDelete, setIsDelete] = useState(false)
     const [idChat, setidChat] = useState(false)
