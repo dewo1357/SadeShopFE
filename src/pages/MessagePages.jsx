@@ -142,17 +142,11 @@ const Mesage = (props) => {
     }, [MyRoomChat])
 
     useEffect(() => {
-        if (process && socket) {
-            if (JSON.parse(localStorage.getItem('CheckoutData'))) {
-                NotifDelete.current.style.visibility = "visible";
-                setTimeout(() => {
-                    setpopupconfirm(true)
-                })
-            }
+        if (process) {
             GetMyRoomChat(socket);
             setProcess(false)
         }
-    }, [process, socket])
+    }, [process])
 
     const [isDelete, setIsDelete] = useState(false)
     const [idChat, setidChat] = useState(false)
