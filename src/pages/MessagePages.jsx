@@ -74,27 +74,6 @@ const Mesage = (props) => {
                 }
                 GetMyRoomChat(socket)
             })
-
-            try {
-                if (account.isRegist) {
-                    if (socket) {
-                        console.log(account)
-                        socket.emit("RegistRoomChat", {
-                            'username': account.username,
-                            'id': account.id
-                        });
-                    }
-                }
-            } catch (err) {
-                if (account === 'undefined') {
-                    location.href = "/"
-                }
-            }
-
-            socket.on("AskAcces", (message) => {
-                setAcces(true)
-                NotifDelete.current.style.visibility = "visible"
-            })
         }
     }, [socket])
 
