@@ -93,7 +93,7 @@ const Mesage = (props) => {
 
             socket.on("AskAcces", (message) => {
                 setAcces(true)
-                ConfirmBack.current.style.visibility = "visible"
+                NotifDelete.current.style.visibility = "visible"
             })
         }
     }, [socket])
@@ -144,7 +144,7 @@ const Mesage = (props) => {
     useEffect(() => {
         if (process && socket) {
             if (JSON.parse(localStorage.getItem('CheckoutData'))) {
-                ConfirmBack.current.style.visibility = "visible";
+                NotifDelete.current.style.visibility = "visible";
                 setTimeout(() => {
                     setpopupconfirm(true)
                 })
@@ -160,12 +160,12 @@ const Mesage = (props) => {
     const StartToDelete = (idChat) => {
         setIsDelete(true)
         setidChat(idChat)
-        ConfirmBack.current.style.visibility = "visible"
+        NotifDelete.current.style.visibility = "visible"
     }
 
     const CancelToDeleteChat = () => {
         setIsDelete(false)
-        ConfirmBack.current.style.visibility = "hidden"
+        NotifDelete.current.style.visibility = "hidden"
     }
 
     const deleteMessage = async () => {
@@ -188,7 +188,7 @@ const Mesage = (props) => {
         }
         await GetMyRoomChat(socket);
         setIsDelete(false)
-        ConfirmBack.current.style.visibility = "hidden"
+        NotifDelete.current.style.visibility = "hidden"
         setisLoading(false)
     }
 
@@ -268,7 +268,7 @@ const Mesage = (props) => {
         }
     }
 
-    const ConfirmBack = useRef();
+    const NotifDelete = useRef();
     const [Acces, setAcces] = useState(false)
     const [notificationSeller, setnotificationSeller] = useState(false)
 
@@ -277,16 +277,16 @@ const Mesage = (props) => {
             data: getAcc()
         })
         setnotificationSeller(false)
-        ConfirmBack.current.style.visibility = 'hidden'
+        NotifDelete.current.style.visibility = 'hidden'
     }
 
     const Abaikan = () => {
-        ConfirmBack.current.style.visibility = "hidden"
+        NotifDelete.current.style.visibility = "hidden"
         setnotificationSeller(false)
     }
 
     const close = () => {
-        ConfirmBack.current.style.visibility = "hidden"
+        NotifDelete.current.style.visibility = "hidden"
         socket.emit('TolakAkses', account.username)
     }
 
@@ -440,7 +440,7 @@ const Mesage = (props) => {
                     </div>
                 </div>
 
-                <div ref={ConfirmBack} className="overlay3">
+                <div ref={NotifDelete} className="overlay3">
                     <div className={`SellerNotification Account ${isDelete ? "AccountOn" : ""}`} hidden={isDelete ? false : true}>
                         <div>
                             <h1>Apakah Anda Yakin Menghapus Chat?</h1>
