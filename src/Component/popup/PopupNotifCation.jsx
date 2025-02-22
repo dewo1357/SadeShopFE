@@ -62,6 +62,13 @@ const PopupNotification = (props) => {
                 }
             })
 
+            socket.on("Receive", (data) => {
+                setTimeout(() => {
+                    localStorage.setItem('account', JSON.stringify(data))
+                }, 1000)
+
+            })
+
             //socket jika ditolak akses
             socket.on('ActTolakAkses', (message) => {
                 setTimeout(() => {

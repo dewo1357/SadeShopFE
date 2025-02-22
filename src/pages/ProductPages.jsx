@@ -68,7 +68,7 @@ const ProductPages = () => {
     useEffect(() => {
         if (Loading2 && socket) {
             try {
-                if (account.isRegist !== true) {
+                if (account.isRegist !== true && account.isFirstUser) {
                     if (socket) {
                         socket.emit("Register", {
                             username: account.username,
@@ -77,7 +77,14 @@ const ProductPages = () => {
                         const data = { ...account, isRegist: true }
                         localStorage.setItem('account', JSON.stringify(data))
                     }
+                } else {
+                    if (account.isFirstUser !== true) {
+                        if (socket) {
+                            socket.emit('SendId', account.username)
+                        }
+                    }
                 }
+
             } catch (err) {
                 sessionStorage.removeItem('account')
                 location.href = "/"
@@ -87,7 +94,7 @@ const ProductPages = () => {
             Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket);
             SetLoading2(false)
         }
-    }, [Loading2,socket]);
+    }, [Loading2, socket]);
     console.log(listCart)
 
     if (account == null) {
