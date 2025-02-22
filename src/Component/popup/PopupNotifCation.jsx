@@ -62,9 +62,15 @@ const PopupNotification = (props) => {
                 }
             })
 
+            //socket jika akses diterima
             socket.on("Receive", (data) => {
                 setTimeout(() => {
-                    localStorage.setItem('account', JSON.stringify(data))
+                    localStorage.setItem('account', JSON.stringify(data))//mempebarui informasi account 
+                    //mendaftarkan ke server
+                    socket.emit("Register", {
+                        username: data.username,
+                        id: data.id
+                    })
                 }, 1000)
 
             })
