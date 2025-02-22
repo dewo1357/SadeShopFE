@@ -62,10 +62,13 @@ const PopupNotification = (props) => {
                 }
             })
 
-
-
-            //fungsi ini digunakan untuk mengizinkan device lain untuk menggunakan Account Yang Sama
-
+            //socket jika ditolak akses
+            socket.on('ActTolakAkses', (message) => {
+                setTimeout(() => {
+                    localStorage.clear()
+                    location.href = "/"
+                }, 1000)
+            })
 
             socket.on('Notification', (Message) => {
                 setMessage(Message)

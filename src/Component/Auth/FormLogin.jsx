@@ -45,15 +45,7 @@ const FormLogin = () => {
 
             })
 
-            //socket jika ditolak akses
-            socket.on('ActTolakAkses', (message) => {
-                setTimeout(() => {
-                    setNotificationMessage(message)
-                    setNotification(true)
-                    setAcces(false)
-
-                }, 1000)
-            })
+            
 
         }
         if (localStorage.getItem('account') !== null) {
