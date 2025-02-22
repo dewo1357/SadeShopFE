@@ -440,7 +440,7 @@ const Mesage = (props) => {
                     </div>
                 </div>
 
-                <div ref={NotifDelete} className="overlay3 MessageOverlay">
+                <div ref={NotifDelete} className="loading">
                     <div className={`SellerNotification Account ${isDelete ? "AccountOn" : ""}`} hidden={isDelete ? false : true}>
                         <div>
                             <h1>Apakah Anda Yakin Menghapus Chat?</h1>
