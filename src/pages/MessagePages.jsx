@@ -314,158 +314,162 @@ const Mesage = (props) => {
 
     return (
         MyListChat ?
-            <div className="MessageContainer">
-                <div className="CategoryChatRoom" ref={ListContact}  >
-                    <div className="ListChat">
-                        <a style={{ textDecoration: "none", color: "black" }} href="/products"><h1>Back</h1></a>
-                        <h1>List Chat</h1>
-                    </div>
-                    <div className="ListContactChatContainer" >
-                        {MyRoomChat.map((item, index) => (
-                            <div onClick={() => {
-                                checkChatBasedOnIndex(item.idCategory,
-                                    item.userReceive.username === account.username ?
-                                        item.SenderAccountID : item.ReceiveAccountID,
-
-                                    item.userReceive.username === account.username ?
-                                        item.usernameSend.username : item.userReceive.username)
-                            }}
-                                key={item.idCategory} className="ListContactChat"
-                                style={{
-                                    backgroundColor: item.userReceive.username === account.username && item.isAllRead == 'false' ? "grey" : false,
-
-                                }}>
-                                <img src={`https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${item.userReceive.username !== account.username ? item.PictReceive.image : item.PictSend.image}`} alt="" width="100" height="100" />
-                                <div >
-                                    <div className="ListContact">
-                                        <h2>{item.userReceive.username === account.username ? item.usernameSend.username : item.userReceive.username}</h2>
-                                        <h3>{item.nUnRead !== 0 ? item.nUnRead : ""}</h3>
-                                    </div>
-                                    <div>
-                                        <p>{item.LastContent}</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div ref={RoomChat} className="RoomChat">
-                    <div style={innerWidth < 700 ? { display: "flex", justifyContent: "space-between", alignItems: "center", height: "100%" } : {}}>
-                        <div className="backButtonRoomChat">
-                            <Button styling="btn" action={backToListContact} ContentButton={<img src="/Images/arrow-left_10023749.png" width="30px"></img>}></Button>
-                        </div>
-                        <div>
-                            {ContactName ?
-                                <a style={{ textDecoration: "none", color: "black", fontSize: innerWidth < 700 ? "10px" : "20px" }} href={`/profil/${ContactName}`}>
-                                    <h1 style={{ textAlign: "right" }} > {index != null ? ContactName : "Chat Room"}</h1>
-                                </a> :
-                                <h1 style={{ textAlign: "right" }} > {index != null ? ContactName : "Chat Room"}</h1>}
-                        </div>
-                    </div>
-                    <div className="PrevImageMessage" hidden={index || StartChat ? true : false}>
-                        <img src="/Images/5664349.jpg" alt="" hidden={index || StartChat ? true : false} />
-                    </div>
-
-                    <div className="ListContactChatContainer" hidden={index || StartChat ? false : true} >
-                        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} hidden={StartChat && getMyAccount ? true : false}>
-                            <img src="/Images/Loading.gif" alt="" width="100px" hidden={StartChat && getMyAccount ? true : !StartChat ? true : false} />
-                        </div>
-
-                        <div hidden={(StartChat && getMyAccount) && !index ? false : true}>
-                            <div className="ProfileInfoChat">
-                                <img src={`https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${getMyAccount ? getMyAccount.image : ""}`} alt="" />
-                            </div>
-                            <div className="ProfileChatInfo">
-                                <div>
-                                    <h1>{getMyAccount ? getMyAccount.nama : ""} </h1>
-                                </div>
-                                <div>
-                                    <p>{getMyAccount ? `${getMyAccount.username}` : ""} <br></br> {getMyAccount ? getMyAccount.province : ""} , Kota {getMyAccount ? getMyAccount.city : ""}  {getMyAccount ? getMyAccount.road : ""}  {getMyAccount ? getMyAccount.postalCode : ""}  </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div ref={Room} className="chattingList " hidden={getMyAccount && !index ? true : !index ? true : false} >
-                            {index !== null ? MyListChat[index].data.map((item) => (
-                                <div key={item.idChat} style={{ display: "flex", justifyContent: item.Sender.username === account.username ? "end" : "left" }}>
-                                    {item.Sender.username === account.username ?
-                                        <div className="ListContactChat chatRoomList" key={item} >
-                                            <div>
-                                                <div className="optionsChat">
-                                                    <span>
-                                                        <img src="/Images/arrow-point-to-right.png" alt="" />
-                                                    </span>
-                                                </div>
-                                                <div className="optionChatAction" >
-                                                    <button><img src="/Images/information.png" alt="" /></button>
-                                                    <button onClick={() => StartToDelete(item.idChat)}><img src="/Images/trash.png" alt="" /></button>
-                                                </div>
-                                            </div>
-                                            <div  >
-                                                <h2 style={{ textAlign: item.Sender.username === account.username ? "right" : "left" }}>{item.Content}</h2>
-                                                <p style={{ fontSize: "10px" }}>{item.CreatedAt}</p>
-                                            </div>
-                                        </div>
-                                        : <div className="ListContactChat chatRoomList" key={item} >
-                                            <div>
-                                                <h2 style={{ textAlign: item.Sender.username === account.username ? "right" : "left" }}>{item.Content}</h2>
-                                                <p>{item.CreatedAt}</p>
-                                            </div>
-                                            <div>
-                                                <div className="optionsChat">
-                                                    <span>
-                                                        <img src="/Images/arrow-point-to-right.png" alt="" />
-                                                    </span>
-                                                </div>
-                                                <div className="optionChatAction" >
-                                                    <button onClick={() => StartToDelete(item.idChat)}><img src="/Images/trash.png" alt="" /></button>
-                                                    <button><img src="/Images/information.png" alt="" /></button>
-                                                </div>
-                                            </div>
-                                        </div>}
-                                </div>
-
-                            )) : []}
-                        </div>
-                        <form action="" onSubmit={sendMyChat} hidden={index !== null || (StartChat && getMyAccount) ? false : true}>
-                            <div className="ActionToSend" >
-                                <div >
-                                    <textarea onInput={undisabledbutton} name="textContent" id=""></textarea>
-                                </div>
-                                <div>
-                                    <button style={{ backgroundColor: !fillText ? "grey" : false }} type="submit" disabled={fillText ? false : true}>Send</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div ref={NotifDelete} className="loading">
-                    <div className={`SellerNotification Account ${isDelete ? "AccountOn" : ""}`} hidden={isDelete ? false : true}>
-                        <div>
-                            <h1>Apakah Anda Yakin Menghapus Chat?</h1>
-                        </div>
-
-                        <h3>Jika Iya, Maka Data akan terhapus.</h3>
-
-                        <div className="ConfirmBackToCartAction">
-                            <button onClick={deleteMessage}>Tetap Hapus</button>
-                            <button onClick={CancelToDeleteChat} >Tolak</button>
-                        </div>
-                    </div>
-                    <div className="OverlayLoading" hidden={isLoading ? false : true}>
-                        <h2>Mohon Ditunggu Ya..😋</h2>
-                        <img src="/Images/Loading.gif" alt="" />
-                    </div>
-
-
-                </div>
+            <>
                 <PopupNotification
                     popupConfirm={popupConfirm}
                     popupConfirm2={popupConfirm2}
                     setMessage={setMessage}
                 />
-            </div> :
+                <div className="MessageContainer">
+                    <div className="CategoryChatRoom" ref={ListContact}  >
+                        <div className="ListChat">
+                            <a style={{ textDecoration: "none", color: "black" }} href="/products"><h1>Back</h1></a>
+                            <h1>List Chat</h1>
+                        </div>
+                        <div className="ListContactChatContainer" >
+                            {MyRoomChat.map((item, index) => (
+                                <div onClick={() => {
+                                    checkChatBasedOnIndex(item.idCategory,
+                                        item.userReceive.username === account.username ?
+                                            item.SenderAccountID : item.ReceiveAccountID,
+
+                                        item.userReceive.username === account.username ?
+                                            item.usernameSend.username : item.userReceive.username)
+                                }}
+                                    key={item.idCategory} className="ListContactChat"
+                                    style={{
+                                        backgroundColor: item.userReceive.username === account.username && item.isAllRead == 'false' ? "grey" : false,
+
+                                    }}>
+                                    <img src={`https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${item.userReceive.username !== account.username ? item.PictReceive.image : item.PictSend.image}`} alt="" width="100" height="100" />
+                                    <div >
+                                        <div className="ListContact">
+                                            <h2>{item.userReceive.username === account.username ? item.usernameSend.username : item.userReceive.username}</h2>
+                                            <h3>{item.nUnRead !== 0 ? item.nUnRead : ""}</h3>
+                                        </div>
+                                        <div>
+                                            <p>{item.LastContent}</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div ref={RoomChat} className="RoomChat">
+                        <div style={innerWidth < 700 ? { display: "flex", justifyContent: "space-between", alignItems: "center", height: "100%" } : {}}>
+                            <div className="backButtonRoomChat">
+                                <Button styling="btn" action={backToListContact} ContentButton={<img src="/Images/arrow-left_10023749.png" width="30px"></img>}></Button>
+                            </div>
+                            <div>
+                                {ContactName ?
+                                    <a style={{ textDecoration: "none", color: "black", fontSize: innerWidth < 700 ? "10px" : "20px" }} href={`/profil/${ContactName}`}>
+                                        <h1 style={{ textAlign: "right" }} > {index != null ? ContactName : "Chat Room"}</h1>
+                                    </a> :
+                                    <h1 style={{ textAlign: "right" }} > {index != null ? ContactName : "Chat Room"}</h1>}
+                            </div>
+                        </div>
+                        <div className="PrevImageMessage" hidden={index || StartChat ? true : false}>
+                            <img src="/Images/5664349.jpg" alt="" hidden={index || StartChat ? true : false} />
+                        </div>
+
+                        <div className="ListContactChatContainer" hidden={index || StartChat ? false : true} >
+                            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }} hidden={StartChat && getMyAccount ? true : false}>
+                                <img src="/Images/Loading.gif" alt="" width="100px" hidden={StartChat && getMyAccount ? true : !StartChat ? true : false} />
+                            </div>
+
+                            <div hidden={(StartChat && getMyAccount) && !index ? false : true}>
+                                <div className="ProfileInfoChat">
+                                    <img src={`https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${getMyAccount ? getMyAccount.image : ""}`} alt="" />
+                                </div>
+                                <div className="ProfileChatInfo">
+                                    <div>
+                                        <h1>{getMyAccount ? getMyAccount.nama : ""} </h1>
+                                    </div>
+                                    <div>
+                                        <p>{getMyAccount ? `${getMyAccount.username}` : ""} <br></br> {getMyAccount ? getMyAccount.province : ""} , Kota {getMyAccount ? getMyAccount.city : ""}  {getMyAccount ? getMyAccount.road : ""}  {getMyAccount ? getMyAccount.postalCode : ""}  </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ref={Room} className="chattingList " hidden={getMyAccount && !index ? true : !index ? true : false} >
+                                {index !== null ? MyListChat[index].data.map((item) => (
+                                    <div key={item.idChat} style={{ display: "flex", justifyContent: item.Sender.username === account.username ? "end" : "left" }}>
+                                        {item.Sender.username === account.username ?
+                                            <div className="ListContactChat chatRoomList" key={item} >
+                                                <div>
+                                                    <div className="optionsChat">
+                                                        <span>
+                                                            <img src="/Images/arrow-point-to-right.png" alt="" />
+                                                        </span>
+                                                    </div>
+                                                    <div className="optionChatAction" >
+                                                        <button><img src="/Images/information.png" alt="" /></button>
+                                                        <button onClick={() => StartToDelete(item.idChat)}><img src="/Images/trash.png" alt="" /></button>
+                                                    </div>
+                                                </div>
+                                                <div  >
+                                                    <h2 style={{ textAlign: item.Sender.username === account.username ? "right" : "left" }}>{item.Content}</h2>
+                                                    <p style={{ fontSize: "10px" }}>{item.CreatedAt}</p>
+                                                </div>
+                                            </div>
+                                            : <div className="ListContactChat chatRoomList" key={item} >
+                                                <div>
+                                                    <h2 style={{ textAlign: item.Sender.username === account.username ? "right" : "left" }}>{item.Content}</h2>
+                                                    <p>{item.CreatedAt}</p>
+                                                </div>
+                                                <div>
+                                                    <div className="optionsChat">
+                                                        <span>
+                                                            <img src="/Images/arrow-point-to-right.png" alt="" />
+                                                        </span>
+                                                    </div>
+                                                    <div className="optionChatAction" >
+                                                        <button onClick={() => StartToDelete(item.idChat)}><img src="/Images/trash.png" alt="" /></button>
+                                                        <button><img src="/Images/information.png" alt="" /></button>
+                                                    </div>
+                                                </div>
+                                            </div>}
+                                    </div>
+
+                                )) : []}
+                            </div>
+                            <form action="" onSubmit={sendMyChat} hidden={index !== null || (StartChat && getMyAccount) ? false : true}>
+                                <div className="ActionToSend" >
+                                    <div >
+                                        <textarea onInput={undisabledbutton} name="textContent" id=""></textarea>
+                                    </div>
+                                    <div>
+                                        <button style={{ backgroundColor: !fillText ? "grey" : false }} type="submit" disabled={fillText ? false : true}>Send</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div ref={NotifDelete} className="loading">
+                        <div className={`SellerNotification Account ${isDelete ? "AccountOn" : ""}`} hidden={isDelete ? false : true}>
+                            <div>
+                                <h1>Apakah Anda Yakin Menghapus Chat?</h1>
+                            </div>
+
+                            <h3>Jika Iya, Maka Data akan terhapus.</h3>
+
+                            <div className="ConfirmBackToCartAction">
+                                <button onClick={deleteMessage}>Tetap Hapus</button>
+                                <button onClick={CancelToDeleteChat} >Tolak</button>
+                            </div>
+                        </div>
+                        <div className="OverlayLoading" hidden={isLoading ? false : true}>
+                            <h2>Mohon Ditunggu Ya..😋</h2>
+                            <img src="/Images/Loading.gif" alt="" />
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </>
+            :
             <center>
                 <div>
                     <h1 style={{ fontFamily: "monospace" }}>Memproses..</h1>
