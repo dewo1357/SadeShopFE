@@ -440,7 +440,7 @@ const Mesage = (props) => {
                     </div>
                 </div>
 
-                <div ref={NotifDelete} className="overlay3">
+                <div ref={NotifDelete} className="overlay3 MessageOverlay">
                     <div className={`SellerNotification Account ${isDelete ? "AccountOn" : ""}`} hidden={isDelete ? false : true}>
                         <div>
                             <h1>Apakah Anda Yakin Menghapus Chat?</h1>
@@ -461,7 +461,6 @@ const Mesage = (props) => {
 
                 </div>
                 <PopupNotification
-                    socket={socket}
                     popupConfirm={popupConfirm}
                     popupConfirm2={popupConfirm2}
                     setMessage={setMessage}
