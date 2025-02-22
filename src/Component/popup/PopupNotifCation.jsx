@@ -68,8 +68,7 @@ const PopupNotification = (props) => {
                 socket.emit('SendId', account.username)
             }
         } catch (err) {
-            sessionStorage.removeItem('account')
-            location.href = "/"
+            console.log(err.message)
         }
     }, [])
 
