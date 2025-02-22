@@ -56,10 +56,12 @@ const PopupNotification = (props) => {
     useEffect(() => {
         try {
             if (account.UserOnServer) {
-                socket.emit("Register", {
-                    username: account.username,
-                    id: account.id
-                })
+                if (socket) {
+                    socket.emit("Register", {
+                        username: account.username,
+                        id: account.id
+                    })
+                }
                 if (account.isRegist !== true) {
                     const data = { ...account, isRegist: true }
                     localStorage.setItem('account', JSON.stringify(data))
