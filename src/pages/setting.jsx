@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState, useRef } from "react"
+import { useState, useRef,useEffect } from "react"
 import Button from "../Component/Element/Button/Button"
 import Input from "../Component/Element/Input/Input"
 import { useSocket } from "../SocketProvider"
@@ -9,7 +9,7 @@ import { API_URL } from "../../config"
 const SettingPages = () => {
     const socket = useSocket();
 
-    const [account,setAccount] = useState(getAcc())
+    const [account, setAccount] = useState(getAcc())
     const [active, setActive] = useState(Array(4).fill(false))
     const [checkIndex, setCheckIndex] = useState(null)
     const Confirm = useRef();
@@ -49,6 +49,8 @@ const SettingPages = () => {
             }
         }
     }
+
+   
 
     const StartToSetting = async (TokenSetting = false, ValuePasss = false) => {
         console.log(category)
@@ -166,11 +168,11 @@ const SettingPages = () => {
 
 
     return (
-        <>   
-        <div className="headSetting">
-            <a href="/products"><h1>Back</h1></a>
-            <h1>SadeShop.com</h1>
-        </div >
+        <>
+            <div className="headSetting">
+                <a href="/products"><h1>Back</h1></a>
+                <h1>SadeShop.com</h1>
+            </div >
             <div className="SettingContainer">
                 <div className="PrevieSetting">
                     <h1>

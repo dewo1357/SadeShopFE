@@ -2,6 +2,7 @@
 import Button from "../Component/Element/Button/Button"
 import Label from "../Component/Element/Label/Label"
 import Input from "../Component/Element/Input/Input"
+import PopupNotification from "../Component/popup/PopupNotifCation"
 import { useParams } from "react-router-dom"
 import { useState, useEffect, useRef } from "react"
 import { v4 } from "uuid"
@@ -350,6 +351,7 @@ const AddDataProductForSmartPhone = () => {
                     <img src="/Images/Loading.gif" alt="" />
                 </div>
             </div>
+            <PopupNotification/>
         </>
     )
 }

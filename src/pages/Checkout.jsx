@@ -8,6 +8,7 @@ import { Refresh_Token, ActionToDeleteCheckoutCart, getAcc } from "./manage"
 import { useRef } from "react";
 import { useSocket } from "../SocketProvider";
 import { API_URL } from "../../config";
+import PopupNotification from "../Component/popup/PopupNotifCation";
 
 
 const CheckOut = () => {
@@ -144,6 +145,7 @@ const CheckOut = () => {
 
     return (
         <>
+           
             <div className="FormCheckout">
                 <div ref={ConfirmBack} className="overlay3">
                     <div className={`ConfirmBackToCart ${popupConfirm ? "ConfirmBackToCartOn" : ""}`}>
@@ -303,6 +305,7 @@ const CheckOut = () => {
                     <img src="/Images/Loading.gif" alt="" />
                 </div>
             </div>
+            <PopupNotification/>
         </>
     )
 }

@@ -33,7 +33,7 @@ const ProductPages = () => {
     let [account, setAccount] = useState(getAcc())
     const Session_DataProduk = sessionStorage.getItem('ProductMaster');
 
-    const [popupConfirm, setpopupconfirm] = useState(false)
+    
     const [popupConfirm2, setpopupconfirm2] = useState(false)
     const [message, setMessage] = useState(null)
 
@@ -67,27 +67,6 @@ const ProductPages = () => {
     const ConfirmBack = useRef();
     useEffect(() => {
         if (Loading2 && socket) {
-            try {
-                if (account.isRegist !== true && account.isFirstUser) {
-                    if (socket) {
-                        socket.emit("Register", {
-                            username: account.username,
-                            id: account.id
-                        })
-                        const data = { ...account, isRegist: true }
-                        localStorage.setItem('account', JSON.stringify(data))
-                    }
-                } else if(!account.isFirstUser) {
-                    if (account.isFirstUser !== true) {
-                        if (socket) {
-                            socket.emit('SendId', account.username)
-                        }
-                    }
-                }
-            } catch (err) {
-                sessionStorage.removeItem('account')
-                location.href = "/"
-            }
             console.log("menjalankan")
             Get_data();
             Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket);
@@ -103,10 +82,7 @@ const ProductPages = () => {
             GenreData !== null || listCart !== null ? <>
                 <div className="OverallProductsPages">
                     <PopupNotification
-                        socket={socket}
-                        popupConfirm={popupConfirm}
                         popupConfirm2={popupConfirm2}
-                        setpopupconfirm={setpopupconfirm}
                         setMessage={setMessage}
                     />
                     <div>

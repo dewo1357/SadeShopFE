@@ -83,8 +83,6 @@ const Mesage = (props) => {
                             'username': account.username,
                             'id': account.id
                         });
-                        const data = { ...account, isRegist: false }
-                        localStorage.setItem('account', JSON.stringify(data))
                     }
                 }
             } catch (err) {

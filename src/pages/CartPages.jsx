@@ -10,7 +10,7 @@ import { active, DeleteCart, ClosePopup, FinishAndClosePoopup, process, Refresh_
 import { useSocket } from "../SocketProvider";
 import { API_URL } from "../../config";
 import Button from "../Component/Element/Button/Button";
-
+import PopupNotification from "../Component/popup/PopupNotifCation";
 
 const CartPages = () => {
     const {
@@ -26,7 +26,7 @@ const CartPages = () => {
 
 
     const [dataCart, setDataCart] = useState([]);
-    const [account,setAccount] = useState(getAcc())
+    const [account, setAccount] = useState(getAcc())
     const [ArrayCheck, setArrayCheck] = useState([]);
     const [ProcessMap, setProcessMap] = useState(false);
     const [Loading2, SetLoading2] = useState(true)
@@ -225,12 +225,14 @@ const CartPages = () => {
 
 
 
+
+
     return (
         <>
+            <PopupNotification/>
             <div className="TitleMenu Keranjang">
                 <h1 style={{ cursor: "pointer" }}
                     onClick={() => close()}>SadeShop.com</h1>
-
                 <h1>
                     Cart
                 </h1>

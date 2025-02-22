@@ -6,6 +6,7 @@ import { getAcc, Refresh_Token } from "./manage";
 import { useState } from "react"
 import { useSocket } from "../SocketProvider";
 import { API_URL } from "../../config";
+import PopupNotification from "../Component/popup/PopupNotifCation";
 const InformationOrder = () => {
     const socket = useSocket();
     const [indexButton, setIndex] = useState(0);
@@ -172,11 +173,10 @@ const InformationOrder = () => {
                         : <div style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}>
                             <img src="/Images/Loading.gif" width="90px"></img>
                         </div>}
-
-
                 </div>
 
             </div>
+            <PopupNotification/>
         </>
     )
 

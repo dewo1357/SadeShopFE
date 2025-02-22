@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 
 /* eslint-disable react/prop-types */
@@ -6,15 +7,17 @@ import { useState, useEffect, useRef } from "react";
 import { ActionToDeleteCheckoutCart, getAcc } from "../../pages/manage";
 import Button from "../Element/Button/Button";
 import { API_URL } from "../../../config";
+import { useSocket } from "../../SocketProvider";
 
 const PopupNotification = (props) => {
-    const { socket, popupConfirm, popupConfirm2, setMessage, setpopupconfirm
-    } = props
+    const { popupConfirm2, setMessage } = props
 
     const ConfirmBack = useRef();
+    const socket = useSocket()
 
     const [Acces, setAcces] = useState(false)
     const [notificationSeller, setnotificationSeller] = useState(false)
+    const [popupConfirm, setpopupconfirm] = useState(false)
 
     const sendInformationAccount = () => {
         socket.emit('Send', {
@@ -31,20 +34,44 @@ const PopupNotification = (props) => {
     const [Notif, notifMessage] = useState(null)
     const [finish, SetFinish] = useState(false)
     const [account, setAccount] = useState(getAcc())
+
+
+
     useEffect(() => {
         try {
-            if (account.new_user===true) {
+            if (account.new_user === true) {
                 ConfirmBack.current.style.visibility = "visible";
                 setPassOn(true)
             }
-        }catch(err){
-            if(account==='undefined'){
+        } catch (err) {
+            if (account === 'undefined') {
                 location.href = "/"
             }
-            
+
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     }, [PassOn])
+
+
+    useEffect(() => {
+        try {
+            if (account.UserOnServer) {
+                socket.emit("Register", {
+                    username: account.username,
+                    id: account.id
+                })
+                if (account.isRegist !== true) {
+                    const data = { ...account, isRegist: true }
+                    localStorage.setItem('account', JSON.stringify(data))
+                }
+            } else {
+                socket.emit('SendId', account.username)
+            }
+        } catch (err) {
+            sessionStorage.removeItem('account')
+            location.href = "/"
+        }
+    }, [])
 
     useEffect(() => {
         if (JSON.parse(localStorage.getItem('CheckoutData'))) {
@@ -95,7 +122,6 @@ const PopupNotification = (props) => {
 
             console.log(socket)
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [socket])
 
 

@@ -111,6 +111,9 @@ const ProfilPages = () => {
     const [delay, setDelay] = useState(true);
     const [addData, setAddData] = useState(true)
     const [isAccess, setAccess] = useState(false)
+
+
+
     useEffect(() => {
         try {
             setTimeout(async () => {
@@ -335,21 +338,11 @@ const ProfilPages = () => {
         location.href = `/message/${getMyAccount.username}`
     }
 
-    const [popupConfirm, setpopupconfirm] = useState(false)
-    const [popupConfirm2, setpopupconfirm2] = useState(false)
-    const [message, setMessage] = useState(null)
     const [SumProcess, setSumProcess] = useState(0)
 
     return (
         getMyAccount && GenreData ? <div className="ProfilPagesLayout" hidden={delay ? true : false}>
-            <PopupNotification
-                socket={socket}
-                popupConfirm={popupConfirm}
-                popupConfirm2={popupConfirm2}
-                setMessage={setMessage}
-            />
-
-
+            <PopupNotification/>
             <HeaderMenu
                 selected={isAccess ? 1 : ""}
                 To2={`/profil/${account.username}`}
