@@ -54,24 +54,7 @@ const PopupNotification = (props) => {
 
 
     useEffect(() => {
-        try {
-            if (account.UserOnServer) {
-                if (socket) {
-                    socket.emit("Register", {
-                        username: account.username,
-                        id: account.id
-                    })
-                }
-                if (account.isRegist !== true) {
-                    const data = { ...account, isRegist: true }
-                    localStorage.setItem('account', JSON.stringify(data))
-                }
-            } else {
-                socket.emit('SendId', account.username)
-            }
-        } catch (err) {
-            console.log(err.message)
-        }
+
     }, [])
 
     useEffect(() => {
@@ -83,6 +66,24 @@ const PopupNotification = (props) => {
         }
 
         if (socket) {
+            try {
+                if (account.UserOnServer) {
+                    socket.emit("Register", {
+                        username: account.username,
+                        id: account.id
+                    })
+                    if (account.isRegist !== true) {
+                        const data = { ...account, isRegist: true }
+                        localStorage.setItem('account', JSON.stringify(data))
+                    }
+                } else {
+                    socket.emit('SendId', account.username)
+                }
+            } catch (err) {
+                console.log(err.message)
+            }
+
+
             socket.on("AskAcces", (message) => {
                 setAcces(true)
                 if (ConfirmBack.current) {
