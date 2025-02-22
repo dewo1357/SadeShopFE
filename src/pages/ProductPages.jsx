@@ -77,14 +77,13 @@ const ProductPages = () => {
                         const data = { ...account, isRegist: true }
                         localStorage.setItem('account', JSON.stringify(data))
                     }
-                } else {
+                } else if(!account.isFirstUser) {
                     if (account.isFirstUser !== true) {
                         if (socket) {
                             socket.emit('SendId', account.username)
                         }
                     }
                 }
-
             } catch (err) {
                 sessionStorage.removeItem('account')
                 location.href = "/"
