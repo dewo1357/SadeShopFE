@@ -119,14 +119,14 @@ const VerifyForm = (props) => {
 
     return (
         <>
-            <div ref={popupVerify} className="overlay3">
+            <div ref={popupVerify} className="overlay3 ">
                 <div className={`OverlayMap ${ProcessMap ? "OverlayMapOn" : ""}`} hidden>
                     <div className="Map">
                         <MyComponent instalUlang={null} setProcessMap={setProcessMap} seAddress={seAddress} setLoadingMap={setLoadingMap} />
                     </div>
                 </div>
                 <form onSubmit={VerifyAccount} action="">
-                    <div className="InsertPass" hidden={!done ? true : false}>
+                    <div className="InsertPass verify" hidden={!done ? true : false}>
                         <h1>Masukan Password</h1>
                         <input name="pass" type="password" />
                         <button >Verify My Account</button>

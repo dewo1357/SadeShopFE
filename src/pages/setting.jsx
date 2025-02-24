@@ -251,12 +251,12 @@ const SettingPages = () => {
                     </div>
                 </div>
             </div>
-            <div ref={Confirm} className="overlay3 Setting">
+            <div ref={Confirm} className="overlay3">
                 <div className="InsertPass" hidden={isLoading ? true : false}>
                     <h1>Masukan Password</h1>
                     <form onSubmit={CheckPass} action="">
                         <input name="pass" type="password" />
-                        <button >Verify My Account</button>
+                        <button >Start To Setting</button>
                     </form>
                 </div>
                 <div className="OverlayLoading" hidden={isLoading ? false : true}>
