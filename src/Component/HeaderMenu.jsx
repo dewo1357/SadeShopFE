@@ -94,7 +94,7 @@ const HeaderMenu = (props) => {
 
     return (
         <>
-            <div className="TitleMenu" style={{width: GenreData.length!==0 ?"100%":"1300px"}}>
+            <div className="TitleMenu" style={{width: GenreData.length!==0 ?"100%":innerWidth >700 ? "1300px" :" 100%"}}>
                 <div id="ProfileHead">
                     <h1>SadeShop.com</h1>
                     <div>
