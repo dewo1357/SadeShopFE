@@ -9,7 +9,7 @@ import Statesss from "../States";
 import { useSocket } from "../../SocketProvider";
 import PopupNotification from "../../Component/popup/PopupNotifCation";
 import Cart from "./Cart";
-import ListProduct from "./listProduct";
+import ListProduct from "./ListProduct";
 const ProductPages = () => {
     const socket = useSocket();
 
