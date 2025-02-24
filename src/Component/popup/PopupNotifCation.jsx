@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 
 const PopupNotification = (props) => {
     const location = useLocation();
-    const { popupConfirm2} = props
+    const { popupConfirm2 } = props
 
     const ConfirmBack = useRef();
     const socket = useSocket()
@@ -42,7 +42,7 @@ const PopupNotification = (props) => {
 
     useEffect(() => {
         try {
-            if (account.new_user === true) {
+            if (account.new_user === 'true') {
                 ConfirmBack.current.style.visibility = "visible";
                 setPassOn(true)
             }
@@ -53,7 +53,7 @@ const PopupNotification = (props) => {
 
         }
 
-    }, [PassOn])
+    }, [account])
 
 
     useEffect(() => {
@@ -61,7 +61,7 @@ const PopupNotification = (props) => {
     }, [])
 
     useEffect(() => {
-        if (JSON.parse(localStorage.getItem('CheckoutData'))&& !location.pathname === "/checkout") {
+        if (JSON.parse(localStorage.getItem('CheckoutData')) && !location.pathname === "/checkout") {
             ConfirmBack.current.style.visibility = "visible";
             setTimeout(() => {
                 setpopupconfirm(true)
@@ -174,11 +174,15 @@ const PopupNotification = (props) => {
             }
             if (response.status === 200) {
                 const result = await response.json()
+                let dataAccount = account
+                socket.emit("Register", {
+                    username: account.username,
+                    id: account.id
+                })
+                dataAccount = { ...account, isRegist: true,new_user: false }
+                localStorage.setItem('account', JSON.stringify(dataAccount))
                 notifMessage(result.Message)
                 SetFinish(true)
-                let dataAccount = account
-                dataAccount = { ...dataAccount, new_user: false }
-                localStorage.setItem('account', JSON.stringify(dataAccount))
             }
         } catch (err) {
             console.log(err.message)

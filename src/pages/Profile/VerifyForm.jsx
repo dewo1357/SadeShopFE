@@ -12,7 +12,6 @@ const VerifyForm = (props) => {
 
 
 
-    // eslint-disable-next-line no-unused-vars
     const [ProcessChangeProfile, SetProcessChangeProfile] = useState(false)
 
     const [done, setDone] = useState(false)
@@ -71,16 +70,19 @@ const VerifyForm = (props) => {
                 postalCode: address.address.postcode
             })
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [LoadingMap])
 
     const VerifyAccount = async (e) => {
         e.preventDefault();
+        popupVerify.current.style.visibility = 'hidden'
+        setDone(false)
         SetProcessLoading(true)
+        console.log(processLoading)
         setPesan("Verifikasi Account Kamu Sedang Di Proses")
+        SetProcessChangeProfile(true)
         const acc = JSON.stringify({
-            id: getMyAccount.id,
-            email: getMyAccount.email,
+            email: getMyAccount.Email,
             state: dataAddress.state,
             city: dataAddress.city,
             road: dataAddress.road,
@@ -96,12 +98,11 @@ const VerifyForm = (props) => {
                 },
                 body: acc
             })
-            popupVerify.current.style.visibility = 'hidden'
-            setDone(false)
             if (!response) {
                 throw new Error("Failed")
             }
             const result = await response.json();
+
             if (result.statusCode === 401) {
                 await Refresh_Token(socket)
                 getMyAccount ?
@@ -117,57 +118,59 @@ const VerifyForm = (props) => {
 
 
     return (
-        <div ref={popupVerify} className="overlay3">
-            <div className={`OverlayMap ${ProcessMap ? "OverlayMapOn" : ""}`} hidden>
-                <div className="Map">
-                    <MyComponent instalUlang={null} setProcessMap={setProcessMap} seAddress={seAddress} setLoadingMap={setLoadingMap} />
+        <>
+            <div ref={popupVerify} className="overlay3">
+                <div className={`OverlayMap ${ProcessMap ? "OverlayMapOn" : ""}`} hidden>
+                    <div className="Map">
+                        <MyComponent instalUlang={null} setProcessMap={setProcessMap} seAddress={seAddress} setLoadingMap={setLoadingMap} />
+                    </div>
                 </div>
+                <form onSubmit={VerifyAccount} action="">
+                    <div className="InsertPass" hidden={!done ? true : false}>
+                        <h1>Masukan Password</h1>
+                        <input name="pass" type="password" />
+                        <button >Verify My Account</button>
+                    </div>
+                    <div ref={overlayVerify} className="FormVerify" hidden={!done ? false : true} >
+                        <div className="headerVerifyTitleandButton">
+                            <h1>Verfication Form</h1>
+                            <span onClick={() => { popupVerify.current.style.visibility = 'hidden' }}>✖</span>
+                        </div>
+
+                        <div>
+                            <div>
+                                <h3>Link Verifikasi Akan dikirim ke <span style={{ backgroundColor: "black", color: "white", padding: "5px" }}>{getMyAccount.Email}</span></h3>
+                            </div>
+                            <div style={{ marginTop: "10px", marginBottom: "10px" }}>
+                                <span className="buttonMap" onClick={() => { setProcessMap(true) }} >Check My Location</span>
+                            </div>
+
+                            <div >
+                                <Label Content="Kota" />
+                                <input type="text" name="city" value={dataAddress.city} onChange={(e) => changeProvince(e.target.value, "city")} />
+                            </div>
+                            <div>
+                                <Label Content="Provinsi"></Label>
+                                <input type="text" name='province' value={dataAddress.state} onChange={(e) => changeProvince(e.target.value, "state")} />
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <Label Content="Jalan"></Label>
+                                <input type="text" name="road" value={dataAddress.road} onChange={(e) => changeProvince(e.target.value, "road")} />
+                            </div>
+                            <div>
+                                <Label Content="Kode Pos"></Label>
+                                <input type="text" name="kodepos" value={dataAddress.postalCode} onChange={(e) => changeProvince(e.target.value, "postcode")} />
+                            </div>
+                        </div>
+                        <div className=" headerVerifyTitleandButton processVerify">
+                            <span onClick={ProcessVerify}>Verify My Account</span>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <form onSubmit={VerifyAccount} action="">
-                <div className="InsertPass" hidden={!done ? true : false}>
-                    <h1>Masukan Password</h1>
-                    <input name="pass" type="password" />
-                    <button >Verify My Account</button>
-                </div>
-                <div ref={overlayVerify} className="FormVerify" hidden={!done ? false : true} >
-                    <div className="headerVerifyTitleandButton">
-                        <h1>Verfication Form</h1>
-                        <span onClick={() => { popupVerify.current.style.visibility = 'hidden' }}>✖</span>
-                    </div>
-
-                    <div>
-                        <div>
-                            <h3>Link Verifikasi Akan dikirim ke <span style={{ backgroundColor: "black", color: "white", padding: "5px" }}>{getMyAccount.Email}</span></h3>
-                        </div>
-                        <div style={{ marginTop: "10px", marginBottom: "10px" }}>
-                            <span className="buttonMap" onClick={() => { setProcessMap(true) }} >Check My Location</span>
-                        </div>
-
-                        <div >
-                            <Label Content="Kota" />
-                            <input type="text" name="city" value={dataAddress.city} onChange={(e) => changeProvince(e.target.value, "city")} />
-                        </div>
-                        <div>
-                            <Label Content="Provinsi"></Label>
-                            <input type="text" name='province' value={dataAddress.state} onChange={(e) => changeProvince(e.target.value, "state")} />
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <Label Content="Jalan"></Label>
-                            <input type="text" name="road" value={dataAddress.road} onChange={(e) => changeProvince(e.target.value, "road")} />
-                        </div>
-                        <div>
-                            <Label Content="Kode Pos"></Label>
-                            <input type="text" name="kodepos" value={dataAddress.postalCode} onChange={(e) => changeProvince(e.target.value, "postcode")} />
-                        </div>
-                    </div>
-                    <div className=" headerVerifyTitleandButton processVerify">
-                        <span onClick={ProcessVerify}>Verify My Account</span>
-                    </div>
-                </div>
-            </form>
             <div className={`loading ${processLoading ? "loadingOn" : ""}`}>
                 <div className="OverlayLoading" hidden={ProcessChangeProfile ? false : true}>
                     {FinnalMessage ? <h2>{FinnalMessage}</h2> : <h2>Mohon Ditunggu<br></br> {Pesan}</h2>}
@@ -178,7 +181,7 @@ const VerifyForm = (props) => {
                     <img src="/Images/Loading.gif" alt="" />
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

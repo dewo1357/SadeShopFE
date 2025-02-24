@@ -141,7 +141,7 @@ const ProfilPages = () => {
                 SetProcessLoading={SetProcessLoading}
                 popupVerify={popupVerify}
                 setFinnalMessage={setFinnalMessage}
-                processLoadin={processLoading}
+                processLoading={processLoading}
                 FinnalMessage={FinnalMessage}
                 FinnalMessage2={FinnalMessage2}
                 Pesan={Pesan}

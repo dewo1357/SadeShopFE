@@ -8,12 +8,14 @@ const Verify = () => {
     const [message, SetMessage] = useState("Process");
     const [hasilAkhir,setHasilAkhir] = useState(false)
     const [finish, setFinish] = useState(false);
+    // eslint-disable-next-line no-unused-vars
+    const [account,setAccount] = useState(getAcc())
     
 
 
     const checkedToken = async () => {
         try {
-            const account = getAcc()
+            
             const response = await fetch(API_URL+"CheckedToken", {
                 method: 'POST',
                 headers: { "Content-Type": 'application/json' ,
@@ -49,7 +51,7 @@ const Verify = () => {
         }
         if (finish) {
             if(hasilAkhir){
-                location.href = "/profil"
+                location.href = "/profil/"+account.username
             }
         }
         
