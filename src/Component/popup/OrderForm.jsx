@@ -6,8 +6,7 @@ import Button from "../Element/Button/Button";
 import { API_URL } from "../../../config";
 import { getAcc } from "../../pages/manage";
 const OrderForm = (props) => {
-    const { product, active, totalPrice, setTotal, item, setTotalItem,
-        SetLoading2, popup2, setMotionLeft, MotionMenuCart } = props;
+    const { product, active,SetLoading2, popup2, setMotionLeft, MotionMenuCart } = props;
     const [Pcs, SetPcs] = useState(1);
     const [Index, SetIndex] = useState(0);
     const [account,setAccount]=useState(getAcc())

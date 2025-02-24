@@ -1848,10 +1848,12 @@ h4 {
 }
 
 
+/*Order Product Popup*/
 .InfoProductLayout {
   background-color: aquamarine;
 }
 
+/*Order Product Popup*/
 .InfoProduct {
   width: 1000px;
   min-width: 80%;
@@ -1864,6 +1866,7 @@ h4 {
 
 }
 
+/*Order Product Popup*/
 .InfoProduct button {
   position: absolute;
   right: 0px;
@@ -1873,10 +1876,12 @@ h4 {
   cursor: pointer;
 }
 
+/*Order Product Popup*/
 .InfoProduct button:hover {
   background-color: rgb(54, 55, 55);
 }
 
+/*Order Product Popup*/
 .InfoProduct .container {
   width: 100%;
   background-color: white;
@@ -1888,16 +1893,19 @@ h4 {
   text-align: left;
 }
 
+/*Order Product Popup*/
 .HeaderAndPrice {
   display: grid;
   grid-template-columns: 65% 30%;
 }
 
+/*Order Product Popup*/
 .CategoryOption {
   display: flex;
   gap: 20px;
 }
 
+/*Order Product Popup*/
 .ComponentCategoryOption {
   background-color: rgb(0, 0, 0);
   width: 40px;
@@ -1917,19 +1925,23 @@ h4 {
   align-items: center;
 }
 
+/*Order Product Popup*/
 .pcs {
   border-radius: 10px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.14);
 }
 
+/*Order Product Popup*/
 .disabled {
   background-color: rgb(117, 117, 117);
 }
 
+/*Order Product Popup*/
 .ComponentCategoryOption:hover {
   background-color: rgb(135, 134, 134);
 }
 
+/*Order Product Popup*/
 .ComponentCategoryOption:active {
   background-color: rgb(210, 210, 210);
 }
@@ -1939,6 +1951,7 @@ h4 {
   margin-right: 10px;
 }
 
+/*Order Product Popup*/
 .FooterOrderForm {
   display: flex;
   flex-wrap: wrap;
@@ -1946,6 +1959,7 @@ h4 {
   padding-right: 40px;
 }
 
+/*Order Product Popup*/
 .FooterOrderForm button {
   height: 100%;
   width: 150px;
@@ -1954,15 +1968,18 @@ h4 {
   position: relative;
 }
 
+/*Order Product Popup*/
 .FooterOrderForm button:hover {
   background-color: rgb(59, 57, 57);
 }
 
+/*Order Product Popup*/
 .left {
   display: flex;
   align-items: center;
 }
 
+/*Order Product Popup*/
 .left img {
   width: 400px;
   height: 360px;
@@ -1971,10 +1988,59 @@ h4 {
   object-fit: cover;
 }
 
+/*Order Product Popup*/
 .right {
   margin-top: 20px;
   align-items: center;
 }
+
+@media only screen and (max-width: 600px){
+  .InfoProduct{
+    width:200px;
+    position: absolute;
+    top : 50px
+  }
+
+  .InfoProduct .container{
+    display: block;
+  }
+
+  .left img{
+    width: 100%;
+    height: 250px;
+  }
+
+  .HeaderAndPrice h1{
+    font-size: 20px;
+  }
+
+  .HeaderAndPrice h2{
+    font-size: 20px;
+  }
+
+  .ContentProductForm p{
+    font-size: 13px;
+  }
+
+  .SumOfPcs span{
+    font-size: 10px;
+    height: 25px;
+    border-radius: 0px;
+  }
+
+  .FooterOrderForm button{
+    width: 200px
+  }
+  .FooterOrderForm{
+    width: 50%;
+    gap : 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1px auto;
+    padding: 0px;
+  }
+}
+
 
 .ButtonDelete {
   background-color: rgb(3, 3, 3);

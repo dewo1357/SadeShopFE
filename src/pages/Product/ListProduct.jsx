@@ -3,13 +3,13 @@
 import CardProduct from "../../Component/Card_Cart/CardLProduct"
 import { useState } from "react"
 import { getAcc,Close } from "../manage"
-import Statesss from "../States"
+
 const ListProduct = (props) => {
     
-    const {motionLeft,Loading,GenreData,popup2} = props
-    const [account,SetAccount] = useState(getAcc())
-    const {SetGrabProduk} = Statesss()
-
+    const {motionLeft,Loading,GenreData,popup2,SetGrabProduk} = props
+    const [account,SetAccount,] = useState(getAcc())
+    
+    console.log(SetGrabProduk)
     const ActionGrabProduk = (data) => {
         console.log(data)
         Close(true, popup2)

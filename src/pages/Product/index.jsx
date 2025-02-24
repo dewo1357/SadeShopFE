@@ -17,13 +17,14 @@ const ProductPages = () => {
         totalItem, setTotalItem,
         listCart, SetListCart,
         totalPrice, setTotal, RightOn,
-        GrabProduk } = Statesss();
+        GrabProduk,SetGrabProduk } = Statesss();
     const [GenreData, setGenre] = useState([])
     const [Loading2, SetLoading2] = useState(true)
+    
 
     //NavCartMotionState
     const [motionLeft, setMotionLeft] = useState(false);
-    
+
     //popups
     const popup2 = useRef(null)
 
@@ -35,7 +36,7 @@ const ProductPages = () => {
     const [popupConfirm2, setpopupconfirm2] = useState(false)
     const [Loading, SetLoading] = useState(true);
 
-    
+
     const Get_data = async () => {
         if (Session_DataProduk !== null && Array.isArray(JSON.parse(Session_DataProduk))) {
             setGenre(JSON.parse(Session_DataProduk))
@@ -93,17 +94,16 @@ const ProductPages = () => {
                         >
                         </HeaderMenu>
                         <Search type="text" placeholder="Search Produk" action={(e) => SearchCard(e, GenreData, setGenre)} />
-                       <ListProduct motionLeft={motionLeft} Loading={Loading} GenreData={GenreData} popup2={popup2}/>
+                        <ListProduct motionLeft={motionLeft} Loading={Loading} GenreData={GenreData} popup2={popup2} SetGrabProduk={SetGrabProduk} />
                     </div>
-                    <Cart 
-                    motionLeft={motionLeft} 
-                    setMotionLeft={setMotionLeft}
-                    setSumProcess={setSumProcess}
-                    setNotifMessage={setNotifMessage}
-                    socket={socket}
+                    <Cart
+                        motionLeft={motionLeft}
+                        setMotionLeft={setMotionLeft}
+                        setSumProcess={setSumProcess}
+                        setNotifMessage={setNotifMessage}
+                        socket={socket}
                     />
-                </div>
-                <div ref={popup2} className="popup">
+                    <div ref={popup2} className="popup">
                     <OrderForm
                         active={Close}
                         product={GrabProduk}
@@ -120,7 +120,8 @@ const ProductPages = () => {
                         MotionMenuCart={MotionMenuCart}>
                     </OrderForm>
                 </div>
-
+                </div>
+                
             </> : <div>
                 <h1>Memproses</h1>
                 <img src="Images/Loading.gif" alt="" width="100" />
