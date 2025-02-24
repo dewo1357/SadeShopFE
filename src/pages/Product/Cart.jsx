@@ -6,12 +6,12 @@ import { MotionMenuCart,Get_Cart } from "../manage";
 import { useEffect } from "react";
 const Cart = (props)=>{
     const {listCart,SetListCart} = Statesss();
-    const {motionLeft,setMotionLeft,setNotifMessage,socket, setSumProcess } = props
+    const {motionLeft,setMotionLeft,setNotifMessage,socket, setSumProcess,Loading2,SetLoading2 } = props
  
     useEffect(()=>{
-        Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket);
+        Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket,SetLoading2);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+    },[Loading2])
     return (
         <>
             <div className={`CartContainer ${motionLeft ? "motion_Cart" : ""}`}>

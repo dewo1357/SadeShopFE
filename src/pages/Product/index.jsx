@@ -53,7 +53,6 @@ const ProductPages = () => {
             }
         }
     }
-
     const [SumProcess, setSumProcess] = useState(0)
     const [notifMessage, setNotifMessage] = useState(false)
     const ConfirmBack = useRef();
@@ -61,7 +60,6 @@ const ProductPages = () => {
         if (Loading2 && socket) {
             console.log("menjalankan")
             Get_data();
-            SetLoading2(false)
         }
     }, [Loading2, socket]);
     console.log(listCart)
@@ -102,6 +100,8 @@ const ProductPages = () => {
                         setSumProcess={setSumProcess}
                         setNotifMessage={setNotifMessage}
                         socket={socket}
+                        Loading2={Loading2}
+                        SetLoading2={SetLoading2}
                     />
                     <div ref={popup2} className="popup">
                     <OrderForm

@@ -442,9 +442,10 @@ body {
 
 /*CartPages*/
 .InfoPrice {
-  display: flex;
+  display: block;
   flex-wrap: wrap;
-  width: 5%;
+  width: 15%;
+  
   gap: 15px;
 }
 
@@ -494,23 +495,29 @@ body {
   .ListPesanan {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 5px;
     padding: 2px;
-    padding-right: 20px;
-    height: 70px;
+    
+    height: 50px;
     width: 100%;
+    font-size: 10px;
   }
 
   .JudulCart {
     width: 50%;
   }
 
-  .hapusCart {
+  .hapusCart  {
     margin-right: 5px;
   }
 
+  .hapusCart span{
+    width: 70px;
+    margin-left: 15px;
+  }
+
   .EditPcs input {
-    width: 50px;
+    width: 20px;
   }
 
   .HargaCart {
@@ -528,7 +535,11 @@ body {
   }
 
   .InfoPrice {
-    width: 100px;
+    width: 40%
+  }
+
+  .EditPcs {
+    gap: 10px
   }
 
 }
@@ -996,6 +1007,12 @@ h4 {
   background-color: rgb(172, 168, 168);
 }
 
+@media only screen and (max-width: 900px){
+  .OverlayLoading{
+    width: 70%;
+  }
+}
+
 .overlay {
   background-color: rgb(255, 255, 255);
   width: 70%;
@@ -1012,6 +1029,8 @@ h4 {
   transition: opacity 100ms ease-in, opacity 0.5s;
   height: 570px;
 }
+
+
 
 .change {
   width: 30%;
@@ -1030,7 +1049,6 @@ h4 {
 
 .overlayBody {
   margin-bottom: 20px;
-
   justify-content: center;
   gap: 70px;
 }
@@ -1121,6 +1139,42 @@ h4 {
   margin-right: 10px;
   height: 35px;
 }
+
+@media only screen and (max-width: 900px){
+  .action{
+    width: 80%;
+    left: 5%;
+    top:10%;
+    height: 650px;
+  }
+
+  .Contact input{
+    width: 100%
+  }
+
+  .Pengiriman{
+    width: 100%;
+
+  }
+
+  .Pengiriman select{
+    
+    width: 130px
+  }
+
+  .Alamat{
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .Alamat input {
+    width: 95%;
+    margin-right: 10px;
+    height: 30px;
+    margin-bottom: 5px;
+  }
+}
+
 
 
 .buttonMap {
@@ -2315,7 +2369,8 @@ h4 {
 
 @media only screen and (max-width: 900px) {
   .AddressCheckout{
-    font-size: 10px;
+    width: 80%;
+    font-size: 9px;
   }
 
   .BodyCheckout{

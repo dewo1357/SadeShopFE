@@ -352,7 +352,7 @@ const GetdataProdukUser = async (username) => {
 
 
 
-const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage,socket) => {
+const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage,socket,SetLoading2) => {
     const account = getAcc();
     try {
         const endpoint = API_URL + `GetCart`
@@ -371,6 +371,7 @@ const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage,socket) => {
             setSumProcess(result.SumProcessProduct)
             setNotifMessage(result.notifMessage)
             sessionStorage.setItem('SumProcess', JSON.stringify(result.SumProcessProduct))
+            SetLoading2(false)
         }else{
             await Refresh_Token(socket)
         }
