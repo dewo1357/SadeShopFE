@@ -7,7 +7,7 @@ import { API_URL } from "../../../config";
 import PopupNotification from "../../Component/popup/PopupNotifCation";
 import CheckOutHeader from "./CheckoutHeader";
 import CheckOutProductList from "./CheckoutProductList";
-import CheckOutPayment from "./CheckOutPayment";
+import CheckOutPayment from "./CheckoutPayment";
 
 const CheckOut = () => {
     const [CartCheckout, SetCartCheckout] = useState([]);
