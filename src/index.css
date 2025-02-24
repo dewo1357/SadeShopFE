@@ -2018,6 +2018,11 @@ h4 {
     font-size: 20px;
   }
 
+  .ContentProductForm{
+    height : 150px;
+    overflow-y: auto;
+  }
+
   .ContentProductForm p{
     font-size: 13px;
   }
