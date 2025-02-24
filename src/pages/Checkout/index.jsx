@@ -7,7 +7,6 @@ import { API_URL } from "../../../config";
 import PopupNotification from "../../Component/popup/PopupNotifCation";
 import CheckOutHeader from "./CheckoutHeader";
 import CheckOutProductList from "./CheckoutProductList";
-import CheckOutShipping from "./CheckOutShipping";
 import CheckOutPayment from "./CheckOutPayment";
 
 const CheckOut = () => {
