@@ -1,23 +1,16 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
 import { useState } from "react";
 import Button from "../Element/Button/Button";
 import { API_URL } from "../../../config";
+import { getAcc } from "../../pages/manage";
 const OrderForm = (props) => {
     const { product, active, totalPrice, setTotal, item, setTotalItem,
         SetLoading2, popup2, setMotionLeft, MotionMenuCart } = props;
     const [Pcs, SetPcs] = useState(1);
     const [Index, SetIndex] = useState(0);
-    const account = () => {
-        try {
-            const acc = JSON.parse(localStorage.getItem('account'))
-            return acc
-        } catch (err) {
-            localStorage.removeItem('account')
-            location.href="/";
-            console.log(err.message)
-        }
-    }
+    const [account,setAccount]=useState(getAcc())
 
     const close = () => {
         console.log()
@@ -48,13 +41,9 @@ const OrderForm = (props) => {
             }
             let result = await response.json();
             console.log(result)
-
             const product = result.data;
             console.log(product)
-            setTotalItem(item + Pcs)
-            setTotal(totalPrice + product.price * Pcs);
-            active(false);
-
+            active(false)
 
         } catch (err) {
             console.log(err.message)

@@ -1,17 +1,23 @@
-/* eslint-disable no-unused-vars */
-import Button from "../Component/Element/Button/Button"
-import Label from "../Component/Element/Label/Label"
-import Input from "../Component/Element/Input/Input"
-import PopupNotification from "../Component/popup/PopupNotifCation"
-import { useParams } from "react-router-dom"
-import { useState, useEffect, useRef } from "react"
+/* eslint-disable react/prop-types */
+import Label from "../../Component/Element/Label/Label"
+import Input from "../../Component/Element/Input/Input"
+import Button from "../../Component/Element/Button/Button"
+import { useState,useRef } from "react"
 import { v4 } from "uuid"
-import { UploadImageToAPI, PostDataProduk, EditMyProduk, getAcc } from "./manage"
-import { API_URL } from "../../config"
+import { useEffect } from "react"
+import { UploadImageToAPI, PostDataProduk, EditMyProduk } from "../manage"
+import { API_URL } from "../../../config"
 
-const AddDataProductForSmartPhone = () => {
-    const addProduct = useParams();
-    const [account,setAccount] = useState(getAcc())
+const Form = (props) => {
+    const { account, Product, Build, addProduct } = props
+    //Handling InputFile Gambar
+    const [files, SetFile] = useState(null)
+    const [imageFile, SetImageFile] = useState(null);
+    const [img, setImg] = useState(null);
+    const [Errorimg, setErrorImg] = useState(false);
+    const [Errormessages, SetErrorMessages] = useState(false);
+
+
     const [ListCategory, SetListCategory] = useState(['Category']);
     const [PriceList, SetPriceList] = useState(['Price']);
     const [StokList, SetStokList] = useState(['Stok']);
@@ -32,53 +38,48 @@ const AddDataProductForSmartPhone = () => {
     const [tempArray, setTempArray] = useState([])
     const [StokArray, setStokArray] = useState([])
 
-    const Product = JSON.parse(sessionStorage.getItem('ProductEdit'));
-    useEffect(() => {
-        const param = new URLSearchParams(window.location.search)
-        if (Product) {
-            if (param.get('AddData')) {
-                console.log(param.get('AddData'))
-                sessionStorage.removeItem('ProductEdit')
-            } else {
-                console.log(Product)
-                setFiless(Product.image ? Product.image : false)
+    const Build2 = useRef();
+    const [PopupDelete, SetPopupDelete] = useState(false)
 
-                setTitle(Product.Name)
-                SetDescription(Product.Content)
-                setBobot(Product.bobot)
+    const [Proses, SetProses] = useState(false)
 
-                setTempArray(Product.Price)
-                SetKindArray(Product.Kind)
-                setStokArray(Product.Stok)
 
-                setPrice(Product.Price)
-                setKind(Product.Kind)
-                setStok(Product.Stok)
+    const PopupDeleteProduk = () => {
+        SetPopupDelete(!PopupDelete ? true : false)
+        Build.current.style.visibility = !PopupDelete ? 'visible' : 'hidden';
+        setTimeout(() => {
+            Build2.current.style.opacity = !PopupDelete ? 1 : 0;
+        }, 100)
+    }
 
-                SetIndexCategory(Product.Price.length)
+    const ActionToDeleteProduct = (id) => {
+        const Deleteproduct = async () => {
+            try {
+                const endpoint = API_URL + `DELETEProduct/${id}`
+                const response = await fetch(endpoint, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${account.acces_token}`
+                    }
+                });
+                if (!response) {
+                    throw new Error("Gagal Menghapus Data")
+                }
+                console.log(response)
+                location.href = "/profil/" + account.username
 
-                SetListCategory(Product.Price.map((item, index) => (`Category${index++}`)))
-                SetPriceList(Product.Price.map((item, index) => (`Price${index++}`)))
-                SetStokList(Product.Price.map((item, index) => (`Stok${index++}`)))
-
-                console.log(ListCategory)
-
+            } catch (err) {
+                console.log(err.message)
             }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+        Deleteproduct();
+        sessionStorage.removeItem("KumpulanProduk");
+        sessionStorage.removeItem("sessionProfilProduk")
+        SetPopupDelete(false);
+        Build.current.style.visibility = 'hidden';
+    }
 
 
-
-
-
-    //Handling InputFile Gambar
-    const [files, SetFile] = useState(null)
-    const [imageFile, SetImageFile] = useState(null);
-    const [img, setImg] = useState(null);
-    const [Errorimg, setErrorImg] = useState(false);
-    const [Errormessages, SetErrorMessages] = useState(false);
-    const [Proses,SetProses] = useState(false)
 
     const ChangeValue = (Category, value) => {
         if (Category === "Name") {
@@ -88,6 +89,25 @@ const AddDataProductForSmartPhone = () => {
         } else {
             setBobot(value)
         }
+    }
+
+    const Changevalue = (index, value, source, SetSource, setTemp) => {
+        const data = [...source]
+        data[index] = value
+        setTemp(data)
+        SetSource(data)
+    }
+
+    console.log(ListCategory)
+    const addListCategory = (e) => {
+        e.preventDefault();
+        console.log(ListCategory)
+        SetListCategory([...ListCategory, 'category' + indexCategory])
+        SetPriceList([...PriceList, 'price' + indexCategory])
+        SetStokList([...StokList, 'Stok' + indexCategory])
+        console.log(ListCategory)
+
+        SetIndexCategory(indexCategory + 1)
     }
 
     const HandleInput = (e) => {
@@ -196,74 +216,42 @@ const AddDataProductForSmartPhone = () => {
         console.log(ListCategory)
     }
 
-    const ActionToDeleteProduct = (id) => {
-        const Deleteproduct = async () => {
-            try {
-                const endpoint = API_URL + `DELETEProduct/${id}`
-                const response = await fetch(endpoint, {
-                    method: 'DELETE',
-                    headers: {
-                        'Authorization': `Bearer ${account.acces_token}`
-                    }
-                });
-                if (!response) {
-                    throw new Error("Gagal Menghapus Data")
-                }
-                console.log(response)
-                location.href = "/profil/" + account.username
+    useEffect(() => {
+        const param = new URLSearchParams(window.location.search)
+        if (Product) {
+            if (param.get('AddData')) {
+                console.log(param.get('AddData'))
+                sessionStorage.removeItem('ProductEdit')
+            } else {
+                console.log(Product)
+                setFiless(Product.image ? Product.image : false)
 
-            } catch (err) {
-                console.log(err.message)
+                setTitle(Product.Name)
+                SetDescription(Product.Content)
+                setBobot(Product.bobot)
+
+                setTempArray(Product.Price)
+                SetKindArray(Product.Kind)
+                setStokArray(Product.Stok)
+
+                setPrice(Product.Price)
+                setKind(Product.Kind)
+                setStok(Product.Stok)
+
+                SetIndexCategory(Product.Price.length)
+
+                SetListCategory(Product.Price.map((item, index) => (`Category${index++}`)))
+                SetPriceList(Product.Price.map((item, index) => (`Price${index++}`)))
+                SetStokList(Product.Price.map((item, index) => (`Stok${index++}`)))
+
+                console.log(ListCategory)
+
             }
         }
-        Deleteproduct();
-        sessionStorage.removeItem("KumpulanProduk");
-        sessionStorage.removeItem("sessionProfilProduk")
-        SetPopupDelete(false);
-        Build.current.style.visibility = 'hidden';
-    }
-
-    ///Onchange
-    const Changevalue = (index, value, source, SetSource, setTemp) => {
-        const data = [...source]
-        data[index] = value
-        setTemp(data)
-        SetSource(data)
-    }
-
-    console.log(ListCategory)
-    const addListCategory = (e) => {
-        e.preventDefault();
-        console.log(ListCategory)
-        SetListCategory([...ListCategory, 'category' + indexCategory])
-        SetPriceList([...PriceList, 'price' + indexCategory])
-        SetStokList([...StokList, 'Stok' + indexCategory])
-        console.log(ListCategory)
-
-        SetIndexCategory(indexCategory + 1)
-    }
-
-    //Popup Handling
-    const Build = useRef();
-    const Build2 = useRef();
-    const [PopupDelete, SetPopupDelete] = useState(false)
-    const PopupDeleteProduk = () => {
-        SetPopupDelete(!PopupDelete ? true : false)
-        Build.current.style.visibility = !PopupDelete ? 'visible' : 'hidden';
-        setTimeout(() => {
-            Build2.current.style.opacity = !PopupDelete ? 1 : 0;
-        }, 100)
-    }
-
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     return (
         <>
-            <div className="HeaderAddProductForSmartphone">
-                <div>
-                    <Button action={() => { location.href = "/profil/" + account.username }} styling="btn" ContentButton="Back"></Button>
-                </div>
-                <h1>{Product ? "Edit Data" : "Add Data"}</h1>
-            </div>
             <div className="FormAddProdukSmartPhone  ">
                 <form action="" onSubmit={!Product ? AddImage : ChangeProduk}>
 
@@ -351,9 +339,9 @@ const AddDataProductForSmartPhone = () => {
                     <img src="/Images/Loading.gif" alt="" />
                 </div>
             </div>
-            <PopupNotification/>
         </>
+
     )
 }
 
-export default AddDataProductForSmartPhone
+export default Form

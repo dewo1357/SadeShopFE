@@ -83,7 +83,7 @@ const MyComponent = (props) => {
   return (
     <>
       <button onClick={currentLocation}> Lokasi Saya Saat Ini</button>
-      <div style={{ height: '300px', width: "900px", overflow: "hidden", background: "red", marginTop: "10px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div style={{ height: '400px', width: innerWidth<700?"100%":"900px", overflow: "hidden", background: "red", marginTop: "10px", display: "flex", justifyContent: "center", alignItems: "center" }}>
         <div id="map" style={{ height: "100%", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}></div>
       </div>
     </>

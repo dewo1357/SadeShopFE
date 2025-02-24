@@ -639,6 +639,7 @@ body {
   justify-content: center;
   width: 100%;
   transition: 1000ms;
+  
 }
 
 /*PRODUK PAGES*/
@@ -755,11 +756,12 @@ body {
 
 /*Product Pages, Card Product RESPONSIVE*/
 @media only screen and (max-width: 900px) {
-
-
+  .CartContainer{
+    display: none;
+  }
 
   .OverallProductsPages {
-    gap: 5px;
+    display: block;
   }
 
   .SearchProduk button {
@@ -769,6 +771,8 @@ body {
   .ProductPages {
     margin-top: 10px;
   }
+
+  
 
   .CardLayout {
     width: 140px;
@@ -2045,21 +2049,37 @@ h4 {
 }
 
 
+.FormCheckout{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+
+.AddressCheckout{
+  text-align: left;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 20px;
+  width : 50%
+}
 
 
 .BodyCheckout {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
   background-color: rgb(0, 0, 0);
-  padding: 10px;
   display: grid;
-  grid-template-columns: 65% 35%;
+  grid-template-columns: 70% 30%;
   justify-content: center;
-  gap: 10px;
-  width: 1320px;
+  align-items: center;
+  width: 100%;
   color: white;
   border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
 }
+
+
+
 
 .ComponentBodyCheckout {
   text-align: center;
@@ -2069,16 +2089,17 @@ h4 {
 }
 
 .ContanerProductList {
-  background-color: rgb(236, 234, 234);
+  background-color: rgb(255, 255, 255);
   padding: 10px;
   margin-bottom: 10px;
   margin-right: 5px;
+  margin-left: 5px;
   border-radius: 5px;
   text-align: left;
+  color: black;
 }
 
 .InformationCheckout {
-  background-color: rgb(22, 22, 22);
   height: 480px;
   padding: 5px;
   overflow-y: auto;
@@ -2157,10 +2178,8 @@ h4 {
   display: flex;
   align-items: center;
   margin-top: 0px;
-  justify-content: center;
   color: white;
-
-
+  
 }
 
 .ButtonAndTitleCheckout span {
@@ -2176,6 +2195,8 @@ h4 {
 
 .ButtonAndTitleCheckout h1 {
   margin-right: 20px;
+  color: yellowgreen;
+  font-size: 10px;
 }
 
 .ButtonAndTitleCheckout span:hover {
@@ -2196,7 +2217,6 @@ h4 {
 }
 
 .EksekusiCheckout {
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2221,6 +2241,27 @@ h4 {
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+@media only screen and (max-width: 900px) {
+  .AddressCheckout{
+    font-size: 10px;
+  }
+
+  .BodyCheckout{
+    font-size: 10px;
+  }
+
+  .ComponentPayment{
+    font-size: 10px;
+  }
+
+  .EksekusiCheckout button{
+    font-size: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+}
+
 
 .OverlayMap {
   visibility: hidden;
@@ -2354,11 +2395,7 @@ h4 {
   }
 
 
-  .SellerAndCancelButton {
-    display: grid;
-    grid-template-columns: 40% 60%;
-    font-size: 10px;
-  }
+  
 
   .Setting {
     font-size: 10px;
@@ -2606,77 +2643,6 @@ h4 {
   background-color: rgb(99, 97, 97);
 }
 
-.FormVerify {
-  background-color: white;
-  width: 1000px;
-  border-radius: 5px;
-  padding: 10px;
-}
-
-.FormVerify h1 {
-  padding: 5px;
-  margin: 0px;
-}
-
-
-.FormVerify input {
-  width: 99%;
-  height: 30px;
-  border-radius: 5px;
-  background-color: rgb(240, 240, 240);
-  border: 1px solid rgba(0, 0, 0, 0.295);
-}
-
-.headerVerifyTitleandButton {
-  display: flex;
-  justify-content: space-between;
-}
-
-.FormVerify span {
-  margin-top: 10px;
-  width: 100%;
-  height: 30px;
-  cursor: pointer;
-  background-color: black;
-  color: white;
-  font-weight: bold;
-  border: 0px;
-  height: 40px;
-  border-radius: 5px;
-  font-size: 20px;
-}
-
-
-
-
-.headerVerifyTitleandButton span {
-  background-color: rgba(255, 255, 0, 0);
-  height: 30px;
-  cursor: pointer;
-  border: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  width: 30px
-}
-
-.headerVerifyTitleandButton span:hover {
-  background-color: rgb(158, 157, 157);
-  border-bottom-left-radius: 5px;
-}
-
-.processVerify span {
-  background-color: rgb(0, 0, 0);
-  height: 40px;
-  color: rgb(255, 255, 255);
-  width: 100%
-}
-
-.processVerify span:hover {
-  background-color: rgb(66, 66, 66);
-}
-
 .InsertPass {
   background-color: white;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -2712,22 +2678,111 @@ h4 {
   background-color: rgb(151, 151, 151);
 }
 
+/* FormVerify */
+.FormVerify {
+  background-color: white;
+  width: 1000px;
+  border-radius: 5px;
+  padding: 10px;
+}
 
-@media only screen and (max-width: 600px) {
-  .InsertPass {
+/* FormVerify */
+.FormVerify h1 {
+  padding: 5px;
+  margin: 0px;
+}
+
+/* FormVerify */
+.FormVerify input {
+  width: 99%;
+  height: 30px;
+  border-radius: 5px;
+  background-color: rgb(240, 240, 240);
+  border: 1px solid rgba(0, 0, 0, 0.295);
+}
+
+/* FormVerify */
+.headerVerifyTitleandButton {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* FormVerify */
+.FormVerify span {
+  margin-top: 10px;
+  width: 100%;
+  height: 30px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border: 0px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+/* FormVerify */
+.headerVerifyTitleandButton span {
+  background-color: rgba(255, 255, 0, 0);
+  height: 30px;
+  cursor: pointer;
+  border: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  width: 30px
+}
+
+/* FormVerify */
+.headerVerifyTitleandButton span:hover {
+  background-color: rgb(158, 157, 157);
+  border-bottom-left-radius: 5px;
+}
+
+/* FormVerify */
+.processVerify span {
+  background-color: rgb(0, 0, 0);
+  height: 40px;
+  color: rgb(255, 255, 255);
+  width: 100%
+}
+
+/* FormVerify */
+.processVerify span:hover {
+  background-color: rgb(66, 66, 66);
+}
+
+@media only screen and (max-width: 600px){
+  .FormVerify{
+    width : 81%;
+    position: absolute;
+    top: 10%;
+    left: 6%;
+    font-size: 12px;
+  }
+
+  .FormVerify span{
+    font-size: 10px;
+  }
+
+  .Map{
     width: 80%
+  }
+
+  .InsertPass {
+    width: 90%
   }
 
   .InsertPass h1 {
     font-size: 20px;
   }
+
+  .BioData{
+    margin-top: 20px;
+  }
 }
-
-
-
-
-
-
 .Logout {
   width: 400px;
 }
@@ -2742,16 +2797,12 @@ h4 {
 
 .ConfirmBackToCart h2 {
   text-align: center;
-
-
 }
 
 
 .ConfirmBackToCart p {
   text-align: center;
   font-weight: bold;
-
-
 }
 
 /*Chat Pages*/

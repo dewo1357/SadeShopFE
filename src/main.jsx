@@ -1,17 +1,17 @@
 import FormLogin from './Component/Auth/FormLogin.jsx';
 import FormLayout from './pages/FormLayout.jsx';
 import FormRegister from './Component/Auth/FormRegister.jsx';
-import ProductPages from './pages/ProductPages.jsx';
-import ProfilPages from './pages/profilPages.jsx';
+import ProductPages from './pages/Product/index.jsx';
+import ProfilPages from './pages/Profile/index.jsx';
 import Eror from "./Component/Eror.jsx";
-import CartPages from './pages/CartPages.jsx';
-import CheckOut from './pages/Checkout.jsx';
+import CartPages from './pages/Cart/index.jsx';
+import CheckOut from './pages/Checkout/index.jsx'
 import InformationOrder from './pages/InformationOrder.jsx';
 import Verify from './pages/Verify.jsx';
 import YourProduct from './pages/YourProduct.jsx';
 import MessagePages from './pages/MessagePages.jsx';
 import SettingPages from './pages/setting.jsx';
-import ActionProduct from './pages/AddAndSettingProduct.jsx';
+import ActionProduct from './pages/AddAndSettingProducts/index.jsx';
 import { SocketProvider } from './SocketProvider.jsx';
 
 // eslint-disable-next-line no-unused-vars

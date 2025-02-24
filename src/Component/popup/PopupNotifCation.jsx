@@ -8,9 +8,11 @@ import { ActionToDeleteCheckoutCart, getAcc } from "../../pages/manage";
 import Button from "../Element/Button/Button";
 import { API_URL } from "../../../config";
 import { useSocket } from "../../SocketProvider";
+import { useLocation } from "react-router-dom";
 
 const PopupNotification = (props) => {
-    const { popupConfirm2, setMessage } = props
+    const location = useLocation();
+    const { popupConfirm2} = props
 
     const ConfirmBack = useRef();
     const socket = useSocket()
@@ -18,6 +20,7 @@ const PopupNotification = (props) => {
     const [Acces, setAcces] = useState(false)
     const [notificationSeller, setnotificationSeller] = useState(false)
     const [popupConfirm, setpopupconfirm] = useState(false)
+    const [message, setMessage] = useState(null)
 
     const sendInformationAccount = () => {
         socket.emit('Send', {
@@ -58,7 +61,7 @@ const PopupNotification = (props) => {
     }, [])
 
     useEffect(() => {
-        if (JSON.parse(localStorage.getItem('CheckoutData'))) {
+        if (JSON.parse(localStorage.getItem('CheckoutData'))&& !location.pathname === "/checkout") {
             ConfirmBack.current.style.visibility = "visible";
             setTimeout(() => {
                 setpopupconfirm(true)

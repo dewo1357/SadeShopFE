@@ -36,7 +36,6 @@ const Statesss = () => {
         IsOn,setNav,
         addData, setAddData,
         Loading2, SetLoading2,
-        
     }
 }
 
