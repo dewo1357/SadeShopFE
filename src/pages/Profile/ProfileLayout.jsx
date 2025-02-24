@@ -26,7 +26,7 @@ const ProfilPagesLayout = (props) => {
             const result = await response.json();
             if (result.statusCode === 401) {
                 await Refresh_Token(socket)
-                location.href = `/profil/${getMyAccount.username}`
+                location.href = `/profil/${account.username}`
             }
 
             console.log(result)

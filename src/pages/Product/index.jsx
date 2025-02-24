@@ -89,6 +89,9 @@ const ProductPages = () => {
                             RightOn={RightOn}
                             SumProcess={SumProcess}
                             notifMessage={notifMessage}
+                            listCart={listCart}
+                            GenreData={GenreData}
+                    
                         >
                         </HeaderMenu>
                         <Search type="text" placeholder="Search Produk" action={(e) => SearchCard(e, GenreData, setGenre)} />
@@ -122,7 +125,7 @@ const ProductPages = () => {
                 </div>
                 </div>
                 
-            </> : <div>
+            </> : <div style={{ width: "100%"}} >
                 <h1>Memproses</h1>
                 <img src="Images/Loading.gif" alt="" width="100" />
             </div>

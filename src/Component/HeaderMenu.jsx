@@ -7,7 +7,7 @@ import { API_URL } from "../../config";
 
 const HeaderMenu = (props) => {
     const { selected, To1, To2, To3, To4, To5, motionLeft, MotionMenuCart,
-        setMotionLeft, ConfirmBack, setpopupconfirm2, SumProcess, socket, notifMessage } = props;
+        setMotionLeft, ConfirmBack, setpopupconfirm2, SumProcess, socket, notifMessage,GenreData } = props;
     const [BuildUpdate, setBuildUpdate] = useState(false);
 
 
@@ -94,7 +94,7 @@ const HeaderMenu = (props) => {
 
     return (
         <>
-            <div className="TitleMenu">
+            <div className="TitleMenu" style={{width: GenreData.length!==0 ?"100%":"1300px"}}>
                 <div id="ProfileHead">
                     <h1>SadeShop.com</h1>
                     <div>

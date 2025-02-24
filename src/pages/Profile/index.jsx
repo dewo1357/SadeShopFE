@@ -119,6 +119,7 @@ const ProfilPages = () => {
                 notifMessage={notifMessage}
                 socket={socket}
                 isAccess={isAccess}
+                GenreData={GenreData}
             />
             <ProfilPagesLayout
                 setFinnalMessage2={setFinnalMessage2}
