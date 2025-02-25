@@ -1,5 +1,6 @@
 body {
   background-color: rgb(255, 255, 255);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /*====================================
@@ -14,7 +15,7 @@ body {
   box-shadow: 1px 1px 1px 1px rgb(175, 174, 174);
   border-radius: 10px;
   z-index: -1;
-  
+
 }
 
 /*CartPages*/
@@ -40,6 +41,11 @@ body {
   font-size: 90%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   cursor: pointer;
+}
+
+.NoLogin button {
+  background-color: black;
+  color: white;
 }
 
 
@@ -445,7 +451,7 @@ body {
   display: block;
   flex-wrap: wrap;
   width: 15%;
-  
+
   gap: 15px;
 }
 
@@ -497,7 +503,7 @@ body {
     justify-content: space-between;
     gap: 5px;
     padding: 2px;
-    
+
     height: 50px;
     width: 100%;
     font-size: 10px;
@@ -507,11 +513,11 @@ body {
     width: 50%;
   }
 
-  .hapusCart  {
+  .hapusCart {
     margin-right: 5px;
   }
 
-  .hapusCart span{
+  .hapusCart span {
     width: 70px;
     margin-left: 15px;
   }
@@ -634,7 +640,7 @@ body {
   text-align: center;
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 0px;
   margin: 0px;
 }
 
@@ -650,7 +656,7 @@ body {
   justify-content: center;
   width: 100%;
   transition: 1000ms;
-  
+
 }
 
 /*PRODUK PAGES*/
@@ -662,7 +668,7 @@ body {
 
 /*Card Product|||||||||||||||||||||||*/
 .CardLayout {
-  width: 275px;
+  width: 270px;
   background-color: rgb(0, 0, 0);
   padding: 15px;
   border-radius: 10px;
@@ -767,7 +773,7 @@ body {
 
 /*Product Pages, Card Product RESPONSIVE*/
 @media only screen and (max-width: 900px) {
-  .CartContainer{
+  .CartContainer {
     display: none;
   }
 
@@ -783,7 +789,7 @@ body {
     margin-top: 10px;
   }
 
-  
+
 
   .CardLayout {
     width: 140px;
@@ -1007,8 +1013,8 @@ h4 {
   background-color: rgb(172, 168, 168);
 }
 
-@media only screen and (max-width: 900px){
-  .OverlayLoading{
+@media only screen and (max-width: 900px) {
+  .OverlayLoading {
     width: 70%;
   }
 }
@@ -1140,29 +1146,29 @@ h4 {
   height: 35px;
 }
 
-@media only screen and (max-width: 900px){
-  .action{
+@media only screen and (max-width: 900px) {
+  .action {
     width: 80%;
     left: 5%;
-    top:10%;
+    top: 10%;
     height: 600px;
   }
 
-  .Contact input{
+  .Contact input {
     width: 100%
   }
 
-  .Pengiriman{
+  .Pengiriman {
     width: 100%;
 
   }
 
-  .Pengiriman select{
-    
+  .Pengiriman select {
+
     width: 130px
   }
 
-  .Alamat{
+  .Alamat {
     flex-wrap: nowrap;
     gap: 10px;
   }
@@ -2048,51 +2054,52 @@ h4 {
   align-items: center;
 }
 
-@media only screen and (max-width: 600px){
-  .InfoProduct{
-    width:200px;
+@media only screen and (max-width: 600px) {
+  .InfoProduct {
+    width: 200px;
     position: absolute;
-    top : 50px
+    top: 50px
   }
 
-  .InfoProduct .container{
+  .InfoProduct .container {
     display: block;
   }
 
-  .left img{
+  .left img {
     width: 100%;
     height: 250px;
   }
 
-  .HeaderAndPrice h1{
+  .HeaderAndPrice h1 {
     font-size: 20px;
   }
 
-  .HeaderAndPrice h2{
+  .HeaderAndPrice h2 {
     font-size: 20px;
   }
 
-  .ContentProductForm{
-    height : 150px;
+  .ContentProductForm {
+    height: 150px;
     overflow-y: auto;
   }
 
-  .ContentProductForm p{
+  .ContentProductForm p {
     font-size: 13px;
   }
 
-  .SumOfPcs span{
+  .SumOfPcs span {
     font-size: 10px;
     height: 25px;
     border-radius: 0px;
   }
 
-  .FooterOrderForm button{
+  .FooterOrderForm button {
     width: 200px
   }
-  .FooterOrderForm{
+
+  .FooterOrderForm {
     width: 50%;
-    gap : 10px;
+    gap: 10px;
     flex-wrap: wrap;
     justify-content: center;
     margin: 1px auto;
@@ -2174,18 +2181,18 @@ h4 {
 }
 
 
-.FormCheckout{
+.FormCheckout {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
-.AddressCheckout{
+.AddressCheckout {
   text-align: left;
   display: flex;
   gap: 12px;
   align-items: center;
   font-size: 20px;
-  width : 50%
+  width: 50%
 }
 
 
@@ -2304,7 +2311,7 @@ h4 {
   align-items: center;
   margin-top: 0px;
   color: white;
-  
+
 }
 
 .ButtonAndTitleCheckout span {
@@ -2368,20 +2375,20 @@ h4 {
 }
 
 @media only screen and (max-width: 900px) {
-  .AddressCheckout{
+  .AddressCheckout {
     width: 80%;
     font-size: 9px;
   }
 
-  .BodyCheckout{
+  .BodyCheckout {
     font-size: 10px;
   }
 
-  .ComponentPayment{
+  .ComponentPayment {
     font-size: 10px;
   }
 
-  .EksekusiCheckout button{
+  .EksekusiCheckout button {
     font-size: 15px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -2521,7 +2528,7 @@ h4 {
   }
 
 
-  
+
 
   .Setting {
     font-size: 10px;
@@ -2590,7 +2597,7 @@ h4 {
   visibility: hidden;
 }
 
-.MessageOverlay{
+.MessageOverlay {
   visibility: hidden;
 }
 
@@ -2884,29 +2891,29 @@ h4 {
   width: 400px;
 }
 
-@media only screen and (max-width: 600px){
-  .FormVerify{
-    width : 81%;
+@media only screen and (max-width: 600px) {
+  .FormVerify {
+    width: 81%;
     position: absolute;
     top: 10%;
     left: 6%;
     font-size: 12px;
   }
 
-  .FormVerify span{
+  .FormVerify span {
     font-size: 10px;
   }
 
-  .Map{
+  .Map {
     width: 80%
   }
 
   .InsertPass {
-    top:20%;
+    top: 20%;
     width: 80%
   }
 
-  .verify{
+  .verify {
     width: 90%
   }
 
@@ -2914,7 +2921,7 @@ h4 {
     font-size: 20px;
   }
 
-  .BioData{
+  .BioData {
     margin-top: 20px;
   }
 
@@ -2945,7 +2952,7 @@ h4 {
 /*Chat Pages*/
 .MessageContainer {
   display: flex;
-  
+
   justify-content: space-between;
   width: 100%;
   margin: 0px;
@@ -3086,7 +3093,7 @@ h4 {
 }
 
 /*Chat Pages*/
-.ActionToSend  {
+.ActionToSend {
   margin-top: 10px;
   display: flex;
   flex-wrap: nowrap;
@@ -3146,11 +3153,11 @@ h4 {
   width: 500px;
 }
 
-.backButtonRoomChat{
-  display : none
+.backButtonRoomChat {
+  display: none
 }
 
-.CategoryChatRoom{
+.CategoryChatRoom {
   width: 50%;
   height: 770px;
 }
@@ -3164,7 +3171,7 @@ h4 {
     margin: 0px;
   }
 
-  .CategoryChatRoom{
+  .CategoryChatRoom {
     width: 100%;
   }
 
@@ -3173,7 +3180,7 @@ h4 {
     justify-content: center;
     text-align: end;
     padding: 0px;
-   
+
 
   }
 
@@ -3183,8 +3190,8 @@ h4 {
 
   }
 
-  .ListContactChatContainer form{
-    width: 100%; 
+  .ListContactChatContainer form {
+    width: 100%;
   }
 
   .ActionToSend {
@@ -3194,8 +3201,8 @@ h4 {
     display: grid;
     grid-template-columns: 70% 30%;
     gap: 0px;
-   
-   
+
+
   }
 
   .ActionToSend textarea {
@@ -3209,23 +3216,23 @@ h4 {
     width: 90px;
     height: 85%
   }
-  
-  .ListContactChat{
-    gap : 0px;
+
+  .ListContactChat {
+    gap: 0px;
 
   }
 
-  .ListContact{
+  .ListContact {
     width: 110%;
-    font-size: 10px ;
+    font-size: 10px;
     padding: 0px;
   }
 
-  .backButtonRoomChat{
+  .backButtonRoomChat {
     display: block;
   }
 
-  .backButtonRoomChat button{
+  .backButtonRoomChat button {
     width: 50px;
     height: 100px;
     display: flex;
@@ -3400,5 +3407,94 @@ h4 {
 /*ConfirmDelete Popups*/
 .Cancel button {
   background-color: red;
+
+}
+
+.HeaderNoLogin{
+  display: flex;
+  margin-right: 20px;
+  gap : 20px;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.HomeProduct {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.HomeProduct h1 {
+  font-size: 80px;
+  text-align: left;
+}
+
+.HomePictProduct img {
+  width: 100%;
+
+}
+
+.HomePictProduct {
+  object-fit: cover;
+  gap: 10px;
+  width: 100%;
+  padding: 20px;
+  
+}
+
+.HomePictProductComponent {
+  object-fit: cover;
+  margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: 20% 40% 40%;
+  gap: 5px;
+}
+
+.kedua {
+  grid-template-columns: 40% 40% 20%;
+}
+
+.HomePictProductComponent img {
+  height: 230px;
+  transition: 100ms;
+}
+
+.HomePictProductComponent img:hover {
+  object-position: 2px;
+  transition: 500ms;
+}
+
+@media only screen and (max-width: 1000px) {
+  .HomeProduct {
+    display: block;
+    padding: 0px;
+  }
+
+  .HomeProduct h1 {
+    font-size: 40px;
+    text-align: center; 
+    padding-left: 0px;
+  }
+
+  .HomePictProduct {
+    width: 80% ;
+    padding: 20px;
+    margin: 10px auto;
+    box-shadow: none ;
+  }
+
+  .HomePictProductComponent img{
+    
+    height: 120px;
+  }
+
+  .HeaderNoLogin{
+    margin-left: 0px;
+    margin-top: 20px;
+  }
 
 }

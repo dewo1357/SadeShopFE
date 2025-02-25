@@ -131,7 +131,7 @@ const CartPages = () => {
 
     const close = () => {
         SetLoading2(false);
-        location.href = "/products";
+        location.href = "/";
     };
 
     const Checked = async (e, idCart, OverallIndex) => {
@@ -182,13 +182,20 @@ const CartPages = () => {
 
     const [popupConfirm, setpopupconfirm] = useState(false);
     useEffect(() => {
-        if (Loading2) {
-            oke();
+        if (account !== false) {
+            if (Loading2) {
+                oke();
+            }
+            SetLoading2(false);
+            console.log("menjalankan sekali");
+            
+        }else{
+            location.href="/login"
         }
-        SetLoading2(false);
-        console.log("menjalankan sekali");
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Loading2]);
+
+    
 
     return (
         <>

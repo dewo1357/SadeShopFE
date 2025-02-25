@@ -54,7 +54,7 @@ const Mesage = (props) => {
             }, 100)
         } catch (err) {
             if (account === null) {
-                location.href = "/"
+                location.href = "/login"
             }
             console.log(err)
         }

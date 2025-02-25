@@ -69,7 +69,7 @@ const ProfilPages = () => {
                         setAccess(true);
                     }
                 } else {
-                    location.href = "/products"
+                    location.href = "/login"
                 }
             }, 1000)
 
@@ -111,8 +111,8 @@ const ProfilPages = () => {
             <HeaderMenu
                 selected={isAccess ? 1 : ""}
                 To2={`/profil/${account.username}`}
-                To1="/products"
-                To4="/"
+                To1="/"
+                To4="/login"
                 To3="/SettingPages"
                 To5="/cart"
                 SumProcess={SumProcess}

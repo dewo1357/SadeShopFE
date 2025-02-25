@@ -7,7 +7,7 @@ const CardProduct = (props) => {
 
     return (
         <>
-            <div className="CardLayout">
+            <div className="CardLayout" >
                 {children}
             </div>
         </>
@@ -26,11 +26,12 @@ const images = (props) => {
 
 
 const HeaderContent = (props) => {
-    const { title, seller, children, dataProduct } = props;
+    const { title, seller, children, dataProduct, account } = props;
     return (
         <div className="HeaderContent">
             <h2>{title}</h2>
-            <p>⏺ <a href={`/profil/${dataProduct.Account.username ? dataProduct.Account.username : ""}`}>{seller}</a></p>
+            {!account ? <></> :
+                <p>⏺ <a href={`/profil/${dataProduct.Account.username ? dataProduct.Account.username : ""}`}>{seller}</a></p>}
             <div className="BodyCard">
                 {children}
             </div>

@@ -2,27 +2,31 @@
 /* eslint-disable no-unused-vars */
 import CardProduct from "../../Component/Card_Cart/CardLProduct"
 import { useState } from "react"
-import { getAcc,Close } from "../manage"
+import { getAcc, Close } from "../manage"
 
 const ListProduct = (props) => {
-    
-    const {motionLeft,Loading,GenreData,popup2,SetGrabProduk} = props
-    const [account,SetAccount,] = useState(getAcc())
-    
+
+    const { motionLeft, Loading, GenreData, popup2, SetGrabProduk } = props
+    const [account, SetAccount,] = useState(getAcc())
+
     console.log(SetGrabProduk)
     const ActionGrabProduk = (data) => {
-        console.log(data)
-        Close(true, popup2)
-        SetGrabProduk(data);
+        if (account !== false) {
+            console.log(data)
+            Close(true, popup2)
+            SetGrabProduk(data);
+        } else {
+            location.href = "/login"
+        }
     }
-    
+
     return (
         <>
             <div hidden={motionLeft ? false : true} className={` ${motionLeft ? "ProductPages motion_on" : "ProductPages"}`}>
                 {!Loading ? GenreData.map((item) => (
-                    <CardProduct key={item.id} >
+                    <CardProduct key={item.id} account={account} >
                         <CardProduct.images source={"https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/gambarProducts/" + item.URLimages} />
-                        <CardProduct.HeaderContent title={item.title} seller={item.name.nama} dataProduct={item}>
+                        <CardProduct.HeaderContent title={item.title} seller={item.name.nama} dataProduct={item} account={account}>
                             <p>
                                 {item.content}
                             </p>

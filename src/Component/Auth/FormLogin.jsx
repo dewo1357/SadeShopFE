@@ -40,7 +40,7 @@ const FormLogin = () => {
                 SetMessage("Akses Diterima")
                 setTimeout(() => {
                     localStorage.setItem('account', JSON.stringify(data))
-                    location.href = "/products"
+                    location.href = "/"
                 }, 1000)
 
             })
@@ -75,7 +75,7 @@ const FormLogin = () => {
             if (response.status === 200) {
                 localStorage.setItem('account', JSON.stringify(result))
                 SetToken(result.acces_token)
-                navigate('/products')
+                navigate('/')
             } else if (response.status === 500) {
                 notificationLogin.current.style.visibility = "visible"
                 setNotification(true)

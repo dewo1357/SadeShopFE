@@ -174,14 +174,16 @@ const FinishAndClosePoopup = async (popup, listCart, setVisible, SetVisibleForm,
         console.log('oke')
 
         localStorage.setItem('Cart', JSON.stringify(Cart_temp))
-        location.href = "/products"
+        location.href = "/"
     }, 100)
 
 
 }
 
 const MotionMenuCart = (motionLeft, setMotionLeft) => {
-    setMotionLeft(motionLeft ? false : true)
+    setTimeout(()=>{
+        setMotionLeft(motionLeft ? false : true)
+    },1000)
 
 }
 
@@ -298,29 +300,17 @@ const Refresh_Token = async (socket=false) => {
 }
 
 const GetData = async () => {
-    const account = getAcc()
+    
     try {
         const response = await fetch(API_URL + 'MasterData', {
             method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${account.acces_token}`
-            }
+           
         });
         if (!response) {
             throw new Error("Gagal Mengambil Data")
         }
         const data = await response.json();
-        if (data.statusCode === 401) {
-            const get_acces = await Refresh_Token();
-            if (get_acces == 404) {
-                localStorage.removeItem('account')
-                return location.href = "/"
-            }
-            location.href = "/products"
-            return false
-        } else {
-            return JSON.parse(data.data)
-        }
+        return JSON.parse(data.data)
     }
     catch (e) {
         console.log(e.message);
@@ -412,11 +402,14 @@ const ActionToDeleteCheckoutCart = async (from = "cart") => {
 const getAcc = () => {
     try {
         const acc = JSON.parse(localStorage.getItem('account'))
-        return acc
+        if(acc){
+            return acc
+        }
+        return false
     } catch (err) {
         localStorage.removeItem('account')
         console.log(err.message)
-        location.href = "/"
+        return false
     }
 }
 
@@ -436,7 +429,7 @@ const checkId = async (username, socket) => {
         const result = await response.json();
         if (result.statusCode === 401) {
             await Refresh_Token(socket)
-            location.href = "/products"
+            location.href = "/login"
         }
 
         return result

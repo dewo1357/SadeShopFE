@@ -61,71 +61,73 @@ const PopupNotification = (props) => {
     }, [])
 
     useEffect(() => {
-        if (JSON.parse(localStorage.getItem('CheckoutData')) && !location.pathname === "/checkout") {
-            ConfirmBack.current.style.visibility = "visible";
-            setTimeout(() => {
-                setpopupconfirm(true)
-            })
-        }
-
-        if (socket) {
-            try {
-                if (account.UserOnServer) {
-                    socket.emit("Register", {
-                        username: account.username,
-                        id: account.id
-                    })
-                    if (account.isRegist !== true) {
-                        const data = { ...account, isRegist: true }
-                        localStorage.setItem('account', JSON.stringify(data))
-                    }
-                } else {
-                    socket.emit('SendId', account.username)
-                }
-            } catch (err) {
-                console.log(err.message)
+        if (account !== false) {
+            if (JSON.parse(localStorage.getItem('CheckoutData')) && !location.pathname === "/checkout") {
+                ConfirmBack.current.style.visibility = "visible";
+                setTimeout(() => {
+                    setpopupconfirm(true)
+                })
             }
 
-
-            socket.on("AskAcces", (message) => {
-                setAcces(true)
-                if (ConfirmBack.current) {
-                    ConfirmBack.current.style.visibility = "visible"
+            if (socket) {
+                try {
+                    if (account.UserOnServer) {
+                        socket.emit("Register", {
+                            username: account.username,
+                            id: account.id
+                        })
+                        if (account.isRegist !== true) {
+                            const data = { ...account, isRegist: true }
+                            localStorage.setItem('account', JSON.stringify(data))
+                        }
+                    } else {
+                        socket.emit('SendId', account.username)
+                    }
+                } catch (err) {
+                    console.log(err.message)
                 }
-            })
-
-            //socket jika akses diterima
-            socket.on("Receive", (data) => {
-                setTimeout(() => {
-                    localStorage.setItem('account', JSON.stringify(data))//mempebarui informasi account 
-                    //mendaftarkan ke server
-                    socket.emit("Register", {
-                        username: data.username,
-                        id: data.id
-                    })
-                }, 1000)
-
-            })
-
-            //socket jika ditolak akses
-            socket.on('ActTolakAkses', (message) => {
-                setTimeout(() => {
-                    localStorage.clear()
-                    location.href = "/"
-                }, 1000)
-            })
-
-            socket.on('Notification', (Message) => {
-                setMessage(Message)
-                setnotificationSeller(true)
-                console.log("masuk")
-                if (ConfirmBack.current) {
-                    ConfirmBack.current.style.visibility = "visible"
-                }
-            })
 
 
-            console.log(socket)
+                socket.on("AskAcces", (message) => {
+                    setAcces(true)
+                    if (ConfirmBack.current) {
+                        ConfirmBack.current.style.visibility = "visible"
+                    }
+                })
+
+                //socket jika akses diterima
+                socket.on("Receive", (data) => {
+                    setTimeout(() => {
+                        localStorage.setItem('account', JSON.stringify(data))//mempebarui informasi account 
+                        //mendaftarkan ke server
+                        socket.emit("Register", {
+                            username: data.username,
+                            id: data.id
+                        })
+                    }, 1000)
+
+                })
+
+                //socket jika ditolak akses
+                socket.on('ActTolakAkses', (message) => {
+                    setTimeout(() => {
+                        localStorage.clear()
+                        location.href = "/"
+                    }, 1000)
+                })
+
+                socket.on('Notification', (Message) => {
+                    setMessage(Message)
+                    setnotificationSeller(true)
+                    console.log("masuk")
+                    if (ConfirmBack.current) {
+                        ConfirmBack.current.style.visibility = "visible"
+                    }
+                })
+
+
+                console.log(socket)
+            }
         }
     }, [socket])
 
@@ -179,7 +181,7 @@ const PopupNotification = (props) => {
                     username: account.username,
                     id: account.id
                 })
-                dataAccount = { ...account, isRegist: true,new_user: false }
+                dataAccount = { ...account, isRegist: true, new_user: false }
                 localStorage.setItem('account', JSON.stringify(dataAccount))
                 notifMessage(result.Message)
                 SetFinish(true)
@@ -197,86 +199,92 @@ const PopupNotification = (props) => {
         notifMessage(null)
     }
 
-    return (
-        <div>
-            <div ref={ConfirmBack} style={{ visibility: "hidden" }} className="overlay3">
-                <div className={`SellerNotification SetPass ${PassOn ? "SetPassOn" : ""}`} hidden={PassOn ? false : true}>
-                    <form action="" onSubmit={SetPass}>
-                        <div>
-                            <h1>Daftarkan Kata Sandi Anda</h1>
+    if (!account) {
+        return (
+            <></>
+        )
+    } else {
+        return (
+            <div>
+                <div ref={ConfirmBack} style={{ visibility: "hidden" }} className="overlay3">
+                    <div className={`SellerNotification SetPass ${PassOn ? "SetPassOn" : ""}`} hidden={PassOn ? false : true}>
+                        <form action="" onSubmit={SetPass}>
+                            <div>
+                                <h1>Daftarkan Kata Sandi Anda</h1>
 
-                            <div className="ComponentSetPass">
-                                <input name="Pass1" type="password" placeholder="Enter Your Password" />
-                            </div>
+                                <div className="ComponentSetPass">
+                                    <input name="Pass1" type="password" placeholder="Enter Your Password" />
+                                </div>
 
-                            <div className="ComponentSetPass">
-                                <input name="Pass2" type="password" placeholder="Enter Confirm Password" />
+                                <div className="ComponentSetPass">
+                                    <input name="Pass2" type="password" placeholder="Enter Confirm Password" />
+                                </div>
+                                <div className="ComponentSetPass">
+                                    <Button ContentButton="Simpan"></Button>
+                                </div>
                             </div>
-                            <div className="ComponentSetPass">
-                                <Button ContentButton="Simpan"></Button>
+                        </form>
+                    </div>
+                    <div className={`loading ${Loading ? "loadingOn" : ""}`}>
+                        <div className="OverlayLoading">
+                            <h2>{Notif}</h2>
+                            <div>
+                                {
+                                    !finish ?
+                                        <img src="/Images/Loading.gif" alt="" />
+                                        : <Button styling="btn" action={Close} ContentButton={"Oke"}></Button>
+                                }
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div className={`loading ${Loading ? "loadingOn" : ""}`}>
-                    <div className="OverlayLoading">
-                        <h2>{Notif}</h2>
-                        <div>
-                            {
-                                !finish ?
-                                    <img src="/Images/Loading.gif" alt="" />
-                                    : <Button styling="btn" action={Close} ContentButton={"Oke"}></Button>
-                            }
+                    </div>
+                    <div className={`SellerNotification Account ${Acces ? "AccountOn" : ""}`} hidden={Acces ? false : true}>
+                        <h1>Seseorang Sedang Mencoba Akses Account Kamu!</h1>
+                        <img src="/Images/7100664.jpg" alt="" width="200" />
+                        <h3>Apakah Itu Kamu?</h3>
+
+                        <div className="ConfirmBackToCartAction">
+
+                            <Button styling="btn" action={close} ContentButton={"Tolak"}></Button>
+                            <Button styling="btn" action={sendInformationAccount} ContentButton={"Iya, Itu Adalah Saya"}></Button>
+
                         </div>
                     </div>
-                </div>
-                <div className={`SellerNotification Account ${Acces ? "AccountOn" : ""}`} hidden={Acces ? false : true}>
-                    <h1>Seseorang Sedang Mencoba Akses Account Kamu!</h1>
-                    <img src="/Images/7100664.jpg" alt="" width="200" />
-                    <h3>Apakah Itu Kamu?</h3>
+                    <div className={`SellerNotification ${notificationSeller ? "SellerNotificationOn" : ""}`} hidden={notificationSeller ? false : true}>
+                        <h1>Pesanan Product Kamu Telah Tiba!</h1>
+                        <img src="/Images/7100664.jpg" alt="" width="200" />
+                        <h3>Pergi menuju keranjang pesanan untuk melanjutkan pesanan Customer</h3>
 
-                    <div className="ConfirmBackToCartAction">
-
-                        <Button styling="btn" action={close} ContentButton={"Tolak"}></Button>
-                        <Button styling="btn" action={sendInformationAccount} ContentButton={"Iya, Itu Adalah Saya"}></Button>
-
+                        <div className="ConfirmBackToCartAction">
+                            <Button styling="btn" action={Abaikan} ContentButton={"Abaikan"}></Button>
+                            <Button styling="btn" action={() => { location.href = "/YourProductOrder" }} ContentButton={"Telusuri"}></Button>
+                        </div>
                     </div>
-                </div>
-                <div className={`SellerNotification ${notificationSeller ? "SellerNotificationOn" : ""}`} hidden={notificationSeller ? false : true}>
-                    <h1>Pesanan Product Kamu Telah Tiba!</h1>
-                    <img src="/Images/7100664.jpg" alt="" width="200" />
-                    <h3>Pergi menuju keranjang pesanan untuk melanjutkan pesanan Customer</h3>
-
-                    <div className="ConfirmBackToCartAction">
-                        <Button styling="btn" action={Abaikan} ContentButton={"Abaikan"}></Button>
-                        <Button styling="btn" action={() => { location.href = "/YourProductOrder" }} ContentButton={"Telusuri"}></Button>
+                    <div className={`ConfirmBackToCart ${popupConfirm ? "ConfirmBackToCartOn" : ""}`} hidden={popupConfirm ? false : true}>
+                        <h2  >PERINGATAN</h2>
+                        <h2>
+                            Terdapat Process Checkout
+                        </h2>
+                        <p>
+                            Apakah Anda Ingin Melanjutkan Proses Checkout?. <br /> Jika Tidak, Maka Data Checkout Sebelumnya Akan Dihapus Secara Permanen.
+                        </p>
+                        <div className="ConfirmBackToCartAction">
+                            <Button styling="btn Cancel" action={() => { ActionToDeleteCheckoutCart("products") }} ContentButton={"Delete"}></Button>
+                            <Button styling="btn" action={ActionToChekout} ContentButton={"Lanjutkan Process"}></Button>
+                        </div>
                     </div>
-                </div>
-                <div className={`ConfirmBackToCart ${popupConfirm ? "ConfirmBackToCartOn" : ""}`} hidden={popupConfirm ? false : true}>
-                    <h2  >PERINGATAN</h2>
-                    <h2>
-                        Terdapat Process Checkout
-                    </h2>
-                    <p>
-                        Apakah Anda Ingin Melanjutkan Proses Checkout?. <br /> Jika Tidak, Maka Data Checkout Sebelumnya Akan Dihapus Secara Permanen.
-                    </p>
-                    <div className="ConfirmBackToCartAction">
-                        <Button styling="btn Cancel" action={() => { ActionToDeleteCheckoutCart("products") }} ContentButton={"Delete"}></Button>
-                        <Button styling="btn" action={ActionToChekout} ContentButton={"Lanjutkan Process"}></Button>
-                    </div>
-                </div>
-                <div className={`ConfirmBackToCart ${popupConfirm2 ? "ConfirmBackToCartOn" : ""}`} hidden={popupConfirm2 ? false : true}>
-                    <h2>Maaf, Anda Belum Melakukan Verifikasi</h2>
-                    <p>
-                        Apakah Anda Ingin Melanjutkan Proses Verifikasi?. <br /> Jika Iya, Maka Telusuri Halaman Profile. Tepat Diatas Teks Nama Profile Anda. <br /> Terima Kasih.
-                    </p>
-                    <div className="VerificationConfirm">
-                        <Button styling="btn" action={() => { ConfirmBack.current.style.visibility = "hidden"; }} ContentButton={"Oke"}></Button>
+                    <div className={`ConfirmBackToCart ${popupConfirm2 ? "ConfirmBackToCartOn" : ""}`} hidden={popupConfirm2 ? false : true}>
+                        <h2>Maaf, Anda Belum Melakukan Verifikasi</h2>
+                        <p>
+                            Apakah Anda Ingin Melanjutkan Proses Verifikasi?. <br /> Jika Iya, Maka Telusuri Halaman Profile. Tepat Diatas Teks Nama Profile Anda. <br /> Terima Kasih.
+                        </p>
+                        <div className="VerificationConfirm">
+                            <Button styling="btn" action={() => { ConfirmBack.current.style.visibility = "hidden"; }} ContentButton={"Oke"}></Button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
+        )   
+    }
 
 }
 

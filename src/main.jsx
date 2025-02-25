@@ -25,7 +25,7 @@ import './index.css';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/Login",
     element: <FormLayout title="Login" Content="Enter Username & Kata Sandi" Children={<FormLogin />} type="login"></FormLayout>,
   },
   {
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
     element: <CartPages />
   },
   {
-    path: "/products",
+    path: "/",
     element: <ProductPages />
   },
   {

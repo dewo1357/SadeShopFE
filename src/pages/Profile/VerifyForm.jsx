@@ -107,7 +107,7 @@ const VerifyForm = (props) => {
                 await Refresh_Token(socket)
                 getMyAccount ?
                     location.href = `/profil/${getMyAccount.username}` :
-                    location.href = "/"
+                    location.href = "/login"
             }
             setFinnalMessage(result.message)
             // eslint-disable-next-line no-unused-vars
