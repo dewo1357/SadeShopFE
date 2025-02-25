@@ -68,7 +68,6 @@ const ProfilPagesLayout = (props) => {
                 },
                 body: files,
             })
-            location.href = `/profil/${getMyAccount.username}`
             if (!response) {
                 throw new Error(response.messages)
             }
