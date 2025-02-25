@@ -161,7 +161,7 @@ const ProfilPages = () => {
                 FinnalMessage={FinnalMessage}
                 FinnalMessage2={FinnalMessage2}
                 Pesan={Pesan}
-                
+                SetProcessChangeProfile={SetProcessChangeProfile}  
             />
             <div className={`afterProfil ${!isAccess ? "centerProfil" : ""}`} hidden={!isAccess || !verified ? true : false}>
                 <h1  hidden={!verified && isAccess ? true : false}>PRODUCTS</h1>
