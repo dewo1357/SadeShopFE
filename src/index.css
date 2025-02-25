@@ -3423,7 +3423,7 @@ h4 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -3468,12 +3468,30 @@ h4 {
   transition: 500ms;
 }
 
+
+.ButtoNoLoginForDetskop{
+  display: none;
+}
+
+
 @media only screen and (max-width: 1000px) {
   .HomeProduct {
     display: block;
     padding: 0px;
   }
 
+  .ButtoNoLoginForDetskop{
+    display: flex;
+    gap :10px
+  }
+
+  .ButtoNoLoginForDetskop button{
+    width: 60px;
+    height: 40px;
+    font-size: 12px;
+  }
+
+ 
   .HomeProduct h1 {
     font-size: 40px;
     text-align: center; 
@@ -3493,8 +3511,7 @@ h4 {
   }
 
   .HeaderNoLogin{
-    margin-left: 0px;
-    margin-top: 20px;
+   display: none;
   }
 
 }

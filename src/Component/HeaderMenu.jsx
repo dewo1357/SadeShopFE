@@ -113,22 +113,33 @@ const HeaderMenu = (props) => {
                 }}>
                 <div id="ProfileHead">
                     <h1 style={{ color: !account ? "black" : "none" }}>SadeShop.com</h1>
-                    <div hidden={!account ? true : false}>
-                        <div className={`updateButton SmartPhoneMenu ${(selected === -1) ? "selectedMenu" : ""}`} >
-                            <Button styling="btn" ContentButton={nMessage || notifMessage ? <img src="/Images/chat-bubble.png" width="25"></img> : <img src="/Images/chat-bubble.png" width="25"></img>} action={toMessage}></Button>
-                            <Button styling="btn" action={() => { setBuildUpdate(BuildUpdate ? false : true) }}
-                                ContentButton={nMessage || notifMessage ? <img src="/Images/bell.png" width="25"></img> : <img src="/Images/bell.png" width="25"></img>}>
-                            </Button>
-                        </div>
-                        <div style={{
-                            height: BuildUpdate ? "150px" : "0px",
-                            opacity: BuildUpdate ? "1" : "0"
-                        }} className={`updateOptions updateOptionsSmartPhone ${BuildUpdate ? "BuildUpdateOption" : ""}`}>
-                            <Button styling="btn" ContentButton={`Order Process`} action={() => { location.href = "/InformationOrder" }}></Button>
-                            <Button styling="btn" ContentButton={`Product Order (${SumProcess ? SumProcess : JSON.parse(sessionStorage.getItem('SumProcess'))})`} action={toPageProductOrder}></Button>
+                    {!account ?
+                        <div className="ButtoNoLoginForDetskop">
+                            <div className="NoLogin">
+                                <Button styling="btn" action={() => { location.href = "/login" }} ContentButton="Login"></Button>
+                            </div>
+                            <div className="NoLogin">
+                                <Button styling={"btn"} action={() => { location.href = "/Register" }} ContentButton="Register"></Button>
+                            </div>
+                        </div> :
+                        <div>
+                            <div className={`updateButton SmartPhoneMenu ${(selected === -1) ? "selectedMenu" : ""}`} >
+                                <Button styling="btn" ContentButton={nMessage || notifMessage ? <img src="/Images/chat-bubble.png" width="25"></img> : <img src="/Images/chat-bubble.png" width="25"></img>} action={toMessage}></Button>
+                                <Button styling="btn" action={() => { setBuildUpdate(BuildUpdate ? false : true) }}
+                                    ContentButton={nMessage || notifMessage ? <img src="/Images/bell.png" width="25"></img> : <img src="/Images/bell.png" width="25"></img>}>
+                                </Button>
+                            </div>
+                            <div style={{
+                                height: BuildUpdate ? "150px" : "0px",
+                                opacity: BuildUpdate ? "1" : "0"
+                            }} className={`updateOptions updateOptionsSmartPhone ${BuildUpdate ? "BuildUpdateOption" : ""}`}>
+                                <Button styling="btn" ContentButton={`Order Process`} action={() => { location.href = "/InformationOrder" }}></Button>
+                                <Button styling="btn" ContentButton={`Product Order (${SumProcess ? SumProcess : JSON.parse(sessionStorage.getItem('SumProcess'))})`} action={toPageProductOrder}></Button>
 
+                            </div>
                         </div>
-                    </div>
+                    }
+                   
                 </div>
 
 
@@ -162,13 +173,11 @@ const HeaderMenu = (props) => {
                         </div>
                     </div> :
                     <div className="HeaderNoLogin">
-                        <div style={{ display: 'flex', gap: "10px" }}>
-                            <div className="NoLogin">
-                                <Button styling="btn" action={() => { location.href = "/login" }} ContentButton="Login"></Button>
-                            </div>
-                            <div className="NoLogin">
-                                <Button styling={"btn"} action={() => { location.href = "/Register" }} ContentButton="Register"></Button>
-                            </div>
+                        <div className="NoLogin">
+                            <Button styling="btn" action={() => { location.href = "/login" }} ContentButton="Login"></Button>
+                        </div>
+                        <div className="NoLogin">
+                            <Button styling={"btn"} action={() => { location.href = "/Register" }} ContentButton="Register"></Button>
                         </div>
                     </div>
                 }
