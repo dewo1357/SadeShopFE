@@ -164,15 +164,14 @@ const SettingPages = () => {
         setLoading(false)
         seFinish(false)
         Confirm.current.style.visibility = 'hidden'
-        navigate("SettingPages")
-
+        location.href="/"
     }
 
 
     return (
         <>
             <div className="headSetting">
-                <a href="/products"><h1>Back</h1></a>
+                <a href="/"><h1>Back</h1></a>
                 <h1>SadeShop.com</h1>
             </div >
             <div className="SettingContainer">
