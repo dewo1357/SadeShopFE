@@ -1,18 +1,15 @@
 /* eslint-disable react/prop-types */
 import CardProduct from "../../Component/Card_Cart/CardLProduct"
 import { useNavigate } from "react-router-dom"
-import { Close } from "../manage"
-import Statesss from "../States"
+
+
 
 const ProductSeller = (props) => {
-    const {GenreData,getMyAccount,isAccess,popup2} = props
-    const {SetGrabProduk} = Statesss()
+    const {GenreData,getMyAccount,isAccess,ActionGrabProduk} = props
+    
     const navigate = useNavigate();
 
-    const ActionGrabProduk = (data) => {
-        Close(true, popup2)
-        SetGrabProduk(data);
-    }
+    
     
     const TurnOnFormEdit = (id, Title, Kind, Prices, Stok_brg, script, gambar, bobot) => {
         const ProductToEdit = {

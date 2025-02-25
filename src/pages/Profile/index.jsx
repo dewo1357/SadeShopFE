@@ -17,7 +17,7 @@ const ProfilPages = () => {
 
     const {
         totalItem, setTotalItem,
-        GrabProduk,
+        GrabProduk,SetGrabProduk,
         listCart, SetListCart,
         totalPrice, setTotal,
     } = Statesss()
@@ -111,6 +111,12 @@ const ProfilPages = () => {
     const [SumProcess, setSumProcess] = useState(0)
     const [ProcessChangeProfile, SetProcessChangeProfile] = useState(false)
 
+    const ActionGrabProduk = (data) => {
+        Close(true, popup2)
+        SetGrabProduk(data);
+        console.log(data)
+    }
+
     return (
         getMyAccount && GenreData ? <div className="ProfilPagesLayout" hidden={delay ? true : false}>
             <PopupNotification />
@@ -140,6 +146,8 @@ const ProfilPages = () => {
                 setPesan={setPesan}
                 SetProcessLoading={SetProcessLoading}
                 SetProcessChangeProfile={SetProcessChangeProfile}
+                SetGrabProduk={SetGrabProduk}
+                ActionGrabProduk={ActionGrabProduk}
             />
             <VerifyForm
                 socket={socket}
@@ -153,10 +161,10 @@ const ProfilPages = () => {
                 FinnalMessage={FinnalMessage}
                 FinnalMessage2={FinnalMessage2}
                 Pesan={Pesan}
-                SetProcessChangeProfile={SetProcessChangeProfile}
+                
             />
             <div className={`afterProfil ${!isAccess ? "centerProfil" : ""}`} hidden={!isAccess || !verified ? true : false}>
-                <h1 hidden={!verified ? true : false}>PRODUCTS</h1>
+                <h1  hidden={!verified && isAccess ? true : false}>PRODUCTS</h1>
                 <div className="AddProductButton" hidden={!isAccess || !verified ? true : false} >
                     <button onClick={TurnOnForm}  >➕</button>
                 </div>
@@ -166,6 +174,8 @@ const ProfilPages = () => {
                 getMyAccount={getMyAccount}
                 isAccess={isAccess}
                 popup2={popup2}
+                SetProcessChangeProfile={SetProcessChangeProfile}
+                ActionGrabProduk={ActionGrabProduk}
             />
             <div className="ProductPages" >
                 <div ref={popup2} className="popup">

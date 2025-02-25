@@ -1440,7 +1440,8 @@ h4 {
 
 /*Profil Pages*/
 .afterProfil {
-  margin-top: 15px;
+  margin-top: 150px;
+  margin-bottom: 50px;
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -1959,6 +1960,16 @@ h4 {
   grid-template-columns: 65% 30%;
 }
 
+.HeaderAndPrice h1{
+  font-size: 30px;
+}
+
+.ContentProductForm {
+  height: 130px;
+  overflow-wrap: anywhere;
+  margin-right: 10px;
+}
+
 /*Order Product Popup*/
 .CategoryOption {
   display: flex;
@@ -2006,11 +2017,6 @@ h4 {
   background-color: rgb(210, 210, 210);
 }
 
-.ContentProductForm {
-  overflow-wrap: anywhere;
-  margin-right: 10px;
-}
-
 /*Order Product Popup*/
 .FooterOrderForm {
   display: flex;
@@ -2054,7 +2060,7 @@ h4 {
   align-items: center;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
   .InfoProduct {
     width: 200px;
     position: absolute;

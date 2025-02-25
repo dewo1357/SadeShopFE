@@ -4,7 +4,8 @@
 import { useState } from "react";
 import Button from "../Element/Button/Button";
 import { API_URL } from "../../../config";
-import { getAcc } from "../../pages/manage";
+import { getAcc, Refresh_Token } from "../../pages/manage";
+import { Await } from "react-router-dom";
 const OrderForm = (props) => {
     const { product, active,SetLoading2, popup2, setMotionLeft, MotionMenuCart } = props;
     const [Pcs, SetPcs] = useState(1);
@@ -38,8 +39,12 @@ const OrderForm = (props) => {
             if (!response) {
                 throw new Error("Gagal Memasukan Keranjang")
             }
+           
             let result = await response.json();
-            console.log(result)
+            if(result.statusCode === 401){
+                await Refresh_Token();
+                return location.href="/"
+            }
             const product = result.data;
             console.log(product)
             active(false)
@@ -53,9 +58,9 @@ const OrderForm = (props) => {
     const AddToCart = async (e) => {
         e.preventDefault();
         await AddToAPI();
-        SetLoading2(true);
+        SetLoading2 ? SetLoading2(true) : alert("Check Your Cart")
         active(false, popup2);
-        MotionMenuCart(false, setMotionLeft)
+        MotionMenuCart ? MotionMenuCart(false, setMotionLeft): console.log("Data Berhasil Ditambah")
     }
 
     return (

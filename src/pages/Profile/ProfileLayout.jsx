@@ -76,6 +76,9 @@ const ProfilPagesLayout = (props) => {
                 await Refresh_Token(socket)
                 location.href = `/profil/${getMyAccount.username}`
             }
+            SetProcessLoading(false)
+            console.log("Berhasil")
+            location.href = `/profil/${getMyAccount.username}`
         } catch (error) {
             return
         }
