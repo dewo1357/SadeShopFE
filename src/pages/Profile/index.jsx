@@ -96,6 +96,12 @@ const ProfilPages = () => {
         location.href= `/SetProduct/?AddData=${true}`
     }
 
+    const FinallyDialog = () => {
+        SetProcessLoading(false)
+        setFinnalMessage(false)
+    }
+
+
     const [processLoading, SetProcessLoading] = useState(false)
     const [FinnalMessage, setFinnalMessage] = useState(false)
     const [FinnalMessage2, setFinnalMessage2] = useState(false)
@@ -103,6 +109,7 @@ const ProfilPages = () => {
     const popupVerify = useRef();
 
     const [SumProcess, setSumProcess] = useState(0)
+    const [ProcessChangeProfile, SetProcessChangeProfile] = useState(false)
 
     return (
         getMyAccount && GenreData ? <div className="ProfilPagesLayout" hidden={delay ? true : false}>
@@ -132,6 +139,7 @@ const ProfilPages = () => {
                 popupVerify={popupVerify}
                 setPesan={setPesan}
                 SetProcessLoading={SetProcessLoading}
+                SetProcessChangeProfile={SetProcessChangeProfile}
             />
             <VerifyForm
                 socket={socket}
@@ -145,6 +153,7 @@ const ProfilPages = () => {
                 FinnalMessage={FinnalMessage}
                 FinnalMessage2={FinnalMessage2}
                 Pesan={Pesan}
+                SetProcessChangeProfile={SetProcessChangeProfile}
             />
             <div className={`afterProfil ${!isAccess ? "centerProfil" : ""}`} hidden={!isAccess || !verified ? true : false}>
                 <h1 hidden={!verified ? true : false}>PRODUCTS</h1>
@@ -172,6 +181,16 @@ const ProfilPages = () => {
                         popup2={popup2}
                     >
                     </OrderForm>
+                </div>
+            </div>
+            <div className={`loading ${processLoading ? "loadingOn" : ""}`}>
+                <div className="OverlayLoading" hidden={ProcessChangeProfile ? false : true}>
+                    {FinnalMessage ? <h2>{FinnalMessage}</h2> : <h2>Mohon Ditunggu<br></br> {Pesan}</h2>}
+                    {!FinnalMessage ? <img src="/Images/Loading.gif" alt="" /> : <button onClick={FinallyDialog} >Oke</button>}
+                </div>
+                <div className="OverlayLoading" hidden={FinnalMessage2 ? false : true}>
+                    <h2>Mohon Ditunggu<br></br> Pesanan Kamu Sedang Di Proses</h2>
+                    <img src="/Images/Loading.gif" alt="" />
                 </div>
             </div>
         </div> :

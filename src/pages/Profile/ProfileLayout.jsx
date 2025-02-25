@@ -54,10 +54,10 @@ const ProfilPagesLayout = (props) => {
     },[])
 
     const UploadImageToAPI = async (e, file) => {
+        e.preventDefault();
         setPesan("Foto Kamu Sedang Di Proses")
         SetProcessLoading(true)
         SetProcessChangeProfile(true)
-        e.preventDefault();
         const files = new FormData()
         files.append('files', file);
         try {

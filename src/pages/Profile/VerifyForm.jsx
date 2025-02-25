@@ -7,12 +7,10 @@ import MyComponent from "../MyComponent";
 /* eslint-disable react/prop-types */
 const VerifyForm = (props) => {
     const { socket, getMyAccount, account, setPesan, SetProcessLoading,
-        popupVerify, setFinnalMessage, processLoading, FinnalMessage, FinnalMessage2, Pesan
+        popupVerify, setFinnalMessage, processLoading, SetProcessChangeProfile
     } = props
 
 
-
-    const [ProcessChangeProfile, SetProcessChangeProfile] = useState(false)
 
     const [done, setDone] = useState(false)
     const overlayVerify = useRef();
@@ -20,11 +18,7 @@ const VerifyForm = (props) => {
         setDone(true)
     }
 
-    const FinallyDialog = () => {
-        SetProcessLoading(false)
-        setFinnalMessage(false)
-    }
-
+   
 
 
     const changeProvince = (e, SessionUpdate) => {
@@ -171,16 +165,7 @@ const VerifyForm = (props) => {
                     </div>
                 </form>
             </div>
-            <div className={`loading ${processLoading ? "loadingOn" : ""}`}>
-                <div className="OverlayLoading" hidden={ProcessChangeProfile ? false : true}>
-                    {FinnalMessage ? <h2>{FinnalMessage}</h2> : <h2>Mohon Ditunggu<br></br> {Pesan}</h2>}
-                    {!FinnalMessage ? <img src="/Images/Loading.gif" alt="" /> : <button onClick={FinallyDialog} >Oke</button>}
-                </div>
-                <div className="OverlayLoading" hidden={FinnalMessage2 ? false : true}>
-                    <h2>Mohon Ditunggu<br></br> Pesanan Kamu Sedang Di Proses</h2>
-                    <img src="/Images/Loading.gif" alt="" />
-                </div>
-            </div>
+            
         </>
     )
 }
