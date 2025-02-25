@@ -13,7 +13,7 @@ const Cart = (props) => {
             Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket, SetLoading2);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [account, Loading2,socket])
+    }, [account, Loading2])
     return (
         <>
             {!account ? <></> :
