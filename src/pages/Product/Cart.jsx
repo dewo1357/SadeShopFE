@@ -9,11 +9,11 @@ const Cart = (props) => {
     const { motionLeft, setMotionLeft, setNotifMessage, socket, setSumProcess, Loading2, SetLoading2, account } = props
 
     useEffect(() => {
-        if (account !== false) {
+        if (account !== false && socket) {
             Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket, SetLoading2);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [account, Loading2])
+    }, [account, Loading2,socket])
     return (
         <>
             {!account ? <></> :
