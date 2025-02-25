@@ -104,14 +104,14 @@ const ProductPages = () => {
                                     </div>
                                     <div className="HomePictProduct">
                                         <div className="HomePictProductComponent">
-                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/simply-mersah-MLV5zTSzj98-unsplash.jpg" alt="" />
-                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/micheile-henderson-NuYB_I4wXFM-unsplash.jpg" alt="" />
-                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/dwayne-joe-9wubaeSG13U-unsplash.jpg" alt="" />
+                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/simply-mersah-MLV5zTSzj98-unsplash (1).jpg" alt="" />
+                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/micheile-henderson-NuYB_I4wXFM-unsplash (1).jpg" alt="" />
+                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/dwayne-joe-9wubaeSG13U-unsplash (1).jpg" alt="" />
                                         </div>
                                         <div className="HomePictProductComponent kedua">
-                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/katsiaryna-endruszkiewicz-BteCp6aq4GI-unsplash.jpg" alt="" />
-                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/jeff-trierweiler-yrINjq6HInM-unsplash.jpg" alt="" />
-                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/laika-notebooks-RDYGxXuRyx4-unsplash.jpg" alt="" />
+                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/katsiaryna-endruszkiewicz-BteCp6aq4GI-unsplash (2).jpg" alt="" />
+                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/jeff-trierweiler-yrINjq6HInM-unsplash (1).jpg" alt="" />
+                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/laika-notebooks-RDYGxXuRyx4-unsplash (1).jpg" alt="" />
                                         </div>
                                     </div>
 
