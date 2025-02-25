@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
+
 import Button from "./Element/Button/Button"
 import { getAcc, Refresh_Token } from "../pages/manage";
 import { API_URL } from "../../config";
@@ -9,7 +10,6 @@ const HeaderMenu = (props) => {
     const { selected, To1, To2, To3, To4, To5, motionLeft, MotionMenuCart,
         setMotionLeft, ConfirmBack, setpopupconfirm2, SumProcess, socket, notifMessage, GenreData } = props;
     const [BuildUpdate, setBuildUpdate] = useState(false);
-
 
     const [nMessage, setNmessage] = useState(false)
     const [ProcessToLogout, SetProcessToLogout] = useState(false)
@@ -50,7 +50,7 @@ const HeaderMenu = (props) => {
                 ConfirmBack.current.style.visibility = "visible"
                 setpopupconfirm2(true)
             } else {
-                location.href = "/YourProductOrder"
+                location.href="/YourProductOrder"
             }
 
 
@@ -65,7 +65,7 @@ const HeaderMenu = (props) => {
             let username = account.username
             socket.emit('Reset', username)
             localStorage.removeItem('account');
-            location.href = "/login"
+            location.href="/login"
         }, 1000)
     }
 
@@ -78,9 +78,9 @@ const HeaderMenu = (props) => {
             if (number === 4) {
                 return SetProcessToLogout(true)
             }
-            return location.href = tujuan
+            return location.href =tujuan
         }
-        return location.href = "/"
+        return location.href="/"
     }
 
     const toPageProductOrder = async () => {
@@ -89,7 +89,7 @@ const HeaderMenu = (props) => {
 
     const toMessage = () => {
         setNmessage(false)
-        location.href = "/message"
+        location.href="/message"
     }
 
     const HandleToClose = (e) => {
@@ -105,21 +105,21 @@ const HeaderMenu = (props) => {
             <div className="TitleMenu"
                 style={{
                     justifyContent: account == false ? "space-between" : "normal",
-                    width: GenreData.length !== 0 || innerWidth < 900 ? "100%" : location.pathname === "/" || GenreData.length !== 0 ? "1325px" : "100%",
+                    width: GenreData.length !== 0 || innerWidth < 900 ? "100%" : location.pathname==="/" || GenreData.length !== 0 ? "1325px" : "100%",
                     paddingBottom: account == false ? "10px" : "0px", paddingTop: account == false ? "10px" : "0px",
                     backgroundColor: !account ? "transparent" : false,
                     boxShadow: !account ? "none" : "black",
                     color: !account ? "black" : false
                 }}>
                 <div id="ProfileHead">
-                    <h1 style={{ color: !account ? "black" : "none" }}>SadeShop.com</h1>
+                    <h1 loading="lazy" style={{ color: !account ? "black" : "none" }}>SadeShop.com</h1>
                     {!account ?
                         <div className="ButtoNoLoginForDetskop">
                             <div className="NoLogin">
-                                <Button styling="btn" action={() => { location.href = "/login" }} ContentButton="Login"></Button>
+                                <Button styling="btn" action={() => { location.href="/login"}} ContentButton="Login"></Button>
                             </div>
                             <div className="NoLogin">
-                                <Button styling={"btn"} action={() => { location.href = "/Register" }} ContentButton="Register"></Button>
+                                <Button styling={"btn"} action={() => { location.href="/Register" }} ContentButton="Register"></Button>
                             </div>
                         </div> :
                         <div>
@@ -133,7 +133,7 @@ const HeaderMenu = (props) => {
                                 height: BuildUpdate ? "150px" : "0px",
                                 opacity: BuildUpdate ? "1" : "0"
                             }} className={`updateOptions updateOptionsSmartPhone ${BuildUpdate ? "BuildUpdateOption" : ""}`}>
-                                <Button styling="btn" ContentButton={`Order Process`} action={() => { location.href = "/InformationOrder" }}></Button>
+                                <Button styling="btn" ContentButton={`Order Process`} action={() => { location.href="/InformationOrder" }}></Button>
                                 <Button styling="btn" ContentButton={`Product Order (${SumProcess ? SumProcess : JSON.parse(sessionStorage.getItem('SumProcess'))})`} action={toPageProductOrder}></Button>
 
                             </div>
@@ -149,7 +149,7 @@ const HeaderMenu = (props) => {
                             <Button styling="btn" action={() => { setBuildUpdate(BuildUpdate ? false : true) }} ContentButton={nMessage || notifMessage ? `Update 🔴` : `Update`}></Button>
                         </div>
                         <div className={`updateOptions ${BuildUpdate ? "BuildUpdateOption" : ""} ${motionLeft ? "motionOptions" : ""}`}>
-                            <Button styling="btn" ContentButton={`Order Process`} action={() => { location.href = "/InformationOrder" }}></Button>
+                            <Button styling="btn" ContentButton={`Order Process`} action={() => { location.href="/InformationOrder" }}></Button>
                             <Button styling="btn" ContentButton={`Product Order (${SumProcess ? SumProcess : JSON.parse(sessionStorage.getItem('SumProcess'))})`} action={toPageProductOrder}></Button>
                             <Button styling="btn" ContentButton={nMessage || notifMessage ? `Messages 🔴` : `Messages`} action={toMessage}></Button>
                         </div>
@@ -174,10 +174,10 @@ const HeaderMenu = (props) => {
                     </div> :
                     <div className="HeaderNoLogin">
                         <div className="NoLogin">
-                            <Button styling="btn" action={() => { location.href = "/login" }} ContentButton="Login"></Button>
+                            <Button styling="btn" action={() => { location.href="/login" }} ContentButton="Login"></Button>
                         </div>
                         <div className="NoLogin">
-                            <Button styling={"btn"} action={() => { location.href = "/Register" }} ContentButton="Register"></Button>
+                            <Button styling={"btn"} action={() => { location.href="/Register" }} ContentButton="Register"></Button>
                         </div>
                     </div>
                 }

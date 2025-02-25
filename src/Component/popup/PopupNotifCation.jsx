@@ -8,11 +8,12 @@ import { ActionToDeleteCheckoutCart, getAcc } from "../../pages/manage";
 import Button from "../Element/Button/Button";
 import { API_URL } from "../../../config";
 import { useSocket } from "../../SocketProvider";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const PopupNotification = (props) => {
     const location = useLocation();
     const { popupConfirm2 } = props
+    const navigate = useNavigate()
 
     const ConfirmBack = useRef();
     const socket = useSocket()
@@ -48,7 +49,7 @@ const PopupNotification = (props) => {
             }
         } catch (err) {
             if (account === 'undefined') {
-                location.href = "/"
+                navigate("/")
             }
 
         }
@@ -112,7 +113,7 @@ const PopupNotification = (props) => {
                 socket.on('ActTolakAkses', (message) => {
                     setTimeout(() => {
                         localStorage.clear()
-                        location.href = "/"
+                        navigate("/")
                     }, 1000)
                 })
 
@@ -136,7 +137,7 @@ const PopupNotification = (props) => {
         if (ConfirmBack.current) {
             ConfirmBack.current.style.visibility = "hidden"
         }
-        location.href = "/checkout"
+        navigate("/checkout") 
     }
 
     const Abaikan = () => {
@@ -199,6 +200,12 @@ const PopupNotification = (props) => {
         notifMessage(null)
     }
 
+  
+    const Telusuri = ()=>{
+        console.log("Okee")
+        navigate("/YourProductOrder")
+    }
+
     if (!account) {
         return (
             <></>
@@ -256,7 +263,7 @@ const PopupNotification = (props) => {
 
                         <div className="ConfirmBackToCartAction">
                             <Button styling="btn" action={Abaikan} ContentButton={"Abaikan"}></Button>
-                            <Button styling="btn" action={() => { location.href = "/YourProductOrder" }} ContentButton={"Telusuri"}></Button>
+                            <Button styling="btn" action={Telusuri} ContentButton={"Telusuri"}></Button>
                         </div>
                     </div>
                     <div className={`ConfirmBackToCart ${popupConfirm ? "ConfirmBackToCartOn" : ""}`} hidden={popupConfirm ? false : true}>

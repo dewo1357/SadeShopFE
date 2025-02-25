@@ -9,7 +9,7 @@ const Cart = (props) => {
     const { motionLeft, setMotionLeft, setNotifMessage, socket, setSumProcess, Loading2, SetLoading2, account } = props
 
     useEffect(() => {
-        if (account !== false && socket) {
+        if (account !== false && Loading2) {
             Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket, SetLoading2);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -38,7 +38,7 @@ const Cart = (props) => {
                     </div>
                     <div className="LayoutListCart" hidden={motionLeft ? false : true}>
                         {listCart.map((items, index) => (
-                            <ListCart key={`${items.idCart}${index}`} brand={items.title} pcs={items.pcs}
+                            <ListCart key={`${index}`} brand={items.title} pcs={items.pcs}
                                 price={new Intl.NumberFormat('id-ID').format(items.price)}
                                 total={new Intl.NumberFormat('id-ID').format(items.totalPrice)} />
                         ))}

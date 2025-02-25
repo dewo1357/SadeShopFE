@@ -49,7 +49,7 @@ const FormLogin = () => {
 
         }
         if (localStorage.getItem('account') !== null) {
-            navigate("/products")
+            navigate("/")
         }
     }, [navigate, socket])
     const account = JSON.parse(localStorage.getItem('ListAccount'))

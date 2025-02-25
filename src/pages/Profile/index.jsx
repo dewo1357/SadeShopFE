@@ -23,7 +23,7 @@ const ProfilPages = () => {
     } = Statesss()
 
     const socket = useSocket();
-
+  
     const popup2 = useRef(null);
 
     const { idUser } = useParams();
@@ -69,10 +69,9 @@ const ProfilPages = () => {
                         setAccess(true);
                     }
                 } else {
-                    location.href = "/login"
+                    location.href="/login"
                 }
             }, 1000)
-
 
             if (!addData) {
                 getData();
@@ -94,7 +93,7 @@ const ProfilPages = () => {
     }, 100);
 
     const TurnOnForm = () => {
-        location.href = `/SetProduct/?AddData=${true}`
+        location.href= `/SetProduct/?AddData=${true}`
     }
 
     const [processLoading, SetProcessLoading] = useState(false)
@@ -179,7 +178,7 @@ const ProfilPages = () => {
             <center>
                 <div>
                     <h1 style={{ fontFamily: "monospace" }}>Memproses..</h1>
-                    <img src="/Images/Loading.gif" width="100" alt="" />
+                    <img  src="/Images/Loading.gif" width="100" alt="" />
                 </div>
             </center>
     )

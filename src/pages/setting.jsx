@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { useState, useRef,useEffect } from "react"
+import { useState, useRef } from "react"
+import { useNavigate } from "react-router-dom"
 import Button from "../Component/Element/Button/Button"
 import Input from "../Component/Element/Input/Input"
 import { useSocket } from "../SocketProvider"
@@ -8,6 +9,7 @@ import { API_URL } from "../../config"
 
 const SettingPages = () => {
     const socket = useSocket();
+    const navigate = useNavigate();
 
     const [account, setAccount] = useState(getAcc())
     const [active, setActive] = useState(Array(4).fill(false))
@@ -162,7 +164,7 @@ const SettingPages = () => {
         setLoading(false)
         seFinish(false)
         Confirm.current.style.visibility = 'hidden'
-        location.href = "SettingPages"
+        navigate("SettingPages")
 
     }
 

@@ -10,6 +10,7 @@ import { API_URL } from "../../../config";
 import PopupNotification from "../../Component/popup/PopupNotifCation";
 import CartItemList from "./CartItem";
 import CartTotalSection from "./CartTotalSection";
+import { useNavigate } from "react-router-dom";
 
 const CartPages = () => {
     const {
@@ -20,7 +21,8 @@ const CartPages = () => {
         GrabProduk, totalPrice, setTotal,
         FinsihPay, SetFinishPay,
     } = Statesss();
-
+    
+    const navigate = useNavigate();
     const socket = useSocket();
     const [dataCart, setDataCart] = useState([]);
     const [account, setAccount] = useState(getAcc());
@@ -55,7 +57,7 @@ const CartPages = () => {
             const result = await response.json();
             if (result.statusCode === 401) {
                 await Refresh_Token(socket);
-                location.href = "/cart";
+                navigate("/cart")
             }
             setDataCart(JSON.parse(result.data));
             console.log(result);
@@ -97,7 +99,7 @@ const CartPages = () => {
             const result = await response.json();
             if (result.statusCode === 401) {
                 await Refresh_Token(socket);
-                location.href = "/cart";
+                navigate("/cart")
             }
             if (!response) {
                 throw new Error("Gagal Update Data");
@@ -131,7 +133,7 @@ const CartPages = () => {
 
     const close = () => {
         SetLoading2(false);
-        location.href = "/";
+        navigate("/")
     };
 
     const Checked = async (e, idCart, OverallIndex) => {
@@ -177,7 +179,8 @@ const CartPages = () => {
     };
 
     const ActionToChekout = () => {
-        location.href = "/checkout";
+        location.hreg="/checkout"
+        
     };
 
     const [popupConfirm, setpopupconfirm] = useState(false);
@@ -190,7 +193,7 @@ const CartPages = () => {
             console.log("menjalankan sekali");
             
         }else{
-            location.href="/login"
+            navigate("/login")
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Loading2]);

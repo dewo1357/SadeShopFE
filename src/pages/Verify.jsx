@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { API_URL } from "../../config";
 import { getAcc } from "./manage";
 
@@ -10,6 +10,8 @@ const Verify = () => {
     const [finish, setFinish] = useState(false);
     // eslint-disable-next-line no-unused-vars
     const [account,setAccount] = useState(getAcc())
+
+    const navigate = useNavigate();
     
 
 
@@ -51,7 +53,7 @@ const Verify = () => {
         }
         if (finish) {
             if(hasilAkhir){
-                location.href = "/profil/"+account.username
+                navigate("/profil/"+account.username)
             }
         }
         

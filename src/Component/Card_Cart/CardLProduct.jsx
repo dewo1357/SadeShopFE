@@ -18,7 +18,7 @@ const images = (props) => {
     const { source } = props
     return (
         <div className={`CardImage`}>
-            <img src={source} />
+            <img loading="lazy" src={source} />
         </div>
     )
 }

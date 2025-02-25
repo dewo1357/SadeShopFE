@@ -120,7 +120,7 @@ const ProfilPagesLayout = (props) => {
                     }}>
                         <div className={!isAccess ? "" : "LabelOverLay"} >
                             <div>
-                                <label onClick={() => { FormChangeProfile.current.style.visibility = "visible" }}><img src="/Images/settings-svgrepo-com.svg" alt="" hidden={!isAccess ? true : false} /></label>
+                                <label onClick={() => { FormChangeProfile.current.style.visibility = "visible" }}><img loading="lazy" src="/Images/settings-svgrepo-com.svg" alt="" hidden={!isAccess ? true : false} /></label>
                             </div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@ const ProfilPagesLayout = (props) => {
                     <div className="FormChangeProfile">
                         <h2 style={{ margin: "0px", marginBottom: "20px", textAlign: "center" }}>Change Profile Picture</h2>
                         <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-                            <img src={tempProfileImage ? tempProfileImage : `https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${getMyAccount ? getMyAccount.image : ""}`} alt="" />
+                            <img loading="lazy" src={tempProfileImage ? tempProfileImage : `https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${getMyAccount ? getMyAccount.image : ""}`} alt="" />
                         </div>
                         <form style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }} action="" onSubmit={tempProfileImage ? (e) => { UploadImageToAPI(e, FileImage) } : () => { }}>
                             <div>

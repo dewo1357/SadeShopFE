@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
 import CardProduct from "../../Component/Card_Cart/CardLProduct"
+import { useNavigate } from "react-router-dom"
 import { Close } from "../manage"
 import Statesss from "../States"
 
 const ProductSeller = (props) => {
     const {GenreData,getMyAccount,isAccess,popup2} = props
     const {SetGrabProduk} = Statesss()
+    const navigate = useNavigate();
 
     const ActionGrabProduk = (data) => {
         Close(true, popup2)
@@ -24,7 +26,7 @@ const ProductSeller = (props) => {
             bobot: bobot
         }
         sessionStorage.setItem('ProductEdit', JSON.stringify(ProductToEdit))
-        location.href = "/SetProduct"
+        navigate("/SetProduct")
     }
     return (
         <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "center" }}>

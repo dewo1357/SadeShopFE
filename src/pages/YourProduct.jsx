@@ -103,7 +103,7 @@ const InformationOrder = () => {
             <div className="FinishCheckout">
                 <div className="TitleHeadInformationOrder">
                     <h1>Information Order</h1>
-                    <h1 style={{ cursor: "pointer" }} onClick={() => { location.href = "/products" }}>SadeShop.com</h1>
+                    <h1 style={{ cursor: "pointer" }} onClick={() => { location.href = "/" }}>SadeShop.com</h1>
                 </div>
                 <div className="HeaderProductOrderInformation">
                     <div className="MenuOrderInformation">
