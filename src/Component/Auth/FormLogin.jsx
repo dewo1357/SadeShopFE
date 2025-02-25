@@ -24,7 +24,7 @@ const FormLogin = () => {
                 'new_user' : param.get('new_user')
             }
             localStorage.setItem('account',JSON.stringify(DataAccount))
-            location.href="/products"
+            location.href="/"
 
         }else if(param.get('using_other_device')){
             notificationLogin.current.style.visibility = "visible"
