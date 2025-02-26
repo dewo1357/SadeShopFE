@@ -67,7 +67,7 @@ const ProductPages = () => {
     return (
         GenreData !== null || listCart !== null ?
             <>
-                <div className="OverallProductsPages" style={{gap:motionLeft?"10px":"5px",display:!account?"block":false}}>
+                <div className="OverallProductsPages" style={{gap:motionLeft?"10px":"5px",display:!account ||innerWidth < 900?"block":false}}>
                     <div>
                         <PopupNotification
                             popupConfirm2={popupConfirm2}

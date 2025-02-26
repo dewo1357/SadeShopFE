@@ -1,7 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 body {
-  background-color: rgb(255, 255, 255);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ 
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
 
 /*====================================
 
@@ -20,7 +25,6 @@ body {
 
 /*CartPages*/
 .TitleMenu h1 {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   text-align: center;
   margin: 0px;
@@ -39,7 +43,6 @@ body {
   border-radius: 5px;
   font-weight: bold;
   font-size: 90%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   cursor: pointer;
 }
 
@@ -414,7 +417,6 @@ body {
 /*CartPages*/
 .CartPagesLayout {
   padding: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 97%;
   margin-top: 100px;
   height: 400px;
@@ -559,7 +561,6 @@ body {
   padding: 20px;
   border-radius: 10px;
   border: 0.1px solid rgba(0, 0, 0, 0.336);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 5% auto
 }
 
@@ -672,7 +673,6 @@ body {
   background-color: rgb(0, 0, 0);
   padding: 15px;
   border-radius: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-wrap: wrap;
   text-align: justify;
@@ -844,13 +844,11 @@ body {
 .titlePages {
   margin-top: 4px auto;
   height: 38px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 40px;
 }
 
 .CartContainer {
   background-color: rgb(5, 5, 5);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px auto;
   color: aliceblue;
   text-align: center;
@@ -986,7 +984,6 @@ h4 {
   position: absolute;
   background-color: white;
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 15px;
   border-radius: 10px;
 }
@@ -1026,7 +1023,6 @@ h4 {
   left: 15%;
   top: 2%;
   border-radius: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px;
   text-align: left;
   justify-content: center;
@@ -1224,7 +1220,6 @@ h4 {
   width: 100%;
   background-color: rgb(15, 15, 15);
   font-size: 30px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   border: 1px solid rgba(0, 0, 0, 0.24);
   cursor: pointer;
@@ -1329,7 +1324,6 @@ h4 {
 /*Profil Pages*/
 .ProfilPagesLayout {
   width: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /*Profil Pages*/
@@ -1585,7 +1579,6 @@ h4 {
   justify-content: space-between;
   align-items: center;
   padding: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .HeaderAddProductForSmartphone button {
@@ -1595,7 +1588,6 @@ h4 {
 
 .FormAddProdukSmartPhone {
   padding: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .FormAddProdukSmartPhone input {
@@ -1828,7 +1820,6 @@ h4 {
 
 /*ConfirmDelete Popups*/
 .ConfirmationDelete {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: white;
   top: 30%;
   left: 35%;
@@ -1936,7 +1927,6 @@ h4 {
   top: 20%;
   display: flex;
   justify-content: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 }
 
@@ -2201,7 +2191,6 @@ h4 {
 
 
 .FormCheckout {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
@@ -2362,7 +2351,6 @@ h4 {
 .ComponentPayment {
   display: flex;
   justify-content: space-between;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -2390,7 +2378,6 @@ h4 {
 
 .Payment {
   text-align: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @media only screen and (max-width: 900px) {
@@ -2438,13 +2425,11 @@ h4 {
 
 .Map {
   background-color: rgb(255, 255, 255);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 10px;
 
 }
 
 .TitleHeadInformationOrder {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: space-between;
   padding: 5px;
@@ -2493,7 +2478,6 @@ h4 {
 
 .FinishCheckout {
   padding: 2px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .SellerAndCancelButton {
@@ -2569,6 +2553,10 @@ h4 {
   .Shipping {
     font-size: 10px;
   }
+
+  .SellerAndCancelButton{
+    font-size: 10px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -2628,7 +2616,6 @@ h4 {
   background-color: rgb(255, 255, 255);
   padding: 20px;
   border-radius: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   opacity: 0;
   text-align: center;
 }
@@ -2732,6 +2719,8 @@ h4 {
   width: 150px;
   background-color: black;
   color: white;
+  border: 0px solid;
+  border-radius: 5px;
 }
 
 .ConfirmBackToCartAction button:hover {
@@ -2742,7 +2731,6 @@ h4 {
 .ConfirmBackToCart {
   transition: 1000ms;
   background-color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border-radius: 10px;
   width: 690px;
   opacity: 0;
@@ -2795,7 +2783,6 @@ h4 {
 
 .InsertPass {
   background-color: white;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 15px;
   border-radius: 5px;
   height: auto;
@@ -2973,7 +2960,6 @@ h4 {
   justify-content: space-between;
   width: 100%;
   margin: 0px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /*Chat Pages*/
@@ -3271,7 +3257,6 @@ h4 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 100%;
 }
 
@@ -3280,7 +3265,6 @@ h4 {
   width: 250px;
   justify-content: start;
   padding: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 510px;
   border-radius: 5px;
 
@@ -3308,7 +3292,6 @@ h4 {
   flex-wrap: wrap;
   background-color: rgb(0, 0, 0);
   padding: 5px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border-radius: 5px;
 
 }

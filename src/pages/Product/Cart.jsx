@@ -16,7 +16,7 @@ const Cart = (props) => {
     }, [account, Loading2])
     return (
         <>
-            {!account ? <></> :
+            {!account || innerWidth < 900 ? <></> :
                 <div className={`CartContainer ${motionLeft ? "motion_Cart" : ""}`}>
                     <div hidden={motionLeft ? false : true}
                         style={{

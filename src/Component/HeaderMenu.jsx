@@ -65,7 +65,7 @@ const HeaderMenu = (props) => {
             let username = account.username
             socket.emit('Reset', username)
             localStorage.removeItem('account');
-            location.href="/login"
+            location.href="/"
         }, 1000)
     }
 
@@ -207,7 +207,7 @@ const HeaderMenu = (props) => {
                             Apakah Anda Ingin Melanjutkan Proses Logout?
                         </p>
                         <div className="ConfirmBackToCartAction">
-                            <button style={{ backgroundColor: "red" }} onClick={CancelToLogout}>No</button>
+                            <button  style={{ backgroundColor: "red" }} onClick={CancelToLogout}>No</button>
                             <button onClick={SureForLogout}>Yes</button>
                         </div>
                     </div>

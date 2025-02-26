@@ -60,7 +60,7 @@ const OrderForm = (props) => {
         await AddToAPI();
         SetLoading2 ? SetLoading2(true) : alert("Check Your Cart")
         active(false, popup2);
-        MotionMenuCart ? MotionMenuCart(false, setMotionLeft): console.log("Data Berhasil Ditambah")
+        MotionMenuCart && innerWidth > 700 ? MotionMenuCart(false, setMotionLeft): alert("Check Your Cart")
     }
 
     return (

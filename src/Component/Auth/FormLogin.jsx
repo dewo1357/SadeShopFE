@@ -15,39 +15,22 @@ const FormLogin = () => {
     const navigate = useNavigate();
     const param = new URLSearchParams(window.location.search)
     console.log(API_URL)
-    useEffect(()=>{
-        if(param.get('acces_token')){
+    useEffect(() => {
+        if (param.get('acces_token')) {
             const DataAccount = {
-                'acces_token' : param.get('acces_token'),
-                'refresh_token' : param.get('refresh_token'),
-                'username' : param.get('username'),
-                'new_user' : param.get('new_user')
+                'acces_token': param.get('acces_token'),
+                'refresh_token': param.get('refresh_token'),
+                'username': param.get('username'),
+                'new_user': param.get('new_user')
             }
-            localStorage.setItem('account',JSON.stringify(DataAccount))
-            location.href="/"
+            localStorage.setItem('account', JSON.stringify(DataAccount))
+            location.href = "/"
 
-        }else if(param.get('using_other_device')){
-            notificationLogin.current.style.visibility = "visible"
-            setNotification(true)
-            setUsername(param.get('username'))
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     useEffect(() => {
-        if (socket) {
-            socket.on("Receive", (data) => {
-                SetMessage("Akses Diterima")
-                setTimeout(() => {
-                    localStorage.setItem('account', JSON.stringify(data))
-                    location.href = "/"
-                }, 1000)
-
-            })
-
-            
-
-        }
         if (localStorage.getItem('account') !== null) {
             navigate("/")
         }
@@ -58,12 +41,13 @@ const FormLogin = () => {
     // eslint-disable-next-line no-unused-vars
     const [token, SetToken] = useState(null)
 
-    const [notication, setNotification] = useState(false)
+
     const notificationLogin = useRef();
-    const [getUsername, setUsername] = useState(null)
     const validate_account = async (account) => {
+        notificationLogin.current.style.visibility = "visible"
+        setProcessLogin(true)
         try {
-            const response = await fetch(API_URL+"GetDataAccount", {
+            const response = await fetch(API_URL + "GetDataAccount", {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(account)
@@ -75,20 +59,17 @@ const FormLogin = () => {
             if (response.status === 200) {
                 localStorage.setItem('account', JSON.stringify(result))
                 SetToken(result.acces_token)
-                navigate('/')
-            } else if (response.status === 500) {
-                notificationLogin.current.style.visibility = "visible"
-                setNotification(true)
-            } else {
-                setHidden(true)
+                return navigate('/')
             }
+            setHidden(true)
+            notificationLogin.current.style.visibility = "hidden"
         } catch (err) {
             console.log(err.message)
         }
     }
 
-    const [notificationMessage, setNotificationMessage] = useState("Seseorang Sedang Memakai Account Kamu")
-    const [message, SetMessage] = useState("Minta Akses Sedang Di Proses")
+    // eslint-disable-next-line no-unused-vars
+    const [ProcessLogin, setProcessLogin] = useState(false)
 
     const validate = (event) => {
         event.preventDefault();
@@ -96,23 +77,9 @@ const FormLogin = () => {
             username: event.target.username.value,
             kata_sandi: event.target.KataSandi.value
         }
-        setUsername(account.username)
         validate_account(account);
     }
 
-    const closeNotification = () => {
-        setNotificationMessage("Seseorang Sedang Memakai Account Kamu")
-        setNotification(false)
-        notificationLogin.current.style.visibility = "hidden"
-    }
-
-    const [Acces, setAcces] = useState(false);
-    const MintaAkses = () => {
-        setNotification(false)
-        setAcces(true)
-        socket.emit('SendId', getUsername)
-        console.log(getUsername)
-    }
     return (
         <>
 
@@ -128,31 +95,16 @@ const FormLogin = () => {
                         <Input type="password" placeholder="****" name="KataSandi"></Input>
                     </div>
                     <Button ContentButton="Login"></Button>
-                    <div className="Auth">
-                        <span onClick={() => {location.href=API_URL+"AuthenticationGoogle"}}>Login Gmail</span>
+                    <div className="Auth" onClick={() => { location.href = API_URL + "AuthenticationGoogle" }} >
+                        <span>Login Gmail</span>
                     </div>
                 </form>
 
             </div>
             <div ref={notificationLogin} className='overlay3'>
-                <div className={`notificationUserLogin ${notication ? "notificationUserLoginOn" : ""}`} hidden={notication ? false : true}>
-                    <h1>
-                        {notificationMessage}
-                    </h1>
-                    <img src="/Images/sad-face_3866923.png" width="150" alt="" />
-                    <div className="actionUserLogin">
-
-                        <button onClick={closeNotification}>OK</button>
-                        <button onClick={MintaAkses}>Minta Akses</button>
-                    </div>
-                </div>
-                <div className={`notificationUserLogin ${Acces ? "notificationUserLoginOn" : ""}`} hidden={Acces ? false : true}>
-                    <h1>
-                        {message}
-                    </h1>
-                    <img src="/Images/Loading.gif" width="50" alt="" />
-                    <h2>Click apabila Pengguna Belum Menerima Notifikasi Untuk Meminta Akses</h2>
-                    <button onClick={MintaAkses}>Minta Akses Ulang</button>
+                <div className="OverlayLoading">
+                    <h2>Mohon Ditunggu<br></br>Sedang Proses Masuk</h2>
+                    <img src="/Images/Loading.gif" alt="" />
                 </div>
             </div>
 
