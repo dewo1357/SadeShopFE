@@ -1,13 +1,11 @@
 /* eslint-disable react/prop-types */
-import Button from "./Element/Button/Button";
 const Search = (props) => {
-    const { type, placeholder, action } = props
+    const { type, placeholder, action,onBlur } = props
     return (
         <>
-            <form action="" onInput={action}>
+            <form action="" onSubmit={action} onInput={action} onBlur={onBlur}>
                 <div className="SearchProduk">
                     <input type={type} placeholder={placeholder} name="name" />
-                    <Button styling="btn" ContentButton="Search"></Button>
                 </div>
             </form>
         </>

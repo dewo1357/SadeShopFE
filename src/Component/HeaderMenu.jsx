@@ -8,7 +8,7 @@ import { API_URL } from "../../config";
 
 const HeaderMenu = (props) => {
     const { selected, To1, To2, To3, To4, To5, motionLeft, MotionMenuCart,
-        setMotionLeft, ConfirmBack, setpopupconfirm2, SumProcess, socket, notifMessage, GenreData } = props;
+        setMotionLeft, ConfirmBack, setpopupconfirm2, SumProcess, socket, notifMessage, GenreData,StartToSearch } = props;
     const [BuildUpdate, setBuildUpdate] = useState(false);
 
     const [nMessage, setNmessage] = useState(false)
@@ -107,7 +107,7 @@ const HeaderMenu = (props) => {
             <div className="TitleMenu"
                 style={{
                     justifyContent: account == false ? "space-between" : "normal",
-                    width: GenreData.length !== 0 || innerWidth < 900 ? "100%" : location.pathname==="/" || GenreData.length !== 0 ? "1325px" : "100%",
+                    width: (GenreData.length !== 0 || innerWidth < 900) && !StartToSearch ? "100%" : location.pathname==="/" || GenreData.length !== 0 || StartToSearch  ? innerWidth - 42 : "100%",
                     paddingBottom: account == false ? "10px" : "0px", paddingTop: account == false ? "10px" : "0px",
                     backgroundColor: !account ? "transparent" : false,
                     boxShadow: !account ? "none" : "black",

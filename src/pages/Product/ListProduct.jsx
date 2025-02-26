@@ -22,7 +22,7 @@ const ListProduct = (props) => {
 
     return (
         <>
-            <div hidden={motionLeft ? false : true} className={` ${motionLeft && innerWidth > 900 ? "ProductPages motion_on" : "ProductPages"}`}>
+            <div hidden={motionLeft ? false : true}  className={` ${motionLeft && innerWidth > 900 ? "ProductPages motion_on" : "ProductPages"}`}>
                 {!Loading ? GenreData.map((item) => (
                     <CardProduct key={item.id} account={account} >
                         <CardProduct.images source={"https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/gambarProducts/" + item.URLimages} />

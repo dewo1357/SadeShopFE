@@ -183,7 +183,7 @@ const FinishAndClosePoopup = async (popup, listCart, setVisible, SetVisibleForm,
 const MotionMenuCart = (motionLeft, setMotionLeft) => {
     setTimeout(()=>{
         setMotionLeft(motionLeft ? false : true)
-    },1000)
+    },100)
 
 }
 
@@ -212,8 +212,9 @@ const DeleteCart = async (x, setTotal, setTotalItem, totalPrice, totalItem, SetL
 
 }
 
-const SearchCard = (event, GenreData, setGenre) => {
-    event.preventDefault;
+const SearchCard = (event, GenreData, setGenre,SetStartToSearch) => {
+    event.preventDefault();
+   
     const listdataSearch = []
     const x = event.target.value;
     const data = GenreData.slice();
@@ -227,8 +228,10 @@ const SearchCard = (event, GenreData, setGenre) => {
     console.log(x)
     if (x === '') {
         setGenre(JSON.parse(sessionStorage.getItem('ProductMaster')))
+        SetStartToSearch(false)
     } else {
         if (listdataSearch.length !== 0) {
+            SetStartToSearch(true)
             return setGenre(listdataSearch)
         } else {
             return setGenre(GenreData)
@@ -276,7 +279,6 @@ const Refresh_Token = async (socket=false) => {
         }
         const result = await response.json()
         if (response.status === 404) {
-            localStorage.removeItem('account')
             location.href = "/"
             return 404
         }

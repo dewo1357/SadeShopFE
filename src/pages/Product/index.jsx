@@ -20,6 +20,7 @@ const ProductPages = () => {
         GrabProduk, SetGrabProduk } = Statesss();
     const [GenreData, setGenre] = useState([])
     const [Loading2, SetLoading2] = useState(true)
+    const [StartToSearch,SetStartToSearch] = useState(false)
 
 
     //NavCartMotionState
@@ -91,6 +92,7 @@ const ProductPages = () => {
                             GenreData={GenreData}
                             SearchCard={SearchCard}
                             setGenre={setGenre}
+                            StartToSearch={StartToSearch}
                         >
                         </HeaderMenu>
 
@@ -122,9 +124,9 @@ const ProductPages = () => {
                             </div>
                             : false}
                         <div >
-                            <Search type="text" placeholder="Search Produk" action={(e) => SearchCard(e, GenreData, setGenre)} />
+                            <Search type="text" placeholder="Search Produk" onBlur={()=>{SetStartToSearch(false)}} action={(e) => SearchCard(e, GenreData, setGenre,SetStartToSearch)} />
                         </div>
-                        <ListProduct motionLeft={motionLeft} Loading={Loading} GenreData={GenreData} popup2={popup2} SetGrabProduk={SetGrabProduk} account={account} />
+                        <ListProduct  motionLeft={motionLeft} Loading={Loading} GenreData={GenreData} popup2={popup2} SetGrabProduk={SetGrabProduk} account={account} />
                     </div>
                     <Cart
                         motionLeft={motionLeft}

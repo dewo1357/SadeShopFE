@@ -24,6 +24,7 @@ const Mesage = (props) => {
     const [messageTo, setMessageTo] = useState(null)
     const [processChat, setProcessChat] = useState(true)
     const [ContactName, setContactName] = useState(null)
+    const [Height ,SetHeight] = useState(window.innerHeight-120)
 
     const socket = useSocket();
 
@@ -43,7 +44,6 @@ const Mesage = (props) => {
             if (result.statusCode === 401) {
                 await Refresh_Token(socket);
                 location.href = "/message"
-
             }
             SetMyRoomChat(result.data)
             setMyListChat(result.ListChat)
@@ -121,11 +121,11 @@ const Mesage = (props) => {
     }, [MyRoomChat])
 
     useEffect(() => {
-        if (process) {
+        if (process&&socket) {
             GetMyRoomChat(socket);
             setProcess(false)
         }
-    }, [process])
+    }, [process,socket])
 
     const [isDelete, setIsDelete] = useState(false)
     const [idChat, setidChat] = useState(false)
@@ -283,8 +283,7 @@ const Mesage = (props) => {
         ListContact.current.style.display = "block"
     }
 
-
-
+    console.log(Height)
     return (
         MyListChat ?
             <>
@@ -293,13 +292,13 @@ const Mesage = (props) => {
                     popupConfirm2={popupConfirm2}
                     setMessage={setMessage}
                 />
-                <div className="MessageContainer">
+                <div className="MessageContainer" >
                     <div className="CategoryChatRoom" ref={ListContact}  >
                         <div className="ListChat">
                             <a style={{ textDecoration: "none", color: "black" }} href="/"><h1>Back</h1></a>
                             <h1>List Chat</h1>
                         </div>
-                        <div className="ListContactChatContainer" >
+                        <div className="ListContactChatContainer" style={{height:Height}} >
                             {MyRoomChat.map((item, index) => (
                                 <div onClick={() => {
                                     checkChatBasedOnIndex(item.idCategory,

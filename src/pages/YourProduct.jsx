@@ -30,6 +30,7 @@ const InformationOrder = () => {
             const result = await response.json();
             if (result.statusCode === 401) {
                 await Refresh_Token(socket)
+                location.href="YourProductOrder/"
             } else {
                 console.log(result)
                 setData(result.data ? result.data : [])
@@ -57,19 +58,18 @@ const InformationOrder = () => {
    
 
     useEffect(() => {
-        if (!Loading) {
+        if (!Loading&&socket) {
            
             getData();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [Loading])
+    }, [Loading,socket])
 
     const ProcessOrder = async (id_product_transaction, setValue) => {
         const values = setValue === "Process" ? "Send" : setValue === "Send" ? "Finish" : ""
         console.log(values)
-
         try {
-            const response = await fetch("http://localhost:5000/SettingStatus", {
+            const response = await fetch(API_URL+"SettingStatus", {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`,
