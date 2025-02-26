@@ -96,6 +96,7 @@ const FormLogin = () => {
                     </div>
                     <Button ContentButton="Login"></Button>
                     <div className="Auth" onClick={() => { location.href = API_URL + "AuthenticationGoogle" }} >
+                        <img src="/Images/Google_Icon.png" alt="" />
                         <span>Login Gmail</span>
                     </div>
                 </form>
