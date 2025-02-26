@@ -4,7 +4,7 @@
 import HeaderMenu from "../../Component/HeaderMenu"
 import OrderForm from "../../Component/popup/OrderForm"
 import { useState, useRef, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams,useNavigate } from "react-router-dom"
 import { useSocket } from "../../SocketProvider";
 import PopupNotification from "../../Component/popup/PopupNotifCation"
 import { Close, GetdataProdukUser, checkId, getAcc } from "../manage";
@@ -21,6 +21,8 @@ const ProfilPages = () => {
         listCart, SetListCart,
         totalPrice, setTotal,
     } = Statesss()
+
+    const navigate = useNavigate()
 
     const socket = useSocket();
   
@@ -93,7 +95,7 @@ const ProfilPages = () => {
     }, 100);
 
     const TurnOnForm = () => {
-        location.href= `/SetProduct/?AddData=${true}`
+        navigate(`/SetProduct/?AddData=${true}`)
     }
 
     const FinallyDialog = () => {

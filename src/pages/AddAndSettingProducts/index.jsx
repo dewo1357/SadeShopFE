@@ -3,8 +3,10 @@ import Button from "../../Component/Element/Button/Button"
 import PopupNotification from "../../Component/popup/PopupNotifCation"
 import Form from "./Form"
 import { useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useState, useRef } from "react"
 import { getAcc } from "../manage"
+
 
 
 const AddDataProductForSmartPhone = () => {
@@ -15,11 +17,12 @@ const AddDataProductForSmartPhone = () => {
 
     //Popup Handling
     const Build = useRef();
+    const navigate = useNavigate();
     return (
         <>
             <div className="HeaderAddProductForSmartphone">
                 <div>
-                    <Button action={() => { location.href = "/profil/" + account.username }} styling="btn" ContentButton="Back"></Button>
+                    <Button action={() => { navigate("/profil/" + account.username)}} styling="btn" ContentButton="Back"></Button>
                 </div>
                 <h1>{Product ? "Edit Data" : "Add Data"}</h1>
             </div>
