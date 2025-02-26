@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 import Button from "./Element/Button/Button"
 import { getAcc, Refresh_Token } from "../pages/manage";
 import { API_URL } from "../../config";
@@ -100,6 +100,8 @@ const HeaderMenu = (props) => {
 
 
 
+
+    const navigate= useNavigate();
     return (
         <>
             <div className="TitleMenu"
@@ -116,10 +118,10 @@ const HeaderMenu = (props) => {
                     {!account ?
                         <div className="ButtoNoLoginForDetskop">
                             <div className="NoLogin">
-                                <Button styling="btn" action={() => { location.href="/login"}} ContentButton="Login"></Button>
+                                <Button styling="btn" action={() => { navigate("/login")}} ContentButton="Login"></Button>
                             </div>
                             <div className="NoLogin">
-                                <Button styling={"btn"} action={() => { location.href="/Register" }} ContentButton="Register"></Button>
+                                <Button styling={"btn"} action={() => { navigate("/Register") }} ContentButton="Register"></Button>
                             </div>
                         </div> :
                         <div>
@@ -174,10 +176,10 @@ const HeaderMenu = (props) => {
                     </div> :
                     <div className="HeaderNoLogin">
                         <div className="NoLogin">
-                            <Button styling="btn" action={() => { location.href="/login" }} ContentButton="Login"></Button>
+                            <Button styling="btn" action={() => { navigate("/login")} } ContentButton="Login"></Button>
                         </div>
                         <div className="NoLogin">
-                            <Button styling={"btn"} action={() => { location.href="/Register" }} ContentButton="Register"></Button>
+                            <Button styling={"btn"} action={() => { navigate("/Register") }} ContentButton="Register"></Button>
                         </div>
                     </div>
                 }
