@@ -994,10 +994,12 @@ h4 {
 
 .OverlayLoading {
   position: absolute;
+  top : 20%;
   background-color: white;
   text-align: center;
   padding: 15px;
   border-radius: 10px;
+  z-index:2
 }
 
 .OverlayLoading img {
@@ -3229,19 +3231,21 @@ h4 {
     height: 85%
   }
 
-  .ListContactChat {
-    gap: 0px;
-
-  }
+  
 
   .chattingList{
-    height: 75%;
+    height: 80%;
   }
 
   .ListContact {
     width: 110%;
     font-size: 10px;
     padding: 0px;
+  }
+
+  .ListContactChat img{
+    width: 80px;
+    height: 80px;
   }
 
   .backButtonRoomChat {
