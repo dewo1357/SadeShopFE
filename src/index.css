@@ -3165,7 +3165,7 @@ h4 {
 
 .CategoryChatRoom {
   width: 50%;
-  height: 770px;
+  height: 100%
 }
 
 @media only screen and (max-width: 900px) {
