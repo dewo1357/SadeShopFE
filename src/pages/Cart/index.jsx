@@ -155,6 +155,7 @@ const CartPages = () => {
             const result = await response.json();
             if (result.statusCode === 401) {
                 await Refresh_Token(socket);
+                location.href="/cart"
             }
 
             setTotal(result.TotalPrice);
