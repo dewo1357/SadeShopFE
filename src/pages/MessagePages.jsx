@@ -24,7 +24,7 @@ const Mesage = (props) => {
     const [messageTo, setMessageTo] = useState(null)
     const [processChat, setProcessChat] = useState(true)
     const [ContactName, setContactName] = useState(null)
-    const [Height ,SetHeight] = useState(window.innerHeight-120)
+    const [Height ,SetHeight] = useState(innerHeight-120)
 
     const socket = useSocket();
 
@@ -298,7 +298,7 @@ const Mesage = (props) => {
                             <a style={{ textDecoration: "none", color: "black" }} href="/"><h1>Back</h1></a>
                             <h1>List Chat</h1>
                         </div>
-                        <div className="ListContactChatContainer" style={{height:Height}} >
+                        <div className="ListContactChatContainer" >
                             {MyRoomChat.map((item, index) => (
                                 <div onClick={() => {
                                     checkChatBasedOnIndex(item.idCategory,
@@ -335,7 +335,7 @@ const Mesage = (props) => {
                             </div>
                             <div>
                                 {ContactName ?
-                                    <a style={{ textDecoration: "none", color: "black", fontSize: innerWidth < 700 ? "10px" : "20px" }} href={`/profil/${ContactName}`}>
+                                    <a style={{ textDecoration: "none", color: "black" }} href={`/profil/${ContactName}`}>
                                         <h1 style={{ textAlign: "right" }} > {index != null ? ContactName : "Chat Room"}</h1>
                                     </a> :
                                     <h1 style={{ textAlign: "right" }} > {index != null ? ContactName : "Chat Room"}</h1>}

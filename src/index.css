@@ -2977,14 +2977,12 @@ h4 {
 
 /*Chat Pages*/
 .ListChat {
-  padding: 5px;
   display: flex;
   justify-content: space-between;
 }
 
 /*Chat Pages*/
 .RoomChat {
-  padding: 5px;
   width: 100%
 }
 
@@ -2994,6 +2992,7 @@ h4 {
   overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
+  height: 530px;
 }
 
 /*Chat Pages*/
@@ -3212,7 +3211,6 @@ h4 {
 
   .ActionToSend {
     margin-top: 10px;
-    width: 100%;
     height: 100px;
     display: grid;
     grid-template-columns: 70% 30%;
@@ -3234,6 +3232,10 @@ h4 {
   .ListContactChat {
     gap: 0px;
 
+  }
+
+  .chattingList{
+    height: 75%;
   }
 
   .ListContact {
