@@ -893,7 +893,7 @@ body {
 
 .ListCart {
   background-color: white;
-  height: 95px;
+  
   margin: 10px auto;
   border-radius: 10px;
   color: black;
@@ -936,11 +936,15 @@ h4 {
 .TitlePcs {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .TitlePcs h4 {
-  margin-top: 10px;
   padding-right: 10px;
+}
+
+.TitlePcs h3{
+  margin: 0px;
 }
 
 .TitlePcs button {
