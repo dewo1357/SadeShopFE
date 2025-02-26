@@ -94,10 +94,10 @@ const FormLogin = () => {
                         <Label Content="Kata Sandi" ></Label>
                         <Input type="password" placeholder="****" name="KataSandi"></Input>
                     </div>
-                    <Button ContentButton="Login"></Button>
+                    <Button ContentButton="Sign In"></Button>
                     <div className="Auth" onClick={() => { location.href = API_URL + "AuthenticationGoogle" }} >
                         <img src="/Images/Google_Icon.png" alt="" />
-                        <span>Login Gmail</span>
+                        <span>Sign In With Google</span>
                     </div>
                 </form>
 

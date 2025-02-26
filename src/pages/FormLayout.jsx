@@ -17,7 +17,7 @@ const FormLayout = (props) => {
 const Navigation = ({ navi })=>{
     if(navi==='register'){
         return(
-            <><p>Have a Account? <Link to={"/"}>Login</Link></p></>
+            <><p>Have a Account? <Link to={"/login"}>Login</Link></p></>
         )
     }else{
         return (
