@@ -2216,6 +2216,10 @@ h4 {
   width: 50%
 }
 
+.AddressCheckout h3{
+  margin : 0px
+}
+
 
 .BodyCheckout {
 
@@ -2230,9 +2234,6 @@ h4 {
   margin-bottom: 10px;
   font-size: 20px;
 }
-
-
-
 
 .ComponentBodyCheckout {
   text-align: center;
@@ -2253,7 +2254,7 @@ h4 {
 }
 
 .InformationCheckout {
-  height: 480px;
+  height: 500px;
   padding: 5px;
   overflow-y: auto;
   border-radius: 5px;

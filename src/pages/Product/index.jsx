@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Search from "../../Component/Search";
 import HeaderMenu from "../../Component/HeaderMenu";
 import OrderForm from "../../Component/popup/OrderForm";
-import { MotionMenuCart, Close, SearchCard, GetData, getAcc } from "../manage";
+import { MotionMenuCart, Close, SearchCard, GetData, getAcc,Get_Cart } from "../manage";
 import Statesss from "../States";
 import { useSocket } from "../../SocketProvider";
 import PopupNotification from "../../Component/popup/PopupNotifCation";
@@ -57,10 +57,14 @@ const ProductPages = () => {
     const [SumProcess, setSumProcess] = useState(0)
     const [notifMessage, setNotifMessage] = useState(false)
     const ConfirmBack = useRef();
+    
     useEffect(() => {
         if (Loading2 && socket) {
             console.log("menjalankan")
             Get_data();
+        }
+        if(account!==false){
+            Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket, SetLoading2);
         }
     }, [Loading2, socket]);
 
@@ -137,6 +141,7 @@ const ProductPages = () => {
                         Loading2={Loading2}
                         SetLoading2={SetLoading2}
                         account={account}
+                        listCart={listCart}
                     />
                 </div>
                 <div ref={popup2} className="popup">

@@ -56,20 +56,19 @@ const PopupNotification = (props) => {
 
     }, [account])
 
-
+    const [CheckoutData,setCheckoutData] = useState(JSON.parse(localStorage.getItem('CheckoutData'))?true:false)
     useEffect(() => {
-
-    }, [])
+        if (CheckoutData && location.pathname !== "/checkout") {
+            ConfirmBack.current.style.visibility = "visible";
+            setTimeout(() => {
+                setpopupconfirm(true)
+            })
+        }
+    }, [CheckoutData])
 
     useEffect(() => {
         if (account !== false) {
-            if (JSON.parse(localStorage.getItem('CheckoutData')) && !location.pathname === "/checkout") {
-                ConfirmBack.current.style.visibility = "visible";
-                setTimeout(() => {
-                    setpopupconfirm(true)
-                })
-            }
-
+            
             if (socket) {
                 try {
                     if (account.UserOnServer) {
@@ -130,14 +129,14 @@ const PopupNotification = (props) => {
                 console.log(socket)
             }
         }
-    }, [socket])
+    }, [socket,account])
 
 
     const ActionToChekout = () => {
         if (ConfirmBack.current) {
             ConfirmBack.current.style.visibility = "hidden"
         }
-        navigate("/checkout") 
+        navigate("/checkout")
     }
 
     const Abaikan = () => {
@@ -200,8 +199,8 @@ const PopupNotification = (props) => {
         notifMessage(null)
     }
 
-  
-    const Telusuri = ()=>{
+
+    const Telusuri = () => {
         console.log("Okee")
         navigate("/YourProductOrder")
     }
@@ -275,7 +274,7 @@ const PopupNotification = (props) => {
                             Apakah Anda Ingin Melanjutkan Proses Checkout?. <br /> Jika Tidak, Maka Data Checkout Sebelumnya Akan Dihapus Secara Permanen.
                         </p>
                         <div className="ConfirmBackToCartAction">
-                            <Button styling="btn Cancel" action={() => { ActionToDeleteCheckoutCart("products") }} ContentButton={"Delete"}></Button>
+                            <Button styling="btn Cancel" action={() => { ActionToDeleteCheckoutCart("") }} ContentButton={"Delete"}></Button>
                             <Button styling="btn" action={ActionToChekout} ContentButton={"Lanjutkan Process"}></Button>
                         </div>
                     </div>
@@ -290,7 +289,7 @@ const PopupNotification = (props) => {
                     </div>
                 </div>
             </div>
-        )   
+        )
     }
 
 }

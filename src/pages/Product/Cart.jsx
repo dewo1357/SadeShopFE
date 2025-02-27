@@ -1,19 +1,12 @@
 /* eslint-disable react/prop-types */
 import ListCart from "../../Component/Card_Cart/ListCart"
-import Statesss from "../States"
-import Button from "../../Component/Element/Button/Button";
-import { MotionMenuCart, Get_Cart } from "../manage";
-import { useEffect } from "react";
-const Cart = (props) => {
-    const { listCart, SetListCart } = Statesss();
-    const { motionLeft, setMotionLeft, setNotifMessage, socket, setSumProcess, Loading2, SetLoading2, account } = props
 
-    useEffect(() => {
-        if (account !== false && Loading2) {
-            Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket, SetLoading2);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [account, Loading2])
+import Button from "../../Component/Element/Button/Button";
+import { MotionMenuCart} from "../manage";
+const Cart = (props) => {
+   
+    const { motionLeft, setMotionLeft, account,listCart } = props
+
     return (
         <>
             {!account || innerWidth < 900 ? <></> :

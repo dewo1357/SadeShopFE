@@ -2,8 +2,8 @@
 import { API_URL } from "../../config";
 
 const PostDataProduk = async (data) => {
-    try{
-    const account = getAcc()
+    try {
+        const account = getAcc()
         const response = await fetch(API_URL + "AddProduct", {
             method: "POST",
             headers: {
@@ -181,9 +181,9 @@ const FinishAndClosePoopup = async (popup, listCart, setVisible, SetVisibleForm,
 }
 
 const MotionMenuCart = (motionLeft, setMotionLeft) => {
-    setTimeout(()=>{
+    setTimeout(() => {
         setMotionLeft(motionLeft ? false : true)
-    },100)
+    }, 100)
 
 }
 
@@ -212,9 +212,9 @@ const DeleteCart = async (x, setTotal, setTotalItem, totalPrice, totalItem, SetL
 
 }
 
-const SearchCard = (event, GenreData, setGenre,SetStartToSearch) => {
+const SearchCard = (event, GenreData, setGenre, SetStartToSearch) => {
     event.preventDefault();
-   
+
     const listdataSearch = []
     const x = event.target.value;
     const data = GenreData.slice();
@@ -262,51 +262,48 @@ const Active_Nav = (IsOn, setNav) => {
 }
 
 
-const Refresh_Token = async (socket=false) => {
+const Refresh_Token = async (socket = false) => {
     let account = getAcc()
-    try {
-        const response = await fetch(API_URL + 'Get_Acces', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                refreshToken: account.refresh_token
-            })
+    const response = await fetch(API_URL + 'Get_Acces', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            refreshToken: account.refresh_token
         })
-        if (!response) {
-            throw new Error("Failed")
-        }
-        const result = await response.json()
-        if (response.status === 404) {
-            location.href = "/"
-            return 404
-        }
-        console.log(socket)
-        if(socket!==false){
-            socket.on('Reset',account.username)
-            socket.on('Register',account.username)
-            console.log("server diperbarui")
-        }
-        console.log(result)
-        const acces_token = result.acces_token
-        const username = result.username
-        account = { ...account, username, acces_token }
-        localStorage.setItem('account', JSON.stringify(account))
-      
-        //reset Chace
-        sessionStorage.removeItem('ProductMaster')
-    } catch (err) {
-        console.log(err.message)
+    })
+    if (!response) {
+        throw new Error("Failed")
     }
+    const result = await response.json()
+    if (response.status === 404) {
+        localStorage.removeItem("account")
+        location.href = "/"
+        return 404
+    }
+    console.log(socket)
+    if (socket !== false) {
+        socket.on('Reset', account.username)
+        socket.on('Register', account.username)
+        console.log("server diperbarui")
+    }
+    console.log(result)
+    const acces_token = result.acces_token
+    const username = result.username
+    account = { ...account, username, acces_token }
+    localStorage.setItem('account', JSON.stringify(account))
+
+    //reset Chace
+    sessionStorage.removeItem('ProductMaster')
 }
 
 const GetData = async () => {
-    
+
     try {
         const response = await fetch(API_URL + 'MasterData', {
             method: 'GET',
-           
+
         });
         if (!response) {
             throw new Error("Gagal Mengambil Data")
@@ -344,7 +341,7 @@ const GetdataProdukUser = async (username) => {
 
 
 
-const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage,socket,SetLoading2) => {
+const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage, socket, SetLoading2) => {
     const account = getAcc();
     try {
         const endpoint = API_URL + `GetCart`
@@ -355,19 +352,17 @@ const Get_Cart = async (SetListCart, setSumProcess, setNotifMessage,socket,SetLo
         if (!response) {
             throw new Error("GAGAL MENDAPATKAN CART")
         }
-       
-        let result = await response.json()
-        if (result.data) {
-            console.log(result)
-            SetListCart(result.data)
-            setSumProcess(result.SumProcessProduct)
-            setNotifMessage(result.notifMessage)
-            sessionStorage.setItem('SumProcess', JSON.stringify(result.SumProcessProduct))
-            SetLoading2(false)
-        }else{
-            await Refresh_Token(socket)
-        }
 
+        let result = await response.json()
+        if (result.statusCode === 401) {
+            return await Refresh_Token(socket)
+        }
+        console.log(result)
+        SetListCart(result.data)
+        setSumProcess(result.SumProcessProduct)
+        setNotifMessage(result.notifMessage)
+        sessionStorage.setItem('SumProcess', JSON.stringify(result.SumProcessProduct))
+        SetLoading2(false)
     } catch (err) {
         console.log(err.message)
         location.href = "/"
@@ -404,7 +399,7 @@ const ActionToDeleteCheckoutCart = async (from = "cart") => {
 const getAcc = () => {
     try {
         const acc = JSON.parse(localStorage.getItem('account'))
-        if(acc){
+        if (acc) {
             return acc
         }
         return false
