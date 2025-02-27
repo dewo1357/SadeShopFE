@@ -207,7 +207,6 @@ const Mesage = (props) => {
     }
 
     const sendMyChat = async (e) => {
-
         e.preventDefault();
         await checkToRead(index)
         const Message = {
@@ -367,7 +366,7 @@ const Mesage = (props) => {
                                 {index !== null ? MyListChat[index].data.map((item) => (
                                     <div key={item.idChat} style={{ display: "flex", justifyContent: item.Sender.username === account.username ? "end" : "left" }}>
                                         {item.Sender.username === account.username ?
-                                            <div className="ListContactChat chatRoomList" key={item} >
+                                            <div className="ListContactChat chatRoomList"  key={item} >
                                                 <div>
                                                     <div className="optionsChat">
                                                         <span>
@@ -381,10 +380,10 @@ const Mesage = (props) => {
                                                 </div>
                                                 <div  >
                                                     <h2 style={{ textAlign: item.Sender.username === account.username ? "right" : "left" }}>{item.Content}</h2>
-                                                    <p style={{ fontSize: "10px" }}>{item.CreatedAt}</p>
+                                                    <p>{item.CreatedAt}</p>
                                                 </div>
                                             </div>
-                                            : <div className="ListContactChat chatRoomList" key={item} >
+                                            : <div className="ListContactChat chatRoomList" key={item} style={{textAlign:"left"}} >
                                                 <div>
                                                     <h2 style={{ textAlign: item.Sender.username === account.username ? "right" : "left" }}>{item.Content}</h2>
                                                     <p>{item.CreatedAt}</p>
