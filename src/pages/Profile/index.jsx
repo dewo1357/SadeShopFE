@@ -71,7 +71,7 @@ const ProfilPages = () => {
                         setAccess(true);
                     }
                 } else {
-                    location.href="/login"
+                    location.href="/"
                 }
             }, 1000)
 
