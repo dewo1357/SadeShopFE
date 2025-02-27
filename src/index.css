@@ -3266,7 +3266,7 @@ h4 {
     gap:10px;
     margin: 3px;
     width: 200px;
-    font-size: 10px;
+    
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 5px;
@@ -3277,7 +3277,7 @@ h4 {
   }
 
   .chatRoomList h2{
-    font-size: 8px;
+    font-size: 10px;
     margin: 0px;
   }
 
