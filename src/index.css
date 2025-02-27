@@ -2203,8 +2203,7 @@ h4 {
 }
 
 
-.FormCheckout {
-}
+
 
 
 .AddressCheckout {
@@ -3251,10 +3250,7 @@ h4 {
     padding: 0px;
   }
 
-  .ListContactChat img{
-    width: 80px;
-    height: 80px;
-  }
+  
 
   .backButtonRoomChat {
     display: block;
@@ -3267,6 +3263,10 @@ h4 {
     justify-content: center;
     align-items: center;
     height: 50px
+  }
+
+  .chatRoomList{
+    height: 50px;
   }
 }
 
