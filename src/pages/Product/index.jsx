@@ -1,8 +1,8 @@
 
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from "react";
-import Search from "../../Component/Search";
-import HeaderMenu from "../../Component/HeaderMenu";
+import Search from "../../Component/Search/Search";
+import HeaderMenu from "../../Component/Header/HeaderMenu";
 import OrderForm from "../../Component/popup/OrderForm";
 import { MotionMenuCart, Close, SearchCard, GetData, getAcc,Get_Cart } from "../manage";
 import Statesss from "../States";

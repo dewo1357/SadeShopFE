@@ -1,15 +1,14 @@
 /* eslint-disable react/prop-types */
 
-import OverlayPopups from "./popup/OverlayPopups";
-import InfoPopup from "./popup/pop Forms";
-import Statesss from "../pages/States";
+
+import InfoPopup from "./pop Forms";
+import Statesss from "../../pages/States";
 
 const CallPopupOrderAndPayment = (props) => {
     const { popup,
-        isVisible, process, ClosePopup, FinishAndClosePoopup,
-        VisibleForm, setVisible, SetVisibleForm, FinsihPay, DeleteCart,
-        listCart, SetListCart,SetFinishPay,account, setTotal,
-        setTotalItem,SetProcessLoading,setProcessMap,address,seAddress,LoadingMap,setLoadingMap} = props
+        isVisible, process, ClosePopup,
+        VisibleForm, setVisible, SetVisibleForm,SetProcessLoading,
+        setProcessMap,address,seAddress,LoadingMap,setLoadingMap} = props
     const {SetLoading2} = Statesss()
 
     const CloseCheckout = (e)=>{
@@ -33,13 +32,6 @@ const CallPopupOrderAndPayment = (props) => {
                     seAddress={seAddress}
                     LoadingMap={LoadingMap}
                     setLoadingMap={setLoadingMap}/>
-
-                    <OverlayPopups
-                        listCart={listCart}
-                        DataFinish={FinsihPay}
-                        isvisible={VisibleForm ? false : true}
-                        DeleteCart={DeleteCart}
-                        ActionButton={()=>FinishAndClosePoopup(popup, listCart, setVisible, SetVisibleForm, SetListCart, SetFinishPay, setTotal, setTotalItem, account)} />
                 </div>
             </div>
             

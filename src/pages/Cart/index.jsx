@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import ListCart from "../../Component/Card_Cart/ListCart";
 import Statesss from "../States";
-import CallPopupOrderAndPayment from "../../Component/CallPopupOrderAndPayment";
+import CallPopupOrderAndPayment from "../../Component/popup/CallPopupOrderAndPayment";
 import MyComponent from "../MyComponent";
 import { active, DeleteCart, ClosePopup, FinishAndClosePoopup, process, Refresh_Token, ActionToDeleteCheckoutCart, getAcc } from "../manage";
 import { useSocket } from "../../SocketProvider";

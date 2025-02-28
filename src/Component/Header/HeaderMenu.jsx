@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "./Element/Button/Button"
-import { getAcc, Refresh_Token } from "../pages/manage";
-import { API_URL } from "../../config";
+import Button from "../Element/Button/Button"
+import { getAcc, Refresh_Token } from "../../pages/manage";
+import { API_URL } from "../../../config";
 
 
 const HeaderMenu = (props) => {

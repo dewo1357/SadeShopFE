@@ -1,7 +1,7 @@
 
 
 
-import HeaderMenu from "../../Component/HeaderMenu"
+import HeaderMenu from "../../Component/Header/HeaderMenu"
 import OrderForm from "../../Component/popup/OrderForm"
 import { useState, useRef, useEffect } from "react"
 import { useParams,useNavigate } from "react-router-dom"
