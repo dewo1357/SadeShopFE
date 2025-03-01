@@ -21,7 +21,6 @@ const Verify = () => {
             const response = await fetch(API_URL+"CheckedToken", {
                 method: 'POST',
                 headers: { "Content-Type": 'application/json' ,
-                    'Authorization' : `Bearer ${account.acces_token}`
                 },
                 body: JSON.stringify({
                     token: token,
@@ -53,6 +52,9 @@ const Verify = () => {
         }
         if (finish) {
             if(hasilAkhir){
+                if(!localStorage.getItem('account')){
+                    return navigate('/')
+                }
                 navigate("/profil/"+account.username)
             }
         }
