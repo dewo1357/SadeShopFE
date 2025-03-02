@@ -80,7 +80,7 @@ const Message = (props) => {
             setTimeout(async () => {
                 if (StartChat) {
                     if (innerWidth < 900) {
-                        RoomChat.current.style.visibility = "visible";
+                        roomChat.current.style.visibility = "visible";
                         listContact.current.style.display = "none";
                     }
                     const GetAccount = await checkId(username, socket);

@@ -224,7 +224,7 @@ const PopupNotification = (props) => {
                         <form action="" onSubmit={SetPass}>
                             <div>
                                 <h1>Daftarkan Kata Sandi Anda</h1>
-                                <p style={{color : "red",fontSize:"10px"}}>Kata Sandi Tidak Sama!</p>
+                                <p style={{color : "red",fontSize:"10px"}} hidden={NoMatchPass?false:true}>Kata Sandi Tidak Sama!</p>
                                 <div className="ComponentSetPass">
                                     <input name="Pass1" type="password" placeholder="Enter Your Password" />
                                 </div>
