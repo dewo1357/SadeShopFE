@@ -80,6 +80,7 @@ const HeaderMenu = (props) => {
             }
             return location.href =tujuan
         }
+        localStorage.clear()
         return location.href="/"
     }
 

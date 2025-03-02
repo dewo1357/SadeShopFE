@@ -38,6 +38,7 @@ const PopupNotification = (props) => {
     const [Notif, notifMessage] = useState(null)
     const [finish, SetFinish] = useState(false)
     const [account, setAccount] = useState(getAcc())
+    const [NoMatchPass,SetNoMatchPass] = useState(false)
 
 
 
@@ -56,7 +57,7 @@ const PopupNotification = (props) => {
 
     }, [account])
 
-    const [CheckoutData,setCheckoutData] = useState(JSON.parse(localStorage.getItem('CheckoutData'))?true:false)
+    const [CheckoutData, setCheckoutData] = useState(JSON.parse(localStorage.getItem('CheckoutData')) ? true : false)
     useEffect(() => {
         if (CheckoutData && location.pathname !== "/checkout") {
             ConfirmBack.current.style.visibility = "visible";
@@ -68,7 +69,7 @@ const PopupNotification = (props) => {
 
     useEffect(() => {
         if (account !== false) {
-            
+
             if (socket) {
                 try {
                     if (account.UserOnServer) {
@@ -129,7 +130,7 @@ const PopupNotification = (props) => {
                 console.log(socket)
             }
         }
-    }, [socket,account])
+    }, [socket, account])
 
 
     const ActionToChekout = () => {
@@ -156,38 +157,44 @@ const PopupNotification = (props) => {
 
     const SetPass = async (event) => {
         event.preventDefault();
-        setPassOn(false)
-        setLoading(true)
-        notifMessage("Mohon Tunggu..")
-        try {
-            const response = await fetch(API_URL + "ChangePassForNewUser", {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${account.acces_token}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    newPassword: event.target.Pass1.value,
-                    newPassword2: event.target.Pass2.value
+        const newPassword = event.target.Pass1.value
+        const newPassword2 = event.target.Pass2.value
+        if (newPassword === newPassword2) {
+            setPassOn(false)
+            setLoading(true)
+            notifMessage("Mohon Tunggu..")
+            try {
+                const response = await fetch(API_URL + "ChangePassForNewUser", {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${account.acces_token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        newPassword: event.target.Pass1.value,
+                        newPassword2: event.target.Pass2.value
+                    })
                 })
-            })
-            if (!response) {
-                throw new Error("Failed")
+                if (!response) {
+                    throw new Error("Failed")
+                }
+                if (response.status === 200) {
+                    const result = await response.json()
+                    let dataAccount = account
+                    socket.emit("Register", {
+                        username: account.username,
+                        id: account.id
+                    })
+                    dataAccount = { ...account, isRegist: true, new_user: false }
+                    localStorage.setItem('account', JSON.stringify(dataAccount))
+                    notifMessage(result.Message)
+                    SetFinish(true)
+                }
+            } catch (err) {
+                console.log(err.message)
             }
-            if (response.status === 200) {
-                const result = await response.json()
-                let dataAccount = account
-                socket.emit("Register", {
-                    username: account.username,
-                    id: account.id
-                })
-                dataAccount = { ...account, isRegist: true, new_user: false }
-                localStorage.setItem('account', JSON.stringify(dataAccount))
-                notifMessage(result.Message)
-                SetFinish(true)
-            }
-        } catch (err) {
-            console.log(err.message)
+        }else{
+            SetNoMatchPass(true)
         }
     }
 
@@ -217,7 +224,7 @@ const PopupNotification = (props) => {
                         <form action="" onSubmit={SetPass}>
                             <div>
                                 <h1>Daftarkan Kata Sandi Anda</h1>
-
+                                <p style={{color : "red",fontSize:"10px"}}>Kata Sandi Tidak Sama!</p>
                                 <div className="ComponentSetPass">
                                     <input name="Pass1" type="password" placeholder="Enter Your Password" />
                                 </div>
