@@ -175,7 +175,7 @@ const Message = (props) => {
 
     const checkChatBasedOnIndex = async (index, To, ContactName, fromProses = false) => {
         if (innerWidth < 900) {
-            RoomChat.current.style.visibility = "visible";
+            roomChat.current.style.visibility = "visible";
             listContact.current.style.display = "none";
         }
         setTimeout(() => {
@@ -260,7 +260,7 @@ const Message = (props) => {
     const [message, setMessage] = useState(null);
 
     const backToListContact = () => {
-        RoomChat.current.style.visibility = "hidden";
+        roomChat.current.style.visibility = "hidden";
         listContact.current.style.display = "block";
     };
 
