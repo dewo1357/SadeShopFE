@@ -118,7 +118,7 @@ const Form = (props) => {
             const alloType = ['image/jpg', 'image/png', 'image/jpeg'];
             if (alloType.includes(file.type)) {
                 //Validasi. Akan Di Proses apabila kurang dari 5 MB.
-                if (file.size < 5000000) {
+                if (file.size < 300000) {
                     const renamed = v4().toString();
                     const date = new Date().getTime().toString()
                     const terbaru = new File([file], `${renamed}_${date}`, {
