@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useRef } from 'react';
 import Input from '../Element/Input/Input';
 import Label from '../Element/Label/Label';
 import Button from '../Element/Button/Button';
@@ -21,6 +21,7 @@ const FormRegister = () => {
 
     const handleLogin = (event) => {
         event.preventDefault();
+        notificationLogin.current.style.visibility = "visible"
         const username = event.target.username.value;
         const email = event.target.email.value;
         const nama = event.target.nama.value;
@@ -37,7 +38,7 @@ const FormRegister = () => {
         }
         const AddAccount = async () => {
             try {
-                const response = await fetch(API_URL+"AddAccount", {
+                const response = await fetch(API_URL + "AddAccount", {
                     method: "POST",
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(account)
@@ -52,8 +53,9 @@ const FormRegister = () => {
                 } else if (response.status === 500) {
                     setHidden2(false);
                 } else {
-                    navigate('/')
+                    return navigate('/')
                 }
+                notificationLogin.current.style.visibility = "hidden"
             } catch (err) {
                 console.log(err.message)
 
@@ -61,6 +63,7 @@ const FormRegister = () => {
         }
         AddAccount();
     }
+      const notificationLogin = useRef();
 
     return (
         <>
@@ -89,6 +92,12 @@ const FormRegister = () => {
                 </div>
                 <Button ContentButton="Register"  ></Button>
             </form>
+            <div ref={notificationLogin} className='overlay3'>
+                <div className="OverlayLoading">
+                    <h2>Mohon Ditunggu<br></br>Sedang Proses Daftar</h2>
+                    <img src="/Images/Loading.gif" alt="" />
+                </div>
+            </div>
 
         </>
     )

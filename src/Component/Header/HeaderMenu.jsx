@@ -108,7 +108,7 @@ const HeaderMenu = (props) => {
             <div className="TitleMenu"
                 style={{
                     justifyContent: account == false ? "space-between" : "normal",
-                    width: (GenreData.length !== 0 || innerWidth < 900) && !StartToSearch ? "100%" : location.pathname==="/" || GenreData.length !== 0 || StartToSearch  ? innerWidth - 42 : "100%",
+                    width: innerWidth < 900 && !StartToSearch ? "100%" : location.pathname==="/" || GenreData.length > 4 || StartToSearch  ? "1330px" : "100%",
                     paddingBottom: account == false ? "10px" : "0px", paddingTop: account == false ? "10px" : "0px",
                     backgroundColor: !account ? "transparent" : false,
                     boxShadow: !account ? "none" : "black",
