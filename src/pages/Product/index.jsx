@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Search from "../../Component/Search/Search";
 import HeaderMenu from "../../Component/Header/HeaderMenu";
 import OrderForm from "../../Component/popup/OrderForm";
-import { MotionMenuCart, Close, SearchCard, GetData, getAcc,Get_Cart } from "../manage";
+import { MotionMenuCart, Close, SearchCard, GetData, getAcc, Get_Cart } from "../manage";
 import Statesss from "../States";
 import { useSocket } from "../../SocketProvider";
 import PopupNotification from "../../Component/popup/PopupNotifCation";
@@ -20,7 +20,7 @@ const ProductPages = () => {
         GrabProduk, SetGrabProduk } = Statesss();
     const [GenreData, setGenre] = useState([])
     const [Loading2, SetLoading2] = useState(true)
-    const [StartToSearch,SetStartToSearch] = useState(false)
+    const [StartToSearch, SetStartToSearch] = useState(false)
 
 
     //NavCartMotionState
@@ -57,13 +57,13 @@ const ProductPages = () => {
     const [SumProcess, setSumProcess] = useState(0)
     const [notifMessage, setNotifMessage] = useState(false)
     const ConfirmBack = useRef();
-    
+
     useEffect(() => {
         if (Loading2 && socket) {
             console.log("menjalankan")
             Get_data();
         }
-        if(account!==false){
+        if (account !== false) {
             Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket, SetLoading2);
         }
     }, [Loading2, socket]);
@@ -72,7 +72,12 @@ const ProductPages = () => {
     return (
         GenreData !== null || listCart !== null ?
             <>
-                <div className="OverallProductsPages" style={{gap:motionLeft?"10px":"5px",display:!account ||innerWidth < 900?"block":false}}>
+                <div className="OverallProductsPages"
+                    style={{
+                        gap: motionLeft ? "10px" : "5px",
+                        display: !account || innerWidth < 900 ? "block" : motionLeft ? "flex" : false,
+                        
+                    }}>
                     <div>
                         <PopupNotification
                             popupConfirm2={popupConfirm2}
@@ -128,9 +133,9 @@ const ProductPages = () => {
                             </div>
                             : false}
                         <div >
-                            <Search type="text" placeholder="Search Produk" onBlur={()=>{SetStartToSearch(false)}} action={(e) => SearchCard(e, GenreData, setGenre,SetStartToSearch)} />
+                            <Search type="text" placeholder="Search Produk" onBlur={() => { SetStartToSearch(false) }} action={(e) => SearchCard(e, GenreData, setGenre, SetStartToSearch)} />
                         </div>
-                        <ListProduct  motionLeft={motionLeft} Loading={Loading} GenreData={GenreData} popup2={popup2} SetGrabProduk={SetGrabProduk} account={account} />
+                        <ListProduct motionLeft={motionLeft} Loading={Loading} GenreData={GenreData} popup2={popup2} SetGrabProduk={SetGrabProduk} account={account} />
                     </div>
                     <Cart
                         motionLeft={motionLeft}

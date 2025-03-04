@@ -647,7 +647,6 @@ body {
 /*PRODUK PAGES||||||||||||||||||||||||||||*/
 .OverallProductsPages {
   text-align: center;
-  display: flex;
   justify-content: space-between;
   gap: 0px;
   margin: 0px;
@@ -862,7 +861,7 @@ body {
   text-align: center;
   border-radius: 10px;
   width: 0px;
-  transition: 1000ms;
+  
 }
 
 .motion_Cart {
@@ -870,7 +869,7 @@ body {
   right: 0px;
   opacity: 1;
   padding: 10px;
-  transition: 1000ms;
+ 
 }
 
 .CartContainer h1 {
