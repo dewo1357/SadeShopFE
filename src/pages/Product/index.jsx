@@ -10,6 +10,7 @@ import { useSocket } from "../../SocketProvider";
 import PopupNotification from "../../Component/popup/PopupNotifCation";
 import Cart from "./Cart";
 import ListProduct from "./ListProduct";
+import HomeNoLoginPages from "./HomeNoLoginPages";
 const ProductPages = () => {
     const socket = useSocket();
 
@@ -59,14 +60,16 @@ const ProductPages = () => {
     const ConfirmBack = useRef();
 
     useEffect(() => {
-        if (Loading2 && socket) {
+        if (account && Loading2 && socket) {
             console.log("menjalankan")
             Get_data();
         }
         if (account !== false) {
             Get_Cart(SetListCart, setSumProcess, setNotifMessage, socket, SetLoading2);
         }
-    }, [Loading2, socket]);
+    }, [Loading2, socket,account]);
+
+   
 
 
     return (
@@ -76,7 +79,7 @@ const ProductPages = () => {
                     style={{
                         gap: motionLeft ? "10px" : "5px",
                         display: !account || innerWidth < 900 ? "block" : motionLeft ? "flex" : false,
-                        
+
                     }}>
                     <div>
                         <PopupNotification
@@ -106,33 +109,9 @@ const ProductPages = () => {
                         </HeaderMenu>
 
                         {!account ?
-                            <div>
-                                <div className="HomeProduct">
-                                    <div>
-                                        <h1 >
-                                            Penuhi Segala Kebutuhan Kamu
-                                        </h1>
-                                    </div>
-                                    <div className="HomePictProduct">
-                                        <div className="HomePictProductComponent">
-                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/simply-mersah-MLV5zTSzj98-unsplash (1).jpg" alt="" />
-                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/micheile-henderson-NuYB_I4wXFM-unsplash (1).jpg" alt="" />
-                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/dwayne-joe-9wubaeSG13U-unsplash (1).jpg" alt="" />
-                                        </div>
-                                        <div className="HomePictProductComponent kedua">
-                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/katsiaryna-endruszkiewicz-BteCp6aq4GI-unsplash (2).jpg" alt="" />
-                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/jeff-trierweiler-yrINjq6HInM-unsplash (1).jpg" alt="" />
-                                            <img style={{ width: "100%", objectFit: "cover" }} src="/Images/laika-notebooks-RDYGxXuRyx4-unsplash (1).jpg" alt="" />
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div>
-                                    <h1 style={{ fontSize: "30px" }}>Product</h1>
-                                </div>
-                            </div>
+                            <HomeNoLoginPages/>
                             : false}
-                        <div >
+                        <div hidden={!account ? true : false}>
                             <Search type="text" placeholder="Search Produk" onBlur={() => { SetStartToSearch(false) }} action={(e) => SearchCard(e, GenreData, setGenre, SetStartToSearch)} />
                         </div>
                         <ListProduct motionLeft={motionLeft} Loading={Loading} GenreData={GenreData} popup2={popup2} SetGrabProduk={SetGrabProduk} account={account} />

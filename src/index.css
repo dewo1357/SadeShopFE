@@ -3566,3 +3566,269 @@ h4 {
   }
 
 }
+
+
+.containerHome {
+  display: flex;
+  flex-direction: row;
+  gap:10px;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: center;
+}
+
+.item {
+  position: relative;
+  height: 200px; /* Sesuaikan tinggi */
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlayHome {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.89); /* Transparansi warna hitam */
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.item h1{
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+ 
+}
+
+
+.item:nth-child(1),
+.item:nth-child(7) {
+  height: 200px;
+  width: 40%;
+  
+}
+
+.item:nth-child(2),
+.item:nth-child(5),
+.item:nth-child(8) {
+  height: 200px;
+  width: 25%;
+}
+
+.item:nth-child(3),
+.item:nth-child(11),
+.item:nth-child(9) {
+  height: 200px;
+  flex-grow: 1;
+}
+
+.item:nth-child(3),
+.item:nth-child(6){
+  height: 200px;
+  width: 30%;
+  flex-grow: 1;
+}
+
+.item:nth-child(4) {
+  height: 200px;
+  width: 25%;
+}
+
+.item:nth-child(10) {
+  width: 100%;
+  height: 200px;
+}
+
+.item:nth-child(12) {
+  width: 500px;
+  height: 200px;
+}
+
+.item img{
+  object-fit: cover;
+  width : 100%;
+  height : 100%;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+.footer-containerFooter {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  text-align: left;
+}
+
+.footer-section h3, .footer-section h4 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #f0db4f;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #f0db4f;
+}
+
+.footer-section p {
+  margin: 5px 0;
+}
+
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #f0db4f;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+
+@media only screen and (max-width: 1000px){
+  .containerHome{
+    display: block;
+  }
+
+  .item{
+    background-size: cover;
+  }
+
+  .item:nth-child(1),
+  .item:nth-child(2),
+  .item:nth-child(3),
+  .item:nth-child(4),
+  .item:nth-child(5),
+  .item:nth-child(6),
+  .item:nth-child(7),
+  .item:nth-child(8),
+  .item:nth-child(9),
+  .item:nth-child(10){
+    width : 100%;
+    margin-bottom:10px
+  }
+}
+
+.item img:hover{
+
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+.footer-containerFooter {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  text-align: left;
+}
+
+.footer-section h3, .footer-section h4 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #f0db4f;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #f0db4f;
+}
+
+.footer-section p {
+  margin: 5px 0;
+}
+
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #f0db4f;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
