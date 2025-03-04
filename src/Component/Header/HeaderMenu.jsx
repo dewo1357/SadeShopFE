@@ -109,7 +109,7 @@ const HeaderMenu = (props) => {
             <div className="TitleMenu"
                 style={{
                     justifyContent: account === false ? "space-between" : "normal",
-                    width: innerWidth < 900 && !StartToSearch ? "100%" : location.pathname==="/" && GenreData.length!==0 &&  StartToSearch  ? "1330px" : "100%",
+                    width: innerWidth < 900 && !StartToSearch ? "100%" : location.pathname==="/" && GenreData.length!==0 &&  StartToSearch  ? "1350px" : "100%",
                     paddingBottom: account == false ? "10px" : "0px", paddingTop: account === false ? "10px" : "0px",
                     backgroundColor: !account ? "transparent" : false,
                     boxShadow: !account ? "none" : "black",
@@ -172,7 +172,7 @@ const HeaderMenu = (props) => {
                         <div className={(selected === 4) ? "selectedMenu" : ""} >
                             <Button styling="btn" action={() => { route(4, (To4) ? To4 : "") }} ContentButton="Logout">   </Button>
                         </div>
-                        <div className={`ButtonOpenCart ${motionLeft ? "OpenMotion" : ""}`}>
+                        <div className={`ButtonOpenCart ${motionLeft ? "OpenMotion" : ""}`} hidden={StartToSearch || location.pathname.includes("/profil")?true:false}>
                             <button hidden={(selected === 1 ? true : false)} onClick={() => { MotionMenuCart(motionLeft, setMotionLeft) }}> <img src={"./Images/icons8-cart-64.png"} alt="" /> </button>
                         </div>
                     </div> :
