@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { checkId, Refresh_Token, getAcc } from "../manage";
 import { useSocket } from "../../SocketProvider";
 import PopupNotification from "../../Component/popup/PopupNotifCation";
@@ -26,7 +26,7 @@ const Message = (props) => {
     const [messageTo, setMessageTo] = useState(null);
     const [processChat, setProcessChat] = useState(true);
     const [ContactName, setContactName] = useState(null);
-    const [Height, SetHeight] = useState(innerHeight - 120);
+    const [CategoryDelete,setCategoryDelete] = useState(false);
 
     const socket = useSocket();
 
@@ -46,8 +46,8 @@ const Message = (props) => {
                 await Refresh_Token(socket);
                 location.href = "/message";
             }
-            SetMyRoomChat(result.data);
-            setMyListChat(result.ListChat);
+            SetMyRoomChat(result.data?result.data:[]);
+            setMyListChat(result.ListChat?result.ListChat:[]);
             setTimeout(() => {
                 Room.current.scrollTop = Room.current.scrollHeight;
             }, 100);
@@ -89,6 +89,7 @@ const Message = (props) => {
                         setMessageTo(GetAccount.account.id);
                     }
                     if (MyRoomChat.length !== 0) {
+                        console.log(MyRoomChat)
                         MyRoomChat.map((item) => {
                             if (item.usernameSend.username === GetAccount.account.username || item.userReceive.username === GetAccount.account.username) {
                                 setIndex(item.idCategory);
@@ -105,7 +106,7 @@ const Message = (props) => {
                         });
                     }
                 }
-            }, 1000);
+            }, 100);
         }
     }, [MyRoomChat]);
 
@@ -120,7 +121,11 @@ const Message = (props) => {
     const [idChat, setidChat] = useState(false);
     const [isLoading, setisLoading] = useState(false);
 
-    const StartToDelete = (idChat) => {
+    const StartToDelete = (idChat,Category=false) => {
+        if(Category){
+            setCategoryDelete(true)
+        }
+        console.log(idChat)
         setIsDelete(true);
         setidChat(idChat);
         NotifDelete.current.style.visibility = "visible";
@@ -131,11 +136,18 @@ const Message = (props) => {
         NotifDelete.current.style.visibility = "hidden";
     };
 
-    const deleteMessage = async (category="DeleteChat") => {
+    const navigate = useNavigate();
+    const deleteMessage = async () => {
         setIsDelete(false);
         setisLoading(true);
+        let endPointURL = "DeleteChat"
+        if(CategoryDelete){
+            endPointURL = "deleteCategoryChat"
+            setCategoryDelete(false)
+        }
+        
         try {
-            const response = await fetch(API_URL + `${category}/${idChat}`, {
+            const response = await fetch(API_URL + `${endPointURL}/${idChat}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`,
@@ -145,7 +157,7 @@ const Message = (props) => {
                 throw new Error("Failed");
             }
             const result = await response.json();
-            console.log(result);
+            
         } catch (err) {
             console.log(err.message);
         }
@@ -153,6 +165,13 @@ const Message = (props) => {
         setIsDelete(false);
         NotifDelete.current.style.visibility = "hidden";
         setisLoading(false);
+        if(endPointURL == "deleteCategoryChat" && StartChat){
+            location.href="/message/"+username
+        }else{
+            setIndex(false)
+            location.href="/message/"
+        }
+            
     };
 
     const checkToRead = async (index) => {
@@ -196,7 +215,9 @@ const Message = (props) => {
 
     const sendMyChat = async (e) => {
         e.preventDefault();
-        await checkToRead(index);
+        if(!StartChat){
+            await checkToRead(index);
+        }
         const Message = {
             Text: e.target.textContent.value,
             to: messageTo,
@@ -258,7 +279,7 @@ const Message = (props) => {
                         MyListChat={MyListChat}
                         account={account}
                         checkChatBasedOnIndex={checkChatBasedOnIndex}
-                        deleteMessage={deleteMessage}
+                        StartToDelete={StartToDelete}
                         ListContact={listContact}
                     />
                     <RoomChat

@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-import Button from "../../Component/Element/Button/Button";
-const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, MyListChat, deleteMessage }) => {
+const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, MyListChat,StartToDelete }) => {
     console.log(MyListChat)
     return (
         <div className="CategoryChatRoom" ref={ListContact}>
@@ -29,7 +28,7 @@ const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, 
                                     <h3>{item.nUnRead !== 0 ? item.nUnRead : ""}</h3>
                                 </div>
                                 <div>
-                                    <p>{MyListChat[item.idCategory]['data'][MyListChat[item.idCategory]['data'].length - 1]['Content']}</p>
+                                    <p>{MyListChat.length!==0?MyListChat[item.idCategory]['data'][MyListChat[item.idCategory]['data'].length - 1]['Content']:""}</p>
                                 </div>
                             </div>
 
@@ -39,7 +38,7 @@ const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, 
                                 <img src="/Images/arrow-point-to-right.png" alt="" />
                             </span>
                             <div className="category">
-                                <button>Delete</button>
+                                <button onClick={()=>StartToDelete(item.idCategory,true)}>Delete</button>
                                 <button>Info</button>
                             </div>
                         </div>
