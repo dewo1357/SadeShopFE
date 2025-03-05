@@ -820,12 +820,12 @@ body {
   }
 
   .HeaderContent p {
-    font-size: 8px;
+    font-size: 7px;
   }
 
   .Footer .Price {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 10px;
   }
 
   .BodyCard {
