@@ -2974,8 +2974,8 @@ h4 {
 
 /*Chat Pages*/
 .MessageContainer {
-  display: flex;
-
+  display: grid;
+  grid-template-columns: 35% 65%;
   justify-content: space-between;
   width: 100%;
   margin: 0px;
@@ -2989,7 +2989,7 @@ h4 {
 
 /*Chat Pages*/
 .RoomChat {
-  width: 100%
+  width: 100%;
 }
 
 /*Chat Pages*/
@@ -3004,17 +3004,24 @@ h4 {
 /*Chat Pages*/
 .ListContactChat {
   background-color: rgb(190, 190, 187);
+  width: 100%;
   padding: 5px;
   margin-bottom: 5px;
-  display: flex;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 30% 50% 20%;
+  gap: 10px;
   align-items: center;
   cursor: pointer;
 }
 
-/*Chat Pages*/
-.ListContactChat:hover {
+.ListContactChat:hover{
   background-color: rgb(175, 175, 175);
+}
+
+/*Chat Pages*/
+.ListContactChat:hover .optionsChat {
+
+  opacity: 1;
 }
 
 /*Chat Pages*/
@@ -3052,6 +3059,31 @@ h4 {
 /*Chat Pages*/
 .optionChatAction {
   visibility: hidden;
+}
+
+.category{
+  position: absolute;
+  visibility : hidden;
+  background-color: rgb(134, 134, 133);
+  margin: 0px;
+  width: 150px;
+  display: flex;
+  flex-wrap:wrap;
+  left : 30.5%;
+  z-index: 1px;
+}
+
+.category button{
+  width: 120%;
+  height: 40px;
+  background-color: transparent;
+  border: 0px solid;
+  font-weight: bold;
+}
+
+.category button:hover{
+  background-color: #f0db4f;
+  cursor: pointer;
 }
 
 /*Chat Pages*/
@@ -3092,6 +3124,16 @@ h4 {
 }
 
 /*Chat Pages*/
+.optionsChat:hover .category {
+  visibility: visible;
+}
+
+/*Chat Pages*/
+.category:hover {
+  visibility: visible;
+}
+
+/*Chat Pages*/
 .chatRoomList option {
   color: black
 }
@@ -3108,10 +3150,11 @@ h4 {
 
 /*Chat Pages*/
 .ListContact {
-  display: flex;
-  justify-content: space-between;
-  width: 330px;
+  
+  width: 300px;
+  overflow: hidden;
   align-items: center;
+  font-size: 10px;
 }
 
 /*Chat Pages*/
@@ -3180,7 +3223,7 @@ h4 {
 }
 
 .CategoryChatRoom {
-  width: 50%;
+  width: 100%;
   height: 100%;
 }
 

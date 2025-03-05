@@ -15,7 +15,7 @@ const RoomChat = ({
                         <a style={{ textDecoration: "none", color: "black" }} href={`/profil/${ContactName}`}>
                             <h1 style={{ textAlign: "right" }}> {index != null ? ContactName : "Chat Room"}</h1>
                         </a> :
-                        <h1 style={{ textAlign: "right" }}> {index != null ? ContactName : "Chat Room"}</h1>}
+                        <h1 style={{ textAlign: "right",  }}> {index != null ? ContactName : "Chat Room"}</h1>}
                 </div>
             </div>
             <div className="PrevImageMessage" hidden={index || StartChat ? true : false}>

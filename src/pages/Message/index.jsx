@@ -131,11 +131,11 @@ const Message = (props) => {
         NotifDelete.current.style.visibility = "hidden";
     };
 
-    const deleteMessage = async () => {
+    const deleteMessage = async (category="DeleteChat") => {
         setIsDelete(false);
         setisLoading(true);
         try {
-            const response = await fetch(API_URL + `DeleteChat/${idChat}`, {
+            const response = await fetch(API_URL + `${category}/${idChat}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${account.acces_token}`,
@@ -225,26 +225,6 @@ const Message = (props) => {
     };
 
     const NotifDelete = useRef();
-    const [Acces, setAcces] = useState(false);
-    const [notificationSeller, setnotificationSeller] = useState(false);
-
-    const sendInformationAccount = () => {
-        socket.emit('Send', {
-            data: getAcc()
-        });
-        setnotificationSeller(false);
-        NotifDelete.current.style.visibility = 'hidden';
-    };
-
-    const Abaikan = () => {
-        NotifDelete.current.style.visibility = "hidden";
-        setnotificationSeller(false);
-    };
-
-    const close = () => {
-        NotifDelete.current.style.visibility = "hidden";
-        socket.emit('TolakAkses', account.username);
-    };
 
     const [fillText, setFilltext] = useState(false);
     const undisabledbutton = (e) => {
@@ -275,8 +255,10 @@ const Message = (props) => {
                 <div className="MessageContainer">
                     <ListContact
                         MyRoomChat={MyRoomChat}
+                        MyListChat={MyListChat}
                         account={account}
                         checkChatBasedOnIndex={checkChatBasedOnIndex}
+                        deleteMessage={deleteMessage}
                         ListContact={listContact}
                     />
                     <RoomChat

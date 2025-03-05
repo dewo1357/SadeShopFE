@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
-const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact }) => {
+import Button from "../../Component/Element/Button/Button";
+const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, MyListChat, deleteMessage }) => {
+    console.log(MyListChat)
     return (
         <div className="CategoryChatRoom" ref={ListContact}>
             <div className="ListChat">
@@ -22,11 +24,23 @@ const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact }
                         <img src={`https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${item.userReceive.username !== account.username ? item.PictReceive.image : item.PictSend.image}`} alt="" width="100" height="100" />
                         <div>
                             <div className="ListContact">
-                                <h2>{item.userReceive.username === account.username ? item.usernameSend.username : item.userReceive.username}</h2>
-                                <h3>{item.nUnRead !== 0 ? item.nUnRead : ""}</h3>
+                                <div style={{display:"flex",justifyContent:"space-between"}}>
+                                    <h2>{item.userReceive.username === account.username ? item.usernameSend.username : item.userReceive.username}</h2>
+                                    <h3>{item.nUnRead !== 0 ? item.nUnRead : ""}</h3>
+                                </div>
+                                <div>
+                                    <p>{MyListChat[item.idCategory]['data'][MyListChat[item.idCategory]['data'].length - 1]['Content']}</p>
+                                </div>
                             </div>
-                            <div>
-                                <p>{item.LastContent}</p>
+
+                        </div>
+                        <div className="optionsChat">
+                            <span>
+                                <img src="/Images/arrow-point-to-right.png" alt="" />
+                            </span>
+                            <div className="category">
+                                <button>Delete</button>
+                                <button>Info</button>
                             </div>
                         </div>
                     </div>
