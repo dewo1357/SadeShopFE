@@ -3066,11 +3066,11 @@ h4 {
   visibility : hidden;
   background-color: rgb(134, 134, 133);
   margin: 0px;
-  width: 150px;
+  width: 200px;
   display: flex;
   flex-wrap:wrap;
-  left : 30.5%;
-  z-index: 1px;
+  left : 25.5%;
+  margin-top: 10px;
 }
 
 .category button{
@@ -3082,7 +3082,7 @@ h4 {
 }
 
 .category button:hover{
-  background-color: #f0db4f;
+  background-color: #c2c2c2;
   cursor: pointer;
 }
 
@@ -3123,10 +3123,7 @@ h4 {
   visibility: visible;
 }
 
-/*Chat Pages*/
-.optionsChat:hover .category {
-  visibility: visible;
-}
+
 
 /*Chat Pages*/
 .category:hover {
@@ -3229,9 +3226,10 @@ h4 {
 
 
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1200px) {
   .MessageContainer {
-    display: contents;
+    overflow-x: hidden;
+    display: block;
     gap: 0px;
     height: 100%;
     padding: 0px;
@@ -3332,10 +3330,35 @@ h4 {
     font-size: 8px;
   }
 
-  
+  .optionsChat{
+    visibility: visible;
+    opacity: 1;
+    width: 50%;
+    height: 50%;
+  }
+  .optionsChat span{
+    width: 25px;
+    margin-left: 15px;
+    visibility: visible;    
+  }
 
-  .optionsChat span img{
-    width: 12px;
+  .category{
+    width: 150px;
+    left : 300pxpx;
+  }
+
+  .category{
+    position: absolute;
+    left : 77.2%;
+    margin-top: 10px;
+  }
+
+}
+
+@media only screen and (max-width: 400px){
+  .category{
+    width: 150px;
+    left : 232px;
   }
 }
 

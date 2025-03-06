@@ -1,6 +1,16 @@
+import { useState, useRef } from "react";
+
+
 /* eslint-disable react/prop-types */
-const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, MyListChat,StartToDelete }) => {
-    console.log(MyListChat)
+const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, MyListChat, StartToDelete }) => {
+    const categoryRef = useRef();
+    const [BuildCategoryRef, SetBuildCategoryRef] = useState(false);
+    const BuildCategoryAction = (e) => {
+        if (e.target.id == "img") {
+            categoryRef.current.style.visibility = BuildCategoryRef ? "hidden" : "visible"
+            SetBuildCategoryRef(BuildCategoryRef ? false : true)
+        }
+    }
     return (
         <div className="CategoryChatRoom" ref={ListContact}>
             <div className="ListChat">
@@ -9,36 +19,38 @@ const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, 
             </div>
             <div className="ListContactChatContainer">
                 {MyRoomChat.map((item) => (
-                    <div onClick={() => {
-                        checkChatBasedOnIndex(item.idCategory,
+                    <div className="ListContactChat" id="ListContact" onClick={(e) =>
+                        checkChatBasedOnIndex(e.target.id,item.idCategory,
                             item.userReceive.username === account.username ?
                                 item.SenderAccountID : item.ReceiveAccountID,
                             item.userReceive.username === account.username ?
                                 item.usernameSend.username : item.userReceive.username)
-                    }}
-                        key={item.idCategory} className="ListContactChat"
+                    }
+                        key={item.idCategory} 
                         style={{
                             backgroundColor: item.userReceive.username === account.username && item.isAllRead == 'false' ? "grey" : false,
-                        }}>
-                        <img src={`https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${item.userReceive.username !== account.username ? item.PictReceive.image : item.PictSend.image}`} alt="" width="100" height="100" />
+                        }}
+
+                    >
+                        <img id="ListContact" src={`https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${item.userReceive.username !== account.username ? item.PictReceive.image : item.PictSend.image}`} alt="" width="100" height="100" />
                         <div>
-                            <div className="ListContact">
-                                <div style={{display:"flex",justifyContent:"space-between"}}>
+                            <div id="ListContact" className="ListContact">
+                                <div id="ListContact" style={{ display: "flex", justifyContent: "space-between" }}>
                                     <h2>{item.userReceive.username === account.username ? item.usernameSend.username : item.userReceive.username}</h2>
                                     <h3>{item.nUnRead !== 0 ? item.nUnRead : ""}</h3>
                                 </div>
                                 <div>
-                                    <p>{MyListChat.length!==0?MyListChat[item.idCategory]['data'][MyListChat[item.idCategory]['data'].length - 1]['Content']:""}</p>
+                                    <p>{MyListChat[item.idCategory]['data'] ? MyListChat[item.idCategory]['data'][MyListChat[item.idCategory]['data'].length - 1]['Content'] : ""}</p>
                                 </div>
                             </div>
 
                         </div>
-                        <div className="optionsChat">
+                        <div  className="optionsChat">
                             <span>
-                                <img src="/Images/arrow-point-to-right.png" alt="" />
+                                <img onClick={BuildCategoryAction} id="img" src="/Images/arrow-point-to-right.png" alt="" />
                             </span>
-                            <div className="category">
-                                <button onClick={()=>StartToDelete(item.idCategory,true)}>Delete</button>
+                            <div className="category" ref={categoryRef} >
+                                <button onClick={() => StartToDelete(item.idCategory, true)}>Delete</button>
                                 <button>Info</button>
                             </div>
                         </div>

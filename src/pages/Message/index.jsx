@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useEffect, useState, useRef } from "react";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { checkId, Refresh_Token, getAcc } from "../manage";
 import { useSocket } from "../../SocketProvider";
 import PopupNotification from "../../Component/popup/PopupNotifCation";
@@ -14,7 +14,7 @@ import ListContact from "./ListContact";
 
 const Message = (props) => {
     const { StartChat } = props;
-    
+
 
     const { username } = useParams();
     const [getMyAccount, setMyAccount] = useState(false);
@@ -26,7 +26,7 @@ const Message = (props) => {
     const [messageTo, setMessageTo] = useState(null);
     const [processChat, setProcessChat] = useState(true);
     const [ContactName, setContactName] = useState(null);
-    const [CategoryDelete,setCategoryDelete] = useState(false);
+    const [CategoryDelete, setCategoryDelete] = useState(false);
 
     const socket = useSocket();
 
@@ -46,8 +46,8 @@ const Message = (props) => {
                 await Refresh_Token(socket);
                 location.href = "/message";
             }
-            SetMyRoomChat(result.data?result.data:[]);
-            setMyListChat(result.ListChat?result.ListChat:[]);
+            SetMyRoomChat(result.data ? result.data : []);
+            setMyListChat(result.ListChat ? result.ListChat : []);
             setTimeout(() => {
                 Room.current.scrollTop = Room.current.scrollHeight;
             }, 100);
@@ -121,8 +121,8 @@ const Message = (props) => {
     const [idChat, setidChat] = useState(false);
     const [isLoading, setisLoading] = useState(false);
 
-    const StartToDelete = (idChat,Category=false) => {
-        if(Category){
+    const StartToDelete = (idChat, Category = false) => {
+        if (Category) {
             setCategoryDelete(true)
         }
         console.log(idChat)
@@ -141,11 +141,11 @@ const Message = (props) => {
         setIsDelete(false);
         setisLoading(true);
         let endPointURL = "DeleteChat"
-        if(CategoryDelete){
+        if (CategoryDelete) {
             endPointURL = "deleteCategoryChat"
             setCategoryDelete(false)
         }
-        
+
         try {
             const response = await fetch(API_URL + `${endPointURL}/${idChat}`, {
                 method: 'DELETE',
@@ -157,7 +157,7 @@ const Message = (props) => {
                 throw new Error("Failed");
             }
             const result = await response.json();
-            
+
         } catch (err) {
             console.log(err.message);
         }
@@ -165,13 +165,13 @@ const Message = (props) => {
         setIsDelete(false);
         NotifDelete.current.style.visibility = "hidden";
         setisLoading(false);
-        if(endPointURL == "deleteCategoryChat" && StartChat){
-            location.href="/message/"+username
-        }else{
-            setIndex(false)
-            location.href="/message/"
+        if (endPointURL == "deleteCategoryChat" && StartChat) {
+            setIndex(null)
+            navigate("/message/" + username)
+        } else if (endPointURL == "deleteCategoryChat") {
+            setIndex(null)
         }
-            
+
     };
 
     const checkToRead = async (index) => {
@@ -192,30 +192,33 @@ const Message = (props) => {
     const roomChat = useRef();
     const listContact = useRef();
 
-    const checkChatBasedOnIndex = async (index, To, ContactName, fromProses = false) => {
-        if (innerWidth < 900) {
-            roomChat.current.style.visibility = "visible";
-            listContact.current.style.display = "none";
-        }
-        setTimeout(() => {
-            Room.current.scrollTop = Room.current.scrollHeight;
-            Room.current.style.opacity = 1;
-        }, 10);
-        setIndex(index);
-        setMessageTo(To);
-        setContactName(ContactName);
-        checkToRead(index);
-        localStorage.setItem('idCategory', JSON.stringify(index));
-        if (fromProses) {
+    const checkChatBasedOnIndex = async (id, index, To, ContactName, fromProses = false) => {
+        console.log(id)
+        if (id === "ListContact") {
+            if (innerWidth < 900) {
+                roomChat.current.style.visibility = "visible";
+                listContact.current.style.display = "none";
+            }
             setTimeout(() => {
-                GetMyRoomChat(socket);
-            }, 100);
+                Room.current.scrollTop = Room.current.scrollHeight;
+                Room.current.style.opacity = 1;
+            }, 10);
+            setIndex(index);
+            setMessageTo(To);
+            setContactName(ContactName);
+            checkToRead(index);
+            localStorage.setItem('idCategory', JSON.stringify(index));
+            if (fromProses) {
+                setTimeout(() => {
+                    GetMyRoomChat(socket);
+                }, 100);
+            }
         }
     };
 
     const sendMyChat = async (e) => {
         e.preventDefault();
-        if(!StartChat){
+        if (!StartChat) {
             await checkToRead(index);
         }
         const Message = {
@@ -266,7 +269,7 @@ const Message = (props) => {
     };
 
     return (
-       MyListChat ?
+        MyListChat ?
             <>
                 <PopupNotification
                     popupConfirm={popupConfirm}
@@ -314,7 +317,7 @@ const Message = (props) => {
                     <img src="/Images/Loading.gif" width="100" alt="" />
                 </div>
             </center>
-    
+
     );
 };
 
