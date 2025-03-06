@@ -40,12 +40,12 @@ const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, 
                                     <h3>{item.nUnRead !== 0 ? item.nUnRead : ""}</h3>
                                 </div>
                                 <div>
-                                    <p>{MyListChat[item.idCategory]['data'] ? MyListChat[item.idCategory]['data'][MyListChat[item.idCategory]['data'].length - 1]['Content'] : ""}</p>
+                                    <p>{MyListChat[item.idCategory]['data']!=='undefined' ? MyListChat[item.idCategory]['data'][MyListChat[item.idCategory]['data'].length - 1]['Content'] : ""}</p>
                                 </div>
                             </div>
 
                         </div>
-                        <div  className="optionsChat">
+                        <div  className="optionsChat categoryChat">
                             <span>
                                 <img onClick={BuildCategoryAction} id="img" src="/Images/arrow-point-to-right.png" alt="" />
                             </span>

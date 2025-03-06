@@ -51,6 +51,7 @@ const Message = (props) => {
             setTimeout(() => {
                 Room.current.scrollTop = Room.current.scrollHeight;
             }, 100);
+
         } catch (err) {
             if (account === null) {
                 location.href = "/login";
@@ -58,6 +59,7 @@ const Message = (props) => {
             console.log(err);
         }
     };
+    console.log(MyListChat)
 
     const Room = useRef();
 
@@ -89,12 +91,12 @@ const Message = (props) => {
                         setMessageTo(GetAccount.account.id);
                     }
                     if (MyRoomChat.length !== 0) {
-                        console.log(MyRoomChat)
+                        console.log(MyListChat)
                         MyRoomChat.map((item) => {
                             if (item.usernameSend.username === GetAccount.account.username || item.userReceive.username === GetAccount.account.username) {
                                 setIndex(item.idCategory);
                                 setContactName(item.usernameSend.username === account.username ? item.userReceive.username : item.usernameSend);
-                                checkChatBasedOnIndex(item.idCategory,
+                                checkChatBasedOnIndex(true, item.idCategory,
                                     item.userReceive.username === account.username ?
                                         item.SenderAccountID : item.ReceiveAccountID,
                                     item.usernameSend.username === account.username ?
@@ -192,9 +194,11 @@ const Message = (props) => {
     const roomChat = useRef();
     const listContact = useRef();
 
-    const checkChatBasedOnIndex = async (id, index, To, ContactName, fromProses = false) => {
-        console.log(id)
-        if (id === "ListContact") {
+    const checkChatBasedOnIndex = async (id = false, index, To, ContactName, fromProses = false) => {
+        //ListContact Dipakai untuk klik list contact pada bagian kiri tampilan
+        //true dipakai untuk otomatisasi apabila user chat kepada user lain yang sebelumnya pernah ngoborol, 
+        //hal ini ini digunakan untuk mengarahkan user menuju room chat sebelumnya
+        if (id === 'ListContact' || id===true) {
             if (innerWidth < 900) {
                 roomChat.current.style.visibility = "visible";
                 listContact.current.style.display = "none";
@@ -218,9 +222,7 @@ const Message = (props) => {
 
     const sendMyChat = async (e) => {
         e.preventDefault();
-        if (!StartChat) {
-            await checkToRead(index);
-        }
+        await checkToRead(index);
         const Message = {
             Text: e.target.textContent.value,
             to: messageTo,
@@ -267,6 +269,8 @@ const Message = (props) => {
         roomChat.current.style.visibility = "hidden";
         listContact.current.style.display = "block";
     };
+
+    console.log(index)
 
     return (
         MyListChat ?

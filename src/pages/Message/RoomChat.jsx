@@ -41,7 +41,7 @@ const RoomChat = ({
                     </div>
                 </div>
                 <div ref={Room} className="chattingList" hidden={getMyAccount && !index ? true : !index ? true : false}>
-                    {index !== null && MyListChat.length!==0 ? MyListChat[index].data.map((item) => (
+                    {index !== null ? MyListChat[index]['data'].map((item) => (
                         <div key={item.idChat} style={{ display: "flex", justifyContent: item.Sender.username === account.username ? "end" : "left" }}>
                             {item.Sender.username === account.username ?
                                 <div className="ListContactChat chatRoomList" key={item} style={{ textAlign: "right" }}>
