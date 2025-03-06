@@ -10,7 +10,7 @@ const RoomChat = ({
                 <div className="backButtonRoomChat">
                     <Button styling="btn" action={backToListContact} ContentButton={<img src="/Images/arrow-left_10023749.png" width="30px"></img>}></Button>
                 </div>
-                <div>
+                <div className="HeaderRoomChat">
                     {ContactName ?
                         <a style={{ textDecoration: "none", color: "black" }} href={`/profil/${ContactName}`}>
                             <h1 style={{ textAlign: "right" }}> {index != null ? ContactName : "Chat Room"}</h1>
