@@ -3020,8 +3020,11 @@ h4 {
 
 /*Chat Pages*/
 .ListContactChat:hover .optionsChat {
-
   opacity: 1;
+}
+
+.optionsChat:hover .category{
+  visibility: visible;
 }
 
 /*Chat Pages*/
@@ -3063,8 +3066,8 @@ h4 {
 
 .category{
   position: absolute;
-  visibility : hidden;
   background-color: rgb(134, 134, 133);
+  visibility: hidden;
   margin: 0px;
   width: 200px;
   display: flex;
@@ -3102,6 +3105,8 @@ h4 {
 .categoryChat span img {
   width: 20px;
 }
+
+
 
 /*Chat Pages*/
 .optionChatAction img {
