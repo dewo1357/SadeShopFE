@@ -3023,10 +3023,6 @@ h4 {
   opacity: 1;
 }
 
-.optionsChat:hover .category{
-  visibility: visible;
-}
-
 /*Chat Pages*/
 .ListContactChat img {
   border-radius: 300px;
@@ -3059,15 +3055,10 @@ h4 {
   cursor: pointer;
 }
 
-/*Chat Pages*/
-.optionChatAction {
-  visibility: hidden;
-}
 
 .category{
   position: absolute;
   background-color: rgb(134, 134, 133);
-  visibility: hidden;
   margin: 0px;
   width: 200px;
   display: flex;
@@ -3106,8 +3097,6 @@ h4 {
   width: 20px;
 }
 
-
-
 /*Chat Pages*/
 .optionChatAction img {
   width: 20px
@@ -3128,13 +3117,6 @@ h4 {
 
 /*Chat Pages*/
 .optionChatAction:hover {
-  visibility: visible;
-}
-
-
-
-/*Chat Pages*/
-.category:hover {
   visibility: visible;
 }
 

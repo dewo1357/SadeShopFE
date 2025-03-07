@@ -27,6 +27,7 @@ const Message = (props) => {
     const [processChat, setProcessChat] = useState(true);
     const [ContactName, setContactName] = useState(null);
     const [CategoryDelete, setCategoryDelete] = useState(false);
+ 
 
     const socket = useSocket();
 
@@ -173,7 +174,6 @@ const Message = (props) => {
         } else if (endPointURL == "deleteCategoryChat") {
             setIndex(null)
         }
-
     };
 
     const checkToRead = async (index) => {
@@ -193,12 +193,14 @@ const Message = (props) => {
 
     const roomChat = useRef();
     const listContact = useRef();
-
-    const checkChatBasedOnIndex = async (id = false, index, To, ContactName, fromProses = false) => {
+    const [CheckListRoomChat,setCheckListRoomChat] = useState([])//ListCheckRoomChat (left-side)
+    const [CheckListContact,SetCheckListContact] = useState([])//ListCheckContactListChect(right(side))
+    const checkChatBasedOnIndex = async (idElement = false, idCategory, To, ContactName, fromProses = false,index=false) => {
         //ListContact Dipakai untuk klik list contact pada bagian kiri tampilan
         //true dipakai untuk otomatisasi apabila user chat kepada user lain yang sebelumnya pernah ngoborol, 
         //hal ini ini digunakan untuk mengarahkan user menuju room chat sebelumnya
-        if (id === 'ListContact' || id===true) {
+
+        if (idElement === 'ListContact' || idElement === true) {
             if (innerWidth < 900) {
                 roomChat.current.style.visibility = "visible";
                 listContact.current.style.display = "none";
@@ -207,11 +209,12 @@ const Message = (props) => {
                 Room.current.scrollTop = Room.current.scrollHeight;
                 Room.current.style.opacity = 1;
             }, 10);
-            setIndex(index);
+            setCheckListRoomChat(Array(MyListChat[idCategory].data.length).fill(false))
+            setIndex(idCategory);
             setMessageTo(To);
             setContactName(ContactName);
-            checkToRead(index);
-            localStorage.setItem('idCategory', JSON.stringify(index));
+            checkToRead(idCategory);
+            localStorage.setItem('idCategory', JSON.stringify(idCategory));
             if (fromProses) {
                 setTimeout(() => {
                     GetMyRoomChat(socket);
@@ -251,7 +254,6 @@ const Message = (props) => {
     };
 
     const NotifDelete = useRef();
-
     const [fillText, setFilltext] = useState(false);
     const undisabledbutton = (e) => {
         if (e.target.value !== "") {
@@ -270,7 +272,28 @@ const Message = (props) => {
         listContact.current.style.display = "block";
     };
 
-    console.log(index)
+   
+    useEffect(()=>{
+        SetCheckListContact(Array(MyRoomChat.length).fill(false))
+    },[MyRoomChat])
+
+    const BuildCategoryAction = (idElement,index,Arrays,setArray,currentIndex,setCurrentIndex) => {
+        let ArrayCheckList = Array(MyRoomChat.length).fill(false)
+        console.log(index)
+        console.log(currentIndex)
+        if ((idElement == "img" || idElement == "img2") && currentIndex!==index) {
+            ArrayCheckList[index] = true
+            setArray(ArrayCheckList)
+            setCurrentIndex(index)
+        }else{
+            ArrayCheckList = Arrays.slice();
+            ArrayCheckList[index] = Arrays[index] ? false : true
+            setArray(ArrayCheckList)
+        }
+    }
+
+    console.log(CheckListRoomChat)
+
 
     return (
         MyListChat ?
@@ -288,6 +311,9 @@ const Message = (props) => {
                         checkChatBasedOnIndex={checkChatBasedOnIndex}
                         StartToDelete={StartToDelete}
                         ListContact={listContact}
+                        CheckListContact={CheckListContact}
+                        SetCheckListContact={SetCheckListContact}
+                        BuildCategoryAction={BuildCategoryAction}
                     />
                     <RoomChat
                         RoomChat={roomChat}
@@ -303,6 +329,9 @@ const Message = (props) => {
                         undisabledbutton={undisabledbutton}
                         backToListContact={backToListContact}
                         StartToDelete={StartToDelete}
+                        CheckListRoomChat={CheckListRoomChat}
+                        setCheckListRoomChat={setCheckListRoomChat}
+                        BuildCategoryAction={BuildCategoryAction}
                     />
                     <DeleteConfirmation
                         NotifDelete={NotifDelete}
@@ -314,7 +343,6 @@ const Message = (props) => {
                 </div>
             </>
             :
-
             <center>
                 <div>
                     <h1 style={{ fontFamily: "monospace" }}>Memproses..</h1>

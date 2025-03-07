@@ -1,16 +1,9 @@
-import { useState, useRef } from "react";
-
-
 /* eslint-disable react/prop-types */
-const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, MyListChat, StartToDelete }) => {
-    const categoryRef = useRef();
-    const [BuildCategoryRef, SetBuildCategoryRef] = useState(false);
-    const BuildCategoryAction = (e) => {
-        if (e.target.id == "img") {
-            categoryRef.current.style.visibility = BuildCategoryRef ? "hidden" : "visible"
-            SetBuildCategoryRef(BuildCategoryRef ? false : true)
-        }
-    }
+import { useState } from "react";
+const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, MyListChat, 
+    StartToDelete,CheckListContact,SetCheckListContact,BuildCategoryAction }) => {
+    const [currentIndex,setCurrentIndex] = useState(0)
+    
     return (
         <div className="CategoryChatRoom" ref={ListContact}>
             <div className="ListChat">
@@ -18,7 +11,7 @@ const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, 
                 <h1>List Chat</h1>
             </div>
             <div className="ListContactChatContainer">
-                {MyRoomChat.map((item) => (
+                {MyRoomChat.map((item,index) => (
                     <div className="ListContactChat" id="ListContact" onClick={(e) =>
                         checkChatBasedOnIndex(e.target.id,item.idCategory,
                             item.userReceive.username === account.username ?
@@ -30,7 +23,6 @@ const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, 
                         style={{
                             backgroundColor: item.userReceive.username === account.username && item.isAllRead == 'false' ? "grey" : false,
                         }}
-
                     >
                         <img id="ListContact" src={`https://qcgtgzcrwkdtkzzgkclh.supabase.co/storage/v1/object/public/ProfilePicture/${item.userReceive.username !== account.username ? item.PictReceive.image : item.PictSend.image}`} alt="" width="100" height="100" />
                         <div>
@@ -43,15 +35,14 @@ const ListContact = ({ MyRoomChat, account, checkChatBasedOnIndex, ListContact, 
                                     <p>{MyListChat[item.idCategory]['data']!=='undefined' ? MyListChat[item.idCategory]['data'][MyListChat[item.idCategory]['data'].length - 1]['Content'] : ""}</p>
                                 </div>
                             </div>
-
                         </div>
-                        <div  className="optionsChat categoryChat">
+                        <div className="optionsChat categoryChat">
                             <span>
-                                <img onClick={BuildCategoryAction} id="img" src="/Images/arrow-point-to-right.png" alt="" />
+                                <img onClick={(e)=>BuildCategoryAction(e.target.id,index,CheckListContact,SetCheckListContact,currentIndex,setCurrentIndex)} id="img" src="/Images/arrow-point-to-right.png" alt="" />
                             </span>
-                            <div className="category" ref={categoryRef} >
-                                <button onClick={() => StartToDelete(item.idCategory, true)}>Delete</button>
-                                <button>Info</button>
+                            <div className="category"    >
+                                <button onClick={() => StartToDelete(item.idCategory, true)} hidden={CheckListContact[index]?false:true}>Delete</button>
+                                <button hidden={CheckListContact[index]?false:true}>Info</button>
                             </div>
                         </div>
                     </div>

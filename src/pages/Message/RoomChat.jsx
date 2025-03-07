@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
 import Button from "../../Component/Element/Button/Button";
+import { useState } from "react";
 
-const RoomChat = ({ 
-    RoomChat, ContactName, index, StartChat, getMyAccount, Room, MyListChat, 
-    account, sendMyChat, fillText, undisabledbutton, backToListContact,StartToDelete }) => {
+const RoomChat = ({
+    RoomChat, ContactName, index, StartChat, getMyAccount, Room, MyListChat,
+    account, sendMyChat, fillText, undisabledbutton, backToListContact, StartToDelete,
+    CheckListRoomChat, setCheckListRoomChat, BuildCategoryAction }) => {
+
+    const [currentIndexRoomChat, setCurrentIndexRoomChat] = useState(0)
     return (
         <div ref={RoomChat} className="RoomChat">
             <div style={innerWidth < 700 ? { display: "flex", justifyContent: "space-between", alignItems: "center", height: "100%" } : {}}>
@@ -15,7 +19,7 @@ const RoomChat = ({
                         <a style={{ textDecoration: "none", color: "black" }} href={`/profil/${ContactName}`}>
                             <h1 style={{ textAlign: "right" }}> {index != null ? ContactName : "Chat Room"}</h1>
                         </a> :
-                        <h1 style={{ textAlign: "right",  }}> {index != null ? ContactName : "Chat Room"}</h1>}
+                        <h1 style={{ textAlign: "right", }}> {index != null ? ContactName : "Chat Room"}</h1>}
                 </div>
             </div>
             <div className="PrevImageMessage" hidden={index || StartChat ? true : false}>
@@ -41,19 +45,19 @@ const RoomChat = ({
                     </div>
                 </div>
                 <div ref={Room} className="chattingList" hidden={getMyAccount && !index ? true : !index ? true : false}>
-                    {index !== null ? MyListChat[index]['data'].map((item) => (
+                    {index !== null ? MyListChat[index]['data'].map((item,index) => (
                         <div key={item.idChat} style={{ display: "flex", justifyContent: item.Sender.username === account.username ? "end" : "left" }}>
                             {item.Sender.username === account.username ?
                                 <div className="ListContactChat chatRoomList" key={item} style={{ textAlign: "right" }}>
                                     <div>
                                         <div className="optionsChat">
                                             <span>
-                                                <img src="/Images/arrow-point-to-right.png" alt="" />
+                                            <img onClick={(e) => BuildCategoryAction(e.target.id, index,CheckListRoomChat, setCheckListRoomChat, currentIndexRoomChat, setCurrentIndexRoomChat)} src="/Images/arrow-point-to-right.png" alt="" id="img2" />
                                             </span>
                                         </div>
                                         <div className="optionChatAction">
-                                            <button><img src="/Images/information.png" alt="" /></button>
-                                            <button onClick={() => StartToDelete(item.idChat)}><img src="/Images/trash.png" alt="" /></button>
+                                            <button hidden={CheckListRoomChat[index]?false:true}><img src="/Images/information.png" alt="" /></button>
+                                            <button hidden={CheckListRoomChat[index]?false:true} onClick={() => StartToDelete(item.idChat)}><img src="/Images/trash.png" alt="" /></button>
                                         </div>
                                     </div>
                                     <div>
@@ -61,7 +65,8 @@ const RoomChat = ({
                                         <p>{item.CreatedAt}</p>
                                     </div>
                                 </div>
-                                : <div className="ListContactChat chatRoomList" key={item} style={{ textAlign: "left" }}>
+                                :
+                                <div className="ListContactChat chatRoomList" key={item} style={{ textAlign: "left" }}>
                                     <div>
                                         <h2 style={{ textAlign: item.Sender.username === account.username ? "right" : "left" }}>{item.Content}</h2>
                                         <p>{item.CreatedAt}</p>
@@ -69,12 +74,12 @@ const RoomChat = ({
                                     <div>
                                         <div className="optionsChat">
                                             <span>
-                                                <img src="/Images/arrow-point-to-right.png" alt="" />
+                                                <img onClick={(e) => BuildCategoryAction(e.target.id, index,CheckListRoomChat, setCheckListRoomChat, currentIndexRoomChat, setCurrentIndexRoomChat)} src="/Images/arrow-point-to-right.png" alt="" id="img2" />
                                             </span>
                                         </div>
                                         <div className="optionChatAction">
-                                            <button onClick={() => StartToDelete(item.idChat)}><img src="/Images/trash.png" alt="" /></button>
-                                            <button><img src="/Images/information.png" alt="" /></button>
+                                            <button  hidden={CheckListRoomChat[index]?false:true} onClick={() => StartToDelete(item.idChat)}   ><img src="/Images/trash.png" alt="" /></button>
+                                            <button  hidden={CheckListRoomChat[index]?false:true} ><img src="/Images/information.png" alt="" /></button>
                                         </div>
                                     </div>
                                 </div>}
